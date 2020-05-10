@@ -1,0 +1,105 @@
+{
+  "name": "simple-gatsby-typescript-seed",
+  "version": "0.1.0",
+  "description": "gatsby + typescript skeleton with istanbul+mocha+chai+enzyme testing & type-checking by running tests through ts-node instead of babel build pipeline",
+  "main": "",
+  "scripts": {
+    "format": "prettier --write './(*.html|*.js|*.json|src/**/*.ts|src/**/*.tsx)'",
+    "test": "TS_NODE_FILES=true mocha",
+    "coverage": "nyc npm run test",
+    "dev": "gatsby develop",
+    "prebuild": "npm run format && npm run coverage",
+    "build": "gatsby build",
+    "prestart": "npm run build",
+    "start": "gatsby serve"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true
+    },
+    "extends": [
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "printWidth": 80,
+    "semi": false
+  },
+  "nyc": {
+    "all": true,
+    "reporter": [
+      "text"
+    ],
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "**/public/**",
+      "**/*.spec.ts",
+      "**/*.spec.tsx"
+    ]
+  },
+  "mocha": {
+    "extension": [
+      "ts",
+      "tsx"
+    ],
+    "spec": [
+      "src/**/*.spec.tsx",
+      "src/**/*.spec.ts"
+    ],
+    "require": [ "ts-node/register", "ignore-styles" ]
+  },
+  "author": "Andrew Chang-DeWitt",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.21.9",
+    "gatsby-plugin-codegen": "^1.1.0",
+    "gatsby-plugin-sass": "^2.3.1",
+    "gatsby-plugin-typescript": "^2.4.0",
+    "gatsby-remark-prismjs": "^3.5.1",
+    "gatsby-source-filesystem": "^2.3.0",
+    "gatsby-transformer-remark": "^2.8.7",
+    "gatsby-transformer-typescript-css-modules": "^1.0.14",
+    "prismjs": "^1.20.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sass": "^1.26.5",
+    "typeface-inconsolata": "0.0.72",
+    "typeface-montserrat": "0.0.75",
+    "typeface-vollkorn": "0.0.72",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/mocha": "^7.0.2",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "chai": "^4.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "gatsby-cli": "^2.12.7",
+    "ignore-styles": "^5.0.1",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.9.1"
+  }
+}
