@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PostSummary, Post } from './PostSummary'
+import { PostSummary, Post } from '../PostSummary'
 
 export { Post }
 
@@ -11,7 +11,7 @@ interface Props {
 
 export const BlogHome = (props: Props) => (
   <div>
-    <h4>{props.postCount} Posts</h4>
+    <h4 className="postCount">{props.postCount} Posts</h4>
     {props.posts.map((post: Post) => (
       <PostSummary key={post.id} post={post} />
     ))}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Layout } from '../components/Layout'
-import { BlogHome, Post } from '../components/BlogHome'
+import { BlogHome, Post } from '../components/pages/BlogHome'
 
 interface Props {
   // FIXME: find proper type for this

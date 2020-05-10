@@ -8,11 +8,14 @@ export interface Props {
 
 export const Layout: FunctionComponent<Props> = ({ pageTitle, children }) => (
   <div>
-    <div className={styles.header}>
+    <div className={`${styles.header} layout-header`}>
       <h1>
-        Hello: <span className={styles.pageTitle}>{pageTitle}</span>
+        Hello:{' '}
+        <span className={` ${styles.pageTitle} layout-pageTitle`}>
+          {pageTitle}
+        </span>
       </h1>
     </div>
-    <div className={styles.content}>{children}</div>
+    <div className={`${styles.content} layout-content`}>{children}</div>
   </div>
 )

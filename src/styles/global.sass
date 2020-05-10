@@ -15,3 +15,8 @@ h1, h2, h3, h4, h5, h6, blockquote
 
 code
   font-family: fonts.$family-mono
+
+/* override background color in prismjs styled code blocks */
+:not(pre) > code[class*="language-"],
+pre[class*="language-"]
+  background: colors.$dark

@@ -1,7 +1,7 @@
 {
-  "name": "simple-gatsby-typescript-seed",
+  "name": "andrew-chang-dewitt.dev",
   "version": "0.1.0",
-  "description": "gatsby + typescript skeleton with istanbul+mocha+chai+enzyme testing & type-checking by running tests through ts-node instead of babel build pipeline",
+  "description": "professional website",
   "main": "",
   "scripts": {
     "format": "prettier --write './(*.html|*.js|*.json|src/**/*.ts|src/**/*.tsx)'",
@@ -60,7 +60,10 @@
       "src/**/*.spec.tsx",
       "src/**/*.spec.ts"
     ],
-    "require": [ "ts-node/register", "ignore-styles" ]
+    "require": [
+      "ts-node/register",
+      "ignore-styles"
+    ]
   },
   "author": "Andrew Chang-DeWitt",
   "license": "MIT",
