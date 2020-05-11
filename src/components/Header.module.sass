@@ -1,0 +1,19 @@
+@use '../styles/fonts'
+@use '../styles/colors'
+@use './Layout.module.sass'
+
+.header
+  height: Layout.$header-height
+  font-size: fonts.$size-small
+  display: grid
+  grid-template-areas: "navtop header-contents"
+  grid-template-columns: Layout.$column-widths
+
+.header > .navtop
+  grid-area: navtop
+  background-color: colors.$dark
+
+.header > .headerContents
+  grid-area: header-contents
+  background-color: colors.$light
+  color: colors.$dark
