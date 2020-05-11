@@ -20,3 +20,18 @@ code
 :not(pre) > code[class*="language-"],
 pre[class*="language-"]
   background: colors.$dark
+
+.no-wrap
+  white-space: nowrap
+
+.title
+  font-size: fonts.$size-huge
+  font-weight: normal
+
+.subtitle
+  font-size: fonts.$size-large
+  font-weight: normal
+  font-style: italic
+
+* > .title + .subtitle
+  margin-top: -0.75em

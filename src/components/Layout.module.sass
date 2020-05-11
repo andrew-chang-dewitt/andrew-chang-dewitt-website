@@ -1,8 +1,24 @@
 @use '../styles/colors'
+@use '../styles/headshot'
 
-.header
-  color: colors.$accent1
+$column-width-left: 25vw
+$column-width-right: minmax(0, 1fr)
+$column-widths: $column-width-left $column-width-right
 
-.pageTitle
+$header-height: 4rem
 
-.contents
+.pageGrid
+  display: grid
+  grid-template-areas: "navbar page"
+  grid-template-columns: $column-widths
+  grid-column-gap: calc(#{headshot.$size} / 2)
+
+  height: calc(100vh - #{$header-height})
+
+.pageGrid > .navbar
+  grid-area: navbar
+  background-color: colors.$dark
+  color: colors.$light
+
+.pageGrid > .page
+  grid-area: page
