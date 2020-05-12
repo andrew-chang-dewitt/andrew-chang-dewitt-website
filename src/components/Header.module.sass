@@ -1,9 +1,11 @@
 @use '../styles/fonts'
 @use '../styles/colors'
-@use './Layout.module.sass'
+
+@use './Layout.variables.sass'
+@use './Header.variables.sass'
 
 .header
-  height: Layout.$header-height
+  height: Header.$height
   font-size: fonts.$size-small
   display: grid
   grid-template-areas: "navtop header-contents"

@@ -1,0 +1,16 @@
+@use './Landing.variables.sass'
+@use '../Layout.variables.sass'
+@use '../Headshot.variables.sass'
+
+.contents
+  // position: absolute
+  // top: 50%
+  // height: 100%
+  margin-top: Landing.$margin-top
+
+.contents > .nav.tabs
+  margin-top: -1em
+
+\:global .landing-headshot
+  margin-top: Landing.$margin-top
+  margin-left: calc(#{Layout.$column-width-left} - (#{Headshot.$size} / 2))

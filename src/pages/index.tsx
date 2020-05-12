@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Layout } from '../components/Layout'
-import { Home as HomeComponent } from '../components/pages/Home'
+import { Landing as LandingComponent } from '../components/pages/Landing'
 
-export default function Home() {
+export default function Landing() {
   return (
-    <Layout pageTitle="Home">
-      <HomeComponent />
+    <Layout childClassPrefix="landing">
+      <LandingComponent />
     </Layout>
   )
 }

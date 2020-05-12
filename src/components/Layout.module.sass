@@ -1,19 +1,16 @@
 @use '../styles/colors'
-@use '../styles/headshot'
 
-$column-width-left: 25vw
-$column-width-right: minmax(0, 1fr)
-$column-widths: $column-width-left $column-width-right
-
-$header-height: 4rem
+@use './Layout.variables.sass'
+@use './Header.variables.sass'
+@use './Headshot.variables.sass'
 
 .pageGrid
   display: grid
   grid-template-areas: "navbar page"
-  grid-template-columns: $column-widths
-  grid-column-gap: calc(#{headshot.$size} / 2)
+  grid-template-columns: Layout.$column-widths
+  grid-column-gap: calc(#{Headshot.$size} * .625)
 
-  height: calc(100vh - #{$header-height})
+  height: calc(100vh - #{Header.$height})
 
 .pageGrid > .navbar
   grid-area: navbar
