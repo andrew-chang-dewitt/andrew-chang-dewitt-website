@@ -6,7 +6,7 @@
 
 .pageGrid
   display: grid
-  grid-template-areas: "navbar page"
+  grid-template-areas: "navbar content"
   grid-template-columns: Layout.$column-widths
   grid-column-gap: calc(#{Headshot.$size} * .625)
 
@@ -17,5 +17,6 @@
   background-color: colors.$dark
   color: colors.$light
 
-.pageGrid > .page
-  grid-area: page
+.pageGrid > .content
+  grid-area: content
+  margin-top: Layout.$margin-top

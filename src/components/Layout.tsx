@@ -23,9 +23,7 @@ export const Layout: FunctionComponent<Props> = ({
           <Headshot />
         </div>
       </div>
-      <div className={styles.page}>
-        <div className="layoutContent">{children}</div>
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   </div>
 )
