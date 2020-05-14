@@ -5,7 +5,7 @@ import { Landing as LandingComponent } from '../components/pages/Landing'
 
 export default function Landing() {
   return (
-    <Layout childClassPrefix="landing">
+    <Layout navPanelStyle="landing">
       <LandingComponent />
     </Layout>
   )

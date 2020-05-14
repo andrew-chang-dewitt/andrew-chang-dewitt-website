@@ -1,6 +1,10 @@
+@use './pages/Landing.variables.sass'
 @use './Layout.variables.sass'
 @use './Headshot.variables.sass'
 
 .landingHeadshot
-  margin-top: Layout.$margin-top
+  padding-top: Landing.$padding-top
+  margin-left: calc(#{Layout.$column-width-left} - (#{Headshot.$size} / 2))
+
+.defaultHeadshot
   margin-left: calc(#{Layout.$column-width-left} - (#{Headshot.$size} / 2))
