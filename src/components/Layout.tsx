@@ -3,14 +3,14 @@ import React, { FunctionComponent } from 'react'
 import styles from './Layout.module.sass'
 
 import { Header } from './Header'
-import { Headshot } from './Headshot'
+import { NavPanel } from './NavPanel'
 
 export interface Props {
-  childClassPrefix: string
+  navPanelStyle: string
 }
 
 export const Layout: FunctionComponent<Props> = ({
-  childClassPrefix,
+  navPanelStyle,
   children,
 }) => (
   <div>
@@ -19,9 +19,7 @@ export const Layout: FunctionComponent<Props> = ({
     </div>
     <div className={styles.pageGrid}>
       <div className={`${styles.navbar}`}>
-        <div className={`${childClassPrefix}-headshot`}>
-          <Headshot />
-        </div>
+        <NavPanel navPanelStyle={navPanelStyle} />
       </div>
       <div className={styles.content}>{children}</div>
     </div>
@@ -29,5 +27,5 @@ export const Layout: FunctionComponent<Props> = ({
 )
 
 Layout.defaultProps = {
-  childClassPrefix: 'default',
+  navPanelStyle: 'default',
 }
