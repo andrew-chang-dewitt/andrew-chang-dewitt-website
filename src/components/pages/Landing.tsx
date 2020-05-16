@@ -8,9 +8,22 @@ export const Landing = () => (
     <h1 className="title">
       Andrew <span className="no-wrap">Chang-DeWitt</span>
     </h1>
-    <div className={`${styles.nav} ${styles.tabs}`}>
-      <Link to="/hire-me">Hire Me</Link> |<Link to="/blog">Blog</Link> |
-      <Link to="/about">About</Link> |<Link to="/contact">Contact</Link>
-    </div>
+      <div className={styles.nav}>
+        <span className={styles.navOption}>
+          <Link to="/hire-me">Hire Me</Link>
+        </span>{' '}
+        |{' '}
+        <span className={styles.navOption}>
+          <Link to="/blog">Blog</Link>
+        </span>{' '}
+        |{' '}
+        <span className={styles.navOption}>
+          <Link to="/about">About</Link>
+        </span>{' '}
+        |{' '}
+        <span className={styles.navOption}>
+          <Link to="/contact">Contact</Link>
+        </span>
+      </div>
   </div>
 )
