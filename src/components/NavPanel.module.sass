@@ -1,6 +1,10 @@
+@use '../styles/fonts'
+@use '../styles/colors'
 @use './pages/Landing.variables.sass'
 @use './Layout.variables.sass'
 @use './Headshot.variables.sass'
+
+$navOptionPadding: .4rem
 
 .landingHeadshot
   padding-top: Landing.$padding-top
@@ -8,3 +12,20 @@
 
 .defaultHeadshot
   margin-left: calc(#{Layout.$column-width-left} - (#{Headshot.$size} / 2))
+
+.nav
+  font-size: fonts.$size-regular
+  list-style: none
+
+.nav > .navOption
+  text-align: center
+
+.nav > .navOption:not(:last-child)
+  padding-bottom: $navOptionPadding
+  border-bottom: thin solid colors.$light
+
+.nav > .navOption:not(:first-child)
+  padding-top: $navOptionPadding
+
+.navOption > .active
+  color: colors.$accent2
