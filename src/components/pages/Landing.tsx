@@ -6,7 +6,8 @@ import styles from './Landing.module.sass'
 export const Landing = () => (
   <div className={styles.contents}>
     <h1 className="title">
-      Andrew <span className="no-wrap">Chang-DeWitt</span>
+      {/* Andrew <span className="no-wrap">Chang-DeWitt</span> */}
+      Andrew Chang-DeWitt
     </h1>
     <div className={styles.nav}>
       <span className={styles.navOption}>

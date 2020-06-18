@@ -10,17 +10,7 @@ import styles from './Layout.module.sass'
 export const Layout: FunctionComponent = ({
   // navPanelStyle,
   children,
-}) => (
-  <div>
-    <div className={styles.header}>{/* <Header /> */}</div>
-    <div className={styles.pageGrid}>
-      <div className={`${styles.navbar}`}>
-        {/* <NavPanel navPanelStyle={navPanelStyle} /> */}
-      </div>
-      <div className={styles.content}>{children}</div>
-    </div>
-  </div>
-)
+}) => <div className={styles.content}>{children}</div>
 
 // Layout.defaultProps = {
 //   navPanelStyle: 'default',

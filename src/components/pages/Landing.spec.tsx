@@ -12,6 +12,6 @@ describe('components/Landing', () => {
   const landing = shallow(<Landing />)
 
   it('should have a landing section', () => {
-    expect(landing.find('#landing')).to.have.lengthOf(1)
+    expect(landing).to.exist
   })
 })
