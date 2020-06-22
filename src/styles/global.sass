@@ -1,14 +1,25 @@
 @use 'fonts'
 @use 'colors'
+@use 'layout'
 
 @import '~prismjs/themes/prism-tomorrow'
 
+*
+//  margin: 0
+
 body
-  margin: 0 5px
+  margin: 0
   font-family: fonts.$family-sans
   font-size: fonts.$size-regular
+  text-rendering: optimizeLegibility
   color: colors.$dark
   background-color: colors.$light
+
+.standardWidth,section
+  @include layout.standard-width
+
+.standardWidth>*,section>*
+  margin: 0 1rem
 
 h1, h2, h3, h4, h5, h6, blockquote
   font-family: fonts.$family-serif
@@ -42,4 +53,4 @@ pre[class*="language-"]
   font-style: italic
 
 * > .title + .subtitle
-  margin-top: -0.75em
+  margin-top: -2.75rem
