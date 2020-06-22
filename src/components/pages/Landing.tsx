@@ -1,30 +1,19 @@
 import React from 'react'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
+
+import { Hero } from '../Hero'
 
 import styles from './Landing.module.sass'
 
 export const Landing = () => (
-  <div className={styles.contents}>
-    <h1 className="title">
-      {/* Andrew <span className="no-wrap">Chang-DeWitt</span> */}
-      Andrew Chang-DeWitt
-    </h1>
-    <div className={styles.nav}>
-      <span className={styles.navOption}>
-        <Link to="/hire-me">Hire Me</Link>
-      </span>{' '}
-      |{' '}
-      <span className={styles.navOption}>
-        <Link to="/blog">Blog</Link>
-      </span>{' '}
-      |{' '}
-      <span className={styles.navOption}>
-        <Link to="/about">About</Link>
-      </span>{' '}
-      |{' '}
-      <span className={styles.navOption}>
-        <Link to="/contact">Contact</Link>
-      </span>
+  <Hero id="home" title="Andrew Chang-DeWitt">
+    <div>
+      <section className={styles.contents}>
+        <div className={styles.tagline}>
+          <h2 className={`${styles.subtitle} subtitle`}>software developer</h2>
+          <p>I make websites, applications, API's, &amp; utilities</p>
+        </div>
+      </section>
     </div>
-  </div>
+  </Hero>
 )
