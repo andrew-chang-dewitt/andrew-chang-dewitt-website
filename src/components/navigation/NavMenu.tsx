@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
-// export interface Props {}
+import styles from './NavMenu.module.sass'
 
 export const NavMenu: FunctionComponent = ({ children }) => (
-  <div>{children}</div>
+  <nav className={styles.menu}>{children}</nav>
 )
