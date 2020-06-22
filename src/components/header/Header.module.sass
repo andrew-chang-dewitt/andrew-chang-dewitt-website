@@ -1,8 +1,25 @@
-.header {
+@use '../../styles/colors'
+@use '../../styles/fonts'
+@use '../../styles/layout'
+
+.header
   position: sticky
   top: 0px
-}
+  background-color: colors.$dark
 
-.brandingArea {
-  color: red
-}
+.contents
+  display: flex
+  // display: grid
+  // grid-gap: layout.$grid-gap
+  // grid-template-columns: 5rem 1fr
+@media all and (max-width: #{layout.$screen-small})
+  .contents
+    flex-direction: column
+
+.branding
+  color: colors.$light
+  font-family: fonts.$family-serif
+  font-size: fonts.$size-medium
+  font-weight: fonts.$weight-serif-bold
+
+.menu
