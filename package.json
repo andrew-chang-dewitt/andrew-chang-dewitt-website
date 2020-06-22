@@ -69,7 +69,6 @@
   "license": "MIT",
   "dependencies": {
     "gatsby": "^2.21.9",
-    "gatsby-plugin-codegen": "^1.1.0",
     "gatsby-plugin-sass": "^2.3.1",
     "gatsby-plugin-typescript": "^2.4.0",
     "gatsby-remark-prismjs": "^3.5.1",
@@ -79,7 +78,7 @@
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "sass": "^1.26.5",
+    "dart-sass": "^1.25.0",
     "typeface-inconsolata": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typeface-vollkorn": "0.0.72",
