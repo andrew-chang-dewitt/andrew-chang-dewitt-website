@@ -9,16 +9,15 @@ configure({ adapter: new Adapter() })
 // import { NavMenu as ActualNavMenu } from './NavMenu'
 import { NavMenu } from './NavMenu'
 
+// before(() => {
+//   global.__PATH_PREFIX__ = ``
+// })
+
 describe('component/navigation/NavMenu', () => {
-  const childOne = <div className="test">Item 1</div>
-  const childTwo = <div>Item 2</div>
-  const menu = shallow(
-    <NavMenu>
-      {childOne}
-      {childTwo}
-      Some Text
-    </NavMenu>
-  )
+  const items = [<div>Text</div>, <div>Text</div>, <div>Text</div>]
+  const menu = shallow(<NavMenu>{items}</NavMenu>)
+
+  console.log(menu.html())
 
   it('should render a list of menu items', () => {
     expect(menu.children()).to.have.lengthOf(3)

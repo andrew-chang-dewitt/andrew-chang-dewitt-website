@@ -11,13 +11,9 @@ export interface Props {
 export const NavTab: FunctionComponent<Props> = ({
   children,
   destination,
-  active,
+  active = false,
 }) => (
-  <div className={`${styles.tab} ${active ? 'active' : ''} no-wrap`}>
+  <div className={`no-wrap ${styles.tab} ${active ? styles.active : ''}`}>
     <Link to={destination}>{children}</Link>
   </div>
 )
-
-NavTab.defaultProps = {
-  active: false,
-}

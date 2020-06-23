@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() })
 
 import { Header } from './Header'
 
-describe('component/navigation/NavMenu', () => {
+describe('component/header/Header', () => {
   const header = shallow(<Header></Header>)
 
   it('should render a list of menu items', () => {
