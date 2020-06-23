@@ -16,17 +16,9 @@ export enum Colors {
 }
 
 const colorStyles = (selection: Colors) => {
-  let color: Colors
-
-  if (selection === Colors.Light) {
-    color = Colors.Dark
-  } else {
-    color = Colors.Light
-  }
-
   return {
     backgroundColor: selection,
-    color: color,
+    color: selection === Colors.Light ? Colors.Dark : Colors.Light,
   }
 }
 
