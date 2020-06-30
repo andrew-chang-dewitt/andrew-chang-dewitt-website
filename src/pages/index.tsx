@@ -11,7 +11,7 @@ export default function Landing() {
       <Header />
       <section id="about">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          About Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
           aliquam purus sit amet luctus venenatis lectus. Dui id ornare arcu
           odio ut sem nulla pharetra diam. Cras semper auctor neque vitae tempus
@@ -83,8 +83,8 @@ export default function Landing() {
       </section>
       <section id="featured-projects">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
+          Projects Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
           aliquam purus sit amet luctus venenatis lectus. Dui id ornare arcu
           odio ut sem nulla pharetra diam. Cras semper auctor neque vitae tempus
           quam pellentesque nec nam. Sapien nec sagittis aliquam malesuada
@@ -116,14 +116,17 @@ export default function Landing() {
           viverra. Egestas maecenas pharetra convallis posuere morbi leo urna
           molestie at. A lacus vestibulum sed arcu non odio euismod lacinia at.
           Sollicitudin ac orci phasellus egestas tellus rutrum.
-          <br />
-          Quis risus sed vulputate odio ut enim. Erat nam at lectus urna duis
-          convallis convallis tellus id. Odio euismod lacinia at quis risus sed
-          vulputate. Mattis rhoncus urna neque viverra justo nec. Pellentesque
-          habitant morbi tristique senectus. Interdum varius sit amet mattis
-          vulputate enim nulla. In cursus turpis massa tincidunt dui ut ornare
-          lectus sit. Elit sed vulputate mi sit amet mauris. Sociis natoque
-          penatibus et magnis dis parturient montes nascetur ridiculus.
+        </p>
+      </section>
+      <section id="hire-me">
+        <p>
+          Hire Me Quis risus sed vulputate odio ut enim. Erat nam at lectus urna
+          duis convallis convallis tellus id. Odio euismod lacinia at quis risus
+          sed vulputate. Mattis rhoncus urna neque viverra justo nec.
+          Pellentesque habitant morbi tristique senectus. Interdum varius sit
+          amet mattis vulputate enim nulla. In cursus turpis massa tincidunt dui
+          ut ornare lectus sit. Elit sed vulputate mi sit amet mauris. Sociis
+          natoque penatibus et magnis dis parturient montes nascetur ridiculus.
           Venenatis a condimentum vitae sapien pellentesque habitant morbi
           tristique senectus. Facilisi morbi tempus iaculis urna id volutpat
           lacus laoreet non. Sodales ut eu sem integer vitae justo eget. Eu non
