@@ -1,19 +1,33 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
+
+import { MenuItem, ItemBuilder } from './NavMenu'
 
 import styles from './NavTab.module.sass'
 
-export interface Props {
-  destination: string
-  active?: boolean
+export interface ClickHandler {
+  (e: React.MouseEvent, target: string): void
 }
 
-export const NavTab: FunctionComponent<Props> = ({
-  children,
-  destination,
-  active = false,
-}) => (
-  <div className={`no-wrap ${styles.tab} ${active ? styles.active : ''}`}>
-    <Link to={destination}>{children}</Link>
+interface Props {
+  item: MenuItem
+  handler: ClickHandler
+}
+
+export const NavTab = (props: Props) => (
+  <div
+    id={props.item.key}
+    className={`no-wrap ${styles.tab} ${
+      props.item.active ? `${styles.active} active` : ''
+    }`}
+  >
+    <Link onClick={(e) => props.handler(e, props.item.to)} to={props.item.to}>
+      {props.item.text}
+    </Link>
   </div>
 )
+
+export const BuildNavTab: ItemBuilder = (
+  item: MenuItem,
+  handler: ClickHandler
+) => <NavTab item={item} handler={handler}></NavTab>

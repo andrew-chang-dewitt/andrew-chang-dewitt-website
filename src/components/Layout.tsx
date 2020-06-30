@@ -2,16 +2,23 @@ import React, { FunctionComponent } from 'react'
 
 import styles from './Layout.module.sass'
 
-// export interface Props {
-//   navPanelStyle: string
-// }
+import { Header } from './header/Header'
 
-// export const Layout: FunctionComponent<Props> = ({
-export const Layout: FunctionComponent = ({
-  // navPanelStyle,
+export interface Props {
+  pageTitle: string
+  pageId?: null | string
+}
+
+export const Layout: FunctionComponent<Props> = ({
   children,
-}) => <div className={styles.content}>{children}</div>
-
-// Layout.defaultProps = {
-//   navPanelStyle: 'default',
-// }
+  pageTitle,
+  pageId = null,
+}) => (
+  <div>
+    <Header activePage={pageId} />
+    <div className={styles.content}>
+      <h1 className="title">{pageTitle}</h1>
+      {children}
+    </div>
+  </div>
+)

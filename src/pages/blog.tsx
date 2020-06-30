@@ -20,8 +20,9 @@ const Blog = (props: Props) => {
       }
     }
   )
+
   return (
-    <Layout pageTitle="Blog">
+    <Layout pageTitle="Blog" pageId="blog">
       <BlogHome
         postCount={props.data.allMarkdownRemark.totalCount}
         posts={posts}

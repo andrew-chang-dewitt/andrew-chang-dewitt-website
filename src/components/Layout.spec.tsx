@@ -16,7 +16,7 @@ describe('component/Layout', () => {
         <div className="child">Another child</div>
       </div>
     )
-    const content = shallow(<Layout>{children}</Layout>)
+    const content = shallow(<Layout pageTitle="Test">{children}</Layout>)
 
     it('renders child elements', () => {
       expect(content.find('div.child')).to.have.lengthOf(2)

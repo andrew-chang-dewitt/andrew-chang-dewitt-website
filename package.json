@@ -7,6 +7,8 @@
     "format": "prettier --write './(*.html|*.js|*.json|src/**/*.ts|src/**/*.tsx)'",
     "test": "TS_NODE_FILES=true mocha",
     "coverage": "nyc npm run test",
+    "clean": "rm -rf .cache public",
+    "hard-clean": "npm run clean && rm -rf node_modules && npm i",
     "dev": "gatsby develop",
     "prebuild": "npm run format && npm run coverage",
     "build": "gatsby build",
