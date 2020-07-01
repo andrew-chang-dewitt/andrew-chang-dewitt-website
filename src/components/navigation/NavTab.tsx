@@ -5,29 +5,21 @@ import { MenuItem, ItemBuilder } from './NavMenu'
 
 import styles from './NavTab.module.sass'
 
-export interface ClickHandler {
-  (e: React.MouseEvent, target: string): void
-}
-
 interface Props {
   item: MenuItem
-  handler: ClickHandler
 }
 
 export const NavTab = (props: Props) => (
   <div
-    id={props.item.key}
+    id={`link-${props.item.key}`}
     className={`no-wrap ${styles.tab} ${
       props.item.active ? `${styles.active} active` : ''
     }`}
   >
-    <Link onClick={(e) => props.handler(e, props.item.to)} to={props.item.to}>
-      {props.item.text}
-    </Link>
+    <Link to={props.item.to}>{props.item.text}</Link>
   </div>
 )
 
-export const BuildNavTab: ItemBuilder = (
-  item: MenuItem,
-  handler: ClickHandler
-) => <NavTab item={item} handler={handler}></NavTab>
+export const BuildNavTab: ItemBuilder = (item: MenuItem) => (
+  <NavTab item={item} key={item.key}></NavTab>
+)

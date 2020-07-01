@@ -6,16 +6,11 @@ import { Header } from './header/Header'
 
 export interface Props {
   pageTitle: string
-  pageId?: null | string
 }
 
-export const Layout: FunctionComponent<Props> = ({
-  children,
-  pageTitle,
-  pageId = null,
-}) => (
+export const Layout: FunctionComponent<Props> = ({ children, pageTitle }) => (
   <div>
-    <Header activePage={pageId} />
+    <Header />
     <div className={styles.content}>
       <h1 className="title">{pageTitle}</h1>
       {children}

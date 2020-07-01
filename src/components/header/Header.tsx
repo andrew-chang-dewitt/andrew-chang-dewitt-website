@@ -34,22 +34,14 @@ const items: MenuItem[] = [
   },
 ]
 
-interface Props {
-  activePage?: null | string
-}
-
-export const Header = ({ activePage = null }: Props) => (
+export const Header = () => (
   <header className={styles.header}>
     <div className={`${styles.contents} standardWidth`}>
       <div className={styles.branding}>
-        <Link to="/#home">ACD</Link>
+        <Link to="/#">ACD</Link>
       </div>
       <div className={styles.menu}>
-        <NavMenu
-          items={items}
-          itemBuilder={BuildNavTab}
-          activePage={activePage}
-        />
+        <NavMenu items={items} itemBuilder={BuildNavTab} />
       </div>
     </div>
   </header>

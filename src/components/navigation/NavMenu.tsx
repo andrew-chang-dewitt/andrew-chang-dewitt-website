@@ -1,12 +1,7 @@
 import React from 'react'
+import { globalHistory } from '@reach/router'
 
 import styles from './NavMenu.module.sass'
-
-import { ClickHandler } from './NavTab'
-
-const handler = (e: React.MouseEvent, to: string): void => {
-  console.log(`Nav: ${to}, event: ${e}`)
-}
 
 export interface MenuItem {
   to: string
@@ -16,29 +11,66 @@ export interface MenuItem {
 }
 
 export interface ItemBuilder {
-  (item: MenuItem, clickHandler: ClickHandler): JSX.Element
-}
-
-function buildMenu(
-  menuItems: MenuItem[],
-  builder: ItemBuilder,
-  active: string | null
-) {
-  return menuItems.map((item) => {
-    if (item.key === active) item.active = true
-
-    console.log(item)
-
-    return builder(item, handler)
-  })
+  (item: MenuItem): JSX.Element
 }
 
 interface Props {
   items: MenuItem[]
   itemBuilder: ItemBuilder
-  activePage?: null | string
 }
 
-export const NavMenu = ({ items, itemBuilder, activePage = null }: Props) => (
-  <nav className={styles.menu}>{buildMenu(items, itemBuilder, activePage)}</nav>
-)
+interface State {
+  items: MenuItem[]
+}
+
+export class NavMenu extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    let location: Location | null = null
+    if (typeof window !== 'undefined') location = window.location
+
+    let items = this.props.items.map((item) => {
+      switch (item.key) {
+        case location.pathname.substr(1):
+        case location.hash.substr(1):
+          item.active = true
+          break
+        default:
+          item.active = false
+      }
+
+      return item
+    })
+
+    this.state = { items: items }
+  }
+
+  public componentDidMount() {
+    globalHistory.listen(({ location }) => {
+      console.log('pathname', location.pathname, 'hash', location.hash)
+      if (location.pathname === '/') this.setActiveItem(location.hash.substr(1))
+      else this.setActiveItem(location.pathname)
+    })
+  }
+
+  setActiveItem(itemKey: string) {
+    this.setState({
+      items: this.state.items.map((item) => {
+        if (item.key === itemKey) item.active = true
+        else item.active = false
+
+        return item
+      }),
+    })
+  }
+
+  render() {
+    return (
+      <nav className={styles.menu}>
+        {this.state.items.map((item) => {
+          return this.props.itemBuilder(item)
+        })}
+      </nav>
+    )
+  }
+}
