@@ -38,7 +38,6 @@ export const NavMenu = (props: Props) => {
 
   useEffect(() => {
     return globalHistory.listen(({ location }) => {
-      // console.log('pathname', location.pathname, 'hash', location.hash)
       if (location.pathname === '/')
         handleActiveItemChange(location.hash.substr(1))
       else handleActiveItemChange(location.pathname)
