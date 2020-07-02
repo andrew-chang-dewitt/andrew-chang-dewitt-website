@@ -17,14 +17,7 @@ namespace Factories {
         key: '1',
       }
 
-      return shallow(
-        <ActualNavTab
-          item={item}
-          handler={(e: React.MouseEvent, to: string) => {
-            console.log(`Nav: ${to}, because ${e}`)
-          }}
-        />
-      )
+      return shallow(<ActualNavTab item={item} />)
     }
 
     static createActive() {
@@ -35,14 +28,7 @@ namespace Factories {
         active: true,
       }
 
-      return shallow(
-        <ActualNavTab
-          item={item}
-          handler={(e: React.MouseEvent, to: string) => {
-            console.log(`Nav: ${to}, because ${e}`)
-          }}
-        />
-      )
+      return shallow(<ActualNavTab item={item} />)
     }
   }
 }
