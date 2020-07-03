@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import 'mocha'
-import { render, configure } from 'enzyme'
+import { shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import sinon from 'sinon'
 
@@ -11,10 +11,8 @@ configure({ adapter: new Adapter() })
 
 import { NavMenu, MenuItem } from './NavMenu'
 
-// import * as gatsby from 'gatsby'
-
 describe('component/navigation/NavMenu', () => {
-  beforeEach(() => {
+  const setup = (path: string = '/path', hash: string = '') => {
     //
     // mocking Rputerbehaviour
     //
@@ -27,15 +25,19 @@ describe('component/navigation/NavMenu', () => {
 
     // Location
     const mockLocation = ({
-      hash: '',
-      pathname: '/blog',
+      hash: hash,
+      pathname: path,
     } as any) as router.WindowLocation
 
     // Location listener
     sinon.stub(router, 'useLocation').returns(mockLocation)
-  })
-  afterEach(() => {
+  }
+  const teardown = () => {
     sinon.restore()
+  }
+
+  after(() => {
+    teardown()
   })
 
   const items: MenuItem[] = [
@@ -45,8 +47,13 @@ describe('component/navigation/NavMenu', () => {
   ]
 
   it('should render a list of menu items', () => {
-    const menu = render(<NavMenu items={items} />)
+    setup()
+    const menu = shallow(<NavMenu items={items} />)
 
     expect(menu.children()).to.have.lengthOf(3)
   })
+
+  it('can set the active tab for path changes, like `/blog`', () => {})
+
+  it('and for hash changes, like `/#hash`', () => {})
 })
