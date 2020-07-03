@@ -14,7 +14,7 @@ import { NavMenu, MenuItem } from './NavMenu'
 // import * as gatsby from 'gatsby'
 
 describe('component/navigation/NavMenu', () => {
-  beforeEach(() => {
+  before(() => {
     //
     // mocking Rputerbehaviour
     //
@@ -34,7 +34,7 @@ describe('component/navigation/NavMenu', () => {
     // Location listener
     sinon.stub(router, 'useLocation').returns(mockLocation)
   })
-  afterEach(() => {
+  after(() => {
     sinon.restore()
   })
 
@@ -43,10 +43,15 @@ describe('component/navigation/NavMenu', () => {
     { text: 'Text', to: '/#destination', key: '2' },
     { text: 'Text', to: '/#destination', key: '3' },
   ]
+  const menu = render(<NavMenu items={items} />)
 
   it('should render a list of menu items', () => {
-    const menu = render(<NavMenu items={items} />)
-
     expect(menu.children()).to.have.lengthOf(3)
   })
+
+  it('clicking on a tab should remove focus from the tab', () => {
+    menu.children().find('#link-1')
+  })
+
+  it("clicking on a tab should put focus on the tab's target content area", () => {})
 })
