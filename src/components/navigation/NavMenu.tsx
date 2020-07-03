@@ -90,7 +90,13 @@ export const NavMenu = (props: Props) => {
   return (
     <nav className={styles.menu}>
       {state.items.map((item: MenuItem) => (
-        <NavTab item={item} key={item.key} />
+        <NavTab
+          key={item.key}
+          id={item.key}
+          to={item.to}
+          text={item.text}
+          active={item.active}
+        />
       ))}
     </nav>
   )
