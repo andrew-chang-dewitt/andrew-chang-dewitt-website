@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react'
 import { globalHistory, useLocation, WindowLocation } from '@reach/router'
 
+import { NavTab } from './NavTab'
+
 import styles from './NavMenu.module.sass'
 
 export interface MenuItem {
@@ -10,13 +12,13 @@ export interface MenuItem {
   active?: boolean
 }
 
-export interface ItemBuilder {
-  (item: MenuItem): JSX.Element
-}
+// export interface ItemBuilder {
+//   (item: MenuItem): JSX.Element
+// }
 
 interface Props {
   items: MenuItem[]
-  itemBuilder: ItemBuilder
+  // itemBuilder: ItemBuilder
 }
 
 interface State {
@@ -39,7 +41,6 @@ const setActiveItem = (
   items: MenuItem[],
   currentLocation: WindowLocation
 ): MenuItem[] => {
-  console.log(typeof items)
   items.map((item) => {
     switch (item.key) {
       case currentLocation.pathname.substr(1):
@@ -88,9 +89,9 @@ export const NavMenu = (props: Props) => {
 
   return (
     <nav className={styles.menu}>
-      {state.items.map((item: MenuItem) => {
-        return props.itemBuilder(item)
-      })}
+      {state.items.map((item: MenuItem) => (
+        <NavTab item={item} key={item.key} />
+      ))}
     </nav>
   )
 }

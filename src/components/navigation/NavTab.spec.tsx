@@ -45,8 +45,4 @@ describe('component/navigation/NavTab', () => {
 
     expect(inactive.hasClass('active')).to.be.false
   })
-
-  //   it('receives an onClick handler as a prop', () => {
-  //     const link = Factories.NavTab.create()
-  //   })
 })

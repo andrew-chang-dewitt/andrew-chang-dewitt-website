@@ -9,24 +9,29 @@ import * as router from '@reach/router'
 
 configure({ adapter: new Adapter() })
 
-// import { NavMenu as ActualNavMenu } from './NavMenu'
 import { NavMenu, MenuItem } from './NavMenu'
 
-// before(() => {
-//   global.__PATH_PREFIX__ = ``
-// })
-
-const testBuilder = (item: MenuItem): JSX.Element => (
-  <p key={item.key}>{item.toString()}</p>
-)
+// import * as gatsby from 'gatsby'
 
 describe('component/navigation/NavMenu', () => {
   beforeEach(() => {
+    //
+    // mocking Rputerbehaviour
+    //
+    // mocking gatsby's internal Link implementation
+    // solution from https://mariusschulz.com/blog/declaring-global-variables-in-typescript#using-a-type-assertion
+    // using a type assertion on the global object allows adding properties
+    // to the object without typescript complaining. Hacky, but since this is
+    // to get a test to work without the gatsby environment, it's fine
+    ;(global as any).__BASE_PATH__ = ''
+
+    // Location
     const mockLocation = ({
       hash: '',
       pathname: '/blog',
     } as any) as router.WindowLocation
 
+    // Location listener
     sinon.stub(router, 'useLocation').returns(mockLocation)
   })
   afterEach(() => {
@@ -38,8 +43,9 @@ describe('component/navigation/NavMenu', () => {
     { text: 'Text', to: '/#destination', key: '2' },
     { text: 'Text', to: '/#destination', key: '3' },
   ]
+
   it('should render a list of menu items', () => {
-    const menu = render(<NavMenu items={items} itemBuilder={testBuilder} />)
+    const menu = render(<NavMenu items={items} />)
 
     expect(menu.children()).to.have.lengthOf(3)
   })

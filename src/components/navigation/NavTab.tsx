@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'gatsby-link'
 
-import { MenuItem, ItemBuilder } from './NavMenu'
+import {
+  MenuItem,
+  // ItemBuilder
+} from './NavMenu'
 
 import styles from './NavTab.module.sass'
 
@@ -19,7 +22,7 @@ export const NavTab = (props: Props) => (
     <Link to={props.item.to}>{props.item.text}</Link>
   </div>
 )
-
-export const BuildNavTab: ItemBuilder = (item: MenuItem) => (
-  <NavTab item={item} key={item.key}></NavTab>
-)
+//
+// export const BuildNavTab: ItemBuilder = (item: MenuItem) => (
+//   <NavTab item={item} key={item.key}></NavTab>
+// )
