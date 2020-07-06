@@ -58,6 +58,20 @@ describe('component/navigation/NavMenu', () => {
     expect(menu.children()).to.have.lengthOf(3)
   })
 
+  it('can set the active tab based on only the first path level on page load', () => {
+    const items: MenuItem[] = [
+      { text: 'Blog', to: '/blog/post/1', key: 'blog' },
+      { text: 'Text2', to: '/#destination2', key: '2' },
+      { text: 'Text3', to: '/#destination3', key: '3' },
+    ]
+    mockLocation({ path: '/blog/post/1' })
+    const menuPathActive = shallow(<NavMenu items={items} />)
+
+    expect(menuPathActive.childAt(0).shallow().hasClass('active')).to.be.true
+    expect(menuPathActive.childAt(1).shallow().hasClass('active')).to.be.false
+    expect(menuPathActive.childAt(2).shallow().hasClass('active')).to.be.false
+  })
+
   it('can set the active tab based on the path on page load', () => {
     const items: MenuItem[] = [
       { text: 'Blog', to: '/blog', key: 'blog' },
@@ -92,15 +106,14 @@ describe('component/navigation/NavMenu', () => {
   //     { text: 'Second Location', to: '/#second-location', key: '2' },
   //     { text: 'Text3', to: '/#destination3', key: '3' },
   //   ]
-  //   mockLocation({ hash: '#first-location' })
+  //   mockLocation({ hash: '#first-location', path: '/' })
   //   const menu = shallow(<NavMenu items={items} />)
 
-  //   console.log('before:', menu.state())
-  //   // user clicks on 'Second Location' navigation item
-  //   menu.childAt(1).simulate('click')
-  //   console.log('after:', menu.state())
+  //   console.log(menu.html())
+  //   mockLocation({ hash: '#second-location', path: '/' })
+  //   const second = menu.childAt(1).shallow()
 
-  //   expect(menu.childAt(1).shallow().hasClass('active')).to.be.true
-  //   expect(menu.childAt(0).shallow().hasClass('active')).to.be.false
+  //   expect(second.simulate('click').hasClass('active')).to.be.true
+  //   // expect(first.hasClass('active')).to.be.false
   // })
 })
