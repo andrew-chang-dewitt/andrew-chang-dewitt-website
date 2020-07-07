@@ -26,10 +26,11 @@ describe('component/navigation/NavMenu', () => {
 
   beforeEach(() => {
     //
-    // mocking Rputerbehaviour
+    // mocking Router behavior
     //
+
     // mocking gatsby's internal Link implementation
-    // solution from
+    // solution from:
     // https://mariusschulz.com/blog/declaring-global-variables-in-typescript#using-a-type-assertion
     // using a type assertion on the global object allows adding properties
     // to the object without typescript complaining. Hacky, but since this is
@@ -100,20 +101,110 @@ describe('component/navigation/NavMenu', () => {
     expect(menuPathActive.childAt(2).shallow().hasClass('active')).to.be.false
   })
 
-  // it('can update the active tab when the user navigates to a new location', () => {
-  //   const items: MenuItem[] = [
-  //     { text: 'First Location', to: '/#first-location', key: '1' },
-  //     { text: 'Second Location', to: '/#second-location', key: '2' },
-  //     { text: 'Text3', to: '/#destination3', key: '3' },
-  //   ]
-  //   mockLocation({ hash: '#first-location', path: '/' })
-  //   const menu = shallow(<NavMenu items={items} />)
+  it('can update the active tab when the user navigates to a new location', () => {
+    const items: MenuItem[] = [
+      { text: 'First Location', to: '/#first-location', key: '1' },
+      { text: 'Second Location', to: '/#second-location', key: '2' },
+      { text: 'Text3', to: '/#destination3', key: '3' },
+    ]
+    mockLocation({ hash: '#first-location', path: '/' })
+    const menu = shallow(<NavMenu items={items} />)
 
-  //   console.log(menu.html())
-  //   mockLocation({ hash: '#second-location', path: '/' })
-  //   const second = menu.childAt(1).shallow()
+    console.log(menu.html())
+    mockLocation({ hash: '#second-location', path: '/' })
+    const second = menu.childAt(1).shallow()
 
-  //   expect(second.simulate('click').hasClass('active')).to.be.true
-  //   // expect(first.hasClass('active')).to.be.false
-  // })
+    expect(second.hasClass('active')).to.be.true
+    // expect(second.simulate('click').hasClass('active')).to.be.true
+    // expect(first.hasClass('active')).to.be.false
+  })
 })
+
+describe('testing with LocationProvider', () => {
+  it('can update the active tab when the user navigates to a new location', () => {
+    const items: MenuItem[] = [
+      { text: 'First Location', to: '/#first-location', key: '1' },
+      { text: 'Second Location', to: '/#second-location', key: '2' },
+      { text: 'Text3', to: '/#destination3', key: '3' },
+    ]
+    // FIXME: createMemorySource doesn't support hashes in location
+    // see github issue: https://github.com/reach/router/issues/25
+    // might be able to write my own suuuuuuper basic source that respects hashes to
+    // allow to be used for mocking these things better
+    let source = router.createMemorySource('/path/#first-location')
+    const history = router.createHistory(source)
+    const menu = shallow(
+      <router.LocationProvider history={history}>
+        <NavMenu items={items} />
+      </router.LocationProvider>
+    )
+    console.log(menu.html())
+
+    expect(menu.childAt(0).hasClass('active')).to.be.true
+    // console.log(menu.html())
+    // const second = menu.childAt(1).shallow()
+
+    // expect(second.hasClass('active')).to.be.true
+    // expect(second.simulate('click').hasClass('active')).to.be.true
+    // expect(first.hasClass('active')).to.be.false
+  })
+})
+
+// Stores history entries in memory for testing or other platforms like Native
+const createBetterSource = (initialPath = '/') => {
+  const searchIndex = initialPath.indexOf('?')
+  const hashIndex = initialPath.indexOf('#')
+  const initialLocation = {
+    pathname:
+      searchIndex > -1 ? initialPath.substr(0, searchIndex) : initialPath,
+    search: searchIndex > -1 ? initialPath.substr(searchIndex) : '',
+  }
+  let index = 0
+  const stack = [initialLocation]
+  const states = [null]
+
+  return {
+    get location() {
+      return stack[index]
+    },
+    addEventListener(name: string, fn: () => any) {
+      console.log(name, 'added')
+      fn()
+    },
+    removeEventListener(name: string, fn: () => any) {
+      console.log(name, 'removed')
+      fn()
+    },
+    history: {
+      get entries() {
+        return stack
+      },
+      get index() {
+        return index
+      },
+      get state() {
+        return states[index]
+      },
+      pushState(state: any, _: any, uri: string) {
+        const [pathname, search = ''] = uri.split('?')
+        index++
+        stack.push({ pathname, search: search.length ? `?${search}` : search })
+        states.push(state)
+      },
+      replaceState(state: any, _: any, uri: string) {
+        const [pathname, search = ''] = uri.split('?')
+        stack[index] = { pathname, search }
+        states[index] = state
+      },
+      go(to: number) {
+        const newIndex = index + to
+
+        if (newIndex < 0 || newIndex > states.length - 1) {
+          return
+        }
+
+        index = newIndex
+      },
+    },
+  }
+}
