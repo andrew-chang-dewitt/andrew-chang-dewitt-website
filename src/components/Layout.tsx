@@ -11,7 +11,7 @@ export interface Props {
 export const Layout: FunctionComponent<Props> = ({ children, pageTitle }) => (
   <div>
     <Header />
-    <div className={styles.content}>
+    <div id="main-content" className={styles.content}>
       <h1 className="title">{pageTitle}</h1>
       {children}
     </div>
