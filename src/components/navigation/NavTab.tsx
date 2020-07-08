@@ -1,28 +1,23 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import {
-  MenuItem,
-  // ItemBuilder
-} from './NavMenu'
-
 import styles from './NavTab.module.sass'
 
 interface Props {
-  item: MenuItem
+  id: string
+  to: string
+  text: string
+  active?: boolean
 }
 
-export const NavTab = (props: Props) => (
-  <div
-    id={`link-${props.item.key}`}
+export const NavTab = ({ id, to, text, active = false }: Props) => (
+  <Link
+    id={`navtab-${id}`}
     className={`no-wrap ${styles.tab} ${
-      props.item.active ? `${styles.active} active` : ''
+      active ? `${styles.active} active` : ''
     }`}
+    to={to}
   >
-    <Link to={props.item.to}>{props.item.text}</Link>
-  </div>
+    {text}
+  </Link>
 )
-//
-// export const BuildNavTab: ItemBuilder = (item: MenuItem) => (
-//   <NavTab item={item} key={item.key}></NavTab>
-// )

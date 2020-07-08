@@ -17,7 +17,9 @@ namespace Factories {
         key: '1',
       }
 
-      return shallow(<ActualNavTab item={item} />)
+      return shallow(
+        <ActualNavTab text={item.text} to={item.to} id={item.key} />
+      )
     }
 
     static createActive() {
@@ -28,7 +30,14 @@ namespace Factories {
         active: true,
       }
 
-      return shallow(<ActualNavTab item={item} />)
+      return shallow(
+        <ActualNavTab
+          text={item.text}
+          to={item.to}
+          id={item.key}
+          active={item.active}
+        />
+      )
     }
   }
 }

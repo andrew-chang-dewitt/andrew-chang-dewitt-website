@@ -15,7 +15,7 @@ export enum Colors {
   Red = '#D45769',
 }
 
-const colorStyles = (selection: Colors) => {
+export const colorStyles = (selection: Colors) => {
   return {
     backgroundColor: selection,
     color: selection === Colors.Light ? Colors.Dark : Colors.Light,
