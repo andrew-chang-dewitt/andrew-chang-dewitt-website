@@ -20,14 +20,17 @@ const setActiveItem = (
   items: MenuItem[],
   currentLocation: WindowLocation
 ): MenuItem[] => {
-  items.map((item) => {
-    const path = currentLocation.pathname.substr(1).split('/')[0]
-    const hash = currentLocation.hash.substr(1)
+  const path = currentLocation.pathname.substr(1).split('/')[0]
+  const hash = currentLocation.hash.substr(1)
 
+  items.map((item) => {
     switch (item.key) {
       case path:
-      case hash:
         item.active = true
+        break
+
+      case hash:
+        item.active = path == '' ? true : false
         break
 
       default:
@@ -37,6 +40,11 @@ const setActiveItem = (
 
   return items
 }
+
+export const buildMenu = (items: MenuItem[]) =>
+  items.map(({ key, to, text, active }) => (
+    <NavTab key={key} id={key} to={to} text={text} active={active} />
+  ))
 
 export const NavMenu = (props: Props) => {
   // const [location, setLocation] = useState(useLocation())
@@ -50,11 +58,5 @@ export const NavMenu = (props: Props) => {
     // ... this feels a little like black magic
   }, [location, items]) // updates items state object on location change
 
-  return (
-    <nav className={styles.menu}>
-      {items.map(({ key, to, text, active }) => (
-        <NavTab key={key} id={key} to={to} text={text} active={active} />
-      ))}
-    </nav>
-  )
+  return <nav className={styles.menu}>{buildMenu(items)}</nav>
 }
