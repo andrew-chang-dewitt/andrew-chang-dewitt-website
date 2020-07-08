@@ -22,4 +22,20 @@ describe('component/Layout', () => {
       expect(content.find('div.child')).to.have.lengthOf(2)
     })
   })
+
+  describe('#landing & /#header', () => {
+    const layout = shallow(<Layout pageTitle="Test" landing></Layout>)
+
+    it('optionally renders a Landing', () => {
+      expect(layout.find('#landing')).to.have.lengthOf(1)
+    })
+
+    it('and that landing is before the Header', () => {
+      const children = layout.children()
+      expect(children.get(0).props.id).to.equal('landing')
+      expect(children.get(1).props.id).to.equal('header')
+    })
+
+    // it('', () => {})
+  })
 })
