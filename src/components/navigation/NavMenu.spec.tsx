@@ -235,10 +235,4 @@ describe('component/navigation/NavMenu', () => {
       expect(items[1].active).to.be.true
     })
   })
-
-  // it('clicking on a tab should remove focus from the tab', () => {
-  //   menu.children().find('#link-1')
-  // })
-
-  // it("clicking on a tab should put focus on the tab's target content area", () => {})
 })

@@ -7,10 +7,17 @@ interface Props {
   id: string
   to: string
   text: string
+  // contentTarget?: string
   active?: boolean
 }
 
-export const NavTab = ({ id, to, text, active = false }: Props) => (
+export const NavTab = ({
+  id,
+  to,
+  // contentTarget = '#main-content',
+  text,
+  active = false,
+}: Props) => (
   <Link
     id={`navtab-${id}`}
     className={`no-wrap ${styles.tab} ${
