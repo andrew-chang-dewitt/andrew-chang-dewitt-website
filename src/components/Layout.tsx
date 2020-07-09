@@ -6,26 +6,20 @@ import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
 
 export interface Props {
-  pageTitle: string
+  pageTitle?: string | null
   landing?: boolean
 }
 
 export const Layout: FunctionComponent<Props> = ({
   children,
-  pageTitle,
+  pageTitle = null,
   landing = false,
 }) => (
   <div>
-    {landing ? (
-      <div id="landing">
-        <Landing />
-      </div>
-    ) : null}
-    <div id="header">
-      <Header />
-    </div>
+    {landing ? <Landing /> : null}
+    <Header />
     <div id="main-content" className={styles.content}>
-      <h1 className="title">{pageTitle}</h1>
+      {pageTitle ? <h1 className="title">{pageTitle}</h1> : null}
       {children}
     </div>
   </div>
