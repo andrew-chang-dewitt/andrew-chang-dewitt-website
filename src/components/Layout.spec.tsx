@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import { expect } from 'chai'
 import 'mocha'
 import { shallow, configure } from 'enzyme'
@@ -6,11 +6,23 @@ import Adapter from 'enzyme-adapter-react-16'
 
 configure({ adapter: new Adapter() })
 
-import { Layout } from './Layout'
+import { Layout, mergeRefsToItems } from './Layout'
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
 
 describe('component/Layout', () => {
+  const navItems = [
+    {
+      to: '/#first',
+      text: 'First',
+      key: 'first',
+    },
+    {
+      to: '/#second',
+      text: 'Second',
+      key: 'second',
+    },
+  ]
   describe('#content', () => {
     const children = (
       <div>
@@ -18,15 +30,21 @@ describe('component/Layout', () => {
         <div className="child">Another child</div>
       </div>
     )
-    const content = shallow(<Layout pageTitle="Test">{children}</Layout>)
 
     it('renders child elements', () => {
+      const content = shallow(
+        <Layout navigationItems={navItems} pageTitle="Test">
+          {children}
+        </Layout>
+      )
       expect(content.find('div.child')).to.have.lengthOf(2)
     })
   })
 
   describe('#landing & /#header', () => {
-    const layout = shallow(<Layout pageTitle="Test" landing></Layout>)
+    const layout = shallow(
+      <Layout navigationItems={navItems} pageTitle="Test" landing></Layout>
+    )
 
     it('optionally renders a Landing', () => {
       expect(layout.find(Landing)).to.have.lengthOf(1)
@@ -37,6 +55,20 @@ describe('component/Layout', () => {
       expect(layout.childAt(1).type()).to.equal(Header)
     })
 
-    // it('', () => {})
+    it('navigation configuration is defined in Layout as an array of MenuItems', () => {
+      const layout = shallow(
+        <Layout navigationItems={navItems}>A child goes here</Layout>
+      )
+      expect(layout.find(Header).get(0).props.navigationItems).to.eql(navItems)
+    })
+
+    it("can match React Refs to navigation items by the item's key value", () => {
+      const refs = {
+        first: ('actually a ref' as any) as MutableRefObject<any>,
+      }
+
+      expect(mergeRefsToItems(navItems, refs)[0].targetRef).to.exist
+      expect(mergeRefsToItems(navItems, refs)[1].targetRef).to.not.exist
+    })
   })
 })

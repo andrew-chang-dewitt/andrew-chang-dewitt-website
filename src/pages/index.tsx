@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { Layout } from '../components/Layout'
 
 export default function Landing() {
+  const aboutRef = useRef(null)
+  const projectRef = useRef(null)
+  const hireRef = useRef(null)
+  const contactRef = useRef(null)
+
+  const navigationRefs = {
+    about: aboutRef,
+    'featured-projects': projectRef,
+    'hire-me': hireRef,
+    'contact-me': contactRef,
+  }
   return (
-    <Layout landing>
-      <section id="about">
+    <Layout navigationRefs={navigationRefs} landing>
+      <section id="about" ref={aboutRef} tabIndex={-1}>
         <h1 className="title">About</h1>
         <p>
           About Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -78,7 +89,7 @@ export default function Landing() {
           sed viverra ipsum nunc aliquet.
         </p>
       </section>
-      <section id="featured-projects">
+      <section id="featured-projects" ref={projectRef} tabIndex={-1}>
         <h1 className="title">Projects</h1>
         <p>
           Projects Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -116,7 +127,7 @@ export default function Landing() {
           Sollicitudin ac orci phasellus egestas tellus rutrum.
         </p>
       </section>
-      <section id="hire-me">
+      <section id="hire-me" ref={hireRef} tabIndex={-1}>
         <h1 className="title">Hire Me</h1>
         <p>
           Hire Me Quis risus sed vulputate odio ut enim. Erat nam at lectus urna
@@ -155,7 +166,7 @@ export default function Landing() {
           sed viverra ipsum nunc aliquet.
         </p>
       </section>
-      <section id="contact-me">
+      <section id="contact-me" ref={contactRef} tabIndex={-1}>
         <h1 className="title">Contact Me</h1>
         <p>
           Dignissim enim sit amet venenatis. Urna neque viverra justo nec

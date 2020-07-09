@@ -5,12 +5,14 @@ import { shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 // import sinon from 'sinon'
 
-import React from 'react'
+import React, { MutableRefObject } from 'react'
+import { Link } from 'gatsby'
 // import * as router from '@reach/router'
 
 configure({ adapter: new Adapter() })
 
 import { NavTab as ActualNavTab } from './NavTab'
+import { AnchorLink } from './AnchorLink'
 
 namespace Factories {
   export class NavTab {
@@ -43,47 +45,49 @@ namespace Factories {
         />
       )
     }
+
+    static createAnchor() {
+      const item = {
+        text: 'Inactive tab',
+        to: 'destination',
+        key: '1',
+      }
+
+      const ref = ('a value' as any) as MutableRefObject<any>
+
+      return shallow(
+        <ActualNavTab
+          text={item.text}
+          to={item.to}
+          id={item.key}
+          contentTarget={ref}
+        />
+      )
+    }
+
+    static createAnchorActive() {
+      const item = {
+        text: 'Inactive tab',
+        to: 'destination',
+        key: '1',
+        active: true,
+      }
+
+      const ref = ('a value' as any) as MutableRefObject<any>
+
+      return shallow(
+        <ActualNavTab
+          text={item.text}
+          to={item.to}
+          id={item.key}
+          contentTarget={ref}
+        />
+      )
+    }
   }
 }
 
 describe('component/navigation/NavTab', () => {
-  // //
-  // // Mocking @reach/router's Location behavior
-  // //
-  // // function for mocking a Location
-  // const mockLocation = (path: string, hash: string) => {
-  //   return ({
-  //     hash: hash,
-  //     pathname: path,
-  //     search: '',
-  //   } as any) as router.WindowLocation
-  // }
-  // // keep stub in describe scope so it can be modified by each test
-  // let useLocationStub: any
-
-  // beforeEach(() => {
-  //   //
-  //   // stubbing Router behavior
-  //   //
-
-  //   // stubbing gatsby's internal Link implementation
-  //   // solution from:
-  //   // https://mariusschulz.com/blog/declaring-global-variables-in-typescript#using-a-type-assertion
-  //   // using a type assertion on the global object allows adding properties
-  //   // to the object without typescript complaining. Hacky, but since this is
-  //   // to get a test to work without the gatsby environment, it's fine
-  //   ;(global as any).__BASE_PATH__ = ''
-
-  //   // Location listener
-  //   // assigned to stub in describe block scope to make it available
-  //   // in each test
-  //   useLocationStub = sinon.stub(router, 'useLocation')
-  // })
-
-  // afterEach(() => {
-  //   useLocationStub.restore()
-  // })
-
   it('knows if it is an "active" tab', () => {
     const active = Factories.NavTab.createActive()
 
@@ -96,14 +100,21 @@ describe('component/navigation/NavTab', () => {
     expect(inactive.hasClass('active')).to.be.false
   })
 
-  // it('clicking on a tab should remove focus from the tab', () => {
-  //   const tab = Factories.NavTab.create()
+  it('when contentTarget prop is not given, NavTab renders a Link', () => {
+    const anchor = Factories.NavTab.create()
 
-  //   tab.simulate('click')
+    expect(anchor.find(Link)).to.have.lengthOf(1)
+  })
 
-  //   expect(tab.matchesElement((global as any).document.activeElement)).to.be
-  //     .false
-  // })
+  it('when given a Ref via contentTarget, NavTab renders an AnchorLink', () => {
+    const anchor = Factories.NavTab.createAnchor()
 
-  // it("clicking on a tab should put focus on the tab's target content area", () => {})
+    expect(anchor.find(AnchorLink)).to.have.lengthOf(1)
+  })
+
+  it('and the rendered AnchorLink can also be marked as active, just like a normal NavTab', () => {
+    const anchor = Factories.NavTab.createAnchor()
+
+    expect(anchor.find(AnchorLink)).to.have.lengthOf(1)
+  })
 })
