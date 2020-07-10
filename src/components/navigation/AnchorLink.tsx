@@ -22,7 +22,7 @@ export const AnchorLink: FunctionComponent<Props> = ({
   // css's `scroll-behavior: smooth` has a chance to actually scroll to
   // the target
   const giveFocus = (_: React.MouseEvent): void => {
-    if (target && target.current) target.current.focus()
+    target.current.focus()
   }
 
   return (

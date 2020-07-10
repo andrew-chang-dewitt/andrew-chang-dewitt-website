@@ -37,26 +37,19 @@ const useItems = (startingItems: MenuItem[]) => {
         return false
     }
   }
-  // init nav menu items based on current component location
-  const [items, setItems] = useState(
-    startingItems.map((item) => {
+
+  const setActiveItem = (oldItems: MenuItem[]): MenuItem[] =>
+    oldItems.map((item) => {
       item.active = isActiveItem(item)
       return item
     })
-  )
+
+  // init nav menu items based on current component location
+  const [items, setItems] = useState(setActiveItem(startingItems))
 
   // updates items state object on location change
   useEffect(() => {
-    // this call to setItems isn't able to be tested since it's inside
-    // a useEffect hook, but that's okay because it's safe to assume that
-    // both useEffect & the setter returned by useState (which setItems is)
-    // are both well tested by React
-    setItems(
-      items.map((item) => {
-        item.active = isActiveItem(item)
-        return item
-      })
-    )
+    setItems(setActiveItem(items))
   }, [location])
   return items
 }
@@ -75,5 +68,5 @@ const buildMenu = (items: MenuItem[]) =>
 
 export const NavMenu = (props: Props) => {
   const items = useItems(props.items)
-  return <nav className={styles.menu}>{buildMenu(items)}</nav>
+  return <nav className={styles.navigation}>{buildMenu(items)}</nav>
 }

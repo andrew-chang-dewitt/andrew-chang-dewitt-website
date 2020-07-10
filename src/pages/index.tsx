@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { Layout } from '../components/Layout'
+import { Layout, navItems } from '../components/Layout'
 
 export default function Landing() {
   const aboutRef = useRef(null)
@@ -15,7 +15,7 @@ export default function Landing() {
     'contact-me': contactRef,
   }
   return (
-    <Layout navigationRefs={navigationRefs} landing>
+    <Layout navigationItems={navItems} navigationRefs={navigationRefs} landing>
       <section id="about" ref={aboutRef} tabIndex={-1}>
         <h1 className="title">About</h1>
         <p>
