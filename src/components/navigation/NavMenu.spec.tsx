@@ -209,38 +209,7 @@ describe('component/navigation/NavMenu', () => {
       expect(items[2].active).to.be.false
     })
 
-    it('can update the active tab when the user navigates to a new location', () => {
-      const items: MenuItem[] = [
-        { text: 'Blog', to: '/first', key: 'first' },
-        { text: 'Text2', to: '/#second', key: 'second' },
-        { text: 'Text3', to: '/#3', key: '3' },
-      ]
-      let source = createBetterSource('/first')
-      const history = router.createHistory(source)
-
-      // shallow render before the navigation event to trigger the first modification
-      // of the items array
-      shallow(
-        <router.LocationProvider history={history}>
-          <NavMenu items={items} />
-        </router.LocationProvider>
-      ).html()
-      // then, simulate a navigation event by calling the history object's navigate method
-      // this is what is done under the hood in Reach Router
-      history.navigate('/#second')
-      // lastly, shallow render again after the navigation event, as it would trigger
-      // a re-render in a full environment
-      shallow(
-        <router.LocationProvider history={history}>
-          <NavMenu items={items} />
-        </router.LocationProvider>
-      ).html()
-
-      expect(items[0].active).to.be.false
-      expect(items[1].active).to.be.true
-    })
-
-    it('updates the items when the location changes', () => {
+    it('can update an item as active when the location changes', () => {
       const items: MenuItem[] = [
         { text: 'Blog', to: '/first', key: 'first' },
         { text: 'Text2', to: '/#second', key: 'second' },
