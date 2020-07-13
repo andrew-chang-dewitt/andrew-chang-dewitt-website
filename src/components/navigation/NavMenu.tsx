@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { globalHistory, useLocation } from '@reach/router'
+import React, { useEffect, useState } from 'react'
+import { useLocation, WindowLocation } from '@reach/router'
+
+import { NavTab } from './NavTab'
 
 import styles from './NavMenu.module.sass'
 
@@ -10,56 +12,51 @@ export interface MenuItem {
   active?: boolean
 }
 
-export interface ItemBuilder {
-  (item: MenuItem): JSX.Element
-}
-
 interface Props {
   items: MenuItem[]
-  itemBuilder: ItemBuilder
 }
 
+const setActiveItem = (
+  items: MenuItem[],
+  currentLocation: WindowLocation
+): MenuItem[] => {
+  const path = currentLocation.pathname.substr(1).split('/')[0]
+  const hash = currentLocation.hash.substr(1)
+
+  items.map((item) => {
+    switch (item.key) {
+      case path:
+        item.active = true
+        break
+
+      case hash:
+        item.active = path == '' ? true : false
+        break
+
+      default:
+        item.active = false
+    }
+  })
+
+  return items
+}
+
+export const buildMenu = (items: MenuItem[]) =>
+  items.map(({ key, to, text, active }) => (
+    <NavTab key={key} id={key} to={to} text={text} active={active} />
+  ))
+
 export const NavMenu = (props: Props) => {
+  // const [location, setLocation] = useState(useLocation())
   const location = useLocation()
-  const [items, setItems] = useState(
-    props.items.map((item) => {
-      switch (item.key) {
-        case location.pathname.substr(1):
-        case location.hash.substr(1):
-          item.active = true
-          break
-        default:
-          item.active = false
-      }
+  // init nav menu items based on current component location
+  const [items] = useState(setActiveItem(props.items, location))
 
-      return item
-    })
-  )
-
+  // listens for changes in window.location, using @reach/router API
   useEffect(() => {
-    return globalHistory.listen(({ location }) => {
-      if (location.pathname === '/')
-        handleActiveItemChange(location.hash.substr(1))
-      else handleActiveItemChange(location.pathname)
-    })
-  }, [])
+    // doesn't actually need to do anything with the change here
+    // ... this feels a little like black magic
+  }, [location, items]) // updates items state object on location change
 
-  const handleActiveItemChange = (itemKey: string): void => {
-    setItems(
-      items.map((item) => {
-        if (item.key === itemKey) item.active = true
-        else item.active = false
-
-        return item
-      })
-    )
-  }
-
-  return (
-    <nav className={styles.menu}>
-      {items.map((item) => {
-        return props.itemBuilder(item)
-      })}
-    </nav>
-  )
+  return <nav className={styles.menu}>{buildMenu(items)}</nav>
 }

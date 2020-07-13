@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import styles from './Header.module.sass'
 
 import { NavMenu, MenuItem } from '../navigation/NavMenu'
-import { BuildNavTab } from '../navigation/NavTab'
+// import { BuildNavTab } from '../navigation/NavTab'
 
 const items: MenuItem[] = [
   {
@@ -41,7 +41,7 @@ export const Header = () => (
         <Link to="/#">ACD</Link>
       </div>
       <div className={styles.menu}>
-        <NavMenu items={items} itemBuilder={BuildNavTab} />
+        <NavMenu items={items} />
       </div>
     </div>
   </header>
