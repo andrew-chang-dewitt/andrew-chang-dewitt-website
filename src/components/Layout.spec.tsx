@@ -9,6 +9,7 @@ configure({ adapter: new Adapter() })
 import { Layout, mergeRefsToItems } from './Layout'
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
+import { AnchorLink } from './navigation/AnchorLink'
 
 describe('component/Layout', () => {
   const navItems = [
@@ -30,14 +31,20 @@ describe('component/Layout', () => {
         <div className="child">Another child</div>
       </div>
     )
+    const content = shallow(
+      <Layout navigationItems={navItems} pageTitle="Test">
+        {children}
+      </Layout>
+    )
 
     it('renders child elements', () => {
-      const content = shallow(
-        <Layout navigationItems={navItems} pageTitle="Test">
-          {children}
-        </Layout>
-      )
       expect(content.find('div.child')).to.have.lengthOf(2)
+    })
+
+    it('allows users to skip to main content', () => {
+      // test run against AnchorLink's to property since Layout doesn't know about
+      // AnchorLink's internal implementation
+      expect(content.find(AnchorLink).props().to).to.equal('#main-content')
     })
   })
 
@@ -51,8 +58,8 @@ describe('component/Layout', () => {
     })
 
     it('and that landing is before the Header', () => {
-      expect(layout.childAt(0).type()).to.equal(Landing)
-      expect(layout.childAt(1).type()).to.equal(Header)
+      expect(layout.childAt(1).type()).to.equal(Landing)
+      expect(layout.childAt(2).type()).to.equal(Header)
     })
 
     it('navigation configuration is defined in Layout as an array of MenuItems', () => {

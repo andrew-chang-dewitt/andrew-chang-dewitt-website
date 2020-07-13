@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import 'mocha'
-import { shallow, configure } from 'enzyme'
+import { mount, shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import sinon from 'sinon'
 
@@ -74,10 +74,15 @@ describe('component/navigation/NavMenu', () => {
       // to the object without typescript complaining. Hacky, but since this is
       // to get a test to work without the gatsby environment, it's fine
       ;(global as any).__BASE_PATH__ = ''
+      // solution to `ReferenceError: __loader is not defined` from
+      // https://github.com/gatsbyjs/gatsby/issues/6240#issuecomment-408627563
+      ;(global as any).___loader = {
+        enqueue: sinon.fake(),
+      }
     })
     afterEach(() => {
       // cleanup global namespace
-      delete (global as any).__BASE_PATH__
+      delete (global as any).__loader
     })
 
     // Stores history entries in memory for testing or other platforms like Native
@@ -204,35 +209,41 @@ describe('component/navigation/NavMenu', () => {
       expect(items[2].active).to.be.false
     })
 
-    it('can update the active tab when the user navigates to a new location', () => {
+    it('can update an item as active when the location changes', () => {
       const items: MenuItem[] = [
         { text: 'Blog', to: '/first', key: 'first' },
         { text: 'Text2', to: '/#second', key: 'second' },
         { text: 'Text3', to: '/#3', key: '3' },
       ]
-      let source = createBetterSource('/first')
+      const source = createBetterSource('/first')
       const history = router.createHistory(source)
 
-      // shallow render before the navigation event to trigger the first modification
-      // of the items array
-      shallow(
+      // using mount here to get full access to events & to render the children as well
+      const menu = mount(
         <router.LocationProvider history={history}>
+          {/* this element's just to simplify mocking a navigation event
+           * so that we don't have to know what the internal shape of
+           * NavMenu is like to click an element inside it
+           * */}
+          <button
+            onClick={(_: React.MouseEvent) => {
+              console.log('button clicked')
+              history.navigate('/#second')
+            }}
+          >
+            go to second
+          </button>
           <NavMenu items={items} />
         </router.LocationProvider>
-      ).html()
-      // then, simulate a navigation event by calling the history object's navigate method
-      // this is what is done under the hood in Reach Router
-      history.navigate('/#second')
-      // lastly, shallow render again after the navigation event, as it would trigger
-      // a re-render in a full environment
-      shallow(
-        <router.LocationProvider history={history}>
-          <NavMenu items={items} />
-        </router.LocationProvider>
-      ).html()
+      )
 
-      expect(items[0].active).to.be.false
-      expect(items[1].active).to.be.true
+      menu.childAt(0).simulate('click')
+
+      // wrap expect assertion in a timeout so that there's time for React's
+      // async call to useEffect
+      setTimeout(() => {
+        expect(menu.childAt(1).props().items[1].active).to.be.true
+      }, 100)
     })
   })
 })

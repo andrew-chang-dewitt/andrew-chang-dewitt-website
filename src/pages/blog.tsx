@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout } from '../components/Layout'
+
+import { Layout, navItems } from '../components/Layout'
 import { BlogHome, Post } from '../components/pages/BlogHome'
 
 interface Props {
@@ -22,7 +23,7 @@ const Blog = (props: Props) => {
   )
 
   return (
-    <Layout pageTitle="Blog">
+    <Layout navigationItems={navItems} pageTitle="Blog">
       <BlogHome
         postCount={props.data.allMarkdownRemark.totalCount}
         posts={posts}

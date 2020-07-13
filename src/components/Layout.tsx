@@ -1,10 +1,11 @@
-import React, { FunctionComponent, MutableRefObject } from 'react'
+import React, { FunctionComponent, useRef, MutableRefObject } from 'react'
 
 import styles from './Layout.module.sass'
 
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
 import { MenuItem } from './navigation/NavMenu'
+import { AnchorLink } from './navigation/AnchorLink'
 
 export interface NavigationRefs {
   [name: string]: MutableRefObject<any>
@@ -64,12 +65,26 @@ export const Layout: FunctionComponent<Props> = ({
   navigationRefs = {},
 }) => {
   const mergedRefsAndItems = mergeRefsToItems(navigationItems, navigationRefs)
+  const mainContentRef = useRef(null)
 
   return (
     <div>
+      <AnchorLink
+        to="#main-content"
+        id="skip-to-main-content"
+        className={styles.mainContentLink}
+        target={mainContentRef}
+      >
+        Skip to main content
+      </AnchorLink>
       {landing ? <Landing /> : null}
       <Header navigationItems={mergedRefsAndItems} />
-      <div id="main-content" className={styles.content}>
+      <div
+        id="main-content"
+        className={styles.content}
+        tabIndex={-1}
+        ref={mainContentRef}
+      >
         {pageTitle ? <h1 className="title">{pageTitle}</h1> : null}
         {children}
       </div>
