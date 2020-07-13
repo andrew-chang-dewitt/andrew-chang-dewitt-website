@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, WindowLocation } from '@reach/router'
+import React, { useEffect, useState, MutableRefObject } from 'react'
+import { useLocation } from '@reach/router'
 
 import { NavTab } from './NavTab'
 
@@ -10,53 +10,63 @@ export interface MenuItem {
   text: string
   key: string
   active?: boolean
+  targetRef?: MutableRefObject<any>
 }
 
 interface Props {
   items: MenuItem[]
 }
 
-const setActiveItem = (
-  items: MenuItem[],
-  currentLocation: WindowLocation
-): MenuItem[] => {
-  const path = currentLocation.pathname.substr(1).split('/')[0]
-  const hash = currentLocation.hash.substr(1)
+const useItems = (startingItems: MenuItem[]) => {
+  // const [location, setLocation] = useState(useLocation())
+  const location = useLocation()
+  const path = location.pathname.substr(1).split('/')[0]
+  const hash = location.hash.substr(1)
 
-  items.map((item) => {
+  // determines if a given item should is considered active
+  // based on the current location
+  const isActiveItem = (item: MenuItem): boolean => {
     switch (item.key) {
       case path:
-        item.active = true
-        break
+        return true
 
       case hash:
-        item.active = path == '' ? true : false
-        break
+        return path === ''
 
       default:
-        item.active = false
+        return false
     }
-  })
+  }
 
+  const setActiveItem = (oldItems: MenuItem[]): MenuItem[] =>
+    oldItems.map((item) => {
+      item.active = isActiveItem(item)
+      return item
+    })
+
+  // init nav menu items based on current component location
+  const [items, setItems] = useState(setActiveItem(startingItems))
+
+  // updates items state object on location change
+  useEffect(() => {
+    setItems(setActiveItem(items))
+  }, [location])
   return items
 }
 
-export const buildMenu = (items: MenuItem[]) =>
-  items.map(({ key, to, text, active }) => (
-    <NavTab key={key} id={key} to={to} text={text} active={active} />
+const buildMenu = (items: MenuItem[]) =>
+  items.map(({ key, to, text, active, targetRef }) => (
+    <NavTab
+      key={key}
+      id={key}
+      to={to}
+      text={text}
+      active={active}
+      contentTarget={targetRef}
+    />
   ))
 
 export const NavMenu = (props: Props) => {
-  // const [location, setLocation] = useState(useLocation())
-  const location = useLocation()
-  // init nav menu items based on current component location
-  const [items] = useState(setActiveItem(props.items, location))
-
-  // listens for changes in window.location, using @reach/router API
-  useEffect(() => {
-    // doesn't actually need to do anything with the change here
-    // ... this feels a little like black magic
-  }, [location, items]) // updates items state object on location change
-
-  return <nav className={styles.menu}>{buildMenu(items)}</nav>
+  const items = useItems(props.items)
+  return <nav className={styles.navigation}>{buildMenu(items)}</nav>
 }
