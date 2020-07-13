@@ -12,7 +12,7 @@ const BlogPost = ({ data }: Props) => {
   const post = data.markdownRemark
 
   return (
-    <Layout navigationItems={navItems} pageTitle="Blog">
+    <Layout navigationItems={navItems}>
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
