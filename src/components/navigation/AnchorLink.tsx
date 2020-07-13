@@ -32,7 +32,7 @@ export const AnchorLink: FunctionComponent<Props> = ({
   // gonna take some refactoring though.
   const giveFocus = (_: React.MouseEvent): void => {
     setTimeout(() => {
-      if (target.current) target.current.focus()
+      if (target.current !== null) target.current.focus()
     }, 500)
   }
 
