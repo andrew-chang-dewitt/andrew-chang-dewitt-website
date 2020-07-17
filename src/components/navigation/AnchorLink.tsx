@@ -1,9 +1,9 @@
-import React, { FunctionComponent, MutableRefObject } from 'react'
+import React, { FunctionComponent, RefObject } from 'react'
 import Link from 'gatsby-link'
 
 interface Props {
   to: string
-  target: MutableRefObject<any>
+  target: RefObject<HTMLDivElement>
   id: string
   className: string
   // id?: string
