@@ -7,12 +7,21 @@ import { NavMenu, MenuItem } from '../navigation/NavMenu'
 
 interface Props {
   navigationItems: MenuItem[]
+  brandingVisibility?: boolean
 }
 
-export const Header = ({ navigationItems }: Props) => (
+export const Header = ({
+  navigationItems,
+  brandingVisibility = true,
+}: Props) => (
   <header className={styles.header}>
     <div className={`${styles.contents} standardWidth`}>
-      <div id="branding" className={styles.branding}>
+      <div
+        id="branding"
+        className={`${styles.branding} ${
+          brandingVisibility ? '' : 'hidden ' + styles.hidden
+        }`}
+      >
         <Link to="/#">ACD</Link>
       </div>
       <div className={styles.navigation}>
