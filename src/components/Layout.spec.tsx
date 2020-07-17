@@ -32,9 +32,7 @@ describe('component/Layout', () => {
       </div>
     )
     const content = shallow(
-      <Layout navigationItems={navItems} pageTitle="Test">
-        {children}
-      </Layout>
+      <Layout navigationItems={navItems}>{children}</Layout>
     )
 
     it('renders child elements', () => {
@@ -46,12 +44,31 @@ describe('component/Layout', () => {
       // AnchorLink's internal implementation
       expect(content.find(AnchorLink).props().to).to.equal('#main-content')
     })
+
+    it('defaults to not rendering a page title in the content section', () => {
+      expect(content.find('#main-content').first().children().first().is('h1'))
+        .to.be.false
+    })
+
+    it('but can be told to render a given page title as the first node in the content section', () => {
+      const title = shallow(
+        <Layout navigationItems={navItems} pageTitle="Test">
+          {children}
+        </Layout>
+      )
+        .find('#main-content')
+        .first()
+        .children()
+        .first()
+
+      console.log(title.html())
+      expect(title.is('h1')).to.be.true
+      expect(title.props().children).to.equal('Test')
+    })
   })
 
-  describe('#landing & /#header', () => {
-    const layout = shallow(
-      <Layout navigationItems={navItems} pageTitle="Test" landing></Layout>
-    )
+  describe('#landing', () => {
+    const layout = shallow(<Layout navigationItems={navItems} landing></Layout>)
 
     it('optionally renders a Landing', () => {
       expect(layout.find(Landing)).to.have.lengthOf(1)
@@ -61,11 +78,12 @@ describe('component/Layout', () => {
       expect(layout.childAt(1).type()).to.equal(Landing)
       expect(layout.childAt(2).type()).to.equal(Header)
     })
+  })
+
+  describe('#header', () => {
+    const layout = shallow(<Layout navigationItems={navItems} landing />)
 
     it('navigation configuration is defined in Layout as an array of MenuItems', () => {
-      const layout = shallow(
-        <Layout navigationItems={navItems}>A child goes here</Layout>
-      )
       expect(layout.find(Header).get(0).props.navigationItems).to.eql(navItems)
     })
 
