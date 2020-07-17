@@ -227,7 +227,6 @@ describe('component/navigation/NavMenu', () => {
            * */}
           <button
             onClick={(_: React.MouseEvent) => {
-              console.log('button clicked')
               history.navigate('/#second')
             }}
           >
