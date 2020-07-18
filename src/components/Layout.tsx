@@ -7,6 +7,8 @@ import { Header } from './header/Header'
 import { MenuItem } from './navigation/NavMenu'
 import { AnchorLink } from './navigation/AnchorLink'
 
+import utils from '../utils'
+
 export const navItems: MenuItem[] = [
   {
     to: '/#about',
@@ -48,12 +50,6 @@ export const mergeRefsToItems = (items: MenuItem[], refs: NavigationRefs) => {
     }
     return item
   })
-}
-
-function getCurrentPosition(element: HTMLElement | null): number {
-  // for some reason, something in my vim environment flags the optional chaining here
-  // as an error, but I can't find it yet. Code compiles w/ TSC though
-  return element?.getBoundingClientRect().top ?? 0
 }
 
 interface Props {
@@ -101,13 +97,15 @@ export class Layout extends React.Component<Props, State> {
     })
   }
 
-  componentDidMount() {
-    // get actual initial position & set on mount
-    this.setHeaderPosition(getCurrentPosition(this.headerRef.current))
+  scrollListener = () => {
+    this.setHeaderPosition(utils.getElementPosition(this.headerRef.current))
+  }
 
-    window.addEventListener('scroll', () => {
-      this.setHeaderPosition(getCurrentPosition(this.headerRef.current))
-    })
+  componentDidMount = () => {
+    // get actual initial position & set on mount
+    this.setHeaderPosition(utils.getElementPosition(this.headerRef.current))
+
+    window.addEventListener('scroll', this.scrollListener)
   }
 
   render() {
@@ -143,38 +141,3 @@ export class Layout extends React.Component<Props, State> {
     )
   }
 }
-
-// export const LayoutOld: FunctionComponent<Props> = ({
-//   children,
-//   navigationItems,
-//   pageTitle = null,
-//   landing = false,
-//   navigationRefs = {},
-// }) => {
-//   const mergedRefsAndItems = mergeRefsToItems(navigationItems, navigationRefs)
-//   const mainContentRef = useRef(null)
-//
-//   return (
-//     <div>
-//       <AnchorLink
-//         to="#main-content"
-//         id="skip-to-main-content"
-//         className={styles.mainContentLink}
-//         target={mainContentRef}
-//       >
-//         Skip to main content
-//       </AnchorLink>
-//       {landing ? <Landing /> : null}
-//       <Header navigationItems={mergedRefsAndItems} />
-//       <div
-//         id="main-content"
-//         className={styles.content}
-//         tabIndex={-1}
-//         ref={mainContentRef}
-//       >
-//         {pageTitle ? <h1 className="title">{pageTitle}</h1> : null}
-//         {children}
-//       </div>
-//     </div>
-//   )
-// }
