@@ -50,7 +50,8 @@
     "exclude": [
       "**/public/**",
       "**/*.spec.ts",
-      "**/*.spec.tsx"
+      "**/*.spec.tsx",
+      "src/testUtils.ts"
     ]
   },
   "mocha": {

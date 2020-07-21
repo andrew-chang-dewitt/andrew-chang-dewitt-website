@@ -5,26 +5,16 @@ import { mount, shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import sinon from 'sinon'
 
-import * as router from '@reach/router'
+import testUtils from '../../testUtils'
 
 configure({ adapter: new Adapter() })
 
 import { NavMenu, MenuItem } from './NavMenu'
 import { NavTab } from './\NavTab'
 
-describe('component/navigation/NavMenu', () => {
-  //
-  // Mocking @reach/router's Location behavior
-  //
-  // function for mocking a Location
-  const mockLocation = (path: string, hash: string) => {
-    return ({
-      hash: hash,
-      pathname: path,
-      search: '',
-    } as any) as router.WindowLocation
-  }
+import * as router from '@reach/router'
 
+describe('component/navigation/NavMenu', () => {
   describe('rendering Props', () => {
     // keep stub in describe scope so it can be modified by each test
     let useLocationStub: any
@@ -58,7 +48,7 @@ describe('component/navigation/NavMenu', () => {
         { text: 'Text2', to: '/#2', key: '2' },
         { text: 'Text3', to: '/#3', key: '3' },
       ]
-      useLocationStub.returns(mockLocation('/', '#1'))
+      useLocationStub.returns(testUtils.mockLocation('/', '#1'))
       const menu = shallow(<NavMenu items={items} />)
 
       expect(menu.find(NavTab)).to.have.lengthOf(3)
@@ -85,71 +75,13 @@ describe('component/navigation/NavMenu', () => {
       delete (global as any).__loader
     })
 
-    // Stores history entries in memory for testing or other platforms like Native
-    const createBetterSource = (initialPath = '/') => {
-      const hashIndex = initialPath.indexOf('#')
-      const pathname =
-        hashIndex > -1 ? initialPath.substr(0, hashIndex) : initialPath
-      const hash = hashIndex > -1 ? initialPath.substr(hashIndex) : ''
-      const initialLocation = mockLocation(pathname, hash)
-      let index = 0
-      const stack = [initialLocation]
-      const states = [null]
-
-      return {
-        get location() {
-          return stack[index]
-        },
-        addEventListener(_: string, fn: any) {
-          fn()
-        },
-        removeEventListener(_: string, fn: any) {
-          fn()
-        },
-        history: {
-          get entries() {
-            return stack
-          },
-          get index() {
-            return index
-          },
-          get state() {
-            return states[index]
-          },
-          pushState(state: any, _: any, uri: string) {
-            const [pathname, hash = ''] = uri.split('#')
-            index++
-            stack.push(mockLocation(pathname, hash.length ? `#${hash}` : hash))
-            states.push(state)
-          },
-          replaceState(state: any, _: any, uri: string) {
-            const [pathname, hash = ''] = uri.split('#')
-            stack[index] = mockLocation(
-              pathname,
-              hash.length ? `#${hash}` : hash
-            )
-            states[index] = state
-          },
-          go(to: number) {
-            const newIndex = index + to
-
-            if (newIndex < 0 || newIndex > states.length - 1) {
-              return
-            }
-
-            index = newIndex
-          },
-        },
-      }
-    }
-
     it('can set the active tab based on only the first path level on page load', () => {
       const items: MenuItem[] = [
         { text: 'Blog', to: '/first', key: 'first' },
         { text: 'Text2', to: '/#second', key: 'second' },
         { text: 'Text3', to: '/#3', key: '3' },
       ]
-      let source = createBetterSource('/first/post/1')
+      let source = testUtils.createBetterSource('/first/post/1')
       const history = router.createHistory(source)
 
       // because items is passed by reference to NavMenu, the instance above will
@@ -175,7 +107,7 @@ describe('component/navigation/NavMenu', () => {
         { text: 'Text2', to: '/#second', key: 'second' },
         { text: 'Text3', to: '/#3', key: '3' },
       ]
-      let source = createBetterSource('/#second')
+      let source = testUtils.createBetterSource('/#second')
       const history = router.createHistory(source)
 
       shallow(
@@ -195,7 +127,7 @@ describe('component/navigation/NavMenu', () => {
         { text: 'Text2', to: '/#second', key: 'second' },
         { text: 'Text3', to: '/this#wont-match', key: 'wont-match' },
       ]
-      let source = createBetterSource('/this#wont-match')
+      let source = testUtils.createBetterSource('/this#wont-match')
       const history = router.createHistory(source)
 
       shallow(
@@ -215,7 +147,7 @@ describe('component/navigation/NavMenu', () => {
         { text: 'Text2', to: '/#second', key: 'second' },
         { text: 'Text3', to: '/#3', key: '3' },
       ]
-      const source = createBetterSource('/first')
+      const source = testUtils.createBetterSource('/first')
       const history = router.createHistory(source)
 
       // using mount here to get full access to events & to render the children as well
