@@ -1,12 +1,7 @@
 import React, { MutableRefObject } from 'react'
 import { expect } from 'chai'
 import 'mocha'
-import {
-  mount,
-  shallow,
-  configure,
-  ShallowWrapper
-} from 'enzyme'
+import { mount, shallow, configure, ShallowWrapper } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import sinon, { SinonStub, SinonSpy } from 'sinon'
 
@@ -118,162 +113,169 @@ describe('component/Layout', () => {
     })
 
     describe('scroll behavior', () => {
-      interface MockIntersectionObserver {
-        restore: ()=> void
-      }
-      let observeStub: SinonStub
-      let unobserveStub: SinonStub
-      let mockIntersectionObserver: MockIntersectionObserver
+      let observeStub: SinonStub | [() => null]
+      let unobserveStub: SinonStub | [() => null]
       let intersectionObserverSpy: SinonSpy
+
+      interface MockIntersectionObserver {
+        restore: () => void
+      }
+      let mockIntersectionObserver: MockIntersectionObserver
+      // Mocking Intersection Observer behaviour
+      const setupIntersectionObserverMock = (
+        observe: SinonStub | (() => null) = () => null,
+        unobserve: SinonStub | (() => null) = () => null
+      ): MockIntersectionObserver => {
+        class IntersectionObserver {
+          observe = observe
+          unobserve = unobserve
+        }
+
+        const oldIntObv = IntersectionObserver ? IntersectionObserver : null
+
+        const restore = () => {
+          Object.defineProperty(window, 'IntersectionObserver', {
+            writable: true,
+            configurable: true,
+            value: oldIntObv,
+          })
+          Object.defineProperty(global, 'IntersectionObserver', {
+            writable: true,
+            configurable: true,
+            value: oldIntObv,
+          })
+        }
+
+        Object.defineProperty(window, 'IntersectionObserver', {
+          writable: true,
+          configurable: true,
+          value: IntersectionObserver,
+        })
+        Object.defineProperty(global, 'IntersectionObserver', {
+          writable: true,
+          configurable: true,
+          value: IntersectionObserver,
+        })
+
+        return { restore: restore }
+      }
 
       let createRefStub: SinonStub<any, any>
 
       let scrollTest: ShallowWrapper
       let instance: Layout
 
-      beforeEach(() => {
-        // Mocking Intersection Observer behaviour
-        const setupIntersectionObserverMock = (
-          observe: SinonStub,
-          unobserve: SinonStub
-        ): MockIntersectionObserver=> {
-          class IntersectionObserver {
-            observe = observe
-            unobserve = unobserve
+      describe('#header', () => {
+        beforeEach(() => {
+          observeStub = sinon.stub() //.callsFake((observer) => observer())
+          unobserveStub = sinon.stub() //.callsFake((unobserver) => unobserver())
+          mockIntersectionObserver = setupIntersectionObserverMock(
+            observeStub,
+            unobserveStub
+          )
+
+          intersectionObserverSpy = sinon.spy(window, 'IntersectionObserver')
+
+          // stub React's ref behaviour
+          createRefStub = sinon.stub(React, 'createRef')
+          createRefStub.returns({ current: true })
+
+          // Enzme
+          scrollTest = shallow(<Layout navigationItems={navItems}></Layout>)
+
+          // manually invoke mounting because Enzyme won't
+          // https://stackoverflow.com/a/46513933
+          // must be guarded as componenet did mount is not
+          // guarnteed to exist on ShallowWrapper.instance()
+          // https://stackoverflow.com/a/52706587
+          instance = scrollTest.instance() as Layout
+
+          // gatsby's internal Link implementation relies on a global __BASE_PATH__ variable
+          // solution from:
+          // https://mariusschulz.com/blog/declaring-global-variables-in-typescript#using-a-type-assertion
+          // using a type assertion on the global object allows adding properties
+          // to the object without typescript complaining. Hacky, but since this is
+          // to get a test to work without the gatsby environment, it's fine
+          ;(global as any).__BASE_PATH__ = ''
+          // solution to `ReferenceError: __loader is not defined` from
+          // https://github.com/gatsbyjs/gatsby/issues/6240#issuecomment-408627563
+          ;(global as any).___loader = {
+            enqueue: sinon.fake(),
           }
+        })
+        afterEach(() => {
+          observeStub.resetHistory()
+          unobserveStub.resetHistory()
+          intersectionObserverSpy.resetHistory()
+          mockIntersectionObserver.restore()
+          createRefStub.restore()
 
-          const oldIntObv = IntersectionObserver ? IntersectionObserver : null
+          // cleanup global namespace
+          delete (global as any).__loader
+        })
 
-          const restore = () => {
-            Object.defineProperty(window, 'IntersectionObserver', {
-              writable: true,
-              configurable: true,
-              value: oldIntObv,
-            })
-            Object.defineProperty(global, 'IntersectionObserver', {
-              writable: true,
-              configurable: true,
-              value: oldIntObv,
-            })
-          }
+        it('uses IntersectionObserver to call headerObserver', async function () {
+          const source = testUtils.createBetterSource()
+          const history = router.createHistory(source)
 
-          Object.defineProperty(window, 'IntersectionObserver', {
-            writable: true,
-            configurable: true,
-            value: IntersectionObserver,
-          })
-          Object.defineProperty(global, 'IntersectionObserver', {
-            writable: true,
-            configurable: true,
-            value: IntersectionObserver,
-          })
+          mount(
+            <router.LocationProvider history={history}>
+              <Layout navigationItems={navItems} landing>
+                <div style={{ height: 1000 }}></div>
+              </Layout>
+            </router.LocationProvider>
+          )
 
-          return { restore: restore }
-        }
+          const callbackExpected = instance.headerObserver
+          const callbackActualIsExpected = intersectionObserverSpy.args.reduce(
+            (result, current) => {
+              if (result) return result
+              if (current[0] === callbackExpected) return true
+              else return false
+            },
+            false
+          )
+          expect(callbackActualIsExpected).to.be.true
+        })
 
-        observeStub = sinon.stub()//.callsFake((observer) => observer())
-        unobserveStub = sinon.stub()//.callsFake((unobserver) => unobserver())
-        mockIntersectionObserver = setupIntersectionObserverMock(observeStub, unobserveStub)
+        it('calls headerObserver if the element reaches viewport top', () => {
+          const source = testUtils.createBetterSource()
+          const history = router.createHistory(source)
 
-        intersectionObserverSpy = sinon.spy(window, 'IntersectionObserver')
+          mount(
+            <router.LocationProvider history={history}>
+              <Layout navigationItems={navItems} landing>
+                <div style={{ height: 1000 }}></div>
+              </Layout>
+            </router.LocationProvider>
+          )
 
-        // stub React's ref behaviour
-        createRefStub = sinon.stub(React, 'createRef')
-        createRefStub.returns({current: true})
+          const callbackExpected = instance.headerObserver
+          const intObvOptions = intersectionObserverSpy.args.reduce(
+            (result, current) => {
+              if (current[0] === callbackExpected) return current[1]
+              else return result
+            },
+            { rootMargin: 'null', threshold: [1] }
+          )
+          expect(intObvOptions.rootMargin).to.equal('0px')
+          expect(intObvOptions.threshold[0]).to.equal(0)
+          expect(intObvOptions.threshold).to.have.lengthOf(1)
+        })
 
-        // Enzme
-        scrollTest = shallow(<Layout navigationItems={navItems}></Layout>)
+        it('headerObserver updates state.headerPosition', () => {
+          const mockEntries = [
+            {
+              boundingClientRect: {
+                top: 1,
+              },
+            },
+          ] as IntersectionObserverEntry[]
 
-        // manually invoke mounting because Enzyme won't
-        // https://stackoverflow.com/a/46513933
-        // must be guarded as componenet did mount is not
-        // guarnteed to exist on ShallowWrapper.instance()
-        // https://stackoverflow.com/a/52706587
-        instance = scrollTest.instance() as Layout
+          instance.headerObserver(mockEntries)
 
-        // gatsby's internal Link implementation relies on a global __BASE_PATH__ variable
-        // solution from:
-        // https://mariusschulz.com/blog/declaring-global-variables-in-typescript#using-a-type-assertion
-        // using a type assertion on the global object allows adding properties
-        // to the object without typescript complaining. Hacky, but since this is
-        // to get a test to work without the gatsby environment, it's fine
-        ;(global as any).__BASE_PATH__ = ''
-        // solution to `ReferenceError: __loader is not defined` from
-        // https://github.com/gatsbyjs/gatsby/issues/6240#issuecomment-408627563
-        ;(global as any).___loader = {
-          enqueue: sinon.fake(),
-        }
-      })
-      afterEach(() => {
-        observeStub.resetHistory()
-        unobserveStub.resetHistory()
-        intersectionObserverSpy.resetHistory()
-        mockIntersectionObserver.restore()
-        createRefStub.restore()
-
-        // cleanup global namespace
-        delete (global as any).__loader
-      })
-
-      it('uses IntersectionObserver to call headerObserver', async function() {
-        const source = testUtils.createBetterSource()
-        const history = router.createHistory(source)
-
-        mount(
-          <router.LocationProvider history={history}>
-            <Layout navigationItems={navItems} landing>
-              <div style={{height: 1000}}></div>
-            </Layout>
-          </router.LocationProvider>
-        )
-
-        const callbackExpected  = instance.headerObserver
-        const callbackActualIsExpected = intersectionObserverSpy.args.reduce(
-          (result, current) => {
-            if (result) return result
-            if (current[0] === callbackExpected) return true
-            else return false
-          }, false
-        )
-        expect(callbackActualIsExpected).to.be.true
-      })
-
-      it('calls headerObserver if the element reaches viewport top', () => {
-        const source = testUtils.createBetterSource()
-        const history = router.createHistory(source)
-
-        mount(
-          <router.LocationProvider history={history}>
-            <Layout navigationItems={navItems} landing>
-              <div style={{height: 1000}}></div>
-            </Layout>
-          </router.LocationProvider>
-        )
-
-        const callbackExpected  = instance.headerObserver
-        const intObvOptions = intersectionObserverSpy.args.reduce(
-          (result, current) => {
-            if (current[0] === callbackExpected) return current[1]
-            else return result
-          }, { rootMargin: 'null', threshold: [1] }
-        )
-        expect(intObvOptions.rootMargin).to.equal('0px')
-        expect(intObvOptions.threshold[0]).to.equal(0)
-        expect(intObvOptions.threshold).to.have.lengthOf(1)
-      })
-
-      it('headerObserver updates state.headerPosition', () => {
-        const mockEntries = [
-          {
-            boundingClientRect: {
-              top: 1
-            }
-          }
-        ] as IntersectionObserverEntry[]
-
-        instance.headerObserver(mockEntries)
-
-        expect(scrollTest.state('headerPosition')).to.eq(1)
+          expect(scrollTest.state('headerPosition')).to.eq(1)
+        })
       })
     })
   })

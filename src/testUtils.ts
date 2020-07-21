@@ -51,10 +51,7 @@ const createBetterSource = (initialPath = '/') => {
       },
       replaceState(state: any, _: any, uri: string) {
         const [pathname, hash = ''] = uri.split('#')
-        stack[index] = mockLocation(
-          pathname,
-          hash.length ? `#${hash}` : hash
-        )
+        stack[index] = mockLocation(pathname, hash.length ? `#${hash}` : hash)
         states[index] = state
       },
       go(to: number) {
@@ -71,6 +68,6 @@ const createBetterSource = (initialPath = '/') => {
 }
 
 export default {
-mockLocation: mockLocation,
-createBetterSource: createBetterSource,
+  mockLocation: mockLocation,
+  createBetterSource: createBetterSource,
 }
