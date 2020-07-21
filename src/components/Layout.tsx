@@ -7,8 +7,6 @@ import { Header } from './header/Header'
 import { MenuItem } from './navigation/NavMenu'
 import { AnchorLink } from './navigation/AnchorLink'
 
-// import utils from '../utils'
-
 export const navItems: MenuItem[] = [
   {
     to: '/#about',
