@@ -54,42 +54,40 @@ export const mergeRefsToItems = (items: MenuItem[], refs: NavigationRefs) => {
 
 interface Props {
   navigationItems: MenuItem[]
+  navigationRefs: NavigationRefs
   pageTitle: string | null
   landing: boolean
-  navigationRefs: NavigationRefs
 }
 
 interface State {
   headerPosition: number
-  headerIsStickied: boolean
+  navigationItems: MenuItem[]
 }
 
 export class Layout extends React.Component<Props, State> {
   mainContentRef: RefObject<HTMLDivElement>
   headerRef: RefObject<HTMLDivElement>
-  mergedRefsAndItems: MenuItem[]
 
   static defaultProps = {
+    navigationRefs: {},
     pageTitle: null,
     landing: false,
-    navigationRefs: {},
   }
 
   constructor(props: Props) {
     super(props)
 
     this.mainContentRef = React.createRef<HTMLDivElement>()
-    this.mergedRefsAndItems = mergeRefsToItems(
-      props.navigationItems,
-      props.navigationRefs
-    )
 
     this.headerRef = React.createRef<HTMLDivElement>()
 
     this.state = {
       // init w/ junk value, will get actual on mount
       headerPosition: -1,
-      headerIsStickied: false,
+      navigationItems: mergeRefsToItems(
+        props.navigationItems,
+        props.navigationRefs
+      ),
     }
   }
 
@@ -101,12 +99,39 @@ export class Layout extends React.Component<Props, State> {
     })
   }
 
+  sectionObserver = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const newNavItems = this.state.navigationItems.map((item) => {
+          if (item.targetRef)
+            item.active = item.targetRef.current == entry.target
+          return item
+        })
+
+        this.setState({ navigationItems: newNavItems })
+      }
+    })
+  }
+
   componentDidMount = () => {
     if (this.headerRef.current) {
       new window.IntersectionObserver(this.headerObserver, {
         rootMargin: '0px',
         threshold: [0],
       }).observe(this.headerRef.current)
+    }
+
+    const refs = Object.keys(this.props.navigationRefs)
+    if (refs.length > 0) {
+      const sectionIO = new window.IntersectionObserver(this.sectionObserver, {
+        rootMargin: '-50%',
+        threshold: [0],
+      })
+
+      this.state.navigationItems.forEach((item) => {
+        if (item.targetRef && item.targetRef.current)
+          sectionIO.observe(item.targetRef.current)
+      })
     }
   }
 
@@ -125,8 +150,8 @@ export class Layout extends React.Component<Props, State> {
         {/*create dummy div for header ref*/}
         <div ref={this.headerRef}></div>
         <Header
-          navigationItems={this.mergedRefsAndItems}
-          brandingVisibility={this.state.headerPosition > 0 ? false : true}
+          navigationItems={this.state.navigationItems}
+          brandingVisibility={this.state.headerPosition <= 0}
         />
         <div
           id="main-content"

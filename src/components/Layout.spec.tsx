@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from 'react'
+import React, { RefObject, MutableRefObject } from 'react'
 import { expect } from 'chai'
 import 'mocha'
 import { mount, shallow, configure, ShallowWrapper } from 'enzyme'
@@ -9,9 +9,11 @@ import testUtils from '../testUtils'
 
 configure({ adapter: new Adapter() })
 
-import { Layout, mergeRefsToItems } from './Layout'
+import { Layout, NavigationRefs, mergeRefsToItems } from './Layout'
+
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
+import { MenuItem } from './navigation/NavMenu'
 import { AnchorLink } from './navigation/AnchorLink'
 
 import * as router from '@reach/router'
@@ -28,7 +30,13 @@ describe('component/Layout', () => {
       text: 'Second',
       key: 'second',
     },
+    {
+      to: '/other-page',
+      text: 'Other page',
+      key: 'other-page',
+    },
   ]
+
   describe('#content', () => {
     const children = (
       <div>
@@ -113,8 +121,6 @@ describe('component/Layout', () => {
     })
 
     describe('scroll behavior', () => {
-      let observeStub: SinonStub | [() => null]
-      let unobserveStub: SinonStub | [() => null]
       let intersectionObserverSpy: SinonSpy
 
       interface MockIntersectionObserver {
@@ -165,14 +171,9 @@ describe('component/Layout', () => {
       let scrollTest: ShallowWrapper
       let instance: Layout
 
-      describe('#header', () => {
+      describe('#branding-area', () => {
         beforeEach(() => {
-          observeStub = sinon.stub() //.callsFake((observer) => observer())
-          unobserveStub = sinon.stub() //.callsFake((unobserver) => unobserver())
-          mockIntersectionObserver = setupIntersectionObserverMock(
-            observeStub,
-            unobserveStub
-          )
+          mockIntersectionObserver = setupIntersectionObserverMock()
 
           intersectionObserverSpy = sinon.spy(window, 'IntersectionObserver')
 
@@ -204,8 +205,6 @@ describe('component/Layout', () => {
           }
         })
         afterEach(() => {
-          observeStub.resetHistory()
-          unobserveStub.resetHistory()
           intersectionObserverSpy.resetHistory()
           mockIntersectionObserver.restore()
           createRefStub.restore()
@@ -214,7 +213,7 @@ describe('component/Layout', () => {
           delete (global as any).__loader
         })
 
-        it('uses IntersectionObserver to call headerObserver', async function () {
+        it('uses IntersectionObserver to call headerObserver', () => {
           const source = testUtils.createBetterSource()
           const history = router.createHistory(source)
 
@@ -230,8 +229,7 @@ describe('component/Layout', () => {
           const callbackActualIsExpected = intersectionObserverSpy.args.reduce(
             (result, current) => {
               if (result) return result
-              if (current[0] === callbackExpected) return true
-              else return false
+              else return current[0] === callbackExpected
             },
             false
           )
@@ -275,6 +273,129 @@ describe('component/Layout', () => {
           instance.headerObserver(mockEntries)
 
           expect(scrollTest.state('headerPosition')).to.eq(1)
+        })
+      })
+
+      describe('active tab status', () => {
+        let observeStub: SinonStub
+        let unobserveStub: SinonStub
+
+        const mockRef1 = ({
+          current: 'first',
+        } as any) as RefObject<HTMLDivElement>
+        const mockRef2 = ({
+          current: 'second',
+        } as any) as RefObject<HTMLDivElement>
+
+        const navRefs: NavigationRefs = {
+          first: mockRef1,
+          second: mockRef2,
+        }
+
+        beforeEach(() => {
+          observeStub = sinon.stub() //.callsFake((observer) => observer())
+          unobserveStub = sinon.stub() //.callsFake((unobserver) => unobserver())
+          mockIntersectionObserver = setupIntersectionObserverMock(
+            observeStub,
+            unobserveStub
+          )
+
+          intersectionObserverSpy = sinon.spy(window, 'IntersectionObserver')
+
+          // stub React's ref behaviour
+          createRefStub = sinon.stub(React, 'createRef')
+          createRefStub.returns({ current: true })
+
+          // Enzme
+          scrollTest = shallow(
+            <Layout
+              navigationItems={navItems}
+              navigationRefs={navRefs}
+              landing
+            ></Layout>
+          )
+
+          // manually invoke mounting because Enzyme won't
+          // https://stackoverflow.com/a/46513933
+          // must be guarded as componenet did mount is not
+          // guarnteed to exist on ShallowWrapper.instance()
+          // https://stackoverflow.com/a/52706587
+          instance = scrollTest.instance() as Layout
+
+          // gatsby's internal Link implementation relies on a global __BASE_PATH__ variable
+          // solution from:
+          // https://mariusschulz.com/blog/declaring-global-variables-in-typescript#using-a-type-assertion
+          // using a type assertion on the global object allows adding properties
+          // to the object without typescript complaining. Hacky, but since this is
+          // to get a test to work without the gatsby environment, it's fine
+          ;(global as any).__BASE_PATH__ = ''
+          // solution to `ReferenceError: __loader is not defined` from
+          // https://github.com/gatsbyjs/gatsby/issues/6240#issuecomment-408627563
+          ;(global as any).___loader = {
+            enqueue: sinon.fake(),
+          }
+        })
+        afterEach(() => {
+          observeStub.resetHistory()
+          unobserveStub.resetHistory()
+          intersectionObserverSpy.resetHistory()
+          mockIntersectionObserver.restore()
+          createRefStub.restore()
+
+          // cleanup global namespace
+          delete (global as any).__loader
+        })
+
+        it('watches section positions using IntersectionObserver', () => {
+          const source = testUtils.createBetterSource()
+          const history = router.createHistory(source)
+
+          mount(
+            <router.LocationProvider history={history}>
+              <Layout
+                navigationItems={navItems}
+                navigationRefs={navRefs}
+                landing
+              >
+                <div style={{ height: 1000 }}></div>
+              </Layout>
+            </router.LocationProvider>
+          )
+
+          const callbackExpected = instance.sectionObserver
+          const callbackActualIsExpected = intersectionObserverSpy.args.reduce(
+            (result, current) => {
+              if (result) return result
+              else return current[0] === callbackExpected
+            },
+            false
+          )
+          expect(callbackActualIsExpected).to.be.true
+        })
+
+        it('sectionObserver changes the active tab to the currently intersecting section', () => {
+          const mockViewportHeight = sinon.stub(window, 'innerHeight')
+          mockViewportHeight.returns(100)
+
+          const mockEntries = ([
+            {
+              isIntersecting: true,
+              target: 'first',
+            },
+            {
+              isIntersecting: false,
+              target: 'second',
+            },
+          ] as any) as IntersectionObserverEntry[]
+
+          instance.sectionObserver(mockEntries)
+
+          const actualNavItems: MenuItem[] = scrollTest.state('navigationItems')
+
+          expect(actualNavItems[0].active).to.be.true
+          expect(actualNavItems[1].active).to.be.false
+
+          mockViewportHeight.restore()
         })
       })
     })
