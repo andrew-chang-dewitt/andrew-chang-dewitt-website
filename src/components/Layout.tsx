@@ -1,4 +1,4 @@
-import React, { createRef, RefObject } from 'react'
+import React, { RefObject } from 'react'
 
 import styles from './Layout.module.sass'
 
@@ -7,7 +7,7 @@ import { Header } from './header/Header'
 import { MenuItem } from './navigation/NavMenu'
 import { AnchorLink } from './navigation/AnchorLink'
 
-import utils from '../utils'
+// import utils from '../utils'
 
 export const navItems: MenuItem[] = [
   {
@@ -61,6 +61,7 @@ interface Props {
 
 interface State {
   headerPosition: number
+  headerIsStickied: boolean
 }
 
 export class Layout extends React.Component<Props, State> {
@@ -77,35 +78,36 @@ export class Layout extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    this.mainContentRef = createRef<HTMLDivElement>()
+    this.mainContentRef = React.createRef<HTMLDivElement>()
     this.mergedRefsAndItems = mergeRefsToItems(
       props.navigationItems,
       props.navigationRefs
     )
 
-    this.headerRef = createRef<HTMLDivElement>()
+    this.headerRef = React.createRef<HTMLDivElement>()
 
     this.state = {
       // init w/ junk value, will get actual on mount
       headerPosition: -1,
+      headerIsStickied: false,
     }
   }
 
-  setHeaderPosition(value: number) {
-    this.setState({
-      headerPosition: value,
+  headerObserver = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      this.setState({
+        headerPosition: entry.boundingClientRect.top,
+      })
     })
   }
 
-  scrollListener = () => {
-    this.setHeaderPosition(utils.getElementPosition(this.headerRef.current))
-  }
-
   componentDidMount = () => {
-    // get actual initial position & set on mount
-    this.setHeaderPosition(utils.getElementPosition(this.headerRef.current))
-
-    window.addEventListener('scroll', this.scrollListener)
+    if (this.headerRef.current) {
+      new window.IntersectionObserver(this.headerObserver, {
+        rootMargin: '0px',
+        threshold: [0],
+      }).observe(this.headerRef.current)
+    }
   }
 
   render() {
