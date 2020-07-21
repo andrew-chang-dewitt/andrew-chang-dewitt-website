@@ -6,7 +6,7 @@ import { Hero } from '../Hero'
 import styles from './Landing.module.sass'
 
 export const Landing = () => (
-  <Hero id="home" title="Andrew Chang-DeWitt">
+  <Hero id="home" title="Andrew Chang-DeWitt" className={styles.container}>
     <div>
       <section className={styles.contents}>
         <div className={styles.tagline}>
