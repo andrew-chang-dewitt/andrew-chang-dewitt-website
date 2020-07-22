@@ -11,7 +11,7 @@ export const Landing = () => (
       <section className={styles.contents}>
         <div className={styles.tagline}>
           <h2 className={`${styles.subtitle} subtitle`}>software developer</h2>
-          <p>I make websites, applications, API's, &amp; utilities</p>
+          <p>I make web apps, API's, IoT programs, &amp; cli utilities</p>
         </div>
       </section>
     </div>
