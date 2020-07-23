@@ -1,7 +1,7 @@
 import React, { RefObject, MutableRefObject } from 'react'
 import { expect } from 'chai'
 import 'mocha'
-import { shallow, configure } from 'enzyme'
+import { shallow, configure, ShallowWrapper } from 'enzyme'
 import { renderHook, act } from '@testing-library/react-hooks'
 import Adapter from 'enzyme-adapter-react-16'
 import sinon, { SinonSpy, SinonStub } from 'sinon'
@@ -13,6 +13,10 @@ import * as LayoutModule from './Layout'
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
 import { AnchorLink } from './navigation/AnchorLink'
+import { MenuItem } from './navigation/NavMenu'
+
+import testUtils from '../testUtils'
+import * as router from '@reach/router'
 
 describe('component/Layout', () => {
   const navItems = [
@@ -33,18 +37,32 @@ describe('component/Layout', () => {
     },
   ]
 
+  let useLocationStub: SinonStub<any, any>
+
   describe('#content', () => {
-    const children = (
-      <div>
-        <div className="child">This is a child</div>
-        <div className="child">Another child</div>
-      </div>
-    )
-    const content = shallow(
-      <LayoutModule.Layout navigationItems={navItems}>
-        {children}
-      </LayoutModule.Layout>
-    )
+    let content: ShallowWrapper
+    let children: any
+
+    beforeEach(() => {
+      useLocationStub = sinon.stub(router, 'useLocation')
+      useLocationStub.returns(testUtils.mockLocation('/', ''))
+
+      children = (
+        <div>
+          <div className="child">This is a child</div>
+          <div className="child">Another child</div>
+        </div>
+      )
+
+      content = shallow(
+        <LayoutModule.Layout navigationItems={navItems}>
+          {children}
+        </LayoutModule.Layout>
+      )
+    })
+    afterEach(() => {
+      useLocationStub.restore()
+    })
 
     it('renders child elements', () => {
       expect(content.find('div.child')).to.have.lengthOf(2)
@@ -78,12 +96,29 @@ describe('component/Layout', () => {
   })
 
   describe('#landing', () => {
-    const layout = shallow(
-      <LayoutModule.Layout
-        navigationItems={navItems}
-        landing
-      ></LayoutModule.Layout>
-    )
+    let layout: ShallowWrapper
+    let children: any
+
+    beforeEach(() => {
+      useLocationStub = sinon.stub(router, 'useLocation')
+      useLocationStub.returns(testUtils.mockLocation('/', ''))
+
+      children = (
+        <div>
+          <div className="child">This is a child</div>
+          <div className="child">Another child</div>
+        </div>
+      )
+
+      layout = shallow(
+        <LayoutModule.Layout navigationItems={navItems} landing>
+          {children}
+        </LayoutModule.Layout>
+      )
+    })
+    afterEach(() => {
+      useLocationStub.restore()
+    })
 
     it('optionally renders a Landing', () => {
       expect(layout.find(Landing)).to.have.lengthOf(1)
@@ -96,80 +131,40 @@ describe('component/Layout', () => {
   })
 
   describe('#header', () => {
-    const layout = shallow(
-      <LayoutModule.Layout navigationItems={navItems} landing />
-    )
+    describe('rendering', () => {
+      let layout: ShallowWrapper
 
-    it('navigation configuration is defined in Layout as an array of MenuItems', () => {
-      expect(layout.find(Header).get(0).props.navigationItems).to.eql(navItems)
-    })
+      beforeEach(() => {
+        useLocationStub = sinon.stub(router, 'useLocation')
+        useLocationStub.returns(testUtils.mockLocation('/', ''))
 
-    it("can match React Refs to navigation items by the item's key value", () => {
-      const refs = {
-        first: ('actually a ref' as any) as MutableRefObject<any>,
-      }
+        layout = shallow(
+          <LayoutModule.Layout navigationItems={navItems} landing />
+        )
+      })
+      afterEach(() => {
+        useLocationStub.restore()
+      })
 
-      expect(LayoutModule.mergeRefsToItems(navItems, refs)[0].targetRef).to
-        .exist
-      expect(LayoutModule.mergeRefsToItems(navItems, refs)[1].targetRef).to.not
-        .exist
+      it('navigation configuration is defined in Layout as an array of MenuItems', () => {
+        expect(layout.find(Header).get(0).props.navigationItems).to.eql(
+          navItems
+        )
+      })
+
+      it("can match React Refs to navigation items by the item's key value", () => {
+        const refs = {
+          first: ('actually a ref' as any) as MutableRefObject<any>,
+        }
+
+        expect(LayoutModule.mergeRefsToItems(navItems, refs)[0].targetRef).to
+          .exist
+        expect(LayoutModule.mergeRefsToItems(navItems, refs)[1].targetRef).to
+          .not.exist
+      })
     })
 
     describe('scroll behavior', () => {
-      describe('useHeaderStickied()', () => {
-        let createIntersectionObserverStub: SinonStub<any, any>
-
-        beforeEach(() => {
-          createIntersectionObserverStub = sinon.stub(
-            LayoutModule,
-            'createIntersectionObserver'
-          )
-          createIntersectionObserverStub.returns(({
-            disconnect: () => {
-              'disonnecting observer'
-            },
-          } as any) as IntersectionObserver)
-        })
-        afterEach(() => {
-          createIntersectionObserverStub.restore()
-        })
-
-        it('uses an observation handler to update the header status on intersection changes', () => {
-          const mockRef = ({
-            current: true,
-          } as any) as RefObject<HTMLDivElement>
-
-          const { result } = renderHook(() =>
-            LayoutModule.useHeaderStickied(mockRef, -1)
-          )
-
-          const handler = createIntersectionObserverStub.args[0][0]
-          const mockIOEntry = {
-            boundingClientRect: {
-              top: 1,
-            },
-          }
-
-          // before update, header.top <= 0; should return true
-          expect(result.current).to.be.true
-          act(() => {
-            handler([mockIOEntry])
-          })
-          // after update, is > 0, should return false
-          expect(result.current).to.be.false
-        })
-
-        it('does not assign an observer if the ref contains a null value', () => {
-          const mockRef = ({
-            current: null,
-          } as any) as RefObject<HTMLDivElement>
-
-          renderHook(() => LayoutModule.useHeaderStickied(mockRef, -1))
-
-          expect(createIntersectionObserverStub.notCalled).to.be.true
-        })
-      })
-
       describe('createIntersectionObserver()', () => {
         interface MockIntersectionObserver {
           restore: () => void
@@ -260,6 +255,156 @@ describe('component/Layout', () => {
           expect(observeSpy.calledWith(first)).to.be.true
           expect(observeSpy.calledWith(second)).to.be.true
           expect(observeSpy.calledWith(third)).to.be.true
+        })
+      })
+
+      describe('useIsElementStickied()', () => {
+        let createIntersectionObserverStub: SinonStub<any, any>
+
+        beforeEach(() => {
+          createIntersectionObserverStub = sinon.stub(
+            LayoutModule,
+            'createIntersectionObserver'
+          )
+          createIntersectionObserverStub.returns(({
+            disconnect: () => {
+              'disonnecting observer'
+            },
+          } as any) as IntersectionObserver)
+        })
+        afterEach(() => {
+          createIntersectionObserverStub.restore()
+        })
+
+        it('uses an observation handler to update the header status on intersection changes', () => {
+          const mockRef = ({
+            current: true,
+          } as any) as RefObject<HTMLDivElement>
+
+          const { result } = renderHook(() =>
+            LayoutModule.useIsElementStickied(mockRef, -1)
+          )
+
+          const handler = createIntersectionObserverStub.args[0][0]
+          const mockIOEntry = {
+            boundingClientRect: {
+              top: 1,
+            },
+          }
+
+          // before update, header.top <= 0; should return true
+          expect(result.current).to.be.true
+          act(() => {
+            handler([mockIOEntry])
+          })
+          // after update, is > 0, should return false
+          expect(result.current).to.be.false
+        })
+
+        it('does not assign an observer if the ref contains a null value', () => {
+          const mockRef = ({
+            current: null,
+          } as any) as RefObject<HTMLDivElement>
+
+          renderHook(() => LayoutModule.useIsElementStickied(mockRef, -1))
+
+          expect(createIntersectionObserverStub.notCalled).to.be.true
+        })
+      })
+
+      describe('useItems()', () => {
+        // let useLocationStub: SinonStub<any, any>
+        // let setLocation: (loc: string) => void
+        let items: MenuItem[]
+        let contextWrapper: (
+          location: string
+        ) => { wrapper: React.FunctionComponent; history: router.History }
+
+        beforeEach(() => {
+          // useLocationStub = sinon.stub(router, 'useLocation')
+          // setLocation = (newLocation) => {
+          //   const split = newLocation.split('#')
+          //   const path = split[0]
+          //   const hash = `#${split[1] ? split[1] : ''}`
+          //   const location = testUtils.mockLocation(path, hash)
+          //   useLocationStub.returns(location)
+          // }
+          items = [
+            { text: 'Blog', to: '/first', key: 'first' },
+            { text: 'Text2', to: '/#second', key: 'second' },
+            { text: 'Text3', to: '/#3', key: '3' },
+          ]
+          contextWrapper = (initialLocation: string) => {
+            const source = testUtils.createBetterSource(initialLocation)
+            const history = router.createHistory(source)
+
+            const wrapper: React.FunctionComponent = ({ children }) => (
+              <router.LocationProvider history={history}>
+                {children}
+              </router.LocationProvider>
+            )
+
+            return { wrapper: wrapper, history: history }
+          }
+        })
+        // afterEach(() => {
+        //   useLocationStub.restore()
+        // })
+
+        it('can set the active tab based on only the first path level on page load', () => {
+          // set initial mock location
+          const { wrapper } = contextWrapper('/first/post/1')
+          const hook = renderHook(() => LayoutModule.useItems(items), {
+            wrapper,
+          })
+
+          expect(hook.result.current[0].active).to.be.true
+          expect(hook.result.current[1].active).to.be.false
+          expect(hook.result.current[2].active).to.be.false
+        })
+
+        it('can set the active tab based on the hash on page load', () => {
+          const { wrapper } = contextWrapper('/#second')
+          const hook = renderHook(() => LayoutModule.useItems(items), {
+            wrapper,
+          })
+
+          expect(hook.result.current[0].active).to.be.false
+          expect(hook.result.current[1].active).to.be.true
+          expect(hook.result.current[2].active).to.be.false
+        })
+
+        it('only sets the active item for hashes on the root path', () => {
+          const { wrapper } = contextWrapper('/this-wont-match#second')
+          const hook = renderHook(() => LayoutModule.useItems(items), {
+            wrapper,
+          })
+
+          expect(hook.result.current[0].active).to.be.false
+          expect(hook.result.current[1].active).to.be.false
+          expect(hook.result.current[2].active).to.be.false
+        })
+
+        it('can update an item as active when the location changes', () => {
+          const context = contextWrapper('/first')
+          const wrapper = context.wrapper
+          const history = context.history
+          const hook = renderHook(() => LayoutModule.useItems(items), {
+            wrapper,
+          })
+
+          // then navigate to second location
+          act(() => {
+            history.navigate('/#second')
+          })
+
+          // NEEDS IMPROVEMENT: crappy workaround to allow for useEffect
+          // to complete it's work asynchronously before checking results
+          setTimeout(() => {
+            expect(hook.result.current[0].active).to.be.false
+            expect(hook.result.current[1].active).to.be.true
+            expect(hook.result.current[2].active).to.be.false
+          }, 100)
         })
       })
     })

@@ -1,4 +1,5 @@
 import React, { RefObject } from 'react'
+import { useLocation } from '@reach/router'
 
 import styles from './Layout.module.sass'
 
@@ -190,29 +191,65 @@ export const createIntersectionObserver = (
   return observer
 }
 
-export const useHeaderStickied = (
-  headerRef: RefObject<HTMLDivElement>,
-  initialHeaderPostition: number
-) => {
-  const [headerPosition, setHeaderPosition] = React.useState(
-    initialHeaderPostition
-  )
+export const useItems = (startingItems: MenuItem[]) => {
+  // const [location, setLocation] = useState(useLocation())
+  const location = useLocation()
+  const path = location.pathname.substr(1).split('/')[0]
+  const hash = location.hash.substr(1)
 
-  const headerObserverHandler = (entries: IntersectionObserverEntry[]) => {
+  // determines if a given item should is considered active
+  // based on the current location
+  const isActiveItem = (item: MenuItem): boolean => {
+    switch (item.key) {
+      case path:
+        return true
+
+      case hash:
+        return path === ''
+
+      default:
+        return false
+    }
+  }
+
+  const setActiveItem = (items: MenuItem[]): MenuItem[] =>
+    items.map((item) => {
+      item.active = isActiveItem(item)
+      return item
+    })
+
+  // init nav menu items based on current component location
+  const [items, setItems] = React.useState(setActiveItem(startingItems))
+
+  // updates items state object on location change
+  React.useEffect(() => {
+    setItems(setActiveItem(items))
+  }, [location])
+
+  return items
+}
+
+export const useIsElementStickied = (
+  elementRef: RefObject<HTMLDivElement>,
+  initialPosition: number
+) => {
+  const [elementPosition, setElementPosition] = React.useState(initialPosition)
+
+  const observerHandler = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
-      setHeaderPosition(entry.boundingClientRect.top)
+      setElementPosition(entry.boundingClientRect.top)
     })
   }
 
   React.useEffect(() => {
-    if (headerRef.current) {
+    if (elementRef.current) {
       const observer = createIntersectionObserver(
-        headerObserverHandler,
+        observerHandler,
         {
           rootMargin: '0px',
           threshold: [0],
         },
-        [headerRef.current]
+        [elementRef.current]
       )
 
       // cleans up observer on unmount
@@ -221,9 +258,9 @@ export const useHeaderStickied = (
       }
       // or does nothing if current was null
     } else return () => {}
-  }, [headerRef.current])
+  }, [elementRef.current])
 
-  return headerPosition <= 0
+  return elementPosition <= 0
 }
 
 // sectionObserver = (entries: IntersectionObserverEntry[]) => {
@@ -256,10 +293,8 @@ export const Layout: React.FunctionComponent<Props> = ({
   const mainContentRef = React.useRef<HTMLDivElement>(null)
   const headerRef = React.useRef<HTMLDivElement>(null)
 
-  const brandingVisibility = useHeaderStickied(headerRef, -1)
-  const [navItemsState] = React.useState(
-    mergeRefsToItems(navigationItems, navigationRefs)
-  )
+  const headerIsStickied = useIsElementStickied(headerRef, -1)
+  const navItems = useItems(mergeRefsToItems(navigationItems, navigationRefs))
 
   return (
     <div>
@@ -275,8 +310,8 @@ export const Layout: React.FunctionComponent<Props> = ({
       {/*create dummy div for header ref*/}
       <div ref={headerRef}></div>
       <Header
-        navigationItems={navItemsState}
-        brandingVisibility={brandingVisibility}
+        navigationItems={navItems}
+        brandingVisibility={headerIsStickied}
       />
       <div
         id="main-content"
