@@ -192,7 +192,6 @@ export const createIntersectionObserver = (
 }
 
 export const useItems = (startingItems: MenuItem[]) => {
-  // const [location, setLocation] = useState(useLocation())
   const location = useLocation()
   const path = location.pathname.substr(1).split('/')[0]
   const hash = location.hash.substr(1)
