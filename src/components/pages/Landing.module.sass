@@ -1,4 +1,8 @@
+@use '../header/Header.variables.sass'
 @use '../../styles/colors'
+
+.container
+  min-height: calc( 100vh - #{ Header.$height } )
 
 .subtitle
   margin-top: -0.75rem

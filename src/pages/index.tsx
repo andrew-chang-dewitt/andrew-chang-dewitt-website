@@ -3,10 +3,10 @@ import React, { useRef } from 'react'
 import { Layout, navItems } from '../components/Layout'
 
 export default function Landing() {
-  const aboutRef = useRef(null)
-  const projectRef = useRef(null)
-  const hireRef = useRef(null)
-  const contactRef = useRef(null)
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const projectRef = useRef<HTMLDivElement>(null)
+  const hireRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
 
   const navigationRefs = {
     about: aboutRef,

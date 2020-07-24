@@ -5,6 +5,7 @@ import styles from './Hero.module.sass'
 interface Props {
   title: string
   id: string
+  className?: string | null
   color?: Colors
 }
 
@@ -26,9 +27,14 @@ export const Hero: FunctionComponent<Props> = ({
   title,
   id,
   color = Colors.Dark,
+  className = null,
   children,
 }) => (
-  <section id={id} className={styles.hero} style={colorStyles(color)}>
+  <section
+    id={id}
+    className={`${styles.hero} ${className ? className : ''}`}
+    style={colorStyles(color)}
+  >
     <div className="standardWidth">
       <h1 className={`${styles.title} title`}>{title}</h1>
     </div>
