@@ -125,7 +125,7 @@ describe('component/Layout', () => {
     })
 
     it('and that landing is before the Header', () => {
-      expect(layout.childAt(1).type()).to.equal(Landing)
+      expect(layout.childAt(1).childAt(0).type()).to.equal(Landing)
       expect(layout.childAt(3).type()).to.equal(Header)
     })
   })
@@ -256,6 +256,23 @@ describe('component/Layout', () => {
           expect(observeSpy.calledWith(second)).to.be.true
           expect(observeSpy.calledWith(third)).to.be.true
         })
+
+        it("won't register a falsey value as an observer", () => {
+          const falsey = (null as any) as Element
+
+          LayoutModule.createIntersectionObserver(
+            (_: any) => {
+              'do nothing'
+            },
+            {
+              rootMargin: 'a margin',
+              threshold: [0],
+            },
+            [falsey]
+          )
+
+          expect(observeSpy.calledWith(falsey)).to.be.false
+        })
       })
 
       describe('useIsElementStickied()', () => {
@@ -313,22 +330,15 @@ describe('component/Layout', () => {
       })
 
       describe('useItems()', () => {
-        // let useLocationStub: SinonStub<any, any>
-        // let setLocation: (loc: string) => void
         let items: MenuItem[]
         let contextWrapper: (
           location: string
         ) => { wrapper: React.FunctionComponent; history: router.History }
 
+        let observeSpy: SinonSpy
+        let createIntersectionObserverStub: SinonStub<any, any>
+
         beforeEach(() => {
-          // useLocationStub = sinon.stub(router, 'useLocation')
-          // setLocation = (newLocation) => {
-          //   const split = newLocation.split('#')
-          //   const path = split[0]
-          //   const hash = `#${split[1] ? split[1] : ''}`
-          //   const location = testUtils.mockLocation(path, hash)
-          //   useLocationStub.returns(location)
-          // }
           items = [
             { text: 'Blog', to: '/first', key: 'first' },
             { text: 'Text2', to: '/#second', key: 'second' },
@@ -346,13 +356,25 @@ describe('component/Layout', () => {
 
             return { wrapper: wrapper, history: history }
           }
+
+          observeSpy = sinon.spy()
+          createIntersectionObserverStub = sinon.stub(
+            LayoutModule,
+            'createIntersectionObserver'
+          )
+          createIntersectionObserverStub.returns(({
+            observe: observeSpy,
+            disconnect: () => {
+              'disonnecting observer'
+            },
+          } as any) as IntersectionObserver)
         })
-        // afterEach(() => {
-        //   useLocationStub.restore()
-        // })
+        afterEach(() => {
+          createIntersectionObserverStub.restore()
+          observeSpy.resetHistory()
+        })
 
         it('can set the active tab based on only the first path level on page load', () => {
-          // set initial mock location
           const { wrapper } = contextWrapper('/first/post/1')
           const hook = renderHook(() => LayoutModule.useItems(items), {
             wrapper,
@@ -363,49 +385,103 @@ describe('component/Layout', () => {
           expect(hook.result.current[2].active).to.be.false
         })
 
-        it('can set the active tab based on the hash on page load', () => {
-          const { wrapper } = contextWrapper('/#second')
-          const hook = renderHook(() => LayoutModule.useItems(items), {
-            wrapper,
-          })
+        it('updates the active tab if the user is viewing the associated page section', () => {
+          const { wrapper } = contextWrapper('/')
+          const navRefs: LayoutModule.NavigationRefs = {
+            second: {
+              current: ('ref second' as any) as HTMLDivElement,
+            } as RefObject<HTMLDivElement>,
+            '3': {
+              current: ('ref 3' as any) as HTMLDivElement,
+            } as RefObject<HTMLDivElement>,
+          }
+          const { result } = renderHook(
+            () => LayoutModule.useItems(items, navRefs),
+            {
+              wrapper,
+            }
+          )
 
-          expect(hook.result.current[0].active).to.be.false
-          expect(hook.result.current[1].active).to.be.true
-          expect(hook.result.current[2].active).to.be.false
-        })
+          const handler = createIntersectionObserverStub.args[0][0]
+          const mockIOEntry1 = ({
+            isIntersecting: true,
+            target: ('ref second' as any) as HTMLDivElement,
+          } as any) as IntersectionObserverEntry
+          const mockIOEntry2 = ({
+            isIntersecting: false,
+            target: ('ref 3' as any) as HTMLDivElement,
+          } as any) as IntersectionObserverEntry
 
-        it('only sets the active item for hashes on the root path', () => {
-          const { wrapper } = contextWrapper('/this-wont-match#second')
-          const hook = renderHook(() => LayoutModule.useItems(items), {
-            wrapper,
-          })
-
-          expect(hook.result.current[0].active).to.be.false
-          expect(hook.result.current[1].active).to.be.false
-          expect(hook.result.current[2].active).to.be.false
-        })
-
-        it('can update an item as active when the location changes', () => {
-          const context = contextWrapper('/first')
-          const wrapper = context.wrapper
-          const history = context.history
-          const hook = renderHook(() => LayoutModule.useItems(items), {
-            wrapper,
-          })
-
-          // then navigate to second location
+          expect(result.current[1].active).to.be.false
           act(() => {
-            history.navigate('/#second')
+            handler([mockIOEntry1, mockIOEntry2])
+          })
+          expect(result.current[1].active).to.be.true
+        })
+
+        it('guards against nulls in sectionRefs current values', () => {
+          const { wrapper } = contextWrapper('/')
+          const navRefs: LayoutModule.NavigationRefs = {
+            second: {
+              current: null,
+            } as RefObject<HTMLDivElement>,
+            '3': {
+              current: ('ref 3' as any) as HTMLDivElement,
+            } as RefObject<HTMLDivElement>,
+          }
+          renderHook(() => LayoutModule.useItems(items, navRefs), {
+            wrapper,
           })
 
-          // NEEDS IMPROVEMENT: crappy workaround to allow for useEffect
-          // to complete it's work asynchronously before checking results
-          setTimeout(() => {
-            expect(hook.result.current[0].active).to.be.false
-            expect(hook.result.current[1].active).to.be.true
-            expect(hook.result.current[2].active).to.be.false
-          }, 100)
+          expect(observeSpy.calledWith(navRefs['3'].current)).to.be.true
+          expect(observeSpy.calledWith(navRefs['second'].current)).to.be.false
         })
+
+        // it('can set the active tab based on the hash on page load', () => {
+        //   const { wrapper } = contextWrapper('/#second')
+        //   const hook = renderHook(() => LayoutModule.useItems(items), {
+        //     wrapper,
+        //   })
+
+        //   expect(hook.result.current[0].active).to.be.false
+        //   expect(hook.result.current[1].active).to.be.true
+        //   expect(hook.result.current[2].active).to.be.false
+        // })
+
+        // it('only sets the active item for hashes on the root path', () => {
+        //   const { wrapper } = contextWrapper('/this-wont-match#second')
+        //   const hook = renderHook(() => LayoutModule.useItems(items), {
+        //     wrapper,
+        //   })
+
+        //   expect(hook.result.current[0].active).to.be.false
+        //   expect(hook.result.current[1].active).to.be.false
+        //   expect(hook.result.current[2].active).to.be.false
+        // })
+
+        // // use function to make sure this is bound properly for the setTimeout
+        // // wrapped expect calls
+        // it('can update an item as active when the location changes', function () {
+        //   const context = contextWrapper('/first')
+        //   const wrapper = context.wrapper
+        //   const history = context.history
+        //   const hook = renderHook(() => LayoutModule.useItems(items), {
+        //     wrapper,
+        //   })
+
+        //   // then navigate to second location
+        //   act(() => {
+        //     history.navigate('/#second')
+        //   })
+
+        //   // NEEDS IMPROVEMENT: crappy workaround to allow for useEffect
+        //   // to complete it's work asynchronously before checking results
+        //   setTimeout(() => {
+        //     expect(hook.result.current[0].active).to.be.false
+        //     expect(hook.result.current[1].active).to.be.true
+        //     expect(hook.result.current[2].active).to.be.false
+        //   }, 5)
+        // })
       })
     })
     // describe('scroll behavior', () => {
