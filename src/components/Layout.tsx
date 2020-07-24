@@ -1,4 +1,5 @@
 import React, { RefObject } from 'react'
+import { useLocation } from '@reach/router'
 
 import styles from './Layout.module.sass'
 
@@ -6,8 +7,6 @@ import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
 import { MenuItem } from './navigation/NavMenu'
 import { AnchorLink } from './navigation/AnchorLink'
-
-// import utils from '../utils'
 
 export const navItems: MenuItem[] = [
   {
@@ -52,94 +51,200 @@ export const mergeRefsToItems = (items: MenuItem[], refs: NavigationRefs) => {
   })
 }
 
-interface Props {
-  navigationItems: MenuItem[]
-  pageTitle: string | null
-  landing: boolean
-  navigationRefs: NavigationRefs
+interface IOOptions {
+  rootMargin: string
+  threshold: number[]
 }
 
-interface State {
-  headerPosition: number
-  headerIsStickied: boolean
+interface IOHandler {
+  (entries: IntersectionObserverEntry[]): void
 }
 
-export class Layout extends React.Component<Props, State> {
-  mainContentRef: RefObject<HTMLDivElement>
-  headerRef: RefObject<HTMLDivElement>
-  mergedRefsAndItems: MenuItem[]
+export const createIntersectionObserver = (
+  handler: IOHandler,
+  options: IOOptions,
+  observables: (Element | null)[]
+) => {
+  const observer = new window.IntersectionObserver(handler, options)
 
-  static defaultProps = {
-    pageTitle: null,
-    landing: false,
-    navigationRefs: {},
-  }
+  observables.forEach((observable) => {
+    if (observable) observer.observe(observable)
+  })
 
-  constructor(props: Props) {
-    super(props)
+  return observer
+}
 
-    this.mainContentRef = React.createRef<HTMLDivElement>()
-    this.mergedRefsAndItems = mergeRefsToItems(
-      props.navigationItems,
-      props.navigationRefs
-    )
+export const useItems = (
+  startingItems: MenuItem[],
+  sectionRefs: NavigationRefs = {}
+) => {
+  const location = useLocation()
+  const path = location.pathname.substr(1).split('/')[0]
 
-    this.headerRef = React.createRef<HTMLDivElement>()
+  // determines if a given item should is considered active
+  // based on the current location
+  const isActiveItem = (item: MenuItem): boolean => {
+    switch (item.key) {
+      case path:
+        return true
 
-    this.state = {
-      // init w/ junk value, will get actual on mount
-      headerPosition: -1,
-      headerIsStickied: false,
+      default:
+        return false
     }
   }
 
-  headerObserver = (entries: IntersectionObserverEntry[]) => {
+  const setActiveItem = (items: MenuItem[]): MenuItem[] =>
+    items.map((item) => {
+      item.active = isActiveItem(item)
+      return item
+    })
+
+  // init nav menu items based on current component location
+  const [items, setItems] = React.useState(
+    setActiveItem(mergeRefsToItems(startingItems, sectionRefs))
+  )
+
+  const observerHandler = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
-      this.setState({
-        headerPosition: entry.boundingClientRect.top,
-      })
+      if (entry.isIntersecting) {
+        setItems(
+          items.map((item) => {
+            if (item.targetRef) {
+              // must rebuild the item to avoid bug where it
+              // wouldn't actually update
+              return {
+                ...item,
+                active: item.targetRef.current == entry.target,
+              }
+            }
+            return item
+          })
+        )
+      }
     })
   }
 
-  componentDidMount = () => {
-    if (this.headerRef.current) {
-      new window.IntersectionObserver(this.headerObserver, {
-        rootMargin: '0px',
-        threshold: [0],
-      }).observe(this.headerRef.current)
-    }
+  React.useEffect(() => {
+    const refs = Object.keys(sectionRefs)
+    if (refs.length > 0) {
+      const elements = refs.map((ref) => {
+        if (sectionRefs[ref].current) return sectionRefs[ref].current
+        else return null
+      })
+      const observer = createIntersectionObserver(
+        observerHandler,
+        {
+          rootMargin: '-50%',
+          threshold: [0],
+        },
+        elements
+      )
+
+      items.forEach((item) => {
+        if (item.targetRef && item.targetRef.current)
+          observer.observe(item.targetRef.current)
+      })
+      //
+      // cleans up observer on unmount
+      return () => {
+        observer.disconnect()
+      }
+    } // or does nothing if sectionRefs was empty
+    else return () => {}
+  }, [])
+
+  return items
+}
+
+export const useIsElementStickied = (
+  elementRef: RefObject<HTMLDivElement>,
+  initialPosition: number
+) => {
+  const [elementPosition, setElementPosition] = React.useState(initialPosition)
+
+  const observerHandler = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      setElementPosition(entry.boundingClientRect.top)
+    })
   }
 
-  render() {
-    return (
-      <div>
-        <AnchorLink
-          to="#main-content"
-          id="skip-to-main-content"
-          className={styles.mainContentLink}
-          target={this.mainContentRef}
-        >
-          Skip to main content
-        </AnchorLink>
-        {this.props.landing ? <Landing /> : null}
-        {/*create dummy div for header ref*/}
-        <div ref={this.headerRef}></div>
-        <Header
-          navigationItems={this.mergedRefsAndItems}
-          brandingVisibility={this.state.headerPosition > 0 ? false : true}
-        />
-        <div
-          id="main-content"
-          className={styles.content}
-          tabIndex={-1}
-          ref={this.mainContentRef}
-        >
-          {this.props.pageTitle ? (
-            <h1 className="title">{this.props.pageTitle}</h1>
-          ) : null}
-          {this.props.children}
+  React.useEffect(() => {
+    if (elementRef.current) {
+      const observer = createIntersectionObserver(
+        observerHandler,
+        {
+          rootMargin: '0px',
+          threshold: [0],
+        },
+        [elementRef.current]
+      )
+
+      // cleans up observer on unmount
+      return () => {
+        observer.disconnect()
+      }
+      // or does nothing if current was null
+    } else return () => {}
+  }, [elementRef.current])
+
+  return elementPosition <= 0
+}
+
+interface Props {
+  navigationItems: MenuItem[]
+  navigationRefs?: NavigationRefs
+  pageTitle?: string | null
+  landing?: boolean
+}
+
+export const Layout: React.FunctionComponent<Props> = ({
+  navigationItems,
+  navigationRefs = {},
+  pageTitle = null,
+  landing = false,
+  children,
+}) => {
+  const mainContentRef = React.useRef<HTMLDivElement>(null)
+  const headerRef = React.useRef<HTMLDivElement>(null)
+
+  // get ref to landing & add to navigationRefs to include in
+  // scroll behavior for active tab status changes
+  const landingRef = React.useRef<HTMLDivElement>(null)
+  navigationRefs['landing'] = landingRef
+
+  const headerIsStickied = useIsElementStickied(headerRef, -1)
+  const navItems = useItems(navigationItems, navigationRefs)
+
+  return (
+    <div>
+      <AnchorLink
+        to="#main-content"
+        id="skip-to-main-content"
+        className={styles.mainContentLink}
+        target={mainContentRef}
+      >
+        Skip to main content
+      </AnchorLink>
+      {landing ? (
+        <div ref={landingRef}>
+          <Landing />
         </div>
+      ) : null}
+      {/*create dummy div for header ref*/}
+      <div ref={headerRef}></div>
+      <Header
+        navigationItems={navItems}
+        brandingVisibility={headerIsStickied}
+      />
+      <div
+        id="main-content"
+        className={styles.content}
+        tabIndex={-1}
+        ref={mainContentRef}
+      >
+        {pageTitle ? <h1 className="title">{pageTitle}</h1> : null}
+        {children}
       </div>
-    )
-  }
+    </div>
+  )
 }

@@ -49,4 +49,13 @@ describe('components/Hero', () => {
 
     expect(style).to.have.property('color', Colors.Dark)
   })
+
+  it('can add additional classes from props as a space-delimited string', () => {
+    const className = shallow(
+      <Hero title="Title" id="id" className="another class" />
+    )
+
+    expect(className.hasClass('another')).to.be.true
+    expect(className.hasClass('class')).to.be.true
+  })
 })
