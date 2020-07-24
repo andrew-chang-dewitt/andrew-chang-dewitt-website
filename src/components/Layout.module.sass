@@ -1,21 +1,21 @@
-@use '../styles/colors'
+.content
+  min-width: 310px
+  max-width: 60rem
+  margin: auto
 
-@use './Layout.variables.sass'
-// @use './Header.variables.sass'
-// @use './Headshot.variables.sass'
+.mainContentLink
+  position: absolute
+  left: -10000px
+  top: auto
+  width: 1px
+  height: 1px
+  overflow: hidden
 
-// .pageGrid
-//   display: grid
-//   grid-template-areas: "navbar content"
-//   grid-template-columns: Layout.$column-widths
-//   grid-column-gap: calc(#{Headshot.$size} * .625)
-//
-//   height: calc(100vh - #{Header.$height})
+.mainContentLink:focus
+  position: static
+  width: auto
+  height: auto
 
-// .pageGrid > .navbar
-//   grid-area: navbar
-//   background-color: colors.$dark
-//   color: colors.$light
-
-// .pageGrid > .content
-//   grid-area: content
+.sticky
+  position: sticky
+  top: 50px

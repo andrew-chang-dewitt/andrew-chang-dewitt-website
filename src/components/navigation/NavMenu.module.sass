@@ -1,0 +1,12 @@
+@use '../../styles/colors'
+@use '../../styles/fonts'
+@use '../../styles/layout'
+
+.navigation
+  height: 100%
+  display: flex
+  align-items: stretch
+  color: colors.$light
+@media all and (max-width: #{layout.$screen-small})
+  .navigation
+    flex-direction: column

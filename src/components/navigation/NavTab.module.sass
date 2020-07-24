@@ -1,0 +1,32 @@
+@use '../../styles/layout'
+@use '../../styles/colors'
+@use '../../styles/fonts'
+
+$border-radius: 3px
+
+.tab
+  // height: 100%
+  padding: 0.25rem 0.5rem
+  display: flex
+  align-items: center
+  border-bottom: solid colors.$accent1
+@media all and (max-width: #{layout.$screen-small})
+  .tab
+    border-bottom: transparent
+    border-left: solid colors.$accent1
+
+.active
+  border: solid colors.$accent1
+  border-bottom: transparent
+  border-top-right-radius: $border-radius
+  border-top-left-radius: $border-radius
+@media all and (max-width: #{layout.$screen-small})
+  .active
+    border: solid colors.$accent1
+    border-left: transparent
+    border-top-right-radius: $border-radius
+    border-bottom-right-radius: $border-radius
+.active > a
+  color: colors.$accent1
+  font-weight: fonts.$weight-sans-semi-bold
+  margin-top: -5px
