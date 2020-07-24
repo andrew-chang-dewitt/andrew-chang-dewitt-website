@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() })
 
 import { Landing } from './Landing'
 
-describe('components/Landing', () => {
+describe('component/Landing', () => {
   const landing = shallow(<Landing />)
 
   it('should have a landing section', () => {
