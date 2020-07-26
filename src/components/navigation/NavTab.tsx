@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from 'react'
+import React, { RefObject } from 'react'
 import Link from 'gatsby-link'
 
 import { AnchorLink } from './AnchorLink'
@@ -9,14 +9,14 @@ interface Props {
   id: string
   to: string
   text: string
-  contentTarget?: MutableRefObject<any> | null
+  contentTarget?: RefObject<HTMLDivElement>
   active?: boolean
 }
 
 export const NavTab = ({
   id,
   to,
-  contentTarget = null,
+  contentTarget,
   text,
   active = false,
 }: Props) => {
