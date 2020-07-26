@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject } from 'react'
 import { expect } from 'chai'
 import 'mocha'
 import { render } from '@testing-library/react'
@@ -8,7 +8,7 @@ import Adapter from 'enzyme-adapter-react-16'
 configure({ adapter: new Adapter() })
 
 import { Section } from './Section'
-// import { NextSection } from './navigation/NextSection'
+import { NextSection } from './navigation/NextSection'
 
 describe('component/Section', () => {
   const id = 'test-id'
@@ -67,24 +67,20 @@ describe('component/Section', () => {
     expect(childrenSection.find('.section-wrapper').contains(child2)).to.be.true
   })
 
-  // it('can include a NextSection navigation button stickied to the bottom of the section', () => {
-  //   const TestComponent = () => {
-  //     const secondRef = React.useRef<HTMLDivElement>(null)
-  //     const secondNavItem = {
-  //       to: '/#second',
-  //       text: 'second section',
-  //       target: secondRef,
-  //     }
-  //     return (
-  //       <div>
-  //         <Section id="first" next={secondNavItem} />
-  //         <Section id="second" ref={secondRef} />
-  //       </div>
-  //     )
-  //   }
+  it('can include a NextSection navigation button', () => {
+    const secondRef: RefObject<HTMLDivElement> = {
+      current: ('actually a ref' as any) as HTMLDivElement,
+    }
 
-  //   const test = shallow(<TestComponent />)
+    const secondNavItem = {
+      to: '/#second',
+      text: 'second section',
+      key: 'second',
+      targetRef: secondRef,
+    }
 
-  //   expect(test.childAt(0).shallow().contains(NextSection)).to.be.true
-  // })
+    const test = shallow(<Section id="id" next={secondNavItem} />)
+
+    expect(test.find(NextSection)).to.have.lengthOf(1)
+  })
 })
