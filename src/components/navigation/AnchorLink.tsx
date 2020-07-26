@@ -5,9 +5,7 @@ interface Props {
   to: string
   target: RefObject<HTMLDivElement>
   id: string
-  className: string
-  // id?: string
-  // className?:string
+  className?: string
 }
 
 export const AnchorLink: FunctionComponent<Props> = ({
@@ -15,7 +13,7 @@ export const AnchorLink: FunctionComponent<Props> = ({
   to,
   target,
   id,
-  className,
+  className = '',
 }) => {
   // side effects document.activeElement by calling focus on a given Ref
   // NEEDS IMPROVEMENT: currently the call to .focus() was happening before
