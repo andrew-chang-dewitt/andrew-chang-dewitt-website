@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { Layout, navItems } from '../components/Layout'
+import { Layout, navItems, mergeRefsToItems } from '../components/Layout'
 import { Section } from '../components/Section'
 
 export default function Landing() {
@@ -15,9 +15,11 @@ export default function Landing() {
     'hire-me': hireRef,
     'contact-me': contactRef,
   }
+
+  const merged = mergeRefsToItems(navItems, navigationRefs)
   return (
     <Layout navigationItems={navItems} navigationRefs={navigationRefs} landing>
-      <Section ref={aboutRef} id="about" title="About">
+      <Section ref={aboutRef} id="about" title="About" next={merged[1]}>
         <p>
           About Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
@@ -90,7 +92,12 @@ export default function Landing() {
         </p>
       </Section>
 
-      <Section id="featured-projects" title="Projects" ref={projectRef}>
+      <Section
+        id="featured-projects"
+        title="Projects"
+        ref={projectRef}
+        next={merged[2]}
+      >
         <p>
           Projects Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
@@ -128,7 +135,7 @@ export default function Landing() {
         </p>
       </Section>
 
-      <Section id="hire-me" title="Hire Me" ref={hireRef}>
+      <Section id="hire-me" title="Hire Me" ref={hireRef} next={merged[3]}>
         <p>
           Hire Me Quis risus sed vulputate odio ut enim. Erat nam at lectus urna
           duis convallis convallis tellus id. Odio euismod lacinia at quis risus
