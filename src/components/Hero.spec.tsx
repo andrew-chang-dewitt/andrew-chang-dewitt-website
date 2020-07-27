@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() })
 
 import { Hero, Colors } from './Hero'
 
-describe('components/Hero', () => {
+describe('component/Hero', () => {
   const id = 'test-id'
   const title = 'Test Title'
   const hero = shallow(<Hero id={id} title={title} />)

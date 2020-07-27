@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 
-import { Layout, navItems } from '../components/Layout'
+import { Layout, navItems, mergeRefsToItems } from '../components/Layout'
+import { Section } from '../components/Section'
 
 export default function Landing() {
   const aboutRef = useRef<HTMLDivElement>(null)
@@ -14,10 +15,11 @@ export default function Landing() {
     'hire-me': hireRef,
     'contact-me': contactRef,
   }
+
+  const merged = mergeRefsToItems(navItems, navigationRefs)
   return (
     <Layout navigationItems={navItems} navigationRefs={navigationRefs} landing>
-      <section id="about" ref={aboutRef} tabIndex={-1}>
-        <h1 className="title">About</h1>
+      <Section ref={aboutRef} id="about" title="About" next={merged[1]}>
         <p>
           About Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
@@ -88,9 +90,14 @@ export default function Landing() {
           nec. Aliquam faucibus purus in massa tempor nec feugiat nisl. Dolor
           sed viverra ipsum nunc aliquet.
         </p>
-      </section>
-      <section id="featured-projects" ref={projectRef} tabIndex={-1}>
-        <h1 className="title">Projects</h1>
+      </Section>
+
+      <Section
+        id="featured-projects"
+        title="Projects"
+        ref={projectRef}
+        next={merged[2]}
+      >
         <p>
           Projects Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut
@@ -126,9 +133,9 @@ export default function Landing() {
           molestie at. A lacus vestibulum sed arcu non odio euismod lacinia at.
           Sollicitudin ac orci phasellus egestas tellus rutrum.
         </p>
-      </section>
-      <section id="hire-me" ref={hireRef} tabIndex={-1}>
-        <h1 className="title">Hire Me</h1>
+      </Section>
+
+      <Section id="hire-me" title="Hire Me" ref={hireRef} next={merged[3]}>
         <p>
           Hire Me Quis risus sed vulputate odio ut enim. Erat nam at lectus urna
           duis convallis convallis tellus id. Odio euismod lacinia at quis risus
@@ -165,9 +172,9 @@ export default function Landing() {
           nec. Aliquam faucibus purus in massa tempor nec feugiat nisl. Dolor
           sed viverra ipsum nunc aliquet.
         </p>
-      </section>
-      <section id="contact-me" ref={contactRef} tabIndex={-1}>
-        <h1 className="title">Contact Me</h1>
+      </Section>
+
+      <Section id="contact-me" title="Contact Me" ref={contactRef}>
         <p>
           Dignissim enim sit amet venenatis. Urna neque viverra justo nec
           ultrices dui. Id aliquet risus feugiat in ante metus dictum. Proin
@@ -192,7 +199,7 @@ export default function Landing() {
           nec. Aliquam faucibus purus in massa tempor nec feugiat nisl. Dolor
           sed viverra ipsum nunc aliquet.
         </p>
-      </section>
+      </Section>
     </Layout>
   )
 }
