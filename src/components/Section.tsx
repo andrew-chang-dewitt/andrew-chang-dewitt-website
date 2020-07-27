@@ -3,6 +3,8 @@ import React from 'react'
 import { NextSection } from './navigation/NextSection'
 import { MenuItem } from './navigation/NavMenu'
 
+import styles from './Section.module.sass'
+
 // adding children property on Props interface per
 // https://stackoverflow.com/a/54677641
 interface Props extends React.ComponentPropsWithoutRef<'section'> {
@@ -18,7 +20,9 @@ export const Section = React.forwardRef<HTMLDivElement, Props>(
       <div className="section-wrapper">
         <div className="contents">{children}</div>
         {next && next.targetRef ? (
-          <NextSection to={next.to} id={next.key} target={next.targetRef} />
+          <div className={styles.stickyBottom}>
+            <NextSection to={next.to} id={next.key} target={next.targetRef} />
+          </div>
         ) : (
           ''
         )}
