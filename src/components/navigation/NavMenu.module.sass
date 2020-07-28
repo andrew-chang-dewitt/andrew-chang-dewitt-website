@@ -1,12 +1,91 @@
 @use '../../styles/colors'
 @use '../../styles/fonts'
 @use '../../styles/layout'
+@use '../../styles/icons'
 
-.navigation
+.menu
   height: 100%
   display: flex
   align-items: stretch
-  color: colors.$light
-@media all and (max-width: #{layout.$screen-small})
-  .navigation
+
+// "Checkbox hack" with small modifications
+// found using absolute positioning to put the checkbox
+// off-screen caused the page to scroll up every time it
+// was clicked; display: none still hides it, but
+// doesn't scroll.
+.hamburgerInput
+  display: none
+  // position: absolute
+  // top: -9999px
+  // left: -9999px
+
+// instead of inserting the icon using content, insert
+// as SVG in HTML/JSX
+.hamburgerLabel
+  display:none
+  cursor: pointer
+  user-select:none
+.hamburgerLabel > *
+  display: none
+
+// "Advanced Checkbox Hack" from Tim Pietrusky
+// on https://css-tricks.com/responsive-menu-concepts/
+// body { -webkit-animation: bugfix infinite 1s; }
+// @-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+body
+  -webkit-animation: bugfix infinite 1s
+@-webkit-keyframes bugfix
+    from
+      padding: 0
+    to
+      padding: 0
+
+@media all and (max-width: #{ layout.$screen-small })
+  .menu
+    display: none
+  .hamburgerLabel
+    display: block
+  .hamburgerLabel > *
+    display: block
+  // style the label when checked
+  // .hamburgerInput:checked ~ .hamburgerLabel
+  .hamburgerInput:checked ~ .menu
+    display: flex
     flex-direction: column
+
+
+.svgIcon
+  stroke: colors.$action
+  @include icons.svgIcon
+  stroke-width: 5
+
+.line
+  // stroke-width: icons.$stroke-width
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1)
+
+.line1
+  stroke-dasharray: 60 207
+  // stroke-width: icons.$stroke-width
+
+.line2
+  stroke-dasharray: 60 60
+  // stroke-width: icons.$stroke-width
+
+.line3
+  stroke-dasharray: 60 207
+  // stroke-width: icons.$stroke-width
+
+.opened .line1
+  stroke-dasharray: 90 207
+  stroke-dashoffset: -134
+  // stroke-width: icons.$stroke-width
+
+.opened .line2
+  stroke-dasharray: 1 60
+  stroke-dashoffset: -30
+  // stroke-width: icons.$stroke-width
+
+.opened .line3
+  stroke-dasharray: 90 207
+  stroke-dashoffset: -134
+  // stroke-width: icons.$stroke-width
