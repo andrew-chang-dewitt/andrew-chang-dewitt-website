@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const HamburgerIcon = ({ opened, buttonHandler }: Props) => (
-  <button className={`${opened ? styles.opened : ''}`} onClick={buttonHandler}>
+  <button className={`${opened ? styles.opened + ' opened': ''}`} onClick={buttonHandler}>
     <svg
       className={styles.hamburgerIcon}
       width={40}

@@ -29,7 +29,11 @@ export const NavMenu = ({ items }: Props) => {
       <div className={styles.hamburgerButton}>
         <HamburgerIcon opened={menuOpen} buttonHandler={toggleMenu} />
       </div>
-      <ul className={`${styles.menu} ${menuOpen ? styles.opened : ''}`}>
+      <ul
+        className={`${styles.menu} ${
+          menuOpen ? styles.opened + ' opened' : ''
+        }`}
+      >
         {items.map(({ key, to, text, active, targetRef }) => (
           <NavTab
             key={key}
