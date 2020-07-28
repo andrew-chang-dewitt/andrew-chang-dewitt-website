@@ -4,9 +4,26 @@
 
 .navigation
   height: 100%
+
+.hamburgerButton
+  display: none
+
+.menu
+  height: 100%
+  margin: 0
+  padding: 0
   display: flex
   align-items: stretch
-  color: colors.$light
-@media all and (max-width: #{layout.$screen-small})
-  .navigation
+
+@media all and (max-width: #{ layout.$screen-small })
+  .menu
+    display: none
+  .hamburgerButton
+    display: flex
+    justify-content: flex-end
+  .menu.opened
+    display: flex
     flex-direction: column
+    align-items: center
+    width: 95vw
+    margin-left: -65vw

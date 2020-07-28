@@ -27,22 +27,15 @@ export const NavTab = ({
     }`,
   }
 
-  if (contentTarget) {
-    return (
-      <AnchorLink
-        id={resolved.id}
-        className={resolved.className}
-        to={to}
-        target={contentTarget}
-      >
-        {text}
-      </AnchorLink>
-    )
-  } else {
-    return (
-      <Link id={resolved.id} className={resolved.className} to={to}>
-        {text}
-      </Link>
-    )
-  }
+  const link = contentTarget ? (
+    <AnchorLink id={resolved.id} to={to} target={contentTarget}>
+      {text}
+    </AnchorLink>
+  ) : (
+    <Link id={resolved.id} to={to}>
+      {text}
+    </Link>
+  )
+
+  return <li className={resolved.className}>{link}</li>
 }

@@ -1,21 +1,20 @@
-@use 'Header.variables.sass'
+// @use 'Header.variables.sass'
 @use '../../styles/colors'
 @use '../../styles/fonts'
 @use '../../styles/layout'
 
 .header
   position: sticky
+  z-index: 1
   top: 0px
-  height: Header.$height
+  // height: Header.$height
   color: colors.$light
   background-color: colors.$dark
 
 .contents
   display: flex
   align-items: stretch
-@media all and (max-width: #{layout.$screen-small})
-  .contents
-    flex-direction: column
+  justify-content: space-between
 
 .branding
   color: colors.$light
@@ -27,4 +26,4 @@
 .branding.hidden a:hover
   color: colors.$dark
 
-.menu
+// .navigation
