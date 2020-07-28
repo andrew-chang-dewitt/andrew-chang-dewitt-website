@@ -5,6 +5,7 @@
 
 .header
   position: sticky
+  z-index: 1
   top: 0px
   height: Header.$height
   color: colors.$light
@@ -13,9 +14,9 @@
 .contents
   display: flex
   align-items: stretch
-@media all and (max-width: #{layout.$screen-small})
-  .contents
-    flex-direction: column
+// @media all and (max-width: #{layout.$screen-small})
+//   .contents
+//     flex-direction: column
 
 .branding
   color: colors.$light
@@ -27,4 +28,4 @@
 .branding.hidden a:hover
   color: colors.$dark
 
-.menu
+// .navigation
