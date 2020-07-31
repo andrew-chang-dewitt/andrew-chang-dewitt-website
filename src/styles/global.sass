@@ -33,16 +33,24 @@ h1, h2, h3, h4, h5, h6, blockquote
 a
   color: colors.$action
   text-decoration: none
+  font-weight: fonts.$weight-sans-semi-bold
 
 a:hover
   color: colors.$accent1
   text-decoration: underline
 
-code
+/* override colors & fonts for prismjs styled code blocks */
+code, code[class*="language-"]
+  color: colors.$light
   font-family: fonts.$family-mono
-
-/* override background color in prismjs styled code blocks */
-:not(pre) > code[class*="language-"],
+code > .token.boolean, .token.number, .token.function
+  color: colors.$action
+code > .token.operator, .token.entity, .token.url
+  color: colors.$accent1
+code, :not(pre) > code[class*="language-"]
+  padding: 0 0.2rem
+  border-radius: 0.3rem
+code, :not(pre) > code[class*="language-"],
 pre[class*="language-"]
   background: colors.$dark
 
@@ -57,6 +65,7 @@ pre[class*="language-"]
   font-size: fonts.$size-large
   font-weight: normal
   font-style: italic
+  margin-bottom: 0.75rem
 
 * > .title + .subtitle
   margin-top: -2.75rem
