@@ -10,9 +10,9 @@ import { AnchorLink } from './navigation/AnchorLink'
 
 export const navItems: MenuItem[] = [
   {
-    to: '/#about',
-    text: 'About',
-    key: 'about',
+    to: '/#story',
+    text: 'Story',
+    key: 'story',
   },
   {
     to: '/#featured-projects',
@@ -25,9 +25,9 @@ export const navItems: MenuItem[] = [
     key: 'hire-me',
   },
   {
-    to: '/#contact-me',
-    text: 'Contact Me',
-    key: 'contact-me',
+    to: '/#contact',
+    text: 'Contact',
+    key: 'contact',
   },
   {
     to: '/blog',
