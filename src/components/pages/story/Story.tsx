@@ -53,12 +53,15 @@ export const Story = () => {
         after
         <Detail buttonText=" leaving university">
           &mdash;a hands-on lesson about sunk cost fallacy & the importance of
-          regular self-care that I've
-          <Link to="/blog/post/leaving-university">
-            {' '}
-            written about in more detail
-          </Link>{' '}
-          <em>FIXME: Write this post & link it here</em>
+          regular self-care
+          {/*
+            that I've
+            <Link to="/blog/post/leaving-university">
+              {' '}
+              written about in more detail
+            </Link>{' '}
+            <em>FIXME: Write this post & link it here</em>
+              */}
         </Detail>
         . In the past year, I've begun to study in earnest with the goal of
         making a career change to software development. In this time, I've
@@ -122,15 +125,37 @@ export const Story = () => {
       <h2 className="subtitle">what's next</h2>
       <p>
         I'm currently working on a
-        <Detail buttonText=" small web app in React">
-          {' '}
+        <Detail buttonText=" small web app in React ">
           (something to improve sharing & browsing all of my recipes I have
-          stored <a href="https://trello.com/b/QZWokYmb/cooking">on Trello</a>)
+          stored{' '}
+          <a
+            href="https://trello.com/b/QZWokYmb/cooking"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            on Trello
+          </a>
+          )
+        </Detail>
+        as well as{' '}
+        <Detail
+          buttonText=" adding "
+          additionalText="a blog, portfolio, & resume to this site"
+        >
+          . &mdash;see the
+          <a
+            href="https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website/tree/development"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {' '}
+            development branch on GitHub
+          </a>
         </Detail>
         . Next up is a
         <Detail
           buttonText=" budgeting app "
-          additionalText="for my wife and I to use"
+          additionalText="for my partner and I to use"
         >
           {' '}
           (with integrations to our bank accounts & credit cards, web & native
@@ -155,7 +180,7 @@ export const Story = () => {
           </Detail>
           with a server built in Rust){' '}
         </Detail>
-        I've been promising my wife I'd make.
+        I've been designing for my family's home.
       </p>
       <p>
         Besides projects, I'm currently reading more on data structures &
