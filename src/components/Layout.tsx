@@ -14,26 +14,26 @@ export const navItems: MenuItem[] = [
     text: 'Story',
     key: 'story',
   },
-  {
-    to: '/#featured-projects',
-    text: 'Projects',
-    key: 'featured-projects',
-  },
-  {
-    to: '/#hire-me',
-    text: 'Hire Me',
-    key: 'hire-me',
-  },
+//  {
+//    to: '/#featured-projects',
+//    text: 'Projects',
+//    key: 'featured-projects',
+//  },
+//  {
+//    to: '/#hire-me',
+//    text: 'Hire Me',
+//    key: 'hire-me',
+//  },
   {
     to: '/#contact',
     text: 'Contact',
     key: 'contact',
   },
-  {
-    to: '/blog',
-    text: 'Blog',
-    key: 'blog',
-  },
+//   {
+//     to: '/blog',
+//     text: 'Blog',
+//     key: 'blog',
+//   },
 ]
 
 export interface NavigationRefs {
