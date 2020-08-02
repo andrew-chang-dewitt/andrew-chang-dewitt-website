@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
 import styles from './Story.module.sass'
 
@@ -63,9 +62,19 @@ export const Story = () => {
             <em>FIXME: Write this post & link it here</em>
               */}
         </Detail>
-        . In the past year, I've begun to study in earnest with the goal of
-        making a career change to software development. In this time, I've
-        studied
+        . In that time, I found myself{' '}
+        <Detail
+          buttonText=" becoming enamored "
+          additionalText="with programming"
+        >
+          &mdash;the types of prolems I was solving were challenging & engaging
+          & I was enjoying programming in a way I hadn't enjoyed anything since
+          I first studied calculus in high school
+        </Detail>
+        . Quickly, software development took up more and more of my free time
+        until, about one year ago, I decided to begin studying in earnest with
+        the goal of making a career change to software development. In this
+        time, I've studied
         <Detail buttonText=" computer science fundamentals">
           {' '}
           such as data structures, algorithms, computation, & a little abstract
