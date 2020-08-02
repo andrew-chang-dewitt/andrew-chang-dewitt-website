@@ -1,0 +1,28 @@
+.icon-linkedin, 
+.icon-github, 
+.icon-twitter, 
+.icon-instagram-new, 
+.icon-reddit, 
+.icon-stackoverflow
+ {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: -0.1em;
+}
+
+.icon-linkedin>svg, 
+.icon-github>svg, 
+.icon-twitter>svg, 
+.icon-instagram-new>svg, 
+.icon-reddit>svg, 
+.icon-stackoverflow>svg
+ {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: -0.1em;
+}
+
