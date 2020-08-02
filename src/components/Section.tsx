@@ -15,7 +15,12 @@ interface Props extends React.ComponentPropsWithoutRef<'section'> {
 
 export const Section = React.forwardRef<HTMLDivElement, Props>(
   ({ id, title, next, children }, ref) => (
-    <section className={styles.container} ref={ref} id={id} tabIndex={-1}>
+    <section
+      className={`section-wrapper ${styles.container}`}
+      ref={ref}
+      id={id}
+      tabIndex={-1}
+    >
       {title ? <h1 className={`${styles.title} title`}>{title}</h1> : ''}
       <div className={`${styles.contents} contents`}>{children}</div>
       {next && next.targetRef ? (
