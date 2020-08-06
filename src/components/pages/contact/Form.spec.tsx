@@ -194,9 +194,7 @@ describe('component/contact/Form', function () {
       emailInput = screen.getByLabelText(/email/i) as HTMLInputElement
       subjectInput = screen.getByLabelText(/subject/i) as HTMLInputElement
       messageInput = screen.getByLabelText(/message/i) as HTMLInputElement
-      humanAnswerInput = screen.getByLabelText(
-        /are you a human/i
-      ) as HTMLInputElement
+      humanAnswerInput = screen.getByLabelText('1 + 2 = ?') as HTMLInputElement
       submitButton = screen.getByRole('button', { name: 'Send' })
       honeypotInput = screen.getByTestId('honeypot') as HTMLInputElement
     })

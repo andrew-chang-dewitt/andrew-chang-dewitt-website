@@ -166,32 +166,54 @@ export const Form = () => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <label htmlFor="senderEmail">Your email address:</label>
-      <input
-        type="email"
-        id="senderEmail"
-        autoComplete="email"
-        required
-        value={senderEmail}
-        onChange={handleChange}
-      />
+    <div>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label htmlFor="senderEmail">Your email address:</label>
+        <input
+          type="email"
+          id="senderEmail"
+          autoComplete="email"
+          required
+          value={senderEmail}
+          onChange={handleChange}
+        />
 
-      <label htmlFor="subject">Subject:</label>
-      <input type="text" id="subject" value={subject} onChange={handleChange} />
+        <label htmlFor="subject">Subject:</label>
+        <input
+          type="text"
+          id="subject"
+          value={subject}
+          onChange={handleChange}
+        />
 
-      <label htmlFor="message">Message:</label>
-      <textarea id="message" value={message} required onChange={handleChange} />
+        <label htmlFor="message">Message:</label>
+        <textarea
+          id="message"
+          value={message}
+          required
+          onChange={handleChange}
+        />
 
-      <label htmlFor="humanAnswer">Are you a human? 1 + 2 = ?:</label>
-      <input
-        type="text"
-        id="humanAnswer"
-        value={humanAnswer}
-        onChange={handleChange}
-      />
+        <label htmlFor="humanAnswer">1 + 2 = ?</label>
+        <input
+          type="text"
+          id="humanAnswer"
+          value={humanAnswer}
+          onChange={handleChange}
+        />
 
-      <button type="submit">Send{submitting ? '...' : null}</button>
+        <span></span>
+        <button type="submit">Send{submitting ? '...' : null}</button>
+        {/*Honeypot field follows: */}
+        <input
+          className={styles.hidden + ' hidden'}
+          type="text"
+          id="whoops"
+          data-testid="honeypot"
+          value={whoops}
+          onChange={handleChange}
+        />
+      </form>
 
       {submitError ? (
         <div role="alert">
@@ -206,15 +228,6 @@ export const Form = () => {
             : 'There was an error sending your message, please try again.'}
         </div>
       ) : null}
-      {/*Honeypot field follows: */}
-      <input
-        className={styles.hidden + ' hidden'}
-        type="text"
-        id="whoops"
-        data-testid="honeypot"
-        value={whoops}
-        onChange={handleChange}
-      />
-    </form>
+    </div>
   )
 }
