@@ -2,6 +2,8 @@ import React from 'react'
 
 import styles from './Contact.module.sass'
 
+import { Form } from './Form'
+
 export const Contact = () => (
   <div>
     <h2 className={`${styles.firstSubtitle} subtitle`}>reach out</h2>
@@ -14,6 +16,7 @@ export const Contact = () => (
         hello@andrew-chang-dewitt.dev
       </a>
     </p>
+    <Form />
     <div className={styles.iconGrid}>
       <div className={styles.icon}>
         <a
