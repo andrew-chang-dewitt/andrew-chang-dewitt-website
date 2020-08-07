@@ -72,6 +72,7 @@ export const Form = () => {
     success?: boolean
   }
 
+  const [senderName, setSenderName] = React.useState('')
   const [senderEmail, setSenderEmail] = React.useState('')
   const [subject, setSubject] = React.useState('')
   const [message, setMessage] = React.useState('')
@@ -88,6 +89,10 @@ export const Form = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     switch (e.target.id) {
+      case 'senderName': {
+        setSenderName(e.target.value)
+        break
+      }
       case 'senderEmail': {
         setSenderEmail(e.target.value)
         break
@@ -112,6 +117,8 @@ export const Form = () => {
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const humanAnswerTrimmed = humanAnswer.trim()
+
     setSubmitting(true)
     setMessageStatus({
       attempted: false,
@@ -121,6 +128,7 @@ export const Form = () => {
     if (whoops.length > 0) {
       setSubmitting(false)
       // set fields back to 0
+      setSenderName('')
       setSenderEmail('')
       setSubject('')
       setMessage('')
@@ -133,28 +141,31 @@ export const Form = () => {
     }
     // if answers indicate human, send email
     else if (
-      humanAnswer == '3' ||
-      humanAnswer == 'three' ||
-      humanAnswer == 'Three'
+      humanAnswerTrimmed == '3' ||
+      humanAnswerTrimmed == 'three' ||
+      humanAnswerTrimmed == 'Three'
     ) {
       setSubmitError(false)
-      sendEmail(senderEmail, subject, message).then((res) => {
-        if (res.success) {
-          setMessageStatus({
-            attempted: true,
-            success: true,
-          })
-          setSenderEmail('')
-          setSubject('')
-          setMessage('')
-        } else {
-          setMessageStatus({
-            attempted: true,
-            success: false,
-          })
+      sendEmail(senderEmail.trim(), subject.trim(), message.trim()).then(
+        (res) => {
+          if (res.success) {
+            setMessageStatus({
+              attempted: true,
+              success: true,
+            })
+            setSenderName('')
+            setSenderEmail('')
+            setSubject('')
+            setMessage('')
+          } else {
+            setMessageStatus({
+              attempted: true,
+              success: false,
+            })
+          }
+          setSubmitting(false)
         }
-        setSubmitting(false)
-      })
+      )
     }
     // if incorrect answer to 1 + 2 = ?, fail to send
     else {
@@ -168,42 +179,62 @@ export const Form = () => {
   return (
     <div>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label htmlFor="senderEmail">Your email address:</label>
-        <input
-          type="email"
-          id="senderEmail"
-          autoComplete="email"
-          required
-          value={senderEmail}
-          onChange={handleChange}
-        />
+        <div className={styles.name}>
+          <label htmlFor="senderName">Who are you?</label>
+          <input
+            type="text"
+            id="senderName"
+            value={senderName}
+            onChange={handleChange}
+          />
+        </div>
 
-        <label htmlFor="subject">Subject:</label>
-        <input
-          type="text"
-          id="subject"
-          value={subject}
-          onChange={handleChange}
-        />
+        <div className={styles.email}>
+          <label htmlFor="senderEmail">What's your email?</label>
+          <input
+            type="email"
+            id="senderEmail"
+            autoComplete="email"
+            required
+            value={senderEmail}
+            onChange={handleChange}
+          />
+        </div>
 
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          value={message}
-          required
-          onChange={handleChange}
-        />
+        <div className={styles.subject}>
+          <label htmlFor="subject">What do you want to talk about?</label>
+          <input
+            type="text"
+            id="subject"
+            value={subject}
+            onChange={handleChange}
+          />
+        </div>
 
-        <label htmlFor="humanAnswer">1 + 2 = ?</label>
-        <input
-          type="text"
-          id="humanAnswer"
-          value={humanAnswer}
-          onChange={handleChange}
-        />
+        <div className={styles.message}>
+          <label htmlFor="message">Tell me more:</label>
+          <textarea
+            id="message"
+            value={message}
+            required
+            onChange={handleChange}
+          />
+        </div>
 
-        <span></span>
-        <button type="submit">Send{submitting ? '...' : null}</button>
+        <div className={styles.captcha}>
+          <label htmlFor="humanAnswer">1 + 2 = ?</label>
+          <input
+            type="text"
+            id="humanAnswer"
+            value={humanAnswer}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={styles.submit}>
+          <button type="submit">Send{submitting ? '...' : null}</button>
+        </div>
+
         {/*Honeypot field follows: */}
         <input
           className={styles.hidden + ' hidden'}
