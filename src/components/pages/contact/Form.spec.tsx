@@ -161,6 +161,7 @@ describe('component/contact/Form', function () {
   })
 
   describe('Form', function () {
+    let nameInput: HTMLInputElement
     let emailInput: HTMLInputElement
     let subjectInput: HTMLInputElement
     let messageInput: HTMLInputElement
@@ -191,9 +192,10 @@ describe('component/contact/Form', function () {
       // bad types in @testing-library/react; requires casting
       // to get .value property
       // from: https://stackoverflow.com/a/59987029/4642869
+      nameInput = screen.getByLabelText(/who/i) as HTMLInputElement
       emailInput = screen.getByLabelText(/email/i) as HTMLInputElement
-      subjectInput = screen.getByLabelText(/subject/i) as HTMLInputElement
-      messageInput = screen.getByLabelText(/message/i) as HTMLInputElement
+      subjectInput = screen.getByLabelText(/talk about/i) as HTMLInputElement
+      messageInput = screen.getByLabelText(/more/i) as HTMLInputElement
       humanAnswerInput = screen.getByLabelText('1 + 2 = ?') as HTMLInputElement
       submitButton = screen.getByRole('button', { name: 'Send' })
       honeypotInput = screen.getByTestId('honeypot') as HTMLInputElement
@@ -211,6 +213,7 @@ describe('component/contact/Form', function () {
     })
 
     it('lets the user know their message was sent succesfully', async function () {
+      inputEvent(nameInput, 'a name')
       inputEvent(emailInput, 'an@email.address')
       inputEvent(subjectInput, 'a subject')
       inputEvent(messageInput, 'a message')
@@ -231,6 +234,7 @@ describe('component/contact/Form', function () {
         Promise.resolve().then(() => ({ success: false, error: 'some data' }))
       )
 
+      inputEvent(nameInput, 'a name')
       inputEvent(emailInput, 'an@email.address')
       inputEvent(messageInput, 'a message')
       inputEvent(humanAnswerInput, '3')
@@ -245,6 +249,7 @@ describe('component/contact/Form', function () {
     })
 
     it('checks if the user is a human using simple math', async function () {
+      inputEvent(nameInput, 'a name')
       inputEvent(emailInput, 'an@email.address')
       inputEvent(messageInput, 'a message')
 
@@ -266,6 +271,7 @@ describe('component/contact/Form', function () {
       })
 
       it('will appear to send a message even if the honeypot is filled out', async function () {
+        inputEvent(nameInput, 'a name')
         inputEvent(emailInput, 'an@email.address')
         inputEvent(messageInput, 'a message')
         inputEvent(humanAnswerInput, '3')
@@ -283,6 +289,7 @@ describe('component/contact/Form', function () {
       })
 
       it("but the message actually won't have been sent", async function () {
+        inputEvent(nameInput, 'a name')
         inputEvent(emailInput, 'an@email.address')
         inputEvent(messageInput, 'a message')
         inputEvent(humanAnswerInput, '3')
