@@ -48,6 +48,25 @@
 .form input, .form textarea
   border: transparent
 
+
+div[role=alert].alertError
+  margin-top: 1rem
+  font-family: fonts.$family-mono
+  font-weight: fonts.$weight-mono-regular
+  color: colors.$accent2
+
+// div[role=alert].alertSuccess
+//   margin: 2rem 0 1rem 0
+
+div[role=alert].alertSuccess > h3
+  font-family: fonts.$family-mono
+  font-size: fonts.$size-medium
+  font-weight: fonts.$weight-mono-regular
+
+.emphasis
+  font-family: fonts.$family-mono
+  font-weight: fonts.$weight-mono-regular
+
 @media all and (max-width: #{ layout.$screen-medium })
   .form
     grid-template-columns: 1fr

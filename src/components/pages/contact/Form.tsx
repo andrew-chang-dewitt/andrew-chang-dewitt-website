@@ -81,7 +81,9 @@ export const Form = () => {
   }
 
   const [senderName, setSenderName] = React.useState('')
+  const [sentName, setSentName] = React.useState('')
   const [senderEmail, setSenderEmail] = React.useState('')
+  const [sentEmail, setSentEmail] = React.useState('')
   const [subject, setSubject] = React.useState('')
   const [message, setMessage] = React.useState('')
   const [whoops, setWhoops] = React.useState('') // honeypot field
@@ -165,7 +167,9 @@ export const Form = () => {
             attempted: true,
             success: true,
           })
+          setSentName(senderName)
           setSenderName('')
+          setSentEmail(senderEmail)
           setSenderEmail('')
           setSubject('')
           setMessage('')
@@ -192,7 +196,12 @@ export const Form = () => {
     <div>
       {messageStatus.attempted && messageStatus.success ? (
         <div role="alert" className={styles.alertSuccess}>
-          Thanks for reaching out!
+          <h3>Hey {sentName}, thanks for reaching out!</h3>
+          <p className="indent">
+            A copy of your message has been sent to you at{' '}
+            <span className={styles.emphasis}>{sentEmail}</span>. I'll respond
+            as soon as I can.
+          </p>
         </div>
       ) : (
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -265,7 +274,7 @@ export const Form = () => {
       )}
 
       {submitError ? (
-        <div role="alert">
+        <div role="alert" className={styles.alertError}>
           Are you sure you're human? Check your answer & try again
         </div>
       ) : null}
