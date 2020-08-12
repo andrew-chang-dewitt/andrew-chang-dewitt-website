@@ -11,7 +11,8 @@ interface SendEmailResult {
 export const sendEmail = (
   submittedEmail: string,
   submittedSubject: string,
-  submittedMessage: string
+  submittedMessage: string,
+  submittedName: string
 ): Promise<SendEmailResult> => {
   // guard against empty email & message, subject is allowed to be empty
   if (submittedEmail === '')
@@ -25,14 +26,20 @@ export const sendEmail = (
       error: 'Message cannot be empty',
     }))
 
-  // encode each data point as a URI string with a key
-  const rawData = [
-    encodeURIComponent('email=' + submittedEmail),
-    encodeURIComponent('subject=' + submittedSubject),
-    encodeURIComponent('message=' + submittedMessage),
-  ]
-  // then join with ampersands & replace spaces with +
-  const encodedData = rawData.join('&').replace(/%20/g, '+')
+  // encode each data point as a key-value pair
+  const rawData = {
+    email: submittedEmail,
+    subject: `New message received via website: ${submittedSubject}`,
+    message: `
+Message from ${submittedName}, reply to ${submittedEmail}):
+
+===================================================================
+
+${submittedMessage}
+`,
+  }
+  // then encode the object as JSON
+  const encodedData = JSON.stringify(rawData)
 
   const parseResponse = (response: Response): SendEmailResult => {
     if (typeof response.ok === 'undefined')
@@ -54,7 +61,8 @@ export const sendEmail = (
     .fetch('/reach-out', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: encodedData,
     })
@@ -146,26 +154,30 @@ export const Form = () => {
       humanAnswerTrimmed == 'Three'
     ) {
       setSubmitError(false)
-      sendEmail(senderEmail.trim(), subject.trim(), message.trim()).then(
-        (res) => {
-          if (res.success) {
-            setMessageStatus({
-              attempted: true,
-              success: true,
-            })
-            setSenderName('')
-            setSenderEmail('')
-            setSubject('')
-            setMessage('')
-          } else {
-            setMessageStatus({
-              attempted: true,
-              success: false,
-            })
-          }
-          setSubmitting(false)
+      sendEmail(
+        senderEmail.trim(),
+        subject.trim(),
+        message.trim(),
+        senderName.trim()
+      ).then((res) => {
+        if (res.success) {
+          setMessageStatus({
+            attempted: true,
+            success: true,
+          })
+          setSenderName('')
+          setSenderEmail('')
+          setSubject('')
+          setMessage('')
+          setHumanAnswer('')
+        } else {
+          setMessageStatus({
+            attempted: true,
+            success: false,
+          })
         }
-      )
+        setSubmitting(false)
+      })
     }
     // if incorrect answer to 1 + 2 = ?, fail to send
     else {
