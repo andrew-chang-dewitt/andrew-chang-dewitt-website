@@ -229,9 +229,9 @@ describe('component/contact/Form', function () {
         fireEvent.click(submitButton)
       })
 
-      const alert = await screen.findByRole('alert')
+      const successMessage = await screen.findByText(/thanks for reaching out/i)
 
-      expect(alert).to.contain.text('Thanks for reaching out')
+      expect(successMessage).to.exist
     })
 
     it('or if there was an error sending the message', async function () {
@@ -249,9 +249,9 @@ describe('component/contact/Form', function () {
         fireEvent.click(submitButton)
       })
 
-      const alert = await screen.findByRole('alert')
+      const errorMessage = await screen.findByText(/there was an error/i)
 
-      expect(alert).to.contain.text('There was an error')
+      expect(errorMessage).to.exist
     })
 
     it('checks if the user is a human using simple math', async function () {
@@ -266,9 +266,9 @@ describe('component/contact/Form', function () {
         fireEvent.click(submitButton)
       })
 
-      const alert = await screen.findByRole('alert')
+      const errorMessage = await screen.findByText(/are you sure you're human/i)
 
-      expect(alert).to.contain.text("Are you sure you're human")
+      expect(errorMessage).to.exist
     })
 
     describe('and also checks if they are human using a honeypot', function () {
@@ -289,9 +289,11 @@ describe('component/contact/Form', function () {
           fireEvent.click(submitButton)
         })
 
-        const alert = await screen.findByRole('alert')
+        const successMessage = await screen.findByText(
+          /thanks for reaching out/i
+        )
 
-        expect(alert).to.contain.text('Thanks for reaching out')
+        expect(successMessage).to.exist
       })
 
       it("but the message actually won't have been sent", async function () {
