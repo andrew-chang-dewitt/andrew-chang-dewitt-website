@@ -6,7 +6,7 @@ import { Detail } from './Detail'
 
 export const Story = () => {
   return (
-    <div className={styles.indent}>
+    <div className="indent">
       <h2 className={`${styles.firstSubtitle} subtitle`}>short version</h2>
 
       <p>

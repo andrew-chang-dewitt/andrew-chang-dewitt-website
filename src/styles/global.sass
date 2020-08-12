@@ -4,9 +4,6 @@
 
 @import '~prismjs/themes/prism-tomorrow'
 
-*
-//  margin: 0
-
 :root
   scroll-behavior: smooth
 
@@ -30,13 +27,35 @@ section
 h1, h2, h3, h4, h5, h6, blockquote
   font-family: fonts.$family-serif
 
-a
+button
+  background-color: colors.$dark
+  color: colors.$light
+  font-weight: fonts.$weight-sans-semi-bold
+  border: none
+
+button[type="submit"]
+  background-color: colors.$action
+  color: colors.$dark
+
+button:hover, button[type="submit"]:hover
+  background-color: colors.$accent1
+
+button[type="submit"]:hover
+  color: colors.$light
+
+*:focus
+  outline: none
+  box-shadow: 0 0 3px 1px colors.$accent1
+
+a, span[role=button]
   color: colors.$action
   text-decoration: none
   font-weight: fonts.$weight-sans-semi-bold
 
-a:hover
+a:hover, span[role=button]:hover
   color: colors.$accent1
+
+a:hover
   text-decoration: underline
 
 /* override colors & fonts for prismjs styled code blocks */
@@ -56,6 +75,9 @@ pre[class*="language-"]
 
 .no-wrap
   white-space: nowrap
+
+.indent p, p.indent
+  text-indent: layout.$paragraph-indent
 
 .title
   font-size: fonts.$size-huge

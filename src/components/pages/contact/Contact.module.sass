@@ -17,4 +17,11 @@ $iconsize: 6rem
 .icon svg
   height: $iconsize
   width: $iconsize
-  color: colors.$dark
+  fill: colors.$action
+
+.icon a
+  display: inline-block
+  height: 100%
+
+.icon a:focus svg, .icon a:hover svg
+  fill: colors.$accent1
