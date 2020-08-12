@@ -219,6 +219,7 @@ export const Layout: React.FunctionComponent<Props> = ({
   return (
     <div>
       <Helmet>
+        <html lang="en" />
         <title>Andrew Chang-DeWitt</title>
       </Helmet>
 
