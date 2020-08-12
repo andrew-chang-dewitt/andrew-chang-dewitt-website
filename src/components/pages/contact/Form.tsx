@@ -190,73 +190,79 @@ export const Form = () => {
 
   return (
     <div>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.name}>
-          <label htmlFor="senderName">Who are you?</label>
+      {messageStatus.attempted && messageStatus.success ? (
+        <div role="alert" className={styles.alertSuccess}>
+          Thanks for reaching out!
+        </div>
+      ) : (
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.name}>
+            <label htmlFor="senderName">Who are you?</label>
+            <input
+              type="text"
+              id="senderName"
+              value={senderName}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.email}>
+            <label htmlFor="senderEmail">What's your email?</label>
+            <input
+              type="email"
+              id="senderEmail"
+              autoComplete="email"
+              required
+              value={senderEmail}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.subject}>
+            <label htmlFor="subject">What do you want to talk about?</label>
+            <input
+              type="text"
+              id="subject"
+              value={subject}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.message}>
+            <label htmlFor="message">Tell me more:</label>
+            <textarea
+              id="message"
+              value={message}
+              required
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.captcha}>
+            <label htmlFor="humanAnswer">1 + 2 = ?</label>
+            <input
+              type="text"
+              id="humanAnswer"
+              value={humanAnswer}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.submit}>
+            <button type="submit">Send{submitting ? '...' : null}</button>
+          </div>
+
+          {/*Honeypot field follows: */}
           <input
+            className={styles.hidden + ' hidden'}
             type="text"
-            id="senderName"
-            value={senderName}
+            id="whoops"
+            data-testid="honeypot"
+            value={whoops}
             onChange={handleChange}
           />
-        </div>
-
-        <div className={styles.email}>
-          <label htmlFor="senderEmail">What's your email?</label>
-          <input
-            type="email"
-            id="senderEmail"
-            autoComplete="email"
-            required
-            value={senderEmail}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={styles.subject}>
-          <label htmlFor="subject">What do you want to talk about?</label>
-          <input
-            type="text"
-            id="subject"
-            value={subject}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={styles.message}>
-          <label htmlFor="message">Tell me more:</label>
-          <textarea
-            id="message"
-            value={message}
-            required
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={styles.captcha}>
-          <label htmlFor="humanAnswer">1 + 2 = ?</label>
-          <input
-            type="text"
-            id="humanAnswer"
-            value={humanAnswer}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={styles.submit}>
-          <button type="submit">Send{submitting ? '...' : null}</button>
-        </div>
-
-        {/*Honeypot field follows: */}
-        <input
-          className={styles.hidden + ' hidden'}
-          type="text"
-          id="whoops"
-          data-testid="honeypot"
-          value={whoops}
-          onChange={handleChange}
-        />
-      </form>
+        </form>
+      )}
 
       {submitError ? (
         <div role="alert">
@@ -264,11 +270,9 @@ export const Form = () => {
         </div>
       ) : null}
 
-      {messageStatus.attempted ? (
-        <div role="alert">
-          {messageStatus.success
-            ? `Thanks for reaching out! A copy of your message has been sent to ${senderEmail}.`
-            : 'There was an error sending your message, please try again.'}
+      {messageStatus.attempted && !messageStatus.success ? (
+        <div role="alert" className={styles.alertError}>
+          'There was an error sending your message, please try again.'
         </div>
       ) : null}
     </div>
