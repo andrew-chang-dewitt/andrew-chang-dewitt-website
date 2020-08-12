@@ -9,6 +9,7 @@ interface Props {
 
 export const HamburgerIcon = ({ opened, buttonHandler }: Props) => (
   <button
+    aria-label="navigation menu"
     className={`${styles.button} ${opened ? styles.opened + ' opened' : ''}`}
     onClick={buttonHandler}
   >
