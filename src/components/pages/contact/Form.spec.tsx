@@ -25,6 +25,7 @@ describe('component/contact/Form', function () {
     const email = 'email@email.email'
     const subject = 'subject'
     const message = 'message'
+    const name = 'name'
 
     let mockFetch: { restore: () => void }
 
@@ -80,7 +81,7 @@ describe('component/contact/Form', function () {
       })
 
       expect(
-        await sendEmail(email, subject, message).then(
+        await sendEmail(email, subject, message, name).then(
           (result) => result.success
         )
       ).to.be.true
@@ -92,7 +93,7 @@ describe('component/contact/Form', function () {
       })
 
       expect(
-        await sendEmail(email, subject, message).then(
+        await sendEmail(email, subject, message, name).then(
           (result) => result.success
         )
       ).to.be.false
@@ -104,7 +105,7 @@ describe('component/contact/Form', function () {
       mockFetch = setupMockFetch('value')
 
       expect(
-        await sendEmail(email, subject, message).then(
+        await sendEmail(email, subject, message, name).then(
           (result) => result.success
         )
       ).to.be.false
@@ -118,7 +119,9 @@ describe('component/contact/Form', function () {
       })
 
       expect(
-        await sendEmail('', subject, message).then((result) => result.success)
+        await sendEmail('', subject, message, name).then(
+          (result) => result.success
+        )
       ).to.be.false
     })
 
@@ -130,7 +133,9 @@ describe('component/contact/Form', function () {
       })
 
       expect(
-        await sendEmail(email, subject, '').then((result) => result.success)
+        await sendEmail(email, subject, '', name).then(
+          (result) => result.success
+        )
       ).to.be.false
     })
 
@@ -141,7 +146,7 @@ describe('component/contact/Form', function () {
         mockFetch = setupMockFetch({ ok: true })
         spyFetch = sinon.spy(window, 'fetch')
 
-        await sendEmail(email, subject, message)
+        await sendEmail(email, subject, message, name)
       })
 
       it('URL, using a relative path', function () {
@@ -152,9 +157,10 @@ describe('component/contact/Form', function () {
         expect(spyFetch.args[0][1]?.method).to.equal('POST')
       })
 
-      it('Content-Type Header as form-urlencoded', function () {
+      it('Accept Header as json', function () {
         expect(spyFetch.args[0][1]?.headers).to.deep.equal({
-          'Content-Type': 'application/x-www-form-urlencoded',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         })
       })
     })
