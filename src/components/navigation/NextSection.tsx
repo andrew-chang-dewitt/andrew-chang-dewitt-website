@@ -12,10 +12,10 @@ interface Props {
 
 export const NextSection = ({ to, target, id }: Props) => (
   <div className={styles.svgIcon}>
-    <AnchorLink to={to} id={id} target={target}>
+    <AnchorLink to={to} id={`next-section-${id}`} target={target}>
       <svg width={100} height={100}>
         <title>Go to next section</title>
-        <use xlinkHref="ikonate.svg#chevron-down" />
+        <use xlinkHref="icons/ikonate.svg#chevron-down" />
       </svg>
     </AnchorLink>
   </div>
