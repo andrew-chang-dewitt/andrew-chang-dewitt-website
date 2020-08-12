@@ -7,11 +7,11 @@ import { Form } from './Form'
 export const Contact = () => (
   <div>
     <h2 className={`${styles.firstSubtitle} subtitle`}>reach out</h2>
-    <p>
-      Questions about me or my work, reading suggestions, or you'd like to talk
-      about what I could do for you? I'd love to hear from you! Send me a
-      message using the form or any of the social media platforms below, or just
-      send me an email at{' '}
+    <p className="indent">
+      Do you have questions about me or my work? Maybe some book or article
+      suggestions? Or you'd like to talk about what I could do for you? I'd love
+      to hear from you! Send me a message using the form or any of the social
+      media platforms below, or just send me an email at{' '}
       <a href="mailto:hello@andrew-chang-dewitt.dev">
         hello@andrew-chang-dewitt.dev
       </a>
