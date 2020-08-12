@@ -1,4 +1,5 @@
 import React, { RefObject } from 'react'
+import { Helmet } from 'react-helmet'
 import { useLocation } from '@reach/router'
 
 import styles from './Layout.module.sass'
@@ -217,6 +218,10 @@ export const Layout: React.FunctionComponent<Props> = ({
 
   return (
     <div>
+      <Helmet>
+        <title>Andrew Chang-DeWitt</title>
+      </Helmet>
+
       <AnchorLink
         to="#main-content"
         id="skip-to-main-content"
@@ -225,17 +230,20 @@ export const Layout: React.FunctionComponent<Props> = ({
       >
         Skip to main content
       </AnchorLink>
+
       {landing ? (
         <div ref={landingRef}>
           <Landing />
         </div>
       ) : null}
+
       {/*create dummy div for header ref*/}
       <div ref={headerRef}></div>
       <Header
         navigationItems={navItems}
         brandingVisibility={headerIsStickied}
       />
+
       <div
         id="main-content"
         className={styles.content}
