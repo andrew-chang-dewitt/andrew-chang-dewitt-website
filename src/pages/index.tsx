@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React, { Suspense, useRef } from 'react'
 
 import { Layout, navItems, mergeRefsToItems } from '../components/Layout'
 import { Section } from '../components/Section'
-import { Story } from '../components/pages/story/Story'
-import { Contact } from '../components/pages/contact/Contact'
+
+const Story = React.lazy(() => import('../components/pages/story/Story'))
+const Contact = React.lazy(() => import('../components/pages/contact/Contact'))
 
 export default function Landing() {
   const storyRef = useRef<HTMLDivElement>(null)
@@ -22,7 +23,9 @@ export default function Landing() {
   return (
     <Layout navigationItems={navItems} navigationRefs={navigationRefs} landing>
       <Section ref={storyRef} id="story" title="Story" next={merged[1]}>
-        <Story />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Story />
+        </Suspense>
       </Section>
 
       {/*
@@ -39,7 +42,9 @@ export default function Landing() {
         */}
 
       <Section id="contact" title="Contact" ref={contactRef}>
-        <Contact />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Contact />
+        </Suspense>
       </Section>
     </Layout>
   )

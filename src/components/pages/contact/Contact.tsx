@@ -4,7 +4,7 @@ import styles from './Contact.module.sass'
 
 import { Form } from './Form'
 
-export const Contact = () => (
+const Contact = () => (
   <div>
     <h2 className={`${styles.firstSubtitle} subtitle`}>reach out</h2>
     <p className="indent">
@@ -69,3 +69,5 @@ export const Contact = () => (
     </div>
   </div>
 )
+
+export default Contact
