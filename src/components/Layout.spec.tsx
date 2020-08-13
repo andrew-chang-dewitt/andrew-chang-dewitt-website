@@ -125,8 +125,8 @@ describe('component/Layout', () => {
     })
 
     it('and that landing is before the Header', () => {
-      expect(layout.childAt(1).childAt(0).type()).to.equal(Landing)
-      expect(layout.childAt(3).type()).to.equal(Header)
+      expect(layout.childAt(2).childAt(0).type()).to.equal(Landing)
+      expect(layout.childAt(4).type()).to.equal(Header)
     })
   })
 
