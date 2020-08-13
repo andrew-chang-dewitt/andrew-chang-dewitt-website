@@ -4,7 +4,7 @@ import styles from './Story.module.sass'
 
 import { Detail } from './Detail'
 
-const Story = () => {
+export const Story = () => {
   return (
     <div className="indent">
       <h2 className={`${styles.firstSubtitle} subtitle`}>short version</h2>
@@ -215,5 +215,3 @@ const Story = () => {
     </div>
   )
 }
-
-export default Story
