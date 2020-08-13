@@ -221,6 +221,10 @@ export const Layout: React.FunctionComponent<Props> = ({
       <Helmet>
         <html lang="en" />
         <title>Andrew Chang-DeWitt</title>
+        <meta
+          name="description"
+          content="Software Developer--I make web apps, API's, IoT programs, & cli utilities."
+        />
       </Helmet>
 
       <AnchorLink
