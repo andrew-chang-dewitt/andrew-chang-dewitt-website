@@ -1,0 +1,13 @@
+@use '../../styles/colors'
+@use '../../styles/icons'
+
+.svgIcon svg
+  stroke: colors.$action
+  @include icons.svgIcon
+
+.svgIcon a
+  display: inline-block
+  height: 100%
+
+.svgIcon a:hover svg
+  stroke: colors.$accent1

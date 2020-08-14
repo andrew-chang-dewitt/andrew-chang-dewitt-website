@@ -6,12 +6,12 @@ import Adapter from 'enzyme-adapter-react-16'
 
 configure({ adapter: new Adapter() })
 
-import { Home } from './Home'
+import { Landing } from './Landing'
 
-describe('components/Home', () => {
-  const home = shallow(<Home />)
+describe('component/Landing', () => {
+  const landing = shallow(<Landing />)
 
   it('should have a landing section', () => {
-    expect(home.find('#landing')).to.have.lengthOf(1)
+    expect(landing).to.exist
   })
 })

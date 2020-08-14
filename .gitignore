@@ -7,11 +7,8 @@ node_modules/
 
 # nyc code coverage
 .nyc_output
+coverage/
 
 # gatsby
 .cache/
 public/
-
-# gatsby-plugin-codegen for Typescript graphql types
-apollo.config.js
-schema.json

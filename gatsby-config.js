@@ -7,14 +7,10 @@ module.exports = {
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
-      options: { implementation: require('sass') },
+      options: { implementation: require('dart-sass') },
     },
     'gatsby-plugin-typescript',
     'gatsby-transformer-typescript-css-modules',
-    {
-      resolve: 'gatsby-plugin-codegen',
-      options: {},
-    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

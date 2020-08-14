@@ -1,0 +1,32 @@
+// @use 'Header.variables.sass'
+@use '../../styles/colors'
+@use '../../styles/fonts'
+@use '../../styles/layout'
+
+.header
+  position: sticky
+  z-index: 1
+  top: 0px
+  // height: Header.$height
+  color: colors.$light
+  background-color: colors.$dark
+
+.header a
+  color: colors.$action
+
+.contents
+  display: flex
+  align-items: stretch
+  justify-content: space-between
+
+.branding
+  color: colors.$light
+  font-family: fonts.$family-serif
+  font-size: fonts.$size-medium
+  font-weight: fonts.$weight-serif-bold
+.branding.hidden a
+  color: colors.$dark
+.branding.hidden a:hover
+  color: colors.$dark
+
+// .navigation

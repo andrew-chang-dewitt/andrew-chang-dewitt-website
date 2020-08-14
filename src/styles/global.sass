@@ -1,22 +1,93 @@
 @use 'fonts'
 @use 'colors'
+@use 'layout'
 
 @import '~prismjs/themes/prism-tomorrow'
+
+:root
+  scroll-behavior: smooth
 
 body
   margin: 0
   font-family: fonts.$family-sans
   font-size: fonts.$size-regular
+  text-rendering: optimizeLegibility
   color: colors.$dark
   background-color: colors.$light
+
+section
+  padding-top: 4rem
+
+.standardWidth,section
+  @include layout.standard-width
+
+.standardWidth>*,section>*
+  margin: 0 1rem
 
 h1, h2, h3, h4, h5, h6, blockquote
   font-family: fonts.$family-serif
 
-code
-  font-family: fonts.$family-mono
+button
+  background-color: colors.$dark
+  color: colors.$light
+  font-weight: fonts.$weight-sans-semi-bold
+  border: none
 
-/* override background color in prismjs styled code blocks */
-:not(pre) > code[class*="language-"],
+button[type="submit"]
+  background-color: colors.$action
+  color: colors.$dark
+
+button:hover, button[type="submit"]:hover
+  background-color: colors.$accent1
+
+button[type="submit"]:hover
+  color: colors.$light
+
+*:focus
+  outline: none
+  box-shadow: 0 0 3px 1px colors.$accent1
+
+a, span[role=button]
+  color: colors.$action-dark
+  text-decoration: none
+  font-weight: fonts.$weight-sans-semi-bold
+
+a:hover, span[role=button]:hover
+  color: colors.$accent1
+
+a:hover
+  text-decoration: underline
+
+/* override colors & fonts for prismjs styled code blocks */
+code, code[class*="language-"]
+  color: colors.$light
+  font-family: fonts.$family-mono
+code > .token.boolean, .token.number, .token.function
+  color: colors.$action
+code > .token.operator, .token.entity, .token.url
+  color: colors.$accent1
+code, :not(pre) > code[class*="language-"]
+  padding: 0 0.2rem
+  border-radius: 0.3rem
+code, :not(pre) > code[class*="language-"],
 pre[class*="language-"]
   background: colors.$dark
+
+.no-wrap
+  white-space: nowrap
+
+.indent p, p.indent
+  text-indent: layout.$paragraph-indent
+
+.title
+  font-size: fonts.$size-huge
+  font-weight: normal
+
+.subtitle
+  font-size: fonts.$size-large
+  font-weight: normal
+  font-style: italic
+  margin-bottom: 0.75rem
+
+.centered, .centered *
+  text-align: center
