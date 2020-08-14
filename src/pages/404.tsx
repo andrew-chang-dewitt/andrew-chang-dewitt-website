@@ -4,9 +4,9 @@ import { Link } from 'gatsby'
 import { Layout, navItems } from '../components/Layout'
 // import {Section} from '../components/Section'
 
-import styles from './default404.module.sass'
+import styles from './404.module.sass'
 
-export default function Default404() {
+export default function Page404() {
   return (
     <Layout navigationItems={navItems}>
       <div className={`${styles.container} centered`}>

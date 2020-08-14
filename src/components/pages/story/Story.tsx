@@ -91,7 +91,7 @@ export const Story = () => {
           , python, &
           <Detail buttonText=" Rust">
             {' '}
-            (a recent addition & quicly becoming my new favorite!)
+            (a recent addition & quickly becoming my new favorite!)
           </Detail>
           , and a little bit of
           <Detail buttonText=" a few others"> (R, Ruby, Racket, & PHP)</Detail>
