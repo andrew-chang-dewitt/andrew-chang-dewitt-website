@@ -29,14 +29,9 @@ export const sendEmail = (
   // encode each data point as a key-value pair
   const rawData = {
     email: submittedEmail,
-    subject: `New message received via website: ${submittedSubject}`,
-    message: `
-Message from ${submittedName}, reply to ${submittedEmail}):
-
-===================================================================
-
-${submittedMessage}
-`,
+    subject: submittedSubject,
+    message: submittedMessage,
+    name: submittedName,
   }
   // then encode the object as JSON
   const encodedData = JSON.stringify(rawData)
