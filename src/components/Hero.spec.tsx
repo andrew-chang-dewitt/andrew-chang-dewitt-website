@@ -18,7 +18,13 @@ describe('component/Hero', () => {
   })
 
   it('and renders a title as an <h1> in the <section>', () => {
-    expect(hero).to.exist
+    expect(hero.find('.title')).to.have.lengthOf(1)
+  })
+
+  it('but the title is optional', () => {
+    const noTitle = shallow(<Hero id={id} />)
+
+    expect(noTitle.find('.title')).to.have.lengthOf(0)
   })
 
   it('can set a default background & text color', () => {

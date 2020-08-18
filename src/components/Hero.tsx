@@ -3,8 +3,8 @@ import React, { FunctionComponent } from 'react'
 import styles from './Hero.module.sass'
 
 interface Props {
-  id?: string
-  title?: string
+  id: string
+  title?: string | null
   className?: string | null
   color?: Colors
 }
@@ -24,14 +24,14 @@ export const colorStyles = (selection: Colors) => {
 }
 
 export const Hero: FunctionComponent<Props> = ({
-  id = null,
+  id,
   title = null,
-  color = Colors.Dark,
   className = null,
+  color = Colors.Dark,
   children,
 }) => (
   <section
-    id={id || ''}
+    id={id}
     className={`${styles.hero} ${className ? className : ''}`}
     style={colorStyles(color)}
   >
