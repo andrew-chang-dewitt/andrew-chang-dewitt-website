@@ -12,6 +12,7 @@ import * as LayoutModule from './Layout'
 
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
+import { Footer } from './footer/Footer'
 import { AnchorLink } from './navigation/AnchorLink'
 import { MenuItem } from './navigation/NavMenu'
 
@@ -127,6 +128,10 @@ describe('component/Layout', () => {
     it('and that landing is before the Header', () => {
       expect(layout.childAt(2).childAt(0).type()).to.equal(Landing)
       expect(layout.childAt(4).type()).to.equal(Header)
+    })
+
+    it('renders a Footer at the end of the page', () => {
+      expect(layout.children().last().type()).to.equal(Footer)
     })
   })
 
