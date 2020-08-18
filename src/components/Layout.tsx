@@ -6,6 +6,7 @@ import styles from './Layout.module.sass'
 
 import { Landing } from './pages/Landing'
 import { Header } from './header/Header'
+import { Footer } from './footer/Footer'
 import { MenuItem } from './navigation/NavMenu'
 import { AnchorLink } from './navigation/AnchorLink'
 
@@ -258,6 +259,8 @@ export const Layout: React.FunctionComponent<Props> = ({
         {pageTitle ? <h1 className="title">{pageTitle}</h1> : null}
         {children}
       </div>
+
+      <Footer topRef={landingRef} />
     </div>
   )
 }
