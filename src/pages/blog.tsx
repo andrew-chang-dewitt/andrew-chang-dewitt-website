@@ -23,7 +23,7 @@ const Blog = (props: Props) => {
   )
 
   return (
-    <Layout navigationItems={navItems} pageTitle="Blog">
+    <Layout navigationItems={navItems}>
       <BlogHome
         postCount={props.data.allMarkdownRemark.totalCount}
         posts={posts}
