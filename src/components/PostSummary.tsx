@@ -16,11 +16,13 @@ interface Props {
 }
 
 export const PostSummary = ({ post }: Props) => (
-  <Link to={post.slug}>
-    <h3 className={`${styles.title} title`}>{post.title}</h3>
-    <h6 className={`${styles.regularColor} ${styles.date} subtitle`}>
-      {post.date}
-    </h6>
-    <p className={styles.regularColor}>{post.excerpt}</p>
+  <Link to={post.slug} className={styles.link}>
+    <div>
+      <h3 className={`${styles.title} title`}>{post.title}</h3>
+      <h6 className={`${styles.regularColor} ${styles.date} subtitle`}>
+        {post.date}
+      </h6>
+      <p className={styles.regularColor}>{post.excerpt}</p>
+    </div>
   </Link>
 )
