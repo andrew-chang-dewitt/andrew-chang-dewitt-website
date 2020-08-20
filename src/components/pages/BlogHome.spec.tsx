@@ -15,17 +15,13 @@ namespace Factories {
   export class BlogHome {
     static createWithOnePost() {
       const posts = [PostFactories.Post.create()]
-      return shallow(<ComponentBlogHome postCount={1} posts={posts} />)
+      return shallow(<ComponentBlogHome posts={posts} />)
     }
   }
 }
 
 describe('component/BlogHome', () => {
   const blogHome = Factories.BlogHome.createWithOnePost()
-
-  it('renders the number of posts', () => {
-    expect(blogHome.find('.postCount').text()).to.equal('1 Posts')
-  })
 
   it('renders a post summary for each post', () => {
     expect(blogHome.find(PostSummary)).to.have.lengthOf(1)

@@ -24,10 +24,7 @@ const Blog = (props: Props) => {
 
   return (
     <Layout navigationItems={navItems}>
-      <BlogHome
-        postCount={props.data.allMarkdownRemark.totalCount}
-        posts={posts}
-      />
+      <BlogHome posts={posts} />
     </Layout>
   )
 }
@@ -35,7 +32,6 @@ const Blog = (props: Props) => {
 export const query = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
       edges {
         node {
           id
