@@ -11,7 +11,7 @@ interface Props {
 
 export const Footer = ({ topRef }: Props) => (
   <Hero id="footer">
-    <div className={`${styles.container} standardWidth`}>
+    <div className={styles.container}>
       <div className={styles.lists}>
         <ul>
           <li className={styles.name}>Andrew Chang-DeWitt</li>

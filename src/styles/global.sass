@@ -8,7 +8,7 @@
   scroll-behavior: smooth
 
 body
-  margin: 0
+  margin: 0 layout.$side-margin
   font-family: fonts.$family-sans
   font-size: fonts.$size-regular
   text-rendering: optimizeLegibility
@@ -21,11 +21,29 @@ section
 .standardWidth,section
   @include layout.standard-width
 
-.standardWidth>*,section>*
-  margin: 0 1rem
-
 h1, h2, h3, h4, h5, h6, blockquote
   font-family: fonts.$family-serif
+
+h1
+  font-size: fonts.$size-huge
+
+h2
+  font-size: fonts.$size-large
+
+h3
+  font-size: fonts.$size-medium
+
+h4
+  font-size: fonts.$size-regular-medium
+
+h5
+  font-size: fonts.$size-regular
+
+h6
+  font-size: fonts.$size-small
+
+h1
+  font-size: fonts.$size-huge
 
 button
   background-color: colors.$dark
@@ -43,14 +61,13 @@ button:hover, button[type="submit"]:hover
 button[type="submit"]:hover
   color: colors.$light
 
-*:focus
+button:focus, a:focus, *[role="button"]:focus
   outline: none
   box-shadow: 0 0 3px 1px colors.$accent1
 
 a, span[role=button]
   color: colors.$action-dark
   text-decoration: none
-  font-weight: fonts.$weight-sans-semi-bold
 
 a:hover, span[role=button]:hover
   color: colors.$accent1
@@ -80,11 +97,9 @@ pre[class*="language-"]
   text-indent: layout.$paragraph-indent
 
 .title
-  font-size: fonts.$size-huge
   font-weight: normal
 
 .subtitle
-  font-size: fonts.$size-large
   font-weight: normal
   font-style: italic
   margin-bottom: 0.75rem

@@ -35,12 +35,14 @@ export const Hero: FunctionComponent<Props> = ({
     className={`${styles.hero} ${className ? className : ''}`}
     style={colorStyles(color)}
   >
-    {title ? (
-      <div className="standardWidth">
-        <h1 className={`${styles.title} title`}>{title}</h1>
-      </div>
-    ) : null}
+    <div>
+      {title ? (
+        <div className="standardWidth">
+          <h1 className={`${styles.title} title`}>{title}</h1>
+        </div>
+      ) : null}
 
-    <div>{children}</div>
+      {children}
+    </div>
   </section>
 )
