@@ -18,6 +18,7 @@ const Blog = (props: Props) => {
         date: node.frontmatter.date,
         slug: node.fields.slug,
         excerpt: node.excerpt,
+        tags: node.frontmatter.tags,
       }
     }
   )
@@ -38,6 +39,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
+            tags
           }
           fields {
             slug

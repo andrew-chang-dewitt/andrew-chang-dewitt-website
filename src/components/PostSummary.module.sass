@@ -1,4 +1,5 @@
 @use '../styles/colors'
+@use '../styles/fonts'
 
 .link:focus
   box-shadow: none
@@ -6,10 +7,25 @@
 .link:focus > div
   box-shadow: 0 0 3px 1px colors.$accent1
 
-.title
-
-.date
-  margin-top: -1rem
-
 .regularColor
   color: colors.$dark
+
+.subtitle
+  font-size: fonts.$size-small
+  margin-top: -1rem
+
+.subtitle *
+  display: inline-block
+
+.date
+  margin: 0
+
+.tags
+  padding: 0 0 0 0.75rem
+  margin: 0
+
+.tags > li
+  list-style: none
+
+.spacer
+  padding: 0 0.75rem
