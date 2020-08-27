@@ -1,3 +1,3 @@
 export default function (input: string): string {
-  return input.split(' ').join('-')
+  return input.toLowerCase().split(' ').join('-')
 }
