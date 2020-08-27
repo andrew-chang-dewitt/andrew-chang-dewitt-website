@@ -1,0 +1,48 @@
+@use '../../styles/colors'
+@use '../../styles/fonts'
+
+.tabContainer, .tabContainer *
+  display: flex
+  align-items: center
+
+.tabContainer > *
+  padding: 0
+  margin: 0
+
+.tab
+  padding: 0
+  border: none
+  background-color: transparent
+  color: colors.$dark
+  font-family: fonts.$family-mono
+  font-size: fonts.$size-small
+  font-weight: fonts.$weight-sans-normal
+.tab:hover
+  background-color: transparent
+
+.filterIcon
+  stroke: colors.$action-dark
+  fill: transparent
+  height: fonts.$size-large
+  width: fonts.$size-large
+.filterIcon.open
+  stroke: colors.$accent1
+
+.filterChoices .filterIcon
+  height: fonts.$size-medium
+  width: fonts.$size-medium
+
+.tags
+  padding: 0
+  margin: 0
+  display: flex
+
+.tags > li
+  list-style: none
+
+.currentTag > a
+  color: colors.$accent1
+  font-weight: fonts.$weight-sans-semi-bold
+
+.spacer
+  padding: 0 0.75rem
