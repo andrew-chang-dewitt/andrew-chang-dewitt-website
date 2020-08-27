@@ -5,11 +5,11 @@ import { Layout, navItems } from '../components/Layout'
 import { BlogHome, Post } from '../components/pages/BlogHome'
 
 interface Props {
-  // FIXME: find proper type for this
+  // FIXME: find out type of graphql data response
   data: any
 }
 
-const Blog = ({ data }: Props) => {
+const Tags = ({ pageContext, data }: Props) => {
   const posts = data.posts.edges.map(
     ({ node }: any): Post => {
       return {
@@ -29,15 +29,16 @@ const Blog = ({ data }: Props) => {
 
   return (
     <Layout navigationItems={navItems}>
-      <BlogHome posts={posts} tags={tags} />
+      <BlogHome posts={posts} tags={tags} currentTag={pageContext.tag} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query {
+  query($tag: String) {
     posts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       edges {
         node {
@@ -62,4 +63,15 @@ export const query = graphql`
   }
 `
 
-export default Blog
+// export const query = graphql`
+//   query($slug: String!) {
+//     markdownRemark(fields: { slug: { eq: $slug } }) {
+//       html
+//       frontmatter {
+//         title
+//       }
+//     }
+//   }
+// `
+
+export default Tags
