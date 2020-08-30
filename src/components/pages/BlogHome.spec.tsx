@@ -8,14 +8,16 @@ configure({ adapter: new Adapter() })
 
 import { BlogHome as ComponentBlogHome } from './BlogHome'
 
-import { PostSummary } from '../PostSummary'
-import { Factories as PostFactories } from '../PostSummary.spec'
+import { PostSummary } from '../blog/PostSummary'
+import { Factories as PostFactories } from '../blog/PostSummary.spec'
 
 namespace Factories {
   export class BlogHome {
     static createWithOnePost() {
       const posts = [PostFactories.Post.create()]
-      return shallow(<ComponentBlogHome posts={posts} />)
+      return shallow(
+        <ComponentBlogHome posts={posts} tags={['a tag', 'another tag']} />
+      )
     }
   }
 }
