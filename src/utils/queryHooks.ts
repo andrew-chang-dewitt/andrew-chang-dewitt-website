@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation, useNavigate, WindowLocation } from '@reach/router'
 
-export const getQueryParam = (location: WindowLocation, query: string) => {
+const getQueryParam = (location: WindowLocation, query: string) => {
   const search = new URLSearchParams(location.search)
 
   return search.get(query)
@@ -42,3 +42,5 @@ export const useQueryParam = (query: string, defaultValue: string[]) => {
     update: update,
   }
 }
+
+export default { useQueryParam: useQueryParam }

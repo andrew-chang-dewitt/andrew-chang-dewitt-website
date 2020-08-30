@@ -1,5 +1,9 @@
 import React from 'react'
 
+import queryHooks from '../../utils/queryHooks'
+import { arraysEqual } from '../../utils/comparisons'
+import arrayReverse from '../../utils/arrayReverse'
+
 // import styles from './BlogHome.module.sass'
 
 import { PostSummary, Post } from '../blog/PostSummary'
@@ -21,14 +25,34 @@ interface Props {
 // component & passed to a new Filter component that allows
 // a user to make some filtering & sorting choices
 
-export const BlogHome = ({ posts, tags, currentTag }: Props) => (
-  <section>
-    <h1 className="title">Blog</h1>
-    <FilterControls tags={tags} currentTag={currentTag ? currentTag : null} />
-    <div>
-      {posts.map((post: Post) => (
-        <PostSummary key={post.id} post={post} />
-      ))}
-    </div>
-  </section>
-)
+const buildPosts = (post: Post) => <PostSummary key={post.id} post={post} />
+
+export const BlogHome = ({ posts, tags, currentTag }: Props) => {
+  const {
+    value: sortDirection,
+    update: setSortDirection,
+  } = queryHooks.useQueryParam('sort', ['descending'])
+
+  const isDescending = (): boolean => arraysEqual(sortDirection, ['descending'])
+
+  const toggleSortDirection = () => {
+    setSortDirection(isDescending() ? ['ascending'] : ['descending'])
+  }
+
+  return (
+    <section>
+      <h1 className="title">Blog</h1>
+      <FilterControls
+        tags={tags}
+        currentTag={currentTag ? currentTag : null}
+        sortDirection={sortDirection}
+        sortHandler={toggleSortDirection}
+      />
+      <div>
+        {isDescending()
+          ? posts.map(buildPosts)
+          : arrayReverse(posts).map(buildPosts)}
+      </div>
+    </section>
+  )
+}

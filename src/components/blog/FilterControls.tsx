@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { useQueryParam } from '../../utils/queryHooks'
-
 import styles from './FilterControls.module.sass'
 
 import kebabCase from '../../utils/kebabCase'
@@ -11,21 +9,18 @@ import { arraysEqual } from '../../utils/comparisons'
 interface Props {
   tags: string[]
   currentTag?: string | null
+  sortDirection: string[]
+  sortHandler: () => void
 }
 
 const spacer = <span className={styles.spacer}>|</span>
 
-const useFilterChoices = (tagHandler: () => void) => {
-  const {
-    value: sortDirection,
-    update: setSortDirection,
-  } = useQueryParam('sort', ['descending'])
-
+const useFilterChoices = (
+  tagHandler: () => void,
+  sortDirection: string[],
+  sortHandler: () => void
+) => {
   const isDescending = (): boolean => arraysEqual(sortDirection, ['descending'])
-
-  const toggleSortDirection = () => {
-    setSortDirection(isDescending() ? ['ascending'] : ['descending'])
-  }
 
   return (
     <div className={styles.filterChoices}>
@@ -39,7 +34,7 @@ const useFilterChoices = (tagHandler: () => void) => {
 
       {spacer}
 
-      <button className={styles.tab} onClick={toggleSortDirection}>
+      <button className={styles.tab} onClick={sortHandler}>
         <svg className={styles.filterIcon}>
           <title>Sort by date: {sortDirection}</title>
           {isDescending() ? (
@@ -54,7 +49,12 @@ const useFilterChoices = (tagHandler: () => void) => {
   )
 }
 
-export const FilterControls = ({ tags, currentTag }: Props) => {
+export const FilterControls = ({
+  tags,
+  currentTag,
+  sortDirection,
+  sortHandler,
+}: Props) => {
   const [controlsOpened, setControlsOpened] = React.useState(false)
   const [tagsOpened, setTagsOpened] = React.useState(false)
 
@@ -65,7 +65,11 @@ export const FilterControls = ({ tags, currentTag }: Props) => {
     setTagsOpened(!tagsOpened)
   }
 
-  const filterChoices = useFilterChoices(toggleTagFilters)
+  const filterChoices = useFilterChoices(
+    toggleTagFilters,
+    sortDirection,
+    sortHandler
+  )
 
   return (
     <div>
