@@ -29,7 +29,7 @@ export const useQueryParam = (query: string, defaultValue: string[]) => {
 
   const update = (newValue: string[]): void => {
     setValue(newValue)
-    navigate(`.${location.pathname}?${query}=${parseArray(newValue)}`)
+    navigate(`?${query}=${parseArray(newValue)}`)
   }
 
   // if location changes, force update to value

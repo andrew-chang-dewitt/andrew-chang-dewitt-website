@@ -32,7 +32,7 @@ const useFilterChoices = () => {
       <button className={styles.tab}>
         <svg className={styles.filterIcon}>
           <title>Filter by tag</title>
-          <use xlinkHref="icons/ikonate.svg#hash" />
+          <use xlinkHref="/icons/ikonate.svg#hash" />
         </svg>
         <span>Filter by tag</span>
       </button>
@@ -43,9 +43,9 @@ const useFilterChoices = () => {
         <svg className={styles.filterIcon}>
           <title>Sort by date: {sortDirection}</title>
           {isDescending() ? (
-            <use xlinkHref="icons/ikonate.svg#sort-down" />
+            <use xlinkHref="/icons/ikonate.svg#sort-down" />
           ) : (
-            <use xlinkHref="icons/ikonate.svg#sort-up" />
+            <use xlinkHref="/icons/ikonate.svg#sort-up" />
           )}
         </svg>
         <span>Sort by date: {sortDirection}</span>
@@ -69,7 +69,7 @@ export const FilterControls = ({ tags, currentTag }: Props) => {
         <button className={styles.tab} onClick={toggleFilters}>
           <svg className={styles.filterIcon}>
             <title>Filter & sort posts</title>
-            <use xlinkHref="icons/ikonate.svg#controls-vertical-alt" />
+            <use xlinkHref="/icons/ikonate.svg#controls-vertical-alt" />
           </svg>
           <h6>Filter & Sort</h6>
         </button>
