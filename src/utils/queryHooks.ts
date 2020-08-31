@@ -7,7 +7,7 @@ const getQueryParam = (location: WindowLocation, query: string) => {
   return search.get(query)
 }
 
-export const useQueryParam = (query: string, defaultValue: string[]) => {
+export const useQueryParam = (query: string, defaultValue: string[] = ['']) => {
   const location = useLocation()
   const navigate = useNavigate()
 
