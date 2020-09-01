@@ -1,6 +1,8 @@
 @use '../../styles/colors'
 @use '../../styles/fonts'
 
+$border-radius: 0.25rem
+
 .tabContainer, .tabContainer *
   display: flex
   align-items: center
@@ -9,9 +11,14 @@
   padding: 0
   margin: 0
 
+.tabContainer h6
+  margin: 0
+
 .tab
   padding: 0
   border: none
+  border-top-right-radius: $border-radius
+  border-top-left-radius: $border-radius
   background-color: transparent
   color: colors.$dark
   font-family: fonts.$family-mono
@@ -32,10 +39,27 @@
   height: fonts.$size-medium
   width: fonts.$size-medium
 
+.tagsTab
+  margin: 0 -0.75rem
+  padding: 0.375rem 0.75rem
+
+.tagsTab.open
+  background-color: colors.$dark
+  color: colors.$light
+
+.tagsTab.open .filterIcon
+  stroke: colors.$action
+
 .tags
-  padding: 0
+  padding: 0.75rem 0.75rem 0.375rem 0.75rem
   margin: 0
+  border-radius: $border-radius
   display: flex
+  background-color: colors.$dark
+  color: colors.$light
+
+.tags a
+  color: colors.$action
 
 .tags > li
   list-style: none

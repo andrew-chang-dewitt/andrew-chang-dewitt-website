@@ -18,13 +18,19 @@ const spacer = <span className={styles.spacer}>|</span>
 const useFilterChoices = (
   tagHandler: () => void,
   sortDirection: string[],
-  sortHandler: () => void
+  sortHandler: () => void,
+  tagsOpened: boolean
 ) => {
   const isDescending = (): boolean => arraysEqual(sortDirection, ['descending'])
 
   return (
     <div className={styles.filterChoices}>
-      <button className={styles.tab} onClick={tagHandler}>
+      <button
+        className={`${styles.tab} ${styles.tagsTab} ${
+          tagsOpened ? styles.open : ''
+        }`}
+        onClick={tagHandler}
+      >
         <svg className={styles.filterIcon}>
           <title>Filter by tag</title>
           <use xlinkHref="/icons/ikonate.svg#hash" />
@@ -68,7 +74,8 @@ export const FilterControls = ({
   const filterChoices = useFilterChoices(
     toggleTagFilters,
     sortDirection,
-    sortHandler
+    sortHandler,
+    tagsOpened
   )
 
   return (
@@ -79,17 +86,22 @@ export const FilterControls = ({
             <title>Filter & sort posts</title>
             <use xlinkHref="/icons/ikonate.svg#controls-vertical-alt" />
           </svg>
+
           <h6>Filter & Sort</h6>
         </button>
+
         {controlsOpened ? (
           <span>
             <h6>:</h6>
+
             {spacer}
+
             {filterChoices}
           </span>
         ) : null}
       </div>
-      {tagsOpened ? (
+
+      {controlsOpened && tagsOpened ? (
         <ul className={styles.tags}>
           {tags.map((tag: string, current: number) => {
             if (current === tags.length - 1)
@@ -112,9 +124,11 @@ export const FilterControls = ({
                 </li>
               )
           })}
+
           {currentTag ? (
             <li>
               {spacer}
+
               <Link to="/blog">all posts</Link>
             </li>
           ) : null}
