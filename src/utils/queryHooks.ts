@@ -12,15 +12,10 @@ export const useQueryParam = (query: string, defaultValue: string[] = ['']) => {
   const navigate = useNavigate()
 
   const parseString = (str: string | null): string[] => {
-    // null guard
+    // sometimes a query can be null
     if (!str) return defaultValue
 
     return str.split(',')
-  }
-
-  const parseArray = (arr: string[]): string => {
-    if (typeof arr === 'string') return arr
-    else return arr.join(',')
   }
 
   const [value, setValue] = React.useState(
@@ -29,7 +24,7 @@ export const useQueryParam = (query: string, defaultValue: string[] = ['']) => {
 
   const update = (newValue: string[]): void => {
     setValue(newValue)
-    navigate(`?${query}=${parseArray(newValue)}`)
+    navigate(`?${query}=${newValue.join(',')}`)
   }
 
   // if location changes, force update to value

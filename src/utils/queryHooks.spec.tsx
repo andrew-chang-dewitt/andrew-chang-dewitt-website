@@ -32,8 +32,10 @@ describe('utils/queryHooks', function () {
       })
     }
 
-    const TestComponent = () => {
-      const { value, update } = useQueryParam('test')
+    const TestComponent = ({ defaultValue }: { defaultValue?: string[] }) => {
+      const { value, update } = defaultValue
+        ? useQueryParam('test', defaultValue)
+        : useQueryParam('test')
 
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         update([event.target.value])
@@ -50,7 +52,7 @@ describe('utils/queryHooks', function () {
     const setup = (startingPath: string = '/') => {
       // set up a fake location to test against with a query
       const history = createHistory(createMemorySource(startingPath))
-      // use RenderHook to monitor a query param w/ key of 'test'
+      // render with location using manually created history
       act(() => {
         render(
           <LocationProvider history={history}>
@@ -58,10 +60,11 @@ describe('utils/queryHooks', function () {
           </LocationProvider>
         )
       })
-      const value = screen.getByRole('queryValue')
-      const input = screen.getByRole('updateValue') as HTMLInputElement
 
-      return { value, input }
+      return {
+        value: screen.getByRole('queryValue'),
+        input: screen.getByRole('updateValue') as HTMLInputElement,
+      }
     }
 
     afterEach(() => {
@@ -80,6 +83,38 @@ describe('utils/queryHooks', function () {
       inputEvent(input, 'newValue')
 
       expect(value).to.have.text(JSON.stringify(['newValue']))
+    })
+
+    it("returns a given default value if the query doesn't exist", () => {
+      const history = createHistory(createMemorySource('/'))
+
+      act(() => {
+        render(
+          <LocationProvider history={history}>
+            <TestComponent defaultValue={['default']} />
+          </LocationProvider>
+        )
+      })
+
+      const value = screen.getByRole('queryValue')
+
+      expect(value).to.have.text(JSON.stringify(['default']))
+    })
+
+    it("but it returns an empty string if a default value isn't given", () => {
+      const history = createHistory(createMemorySource('/'))
+
+      act(() => {
+        render(
+          <LocationProvider history={history}>
+            <TestComponent />
+          </LocationProvider>
+        )
+      })
+
+      const value = screen.getByRole('queryValue')
+
+      expect(value).to.have.text(JSON.stringify(['']))
     })
   })
 })
