@@ -24,7 +24,7 @@ export const Footer = ({ topRef }: Props) => (
 
         <ul>
           <li>
-            <AnchorLink id="top" to="/#" target={topRef}>
+            <AnchorLink id="top" to="#" target={topRef}>
               Return to top
             </AnchorLink>
           </li>
