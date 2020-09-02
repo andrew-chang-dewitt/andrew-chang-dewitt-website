@@ -1,5 +1,9 @@
 require('ts-node').register({ files: true })
 
+function kebabCase(input) {
+  return input.split(' ').join('-')
+}
+
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
@@ -25,7 +29,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      posts: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             fields {
@@ -34,15 +40,30 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      tags: allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
     }
   `)
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.posts.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve('./src/templates/blog-post.tsx'),
       context: {
         slug: node.fields.slug,
+      },
+    })
+  })
+
+  result.data.tags.group.forEach(({ fieldValue }) => {
+    createPage({
+      path: `/blog/tags/${kebabCase(fieldValue)}/`,
+      component: path.resolve('./src/templates/tag.tsx'),
+      context: {
+        tag: fieldValue,
       },
     })
   })

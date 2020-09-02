@@ -1,6 +1,7 @@
 ---
 title: "A blog post"
 date: "2019-12-10"
+tags: ["a tag", "another tag"]
 ---
 
 This is a blog post.

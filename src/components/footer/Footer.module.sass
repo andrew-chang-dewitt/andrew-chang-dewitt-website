@@ -1,9 +1,17 @@
+@use '../../styles/colors'
 @use '../../styles/fonts'
 @use '../../styles/layout'
+
+.footer
+  margin-top: 4rem
+
+.footer a
+  color: colors.$action
 
 .container
   min-height: 75vh
   padding-top: 2rem
+  @include layout.standard-width
 
 .lists
   display: flex
@@ -26,3 +34,4 @@
   .lists
     flex-direction: column
     align-items: center
+    text-align: center
