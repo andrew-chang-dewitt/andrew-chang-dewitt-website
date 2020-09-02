@@ -36,7 +36,6 @@ export const BlogHome = ({ posts, tags, currentTag }: Props) => {
   const isDescending = (): boolean => arraysEqual(sortDirection, ['descending'])
 
   const toggleSortDirection = () => {
-    console.log('sort direction toggled')
     setSortDirection(isDescending() ? ['ascending'] : ['descending'])
   }
 
