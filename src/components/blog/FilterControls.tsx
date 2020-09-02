@@ -4,61 +4,58 @@ import { Link } from 'gatsby'
 import styles from './FilterControls.module.sass'
 
 import kebabCase from '../../utils/kebabCase'
-import { arraysEqual } from '../../utils/comparisons'
-
-interface Props {
-  tags: string[]
-  currentTag?: string | null
-  sortDirection: string[]
-  sortHandler: () => void
-}
 
 const spacer = <span className={styles.spacer}>|</span>
 
 const useFilterChoices = (
   tagHandler: () => void,
-  sortDirection: string[],
+  sortAscending: boolean,
   sortHandler: () => void,
   tagsOpened: boolean
-) => {
-  const isDescending = (): boolean => arraysEqual(sortDirection, ['descending'])
+) => (
+  <div className={styles.filterChoices}>
+    <button
+      className={`${styles.tab} ${styles.tagsTab} ${
+        tagsOpened ? styles.open : ''
+      }`}
+      onClick={tagHandler}
+    >
+      <svg className={styles.filterIcon}>
+        <title>Filter by tag</title>
+        <use xlinkHref="/icons/ikonate.svg#hash" />
+      </svg>
+      <span>Filter by tag</span>
+    </button>
 
-  return (
-    <div className={styles.filterChoices}>
-      <button
-        className={`${styles.tab} ${styles.tagsTab} ${
-          tagsOpened ? styles.open : ''
-        }`}
-        onClick={tagHandler}
-      >
-        <svg className={styles.filterIcon}>
-          <title>Filter by tag</title>
-          <use xlinkHref="/icons/ikonate.svg#hash" />
-        </svg>
-        <span>Filter by tag</span>
-      </button>
+    {spacer}
 
-      {spacer}
+    <button className={styles.tab} onClick={sortHandler}>
+      <svg className={styles.filterIcon}>
+        <title>
+          Sort by date: {sortAscending ? 'Ascending' : 'Descending'}
+        </title>
+        {sortAscending ? (
+          <use xlinkHref="/icons/ikonate.svg#sort-up" />
+        ) : (
+          <use xlinkHref="/icons/ikonate.svg#sort-down" />
+        )}
+      </svg>
+      <span>Sort by date: {sortAscending ? 'Ascending' : 'Descending'}</span>
+    </button>
+  </div>
+)
 
-      <button className={styles.tab} onClick={sortHandler}>
-        <svg className={styles.filterIcon}>
-          <title>Sort by date: {sortDirection}</title>
-          {isDescending() ? (
-            <use xlinkHref="/icons/ikonate.svg#sort-down" />
-          ) : (
-            <use xlinkHref="/icons/ikonate.svg#sort-up" />
-          )}
-        </svg>
-        <span>Sort by date: {sortDirection}</span>
-      </button>
-    </div>
-  )
+interface Props {
+  tags: string[]
+  currentTag?: string | null
+  sortAscending?: boolean
+  sortHandler: () => void
 }
 
 export const FilterControls = ({
   tags,
   currentTag,
-  sortDirection,
+  sortAscending = false,
   sortHandler,
 }: Props) => {
   const [controlsOpened, setControlsOpened] = React.useState(false)
@@ -73,7 +70,7 @@ export const FilterControls = ({
 
   const filterChoices = useFilterChoices(
     toggleTagFilters,
-    sortDirection,
+    sortAscending,
     sortHandler,
     tagsOpened
   )
@@ -104,22 +101,23 @@ export const FilterControls = ({
       {controlsOpened && tagsOpened ? (
         <ul className={styles.tags}>
           {tags.map((tag: string, current: number) => {
+            const link = (
+              <Link
+                to={`/blog/tags/${kebabCase(tag)}`}
+                className={
+                  currentTag === tag ? `${styles.currentTag} currentTag` : ''
+                }
+              >
+                {tag}
+              </Link>
+            )
+
             if (current === tags.length - 1)
-              return (
-                <li
-                  key={current.toString()}
-                  className={currentTag === tag ? styles.currentTag : ''}
-                >
-                  <Link to={`/blog/tags/${kebabCase(tag)}`}>{tag}</Link>
-                </li>
-              )
+              return <li key={current.toString()}>{link}</li>
             else
               return (
-                <li
-                  key={current.toString()}
-                  className={currentTag === tag ? styles.currentTag : ''}
-                >
-                  <Link to={`/blog/tags/${kebabCase(tag)}`}>{tag}</Link>
+                <li key={current.toString()}>
+                  {link}
                   {spacer}
                 </li>
               )
