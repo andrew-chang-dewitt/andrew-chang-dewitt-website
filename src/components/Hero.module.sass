@@ -1,10 +1,8 @@
 @use '../styles/layout'
 @use '../styles/colors'
 
-section.hero
+.hero
   margin: 0
   max-width: 100%
-  padding-top: 0
-
-.title
-  padding-top: 25vh
+  margin: 0 calc(0rem - #{ layout.$side-margin })
+  padding: 0 layout.$side-margin

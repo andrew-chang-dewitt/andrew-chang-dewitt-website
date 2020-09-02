@@ -31,11 +31,11 @@ export const navItems: MenuItem[] = [
     text: 'Contact',
     key: 'contact',
   },
-  //   {
-  //     to: '/blog',
-  //     text: 'Blog',
-  //     key: 'blog',
-  //   },
+  {
+    to: '/blog',
+    text: 'Blog',
+    key: 'blog',
+  },
 ]
 
 export interface NavigationRefs {
