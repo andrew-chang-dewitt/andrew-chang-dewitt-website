@@ -1,6 +1,7 @@
 ---
 title: "Introduction"
 date: "2020-08-18"
+tags: ["meta", "goals"]
 ---
 
 Just a quick introduction to the goals of this blog:
