@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 
 import { Layout, navItems } from '../components/Layout'
+import { CallToAction } from '../components/CallToAction'
 import kebabCase from '../utils/kebabCase'
 
 import styles from './blog-post.module.sass'
@@ -40,9 +41,13 @@ const BlogPost = ({ data }: Props) => {
         </ul>
 
         <div
-          className={styles.content}
+          className={`indent ${styles.content}`}
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
+
+        <h2 className={styles.centered}>~~~</h2>
+
+        <CallToAction transition="Do you have any questions or feedback about anything?" />
       </section>
     </Layout>
   )

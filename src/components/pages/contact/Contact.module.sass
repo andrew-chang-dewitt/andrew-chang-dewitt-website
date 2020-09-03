@@ -1,27 +1,6 @@
 @use '../../../styles/layout'
-@use '../../../styles/colors'
 
 $iconsize: 6rem
 
 .firstSubtitle
   margin-top: layout.$firstSubtitle
-
-.iconGrid
-  display: flex
-  flex-wrap: wrap
-  justify-content: space-between
-
-.icon
-  margin: 2rem 0
-
-.icon svg
-  height: $iconsize
-  width: $iconsize
-  fill: colors.$action
-
-.icon a
-  display: inline-block
-  height: 100%
-
-.icon a:focus svg, .icon a:hover svg
-  fill: colors.$accent1
