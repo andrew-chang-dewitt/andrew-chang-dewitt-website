@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './CallToAction.module.sass'
 
-import { Form } from './pages/contact/Form'
+import { Form } from './Form'
 
 interface Props {
   transition: string
