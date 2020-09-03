@@ -1,15 +1,8 @@
 import 'mocha'
 import { expect, use } from 'chai'
 import { default as chaiDom } from 'chai-dom'
-// import sinon, { SinonStub } from 'sinon'
-import {
-  render,
-  // RenderResult,
-  screen,
-  act,
-  fireEvent,
-  cleanup,
-} from '@testing-library/react'
+import sinon, { SinonStub } from 'sinon'
+import { render, screen, act, fireEvent, cleanup } from '@testing-library/react'
 
 // configure chai to use chai-dom plugin
 use(chaiDom)
@@ -20,6 +13,10 @@ import {
   LocationProvider,
   createMemorySource,
   createHistory,
+  globalHistory,
+  WindowLocation,
+  HistoryActionType,
+  HistoryUnsubscribe,
 } from '@reach/router'
 
 import { useQueryParam } from './queryHooks'
@@ -53,17 +50,18 @@ describe('utils/queryHooks', function () {
       // set up a fake location to test against with a query
       const history = createHistory(createMemorySource(startingPath))
       // render with location using manually created history
-      act(() => {
-        render(
-          <LocationProvider history={history}>
-            <TestComponent />
-          </LocationProvider>
-        )
-      })
+
+      const rendered = render(
+        <LocationProvider history={history}>
+          <TestComponent />
+        </LocationProvider>
+      )
 
       return {
         value: screen.getByRole('queryValue'),
         input: screen.getByRole('updateValue') as HTMLInputElement,
+        history,
+        rendered,
       }
     }
 
@@ -115,6 +113,56 @@ describe('utils/queryHooks', function () {
       const value = screen.getByRole('queryValue')
 
       expect(value).to.have.text(JSON.stringify(['']))
+    })
+
+    describe('history listening', () => {
+      let listenStub: SinonStub<any, any>
+
+      beforeEach(() => {
+        // stub out listen on globalHistory since navigation events don't trigger
+        // listener events for this in the testing environment
+        listenStub = sinon
+          .stub(globalHistory, 'listen')
+          .callsFake(
+            (
+              _: ({
+                action,
+                location,
+              }: {
+                action: HistoryActionType
+                location: WindowLocation
+              }) => void
+            ) => (() => null) as HistoryUnsubscribe
+          )
+      })
+      afterEach(() => {
+        listenStub.restore()
+      })
+
+      it('updates the value on back button navigation events', () => {
+        const { value, input, history } = setup()
+
+        // user enters a new query value, updates location
+        inputEvent(input, 'newValue')
+
+        // simulate user clicking back button in two parts:
+        // first navigate back 1 page: https://reach.tech/router/api/navigate
+        history.navigate(-1)
+        // but that doesn't trigger a listener on globalHistory, so manually
+        // call the callback as if the listener was triggered
+        // (assume this works correctly in the browser)
+        listenStub.args[0][0]({ action: 'POP', location: history.location })
+
+        expect(value).to.have.text(JSON.stringify(['']))
+      })
+
+      it('skips the listener in useEffect if it is a PUSH event', () => {
+        const { value, history } = setup()
+
+        listenStub.args[0][0]({ action: 'PUSH', location: history.location })
+
+        expect(value).to.have.text(JSON.stringify(['']))
+      })
     })
   })
 })
