@@ -45,9 +45,9 @@ const BlogPost = ({ data }: Props) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
 
-        <h2 className={styles.centered}>~~~</h2>
+        <h3 className={styles.centered}>~~~</h3>
 
-        <CallToAction transition="Do you have any questions or feedback about anything?" />
+        <CallToAction transition="Do you have any questions or comments about anything?" />
       </section>
     </Layout>
   )

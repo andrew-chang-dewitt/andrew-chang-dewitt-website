@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './Contact.module.sass'
 
-import { CallToAction } from '../../CallToAction'
+import { CallToAction } from '../call-to-action/CallToAction'
 
 export const Contact = () => (
   <div>
