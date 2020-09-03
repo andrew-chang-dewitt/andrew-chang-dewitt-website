@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { Layout, navItems, mergeRefsToItems } from '../components/Layout'
 import { Section } from '../components/Section'
 import { Story } from '../components/pages/story/Story'
-import { Contact } from '../components/pages/contact/Contact'
+import { Contact } from '../components/pages/Contact'
 
 export default function Landing() {
   const storyRef = useRef<HTMLDivElement>(null)

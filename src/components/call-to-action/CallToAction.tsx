@@ -1,17 +1,18 @@
 import React from 'react'
 
-import styles from './Contact.module.sass'
+import styles from './CallToAction.module.sass'
 
 import { Form } from './Form'
 
-export const Contact = () => (
+interface Props {
+  transition: string
+}
+
+export const CallToAction = ({ transition }: Props) => (
   <div>
-    <h2 className={`${styles.firstSubtitle} subtitle`}>reach out</h2>
     <p className="indent">
-      Do you have questions about me or my work? Maybe some book or article
-      suggestions? Or you'd like to talk about what I could do for you? I'd love
-      to hear from you! Send me a message using the form or any of the social
-      media platforms below, or just send me an email at{' '}
+      {transition} I'd love to hear from you! Send me a message using the form
+      or any of the social media platforms below, or just send me an email at{' '}
       <a href="mailto:hello@andrew-chang-dewitt.dev">
         hello@andrew-chang-dewitt.dev
       </a>
@@ -26,7 +27,7 @@ export const Contact = () => (
         >
           <svg>
             <title>GitHub</title>
-            <use xlinkHref="icons/icons8/sprite.min.svg#icon-github"></use>
+            <use xlinkHref="/icons/icons8/sprite.min.svg#icon-github"></use>
           </svg>
         </a>
       </div>
@@ -38,7 +39,7 @@ export const Contact = () => (
         >
           <svg>
             <title>Stack Overflow</title>
-            <use xlinkHref="icons/icons8/sprite.min.svg#icon-stackoverflow"></use>
+            <use xlinkHref="/icons/icons8/sprite.min.svg#icon-stackoverflow"></use>
           </svg>
         </a>
       </div>
@@ -50,7 +51,7 @@ export const Contact = () => (
         >
           <svg>
             <title>LinkedIn</title>
-            <use xlinkHref="icons/icons8/sprite.min.svg#icon-linkedin"></use>
+            <use xlinkHref="/icons/icons8/sprite.min.svg#icon-linkedin"></use>
           </svg>
         </a>
       </div>
@@ -62,7 +63,7 @@ export const Contact = () => (
         >
           <svg>
             <title>Twitter</title>
-            <use xlinkHref="icons/icons8/sprite.min.svg#icon-twitter"></use>
+            <use xlinkHref="/icons/icons8/sprite.min.svg#icon-twitter"></use>
           </svg>
         </a>
       </div>
