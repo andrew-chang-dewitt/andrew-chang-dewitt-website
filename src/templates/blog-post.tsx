@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 
 import { Layout, navItems } from '../components/Layout'
-import { CallToAction } from '../components/CallToAction'
+import { CallToAction } from '../components/call-to-action/CallToAction'
 import kebabCase from '../utils/kebabCase'
 
 import styles from './blog-post.module.sass'
