@@ -1,7 +1,10 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import { Layout, navItems } from '../components/Layout'
+import kebabCase from '../utils/kebabCase'
+
+import styles from './blog-post.module.sass'
 
 interface Props {
   // FIXME: find out type of graphql data response
@@ -10,12 +13,36 @@ interface Props {
 
 const BlogPost = ({ data }: Props) => {
   const post = data.markdownRemark
+  const tags = post.frontmatter.tags
+
+  const spacer = <span className={styles.spacer}>|</span>
 
   return (
     <Layout navigationItems={navItems}>
       <section>
         <h1 className="title">{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <h6 className="subtitle">{post.frontmatter.date}</h6>
+
+        <ul className={styles.tags}>
+          {tags.map((tag: string, current: number) => {
+            const link = <Link to={`/blog/tags/${kebabCase(tag)}`}>{tag}</Link>
+
+            if (current === tags.length - 1)
+              return <li key={current.toString()}>{link}</li>
+            else
+              return (
+                <li key={current.toString()}>
+                  {link}
+                  {spacer}
+                </li>
+              )
+          })}
+        </ul>
+
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
       </section>
     </Layout>
   )
@@ -27,6 +54,8 @@ export const query = graphql`
       html
       frontmatter {
         title
+        date(formatString: "DD MMMM, YYYY")
+        tags
       }
     }
   }
