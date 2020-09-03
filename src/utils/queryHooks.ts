@@ -1,5 +1,10 @@
 import React from 'react'
-import { useLocation, useNavigate, WindowLocation } from '@reach/router'
+import {
+  useLocation,
+  useNavigate,
+  globalHistory,
+  WindowLocation,
+} from '@reach/router'
 
 const getQueryParam = (location: WindowLocation, query: string) => {
   const search = new URLSearchParams(location.search)
@@ -27,10 +32,14 @@ export const useQueryParam = (query: string, defaultValue: string[] = ['']) => {
     navigate(`?${query}=${newValue.join(',')}`)
   }
 
-  // if location changes, force update to value
-  // React.useEffect(() => {
-  //   update(parseString(getQueryParam(location, query)))
-  // }, [location])
+  // forward & back button behavior
+  React.useEffect(() => {
+    return globalHistory.listen(({ action, location: newLocation }) => {
+      if (action === 'POP') {
+        setValue(parseString(getQueryParam(newLocation, query)))
+      }
+    })
+  }, [])
 
   return {
     value: value,
