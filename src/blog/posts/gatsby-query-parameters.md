@@ -1,7 +1,7 @@
 ---
 title: "Query parameters in Gatsby"
 date: "2020-08-18"
-tags: ["project: andrew-chang-dewitt.dev", "problem & solution", "javascript", "typescript", "gatsby", "react", "reach router", "query parameters"]
+tags: ["project: andrew-chang-dewitt.dev", "problem solution", "javascript", "typescript", "gatsby", "react", "reach router"]
 ---
 
 Recently, I just finished adding all of the blog functionality I needed to this
