@@ -83,6 +83,10 @@ a:hover
 code, code[class*="language-"]
   color: colors.$light
   font-family: fonts.$family-mono
+  font-size: fonts.$size-regular
+@media all and (max-width: #{ layout.$screen-small })
+  code, code[class*="language-"]
+    font-size: fonts.$size-small
 code > .token.boolean, .token.number, .token.function
   color: colors.$action
 code > .token.operator, .token.entity, .token.url
