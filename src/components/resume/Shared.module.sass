@@ -1,0 +1,24 @@
+@use '../../styles/fonts'
+@use '../../styles/colors'
+
+.infoList
+  margin: 0
+  padding: 0
+
+.infoList > li
+  list-style: none
+  display: grid
+  grid-template-columns: 3rem 1fr
+
+.infoList > li > *:first-child
+  justify-self: center
+
+.infoList > li > svg
+  height: 2rem
+  width: 2rem
+
+svg.stroke
+  fill: transparent
+  stroke: colors.$dark
+  stroke-linecap: round
+  stroke-linejoin: miter
