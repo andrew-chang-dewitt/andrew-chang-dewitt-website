@@ -12,7 +12,7 @@ interface Item {
   url?: Link
   repo: Link
   'more-info': Link
-  stack: Stack
+  stack: Array<string>
   summary: Array<string>
 }
 
@@ -21,21 +21,24 @@ interface Link {
   display: string
 }
 
-type Stack = SingleStack | MultiStack
-type SingleStack = Array<string>
-type MultiStack = {
-  'front-end': SingleStack
-  'back-end': SingleStack
-}
-const isMultiStack = (stack: Stack): stack is MultiStack =>
-  stack.hasOwnProperty('front-end')
-
 interface Props {
   data: Array<Item>
 }
 
-const renderStackList = (stack: SingleStack) =>
-  stack.map((tech) => <li key={tech}>{tech}</li>)
+const parseSummaryItem = (item: string): Array<React.ReactNode> => {
+  const strings = item.split('[')
+
+  if (strings.length > 1) {
+    strings.splice(1, 1, ...strings[1].split(')'))
+    strings.splice(1, 1, ...strings[1].split(']('))
+
+    const link = <ExternalLink href={strings[2]}>{strings[1]}</ExternalLink>
+    const nodes = strings as Array<React.ReactNode>
+    nodes.splice(1, 2, link)
+
+    return nodes
+  } else return strings
+}
 
 export const Experience = ({ data }: Props) => (
   <section className={styles.experience}>
@@ -65,21 +68,15 @@ export const Experience = ({ data }: Props) => (
           </li>
         </ul>
 
-        {isMultiStack(experienceItem.stack) ? (
-          <>
-            <p>Front end: </p>
-            <ul>{renderStackList(experienceItem.stack['front-end'])}</ul>
-
-            <p>Back end: </p>
-            <ul>{renderStackList(experienceItem.stack['back-end'])}</ul>
-          </>
-        ) : (
-          <ul>{renderStackList(experienceItem.stack)}</ul>
-        )}
+        <ul className={styles.stack}>
+          {experienceItem.stack.map((tech) => (
+            <li key={tech}>{tech}</li>
+          ))}
+        </ul>
 
         <ul>
           {experienceItem.summary.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>{parseSummaryItem(item)}</li>
           ))}
 
           <li>
