@@ -6,13 +6,12 @@
   padding: 0
 
 .infoList > li
-  height: 2rem
   list-style: none
-  display: flex
-  align-items: center
+  display: grid
+  grid-template-columns: 3rem 1fr
 
 .infoList > li > *:first-child
-  width: 3rem
+  justify-self: center
 
 .infoList > li > svg
   height: 2rem

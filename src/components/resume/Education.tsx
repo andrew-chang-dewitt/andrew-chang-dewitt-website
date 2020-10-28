@@ -1,11 +1,13 @@
 import React from 'react'
 
+import styles from './Education.module.sass'
+
 interface EducationItem {
   school: string
   start: number
   end: number
   location: string
-  description: string
+  description?: string
 }
 
 interface Props {
@@ -13,18 +15,18 @@ interface Props {
 }
 
 export const Education = ({ data }: Props) => (
-  <section>
+  <section className={styles.education}>
     <h2 className="title">Education</h2>
-    <ul>
-      {data.map((item) => (
-        <li key={item.school}>
-          <h3 className="subtitle">{item.school}</h3>
-          <p>
-            {item.start} - {item.end}, {item.location}
-          </p>
-          <p>{item.description}</p>
-        </li>
-      ))}
-    </ul>
+    {data.map((item) => (
+      <div key={item.school}>
+        <h3 className="subtitle">{item.school}</h3>
+        <p className="subtitle">
+          {item.start} - {item.end}, {item.location}
+        </p>
+        {item.description ? (
+          <p className="subtitle">{item.description}</p>
+        ) : null}
+      </div>
+    ))}
   </section>
 )
