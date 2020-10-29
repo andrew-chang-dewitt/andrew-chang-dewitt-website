@@ -3,18 +3,19 @@ import React, { useRef } from 'react'
 import { Layout, navItems, mergeRefsToItems } from '../components/Layout'
 import { Section } from '../components/Section'
 import { Story } from '../components/pages/story/Story'
+import { HireMe } from '../components/pages/HireMe'
 import { Contact } from '../components/pages/Contact'
 
-export default function Landing() {
+export default () => {
   const storyRef = useRef<HTMLDivElement>(null)
   // const projectRef = useRef<HTMLDivElement>(null)
-  // const hireRef = useRef<HTMLDivElement>(null)
+  const hireRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
 
   const navigationRefs = {
     story: storyRef,
     // 'featured-projects': projectRef,
-    // 'hire-me': hireRef,
+    'hire-me': hireRef,
     contact: contactRef,
   }
 
@@ -33,10 +34,11 @@ export default function Landing() {
         next={merged[2]}
       >
       </Section>
+        */}
 
       <Section id="hire-me" title="Hire Me" ref={hireRef} next={merged[3]}>
+        <HireMe />
       </Section>
-        */}
 
       <Section id="contact" title="Contact" ref={contactRef}>
         <Contact />
