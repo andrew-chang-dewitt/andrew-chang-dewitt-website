@@ -13,7 +13,7 @@
     "prebuild": "npm run format && npm run coverage",
     "build": "gatsby build",
     "prestart": "npm run build",
-    "start": "gatsby serve"
+    "start": "gatsby serve -p 8000"
   },
   "eslintConfig": {
     "env": {
