@@ -1,6 +1,6 @@
 ---
 title: "Raspberry Pi GPIO Sensors to MQTT"
-date: "9999-01-01"
+date: "2020-10-30"
 tags: ["featured-project", "project: rpi-gpio-sensors-mqtt", "python", "raspberry-pi", "microservices", "IOT", "MQTT", "Docker"]
 ---
 
