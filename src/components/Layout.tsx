@@ -21,11 +21,11 @@ export const navItems: MenuItem[] = [
   //    text: 'Projects',
   //    key: 'featured-projects',
   //  },
-  //  {
-  //    to: '/#hire-me',
-  //    text: 'Hire Me',
-  //    key: 'hire-me',
-  //  },
+  {
+    to: '/#hire-me',
+    text: 'Hire Me',
+    key: 'hire-me',
+  },
   {
     to: '/#contact',
     text: 'Contact',
