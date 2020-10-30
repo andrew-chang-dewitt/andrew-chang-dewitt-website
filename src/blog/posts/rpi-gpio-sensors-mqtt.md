@@ -4,17 +4,20 @@ date: "9999-01-01"
 tags: ["featured-project", "project: rpi-gpio-sensors-mqtt", "python", "raspberry-pi", "microservices", "IOT", "MQTT", "Docker"]
 ---
 
-Though it may have been a mistake, my wife agreed to let me build us a home security system instead of buying one the fall after we bought our house. I say mistake, because that was just over a year ago & we still don't have one installed (to be fair, we've had a lot going on). I've had the time recently to be able to work on this project again, so I've started by reviewing what I wrote last December before our son was born. This part of the system is a seemingly simple one: read the security sensors & broadcast their status to the proper recipients.
+What it is
+===
+
+Though it may have been a mistake, my wife agreed to let me build us a home security system instead of buying one. I say mistake, because that was just over a year ago & we still don't have one installed (to be fair, we've had a lot going on). I've finally had the time to work on this project again recently, so I've started by reviewing what I wrote last December before our son was born. This part of the system is a seemingly simple one: read the security sensors & broadcast their status to the proper recipients.
 
 A first attempt
-===
+---
 
 > It worked great, except when it didn't
 
-When we bought the house, it was set up already with a wireless (345 Mhz RF) system from Honeywell that required third party monitoring. My first idea was to attempt to reuse as much of this system as possible to save money, although I was wary of RF wireless system's [glaring security flaws](https://www.youtube.com/watch?v=UlNkQJzw4oA). Using a software defined radio (I used the [RTL-SDR V3](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/)) & Joel Fuster's [HoneywellSecurityMQTT](https://github.com/fusterjj/HoneywellSecurityMQTT) I eventually put together [something that worked](https://github.com/andrew-chang-dewitt/HoneywellSecurityMQTT-Docker). Except for one problem: it didn't actually work. Or to be more accurate, it worked a lot of the time, but unpredictably & silently stop communicating with the sensors & require a manual reboot at least once a day, which kind of made it useless.
+When we bought the house, it was set up already with a wireless (345 Mhz RF) system from Honeywell that required third party monitoring. My first idea was to attempt to reuse as much of this system as possible to save money, although I was wary of RF wireless system's [glaring security flaws](https://www.youtube.com/watch?v=UlNkQJzw4oA). Using a software defined radio (I used the [RTL-SDR V3](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/)) & Joel Fuster's [HoneywellSecurityMQTT](https://github.com/fusterjj/HoneywellSecurityMQTT) I eventually put together [something that worked](https://github.com/andrew-chang-dewitt/HoneywellSecurityMQTT-Docker). Except for one problem: it didn't actually work. Or to be more accurate, it worked a lot of the time, but would unpredictably & silently stop communicating with the sensors & require a manual reboot at least once a day, which kind of made it useless.
 
 An actual solution
-===
+---
 
 > A user configurable and extensible python application that runs in Docker on a Raspberry Pi and reads GPIO input from sensors, then broadcasts via MQTT
 
@@ -30,38 +33,41 @@ In the end, built something that does the following:
 Currently, I'm using HomeAssistant to monitor the sensors via MQTT, then handle any events via it's built-in automations tools. My next step is to create a standalone service can be given arm status levels (i.e. disarmed, perimeter only armed, fully armed), then monitors the sensors and acts according to its armed status.
 
 How it works
----
+===
 
 The source code is available [on GitHub](https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt), along with documentation on wiring sensor circuitry, installing the software, & running the application, but I'll give a quick run-down of how it works here.
 
-### Sensor wiring
+Sensor wiring
+---
 
 I'm using two types of sensors for now: Form A (Normally Open, SPST) reed switches & HC-SR501 PIR motion sensors. Each one has fairly different wiring requirements, so I'll break it into two parts.
 
-#### 1. PIR motion sensor
+### 1. PIR motion sensor
 
 ![PIR motion sensor wiring diagram](https://raw.githubusercontent.com/andrew-chang-dewitt/rpi-security-gpio2mqtt/master/documentation/MotionSensor.png)
 
 The HC-SR501 PIR has 3 pins & is fairly simple to hook up. Simply put, you just need to run a jumper from a +5V power pin (# 2 or 4) to the PIR-VCC pin, then from PIR-GND to any one of the ground pins (#s 6, 9, 14, 20, 25, 30, 34, or 39), & lastly one more from the PIR-OUT to any one of the non power or ground pins (make sure to take note of which pin for configuration).
 
-#### 2. Form A reed switch
+### 2. Form A reed switch
 
 ![Form A reed switch wiring diagram](https://raw.githubusercontent.com/andrew-chang-dewitt/rpi-security-gpio2mqtt/master/documentation/ReedSwitch.png)
 
 A normally open single pole, single throw reed switch is a only a little more complex than wiring a PIR sensor. A resistor is needed to protect the Pi from any possible shorts (but wiring a hardware pull-down or pull-up circuit is not required as the Pi's software version on the Broadcom chip is used instead). To wire this sensor, connect the 3.3 Volt pin (# 1) to a lead on a resistor (anything from 1k to 5k Ohms should work), then connect the other lead to a lead on the Reed Switch. Lastly, connect the other Reed Switch lead to any open GPIO pin.
 
-### Docker stuff
+Docker stuff
+---
 
-The [Dockerfile](https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt/blob/master/Dockerfile) is fairly straightforward, with only a couples item of interest:
+The [Dockerfile](https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt/blob/master/Dockerfile) is fairly straightforward, with only a couple items of interest:
 
 1. Because building on a Pi Zero is so slow, I've set it up to use QEMU to allow it to be built on an x86 machine while targeting an ARM processor. This is achieved by a `post_checkout` Docker hook that downloads QEMU's ARM release, then unpacks the tarball & moves it so that the Dockerfile can copy it on `docker run`.
 2. While the user configuration file, `configuration.yaml`, is copied on `docker run`, the recommended run command includes setting up a Docker volume that allows the user to  replace it with their own & edit it without having to rebuild the entire image.
 
-### GPIO Listening
+Sensor handling
+---
 
 Coding this part was where things get interesting (although, I actually hadn't used a soldering iron or built any circuits in years, so wiring the sensors was pretty fun for me). I built the application as a set of independent, functional (mostly functional, that is, two are just wrappers on the imperative GPIO & MQTT libraries used) modules all wired together in one imperative Application class.
 
-Listening to the GPIO pins starts with [`RPi.GPIO`](https://pypi.org/project/RPi.GPIO/). Using it involves a bit of a setup process & that process depends on knowing what pins you're using & if they need any special properties (i.e. a software pull-up or pull-down circuit). To avoid making a mess of the application, I separated the config concerns from setting up the GPIO pins by creating a wrapper class that dynamically handles the setup process using a given list of sensors.
+Listening to the GPIO pins starts with [`RPi.GPIO`](https://pypi.org/project/RPi.GPIO/). Using it involves a bit of a setup process & that process depends on knowing what pins you're using & if they need any special properties (i.e. a software pull-up or pull-down circuit). To avoid making a mess of the application, I separated the config concerns from setting up the GPIO pins by creating a wrapper class around RPi.GPIO that dynamically handles the setup process using a given list of sensors.
 
 ```python
 # gpio.py
