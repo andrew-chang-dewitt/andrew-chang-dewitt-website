@@ -32,19 +32,16 @@ h2
   font-size: fonts.$size-large
 
 h3
-  font-size: fonts.$size-medium
-
-h4
   font-size: fonts.$size-regular-medium
 
-h5
+h4
   font-size: fonts.$size-regular
 
-h6
+h5
   font-size: fonts.$size-small
 
-h1
-  font-size: fonts.$size-huge
+h6
+  font-size: fonts.$size-tiny
 
 button
   background-color: colors.$dark
@@ -124,6 +121,8 @@ pre[class*="language-"]
 
 .indent p, p.indent
   text-indent: layout.$paragraph-indent
+.indent p > img:only-child, p.indent > img:only-child
+  margin-left: -1 * layout.$paragraph-indent
 
 .subtitle
   font-style: italic
