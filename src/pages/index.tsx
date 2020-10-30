@@ -36,7 +36,7 @@ export default () => {
       </Section>
         */}
 
-      <Section id="hire-me" title="Hire Me" ref={hireRef} next={merged[3]}>
+      <Section id="hire-me" title="Hire Me" ref={hireRef} next={merged[2]}>
         <HireMe />
       </Section>
 
