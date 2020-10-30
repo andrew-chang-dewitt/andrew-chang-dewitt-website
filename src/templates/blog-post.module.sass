@@ -1,4 +1,5 @@
 @use '../styles/colors'
+@use '../styles/layout'
 
 .tags
   padding: 0
@@ -19,3 +20,14 @@
 
 .centered
   text-align: center
+
+.content blockquote
+  margin-right: 0
+  margin-left: 0
+  padding: 0.75rem 2.5rem
+  border-left: solid colors.$accent1
+  font-style: italic
+.content blockquote > *:first-child
+  margin-top: 0
+.content blockquote > p
+  text-indent: 0

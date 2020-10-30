@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16'
 configure({ adapter: new Adapter() })
 
 import { NavMenu, MenuItem } from './NavMenu'
-import { NavTab } from './\NavTab'
+import { NavTab } from './NavTab'
 
 describe('component/navigation/NavMenu', () => {
   describe('rendering Props', () => {
