@@ -7,14 +7,14 @@ tags: ["featured-project", "project: rpi-gpio-sensors-mqtt", "python", "raspberr
 What it is
 ===
 
-Though it may have been a mistake, my wife agreed to let me build us a home security system instead of buying one. I say mistake, because that was just over a year ago & we still don't have one installed (to be fair, we've had a lot going on). I've finally had the time to work on this project again recently, so I've started by reviewing what I wrote last December before our son was born. This part of the system is a seemingly simple one: read the security sensors & broadcast their status to the proper recipients.
+Though it may have been a mistake, my wife agreed to let me build us a home security system instead of buying one. I say mistake, because that was just over a year ago & we still don't a complete system installed (to be fair, we've had a lot going on). I've finally had the time to work on this project again recently, so I've started by reviewing what I built last December before our son was born. This part of the system is a seemingly simple one: install & handle the sensors, then communicate their status to the necessary consumers.
 
 A first attempt
 ---
 
 > It worked great, except when it didn't
 
-When we bought the house, it was set up already with a wireless (345 Mhz RF) system from Honeywell that required third party monitoring. My first idea was to attempt to reuse as much of this system as possible to save money, although I was wary of RF wireless system's [glaring security flaws](https://www.youtube.com/watch?v=UlNkQJzw4oA). Using a software defined radio (I used the [RTL-SDR V3](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/)) & Joel Fuster's [HoneywellSecurityMQTT](https://github.com/fusterjj/HoneywellSecurityMQTT) I eventually put together [something that worked](https://github.com/andrew-chang-dewitt/HoneywellSecurityMQTT-Docker). Except for one problem: it didn't actually work. Or to be more accurate, it worked a lot of the time, but would unpredictably & silently stop communicating with the sensors & require a manual reboot at least once a day, which kind of made it useless.
+When we bought the house, it was set up already with a wireless (345 Mhz RF) system from Honeywell that required third party monitoring. My first idea was to reuse the existing sensors to save money (& it was theoretically going to be quicker), although I was wary of RF wireless systems' [glaring security flaws](https://www.youtube.com/watch?v=UlNkQJzw4oA). Using a software defined radio (I used the [RTL-SDR V3](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/)) & Joel Fuster's [HoneywellSecurityMQTT](https://github.com/fusterjj/HoneywellSecurityMQTT) I eventually put together [something that worked](https://github.com/andrew-chang-dewitt/HoneywellSecurityMQTT-Docker). Except for one problem: it didn't actually work. Or to be more accurate, it worked a lot of the time, but would unpredictably & silently stop communicating with the sensors & require a manual reboot at least once a day, which kind of made it useless.
 
 An actual solution
 ---
