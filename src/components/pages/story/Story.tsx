@@ -125,7 +125,10 @@ export const Story = () => (
         {' '}
         (e.g. OOP, some FP, DRY, TDD/BDD, & a little Agile/Scrum)
       </Detail>
+      {/*
       ; & recently released a <Link to="/#featured-projects">few projects</Link>
+        */}
+      ; & recently released a few projects
       , including a new{' '}
       <Detail buttonText="web app in React ">
         (something to improve sharing & browsing all of my recipes I have stored{' '}
