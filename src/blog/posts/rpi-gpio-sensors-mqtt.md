@@ -9,7 +9,7 @@ What it is
 
 Though it may have been a mistake, my wife agreed to let me build us a home
 security system instead of buying one. I say mistake, because that was just
-over a year ago & we still don't a complete system installed (to be fair, we've
+over a year ago & we still don't have a complete system installed (to be fair, we've
 had a lot going on). I've finally had the time to work on this project again
 recently, so I've started by reviewing what I built last December before our
 son was born. This part of the system is a seemingly simple one: install &
