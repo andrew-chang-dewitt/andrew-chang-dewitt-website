@@ -1,7 +1,7 @@
 ---
-title: "A blog post"
-date: "2019-12-10"
-tags: ["a tag", "another tag", "featured-project"]
+title: "Something goes here"
+date: "2020-01-31"
+tags: ["a tag", "something else", "featured-project"]
 ---
 
 This is a blog post.
