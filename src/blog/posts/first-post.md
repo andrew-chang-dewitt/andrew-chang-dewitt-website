@@ -2,6 +2,13 @@
 title: "A blog post"
 date: "2019-12-10"
 tags: ["a tag", "another tag", "featured-project"]
+info:
+  repo:
+    href: 'a/link/to/somewhere'
+    display: 'a link to somewhere'
+  url:
+    href: 'a/link/to/somewhere'
+    display: 'a link to somewhere'
 ---
 
 This is a blog post.

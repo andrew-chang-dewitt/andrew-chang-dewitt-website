@@ -2,6 +2,13 @@
 title: "Something goes here"
 date: "2020-01-31"
 tags: ["a tag", "something else", "featured-project"]
+info:
+  repo:
+    href: 'a/link/to/somewhere'
+    display: 'a link to somewhere'
+  url:
+    href: 'a/link/to/somewhere'
+    display: 'a link to somewhere'
 ---
 
 This is a blog post.
