@@ -1,14 +1,83 @@
 import React from 'react'
-// import { Link } from 'gatsby'
+import { Link } from 'gatsby'
 
-// import styles from './HireMe.module.sass'
+import RoundedItemList from '../RoundedItemList'
+import ExternalLink from '../ExternalLink'
+import WebAddressIcon from '../icons/WebAddressIcon'
+import GitHubIcon from '../icons/GitHubIcon'
 
-interface Project {}
+import styles from './FeaturedProjects.module.sass'
 
-interface Props {
-  projects: Array<Project>
+export interface ProjectType {
+  id: string
+  title: string
+  slug: string
+  tags: Array<string>
+  repo: LinkType
+  url?: LinkType
 }
 
-export const FeaturedProjects = ({ projects }: Props) => (
-  <div>{projects.map((project) => JSON.stringify(project))}</div>
+export interface LinkType {
+  href: string
+  display: string
+}
+
+interface ProjectProps {
+  project: ProjectType
+}
+
+const filterTags = (tags: Array<string>): Array<string> => {
+  const blacklist = ['project', 'problem', 'meta', 'goals']
+
+  return tags.reduce((allowed, tag) => {
+    // if any one of the blacklist words shows up in a tag,
+    // it isn't allowed
+    blacklist.some((blocked) => tag.includes(blocked))
+      ? null
+      : allowed.push(tag)
+
+    return allowed
+  }, [] as Array<string>)
+}
+
+const Project = ({ project }: ProjectProps) => (
+  <>
+    <Link to={project.slug}>
+      <h2>{project.title}</h2>
+    </Link>
+
+    <ul className={styles.infoList} aria-label="links">
+      {project.url ? (
+        <li>
+          <WebAddressIcon />
+
+          <ExternalLink href={project.url.href}>
+            {project.url.display}
+          </ExternalLink>
+        </li>
+      ) : null}
+
+      <li>
+        <GitHubIcon />
+
+        <ExternalLink href={project.repo.href}>
+          {project.repo.display}
+        </ExternalLink>
+      </li>
+    </ul>
+
+    <RoundedItemList items={filterTags(project.tags)} accessibleName="skills" />
+  </>
+)
+
+interface FeaturedProjectsProps {
+  projects: Array<ProjectType>
+}
+
+export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => (
+  <div>
+    {projects.map((project) => (
+      <Project key={project.id} project={project} />
+    ))}
+  </div>
 )
