@@ -64,7 +64,7 @@ export const Story = () => (
         buttonText=" becoming enamored "
         additionalText="with programming"
       >
-        &mdash;the types of prolems I was solving were challenging & engaging &
+        &mdash;the types of problems I was solving were challenging & engaging &
         I was enjoying programming in a way I hadn't enjoyed anything since I
         first studied calculus in high school
       </Detail>
