@@ -1,7 +1,7 @@
 import React from 'react'
 
-import GitHubIcon from './GitHubIcon'
-import WebAddressIcon from './WebAddressIcon'
+import GitHubIcon from '../icons/GitHubIcon'
+import WebAddressIcon from '../icons/WebAddressIcon'
 import ExternalLink from '../ExternalLink'
 
 import styles from './Header.module.sass'
@@ -42,7 +42,7 @@ export const Header = ({ data }: Props) => (
   <section className={`avoidPageBreak ${styles.header}`}>
     <h1 className="title">{data.name}</h1>
     <ul className={sharedStyles.infoList}>
-      <li>
+      <li className="stroke">
         <svg className={sharedStyles.stroke}>
           <title>Phone number:</title>
           <use xlinkHref="/icons/ikonate.svg#phone"></use>
@@ -50,7 +50,8 @@ export const Header = ({ data }: Props) => (
 
         <a href={`tel:+01-${data.phone}`}>{formatPhoneNumber(data.phone)}</a>
       </li>
-      <li>
+
+      <li className="stroke">
         <svg className={sharedStyles.stroke}>
           <title>Email address:</title>
           <use xlinkHref="/icons/ikonate.svg#envelope"></use>
@@ -58,12 +59,14 @@ export const Header = ({ data }: Props) => (
 
         <a href={`mailto:${data.email}`}>{data.email}</a>
       </li>
+
       <li>
         <WebAddressIcon />
         <ExternalLink href={`https://${data.website}`}>
           {data.website}
         </ExternalLink>
       </li>
+
       <li>
         <GitHubIcon />
 

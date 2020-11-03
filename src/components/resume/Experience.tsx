@@ -1,8 +1,9 @@
 import React from 'react'
 
-import WebAddressIcon from './WebAddressIcon'
-import GitHubIcon from './GitHubIcon'
+import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
+import WebAddressIcon from '../icons/WebAddressIcon'
+import GitHubIcon from '../icons/GitHubIcon'
 
 import sharedStyles from './Shared.module.sass'
 import styles from './Experience.module.sass'
@@ -68,11 +69,7 @@ export const Experience = ({ data }: Props) => (
           </li>
         </ul>
 
-        <ul className={styles.stack}>
-          {experienceItem.stack.map((tech) => (
-            <li key={tech}>{tech}</li>
-          ))}
-        </ul>
+        <RoundedItemList items={experienceItem.stack} accessibleName="stack" />
 
         <ul>
           {experienceItem.summary.map((item) => (
