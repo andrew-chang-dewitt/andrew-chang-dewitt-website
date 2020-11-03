@@ -7,7 +7,6 @@ info:
   repo:
     href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
     display: andrew-chang-dewitt/rpi-security-gpio2mqtt
-  url:
 ---
 
 What it is

@@ -64,7 +64,7 @@ export const Story = () => (
         buttonText=" becoming enamored "
         additionalText="with programming"
       >
-        &mdash;the types of problems I was solving were challenging & engaging &
+        &mdash;the types of prolems I was solving were challenging & engaging &
         I was enjoying programming in a way I hadn't enjoyed anything since I
         first studied calculus in high school
       </Detail>
@@ -125,8 +125,10 @@ export const Story = () => (
         {' '}
         (e.g. OOP, some FP, DRY, TDD/BDD, & a little Agile/Scrum)
       </Detail>
+      {/*
       ; & recently released a <Link to="/#featured-projects">few projects</Link>
-      , including a new{' '}
+        */}
+      ; & recently released a few projects , including a new{' '}
       <Detail buttonText="web app in React ">
         (something to improve sharing & browsing all of my recipes I have stored{' '}
         <a
