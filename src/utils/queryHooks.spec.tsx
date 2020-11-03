@@ -22,6 +22,14 @@ import {
 import { useQueryParam } from './queryHooks'
 
 describe('utils/queryHooks', function () {
+  before(() => {
+    global.requestAnimationFrame = function (callback) {
+      return setTimeout(callback, 0)
+    }
+    global.cancelAnimationFrame = function (id) {
+      clearTimeout(id)
+    }
+  })
   describe('useQueryParam()', function () {
     const inputEvent = (element: HTMLInputElement, newValue: string) => {
       act(() => {
