@@ -29,6 +29,7 @@ interface ProjectAPI {
     frontmatter: {
       title: string
       tags: Array<string>
+      description: string
       info: {
         [index: string]: unknown
       }
@@ -41,6 +42,7 @@ const apiToProjectType = (api: ProjectAPI): ProjectType => ({
   title: api.node.frontmatter.title,
   slug: api.node.fields.slug,
   tags: api.node.frontmatter.tags,
+  description: api.node.frontmatter.description,
   repo: api.node.frontmatter.info.repo as LinkType,
   url: api.node.frontmatter.info.url as LinkType,
 })
@@ -99,6 +101,7 @@ export const query = graphql`
           frontmatter {
             title
             tags
+            description
             info {
               repo {
                 href

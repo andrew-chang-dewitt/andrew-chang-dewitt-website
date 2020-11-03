@@ -13,6 +13,7 @@ export interface ProjectType {
   title: string
   slug: string
   tags: Array<string>
+  description: string
   repo: LinkType
   url?: LinkType
 }
@@ -67,6 +68,8 @@ const Project = ({ project }: ProjectProps) => (
     </ul>
 
     <RoundedItemList items={filterTags(project.tags)} accessibleName="skills" />
+
+    <article>{project.description}</article>
   </>
 )
 

@@ -18,6 +18,7 @@ const Factories = {
       title: 'title',
       slug: '/slug',
       tags: [],
+      description: 'description',
       repo: {
         href: '/repo/link',
         display: 'repo link',
@@ -29,6 +30,7 @@ const Factories = {
       title?: string
       slug?: string
       tags?: Array<string>
+      description?: string
       repo?: LinkType
       url?: LinkType
     }): ProjectType => ({
@@ -114,45 +116,6 @@ describe('src/components/pages/FeaturedProjects', () => {
         .equal('/goes/here')
     })
 
-    it('renders a projects tags', () => {
-      const projects = [
-        Factories.ProjectType.createWithProperites({
-          tags: ['tag', 'another-tag'],
-        }),
-      ]
-      setup(projects)
-
-      expect(screen.getByRole('list', { name: 'skills' }))
-        .to.contain.text('tag')
-        .and.to.contain.text('another-tag')
-    })
-
-    it("won't render some tags", () => {
-      // should have a blacklist not allowing any tag containing any of the following words:
-      // project, problem, meta, goals
-      const projects = [
-        Factories.ProjectType.createWithProperites({
-          tags: [
-            'tag',
-            'project',
-            'project: a project',
-            'featured-project',
-            'problem',
-            'meta',
-            'goals',
-          ],
-        }),
-      ]
-      setup(projects)
-
-      expect(screen.getByRole('list', { name: 'skills' }))
-        .to.contain.text('tag')
-        .and.to.not.contain.text('project')
-        .and.to.not.contain.text('problem')
-        .and.to.not.contain.text('meta')
-        .and.to.not.contain.text('goals')
-    })
-
     it('includes a link to a GitHub repo', () => {
       const projects = [
         Factories.ProjectType.createWithProperites({
@@ -185,6 +148,57 @@ describe('src/components/pages/FeaturedProjects', () => {
       expect(screen.getByRole('link', { name: 'Some demo' }))
         .has.attr('href')
         .equal('/some/demo')
+    })
+
+    it('renders a description of the project', () => {
+      const projects = [
+        Factories.ProjectType.createWithProperites({
+          description: 'a description',
+        }),
+      ]
+      setup(projects)
+
+      expect(screen.getByRole('article')).to.contain.text('a description')
+    })
+
+    it("renders a project's tags", () => {
+      const projects = [
+        Factories.ProjectType.createWithProperites({
+          tags: ['tag', 'another-tag'],
+        }),
+      ]
+      setup(projects)
+
+      expect(screen.getByRole('list', { name: 'skills' }))
+        .to.contain.text('tag')
+        .and.to.contain.text('another-tag')
+    })
+
+    it("won't render some tags", () => {
+      // should have a blacklist not allowing any tag containing any
+      // of the following words:
+      // project, problem, meta, goals
+      const projects = [
+        Factories.ProjectType.createWithProperites({
+          tags: [
+            'tag',
+            'project',
+            'project: a project',
+            'featured-project',
+            'problem',
+            'meta',
+            'goals',
+          ],
+        }),
+      ]
+      setup(projects)
+
+      expect(screen.getByRole('list', { name: 'skills' }))
+        .to.contain.text('tag')
+        .and.to.not.contain.text('project')
+        .and.to.not.contain.text('problem')
+        .and.to.not.contain.text('meta')
+        .and.to.not.contain.text('goals')
     })
   })
 })
