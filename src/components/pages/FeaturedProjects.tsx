@@ -43,7 +43,10 @@ const filterTags = (tags: Array<string>): Array<string> => {
 
 const Project = ({ project }: ProjectProps) => (
   <>
-    <Link className={`${styles.linkWrapsEl} ${styles.discreteLink}`} to={project.slug}>
+    <Link
+      className={`${styles.linkWrapsEl} ${styles.discreteLink}`}
+      to={project.slug}
+    >
       <h2 className="subtitle">{project.title}</h2>
     </Link>
 
@@ -69,7 +72,10 @@ const Project = ({ project }: ProjectProps) => (
 
     <RoundedItemList items={filterTags(project.tags)} accessibleName="skills" />
 
-    <Link className={`${styles.linkWrapsEl} ${styles.discreteLink}`} to={project.slug}>
+    <Link
+      className={`${styles.linkWrapsEl} ${styles.discreteLink}`}
+      to={project.slug}
+    >
       <article>{project.description}</article>
     </Link>
 
