@@ -68,3 +68,28 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter {
+      title: String!
+      date: Date @dateformat(formatString: "DD-MM-YYYY")
+      tags: [String!]!
+      description: String
+      info: FeaturedPostInfo
+    }
+    type FeaturedPostInfo {
+      repo: Link!
+      url: Link
+    }
+    type Link {
+      href: String!
+      display: String!
+    }
+  `
+  createTypes(typeDefs)
+}
