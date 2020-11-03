@@ -69,7 +69,7 @@ export const Experience = ({ data }: Props) => (
           </li>
         </ul>
 
-        <RoundedItemList items={experienceItem.stack} accessibleName="stack"/>
+        <RoundedItemList items={experienceItem.stack} accessibleName="stack" />
 
         <ul>
           {experienceItem.summary.map((item) => (
