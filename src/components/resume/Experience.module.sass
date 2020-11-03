@@ -7,3 +7,20 @@ $quadruple-space: calc( #{$space} * 4 )
 
 .experience h3
   margin-bottom: 0.5rem
+
+.stack
+  padding: 0
+  display: flex
+  flex-wrap: wrap
+
+.stack > li
+  padding: $space $double-space
+  border: 1px solid colors.$dark
+  border-radius: $quadruple-space
+  list-style: none
+  margin: 0 $double-space $space 0
+  color: colors.$dark
+  font-size: fonts.$size-small
+
+.stack > li:last-child
+  margin-right: 0

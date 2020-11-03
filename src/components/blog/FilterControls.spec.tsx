@@ -1,7 +1,5 @@
+import { expect } from 'chai'
 import 'mocha'
-import { expect, use } from 'chai'
-import ChaiDom from 'chai-dom'
-use(ChaiDom)
 import sinon from 'sinon'
 import { render, screen, act, fireEvent, cleanup } from '@testing-library/react'
 
@@ -41,7 +39,9 @@ describe('component/FilterControls', function () {
     })
     Object.defineProperty(global, '___loader', {
       value: {
-        enqueue: () => {},
+        enqueue: () => {
+          1 + 1
+        },
       },
       writable: true,
     })
