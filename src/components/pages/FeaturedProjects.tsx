@@ -43,8 +43,8 @@ const filterTags = (tags: Array<string>): Array<string> => {
 
 const Project = ({ project }: ProjectProps) => (
   <>
-    <Link to={project.slug}>
-      <h2>{project.title}</h2>
+    <Link className={`${styles.linkWrapsEl} ${styles.discreteLink}`} to={project.slug}>
+      <h2 className="subtitle">{project.title}</h2>
     </Link>
 
     <ul className={styles.infoList} aria-label="links">
@@ -69,7 +69,13 @@ const Project = ({ project }: ProjectProps) => (
 
     <RoundedItemList items={filterTags(project.tags)} accessibleName="skills" />
 
-    <article>{project.description}</article>
+    <Link className={`${styles.linkWrapsEl} ${styles.discreteLink}`} to={project.slug}>
+      <article>{project.description}</article>
+    </Link>
+
+    <Link className={styles.linkWrapsEl} to={project.slug}>
+      <p>Read more...</p>
+    </Link>
   </>
 )
 
@@ -78,7 +84,7 @@ interface FeaturedProjectsProps {
 }
 
 export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => (
-  <div>
+  <div className={styles.projects}>
     {projects.map((project) => (
       <Project key={project.id} project={project} />
     ))}

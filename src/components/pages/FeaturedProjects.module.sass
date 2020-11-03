@@ -1,5 +1,17 @@
 @use '../../styles/fonts'
 @use '../../styles/colors'
+@use '../../styles/layout'
+
+.projects > *:first-child > h2
+  margin-top: layout.$firstSubtitle
+
+.projects .linkWrapsEl:focus
+  box-shadow: none
+.projects .linkWrapsEl:focus > *
+  box-shadow: 0 0 3px 1px colors.$accent1
+
+.discreteLink
+  color: colors.$dark
 
 .infoList
   margin: 0
