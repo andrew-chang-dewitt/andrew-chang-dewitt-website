@@ -1,8 +1,8 @@
 ---
-title: "A blog post"
-date: "2019-12-10"
+title: "A featured project"
+date: "2020-10-31"
 tags: ["a tag", "another tag", "featured-project"]
-description: 'A test description. This is a supes concise version of the What/Why/How/Lessons? that the post should answer. Ideally, should encourage a viewer to click to read more.'
+description: 'Aliquet bibendum enim facilisis gravida neque convallis a cras semper. Turpis in eu mi bibendum neque egestas congue. Integer enim neque volutpat ac tincidunt vitae semper quis. Sodales ut etiam sit amet nisl purus in mollis.'
 info:
   repo:
     href: 'a/link/to/somewhere'
