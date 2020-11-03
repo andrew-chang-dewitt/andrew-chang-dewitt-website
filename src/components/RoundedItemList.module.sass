@@ -1,0 +1,23 @@
+@use '../styles/colors.sass'
+@use '../styles/fonts.sass'
+
+$space: 0.25rem
+$double-space: calc( #{$space} * 2 )
+$quadruple-space: calc( #{$space} * 4 )
+
+.list
+  padding: 0
+  display: flex
+  flex-wrap: wrap
+
+.list > li
+  padding: $space $double-space
+  border: 1px solid colors.$dark
+  border-radius: $quadruple-space
+  list-style: none
+  margin: 0 $double-space $space 0
+  color: colors.$dark
+  font-size: fonts.$size-small
+
+.list > li:last-child
+  margin-right: 0

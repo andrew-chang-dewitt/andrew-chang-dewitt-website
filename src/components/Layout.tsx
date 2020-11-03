@@ -16,11 +16,11 @@ export const navItems: MenuItem[] = [
     text: 'Story',
     key: 'story',
   },
-  //  {
-  //    to: '/#featured-projects',
-  //    text: 'Projects',
-  //    key: 'featured-projects',
-  //  },
+  {
+    to: '/#featured-projects',
+    text: 'Projects',
+    key: 'featured-projects',
+  },
   {
     to: '/#hire-me',
     text: 'Hire Me',
