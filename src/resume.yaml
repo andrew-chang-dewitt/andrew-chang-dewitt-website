@@ -44,8 +44,8 @@ experience:
       href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
       display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
     more-info:
-      href: ""
-      display: "FIXME: no blog post yet, write & link to it here"
+      href: "/blog/posts/personal-website"
+      display: "/blog/posts/personal-website"
     stack:
       - Typescript
       - Javascript
@@ -69,8 +69,8 @@ experience:
       href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
       display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
     more-info:
-      href: ""
-      display: "FIXME: no blog post yet, write & link to it here"
+      href: "/blog/posts/rpi-gpio-sensors-mqtt"
+      display: "/blog/posts/rpi-gpio-sensors-mqtt"
     stack:
       - Python
       - MQTT

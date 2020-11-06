@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
@@ -78,9 +79,9 @@ export const Experience = ({ data }: Props) => (
 
           <li>
             More info:{' '}
-            <ExternalLink href={`https://${experienceItem['more-info'].href}`}>
+            <Link to={experienceItem['more-info'].href}>
               {experienceItem['more-info'].display}
-            </ExternalLink>
+            </Link>
           </li>
         </ul>
       </div>
