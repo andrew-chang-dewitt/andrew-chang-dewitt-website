@@ -10,5 +10,8 @@ export default () => (
     <p>
       <Link to="/resume/printable">View printable version</Link>
     </p>
+    <p>
+      <Link to="/resume_Andrew_Chang-DeWitt.pdf">Download as pdf</Link>
+    </p>
   </Layout>
 )
