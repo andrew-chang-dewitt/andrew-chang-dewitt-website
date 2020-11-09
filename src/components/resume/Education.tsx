@@ -15,11 +15,11 @@ interface Props {
 }
 
 export const Education = ({ data }: Props) => (
-  <section className={styles.education}>
+  <section className={`avoidPageBreak ${styles.education}`}>
     <h2 className="title">Education</h2>
     {data.map((item) => (
       <div key={item.school}>
-        <h3 className="subtitle">{item.school}</h3>
+        <h3>{item.school}</h3>
         <p className="subtitle">
           {item.start} - {item.end}, {item.location}
         </p>

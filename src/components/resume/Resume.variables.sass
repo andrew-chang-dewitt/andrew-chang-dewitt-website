@@ -1,0 +1,13 @@
+@use '../../styles/layout'
+
+$space: 0.25rem
+$double-space: calc( #{$space} * 2 )
+$quadruple-space: calc( #{$space} * 4 )
+
+$print-space: calc( #{$space} * 0.75 )
+$print-double-space: calc( #{$double-space} *  0.75 )
+$print-quadruple-space: calc( #{$quadruple-space} *  0.75 )
+
+@mixin two-column-layout($left: 1fr, $right: 1fr)
+  display: grid
+  grid-template-columns: $left $right
