@@ -16,7 +16,7 @@ experience:
       href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
       display: github.com/andrew-chang-dewitt/we-cook-sometimes
     more-info:
-      href: ""
+      href: "/blog/posts/we-cook-sometimes"
       display: "andrew-chang-dewitt.dev/blog/posts/we-cook-sometimes"
     stack:
       - Typescript
