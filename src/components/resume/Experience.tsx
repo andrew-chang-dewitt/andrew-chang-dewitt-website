@@ -11,14 +11,14 @@ import styles from './Experience.module.sass'
 
 interface Item {
   title: string
-  url?: Link
-  repo: Link
-  'more-info': Link
+  url?: LinkType
+  repo: LinkType
+  'more-info': LinkType
   stack: Array<string>
   summary: Array<string>
 }
 
-interface Link {
+interface LinkType {
   href: string
   display: string
 }
@@ -47,43 +47,50 @@ export const Experience = ({ data }: Props) => (
     <h2 className="title">Experience</h2>
 
     {data.map((experienceItem) => (
-      <div key={experienceItem.title}>
+      <div className="avoidPageBreak" key={experienceItem.title}>
         <h3 className="title">{experienceItem.title}</h3>
 
-        <ul className={sharedStyles.infoList}>
-          {experienceItem.url ? (
+        <div className={styles.twoColumnLayout}>
+          <div>
+            <ul className={sharedStyles.infoList}>
+              {experienceItem.url ? (
+                <li>
+                  <WebAddressIcon />
+
+                  <ExternalLink href={experienceItem.url.href}>
+                    {experienceItem.url.display}
+                  </ExternalLink>
+                </li>
+              ) : null}
+
+              <li>
+                <GitHubIcon />
+
+                <ExternalLink href={experienceItem.repo.href}>
+                  {experienceItem.repo.display}
+                </ExternalLink>
+              </li>
+            </ul>
+
+            <RoundedItemList
+              items={experienceItem.stack}
+              accessibleName="stack"
+            />
+          </div>
+
+          <ul>
+            {experienceItem.summary.map((item) => (
+              <li key={item}>{parseSummaryItem(item)}</li>
+            ))}
+
             <li>
-              <WebAddressIcon />
-
-              <ExternalLink href={experienceItem.url.href}>
-                {experienceItem.url.display}
-              </ExternalLink>
+              More info:{' '}
+              <Link to={experienceItem['more-info'].href}>
+                {experienceItem['more-info'].display}
+              </Link>
             </li>
-          ) : null}
-
-          <li>
-            <GitHubIcon />
-
-            <ExternalLink href={experienceItem.repo.href}>
-              {experienceItem.repo.display}
-            </ExternalLink>
-          </li>
-        </ul>
-
-        <RoundedItemList items={experienceItem.stack} accessibleName="stack" />
-
-        <ul>
-          {experienceItem.summary.map((item) => (
-            <li key={item}>{parseSummaryItem(item)}</li>
-          ))}
-
-          <li>
-            More info:{' '}
-            <Link to={experienceItem['more-info'].href}>
-              {experienceItem['more-info'].display}
-            </Link>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
     ))}
   </section>

@@ -1,4 +1,32 @@
+@use '../../styles/fonts'
+@use './Resume.variables.sass'
+
 .content > section
   padding: 0
 .content > section:first-child
   padding-top: 4rem
+
+@media print
+  .content > section:first-child
+    padding-top: 0
+  .content > section > h1:first-child
+    margin-top: 0
+  .content > section > *:first-child
+    margin-bottom: Resume.$print-space
+  body
+    font-size: fonts.$size-small
+  h1, h2, h3, h4, h5, h6, blockquote
+    font-family: fonts.$family-serif
+    font-weight: fonts.$weight-serif-normal
+  h1
+    font-size: fonts.$size-large
+  h2
+    font-size: fonts.$size-regular-medium
+  h3
+    font-size: fonts.$size-regular
+  h4
+    font-size: fonts.$size-small
+  h5
+    font-size: fonts.$size-tiny
+  h6
+    font-size: fonts.$size-tiny

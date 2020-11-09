@@ -1,18 +1,30 @@
 @use '../../styles/fonts'
 @use '../../styles/colors'
+@use './Resume.variables.sass'
+
+$svg-size: 2rem
+$print-svg-size: calc( #{$svg-size} * 0.75 )
 
 .infoList
   margin: 0
   padding: 0
 
 .infoList > li
-  list-style: none
+  padding: Resume.$space
   display: grid
   grid-template-columns: 3rem 1fr
+  list-style: none
 
 .infoList > li > *:first-child
   justify-self: center
 
 .infoList > li > svg
-  height: 2rem
-  width: 2rem
+  height: $svg-size
+  width: $svg-size
+
+@media print
+  .infoList > li
+    grid-template-columns: calc(3rem * 0.75) 1fr
+  .infoList > li > svg
+    height: $print-svg-size
+    width: $print-svg-size
