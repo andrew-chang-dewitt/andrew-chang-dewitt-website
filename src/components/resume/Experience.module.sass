@@ -1,9 +1,18 @@
+@use '../../styles/layout'
 @use '../../styles/colors.sass'
 @use '../../styles/fonts.sass'
-
-$space: 0.25rem
-$double-space: calc( #{$space} * 2 )
-$quadruple-space: calc( #{$space} * 4 )
+@use './Resume.variables.sass'
 
 .experience h3
   margin-bottom: 0.5rem
+
+@media print
+  .twoColumnLayout
+    @include Resume.two-column-layout(1fr, 3fr)
+  .twoColumnLayout > ul
+    margin: 0
+@media all and (min-width: #{ layout.$screen-medium })
+  .twoColumnLayout
+    @include Resume.two-column-layout(1fr, 3fr)
+  .twoColumnLayout > ul
+    margin: 0
