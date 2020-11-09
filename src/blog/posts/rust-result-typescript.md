@@ -1,6 +1,6 @@
 ---
 title: "Missing Rust's Result type in Typescript"
-date: "2020-11-07"
+date: "2020-11-09"
 tags: ["project: we-cook-sometimes", "rust", "typescript", "type systems", "error handling"]
 ---
 
