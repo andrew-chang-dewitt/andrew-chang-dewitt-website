@@ -1,2 +1,12 @@
+@use './Resume.variables.sass'
+@use '../../styles/layout'
+
 .header > h1
   margin-bottom: 1rem
+
+@media print
+  .info
+    @include Resume.two-column-layout
+@media all and (min-width: #{ layout.$screen-medium })
+  .info
+    @include Resume.two-column-layout
