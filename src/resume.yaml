@@ -17,14 +17,15 @@ experience:
       display: github.com/andrew-chang-dewitt/we-cook-sometimes
     more-info:
       href: ""
-      display: "FIXME: no blog post yet, write & link to it here"
+      display: "andrew-chang-dewitt.dev/blog/posts/we-cook-sometimes"
     stack:
       - Typescript
       - SASS
       - React
       - React-Router
       - CSS-modules
-      - Mocha, Enzyme
+      - Mocha
+      - Enzyme
       - React Testing Library
       - Webpack
       - NGINX
@@ -33,7 +34,7 @@ experience:
       - "Hosts shared recipes for posts made to a cooking Instagram account my wife & I run"
       - "Utilized Trello's API to get content from the board we already used to store all of our recipes"
       - "Implemented [a custom graph data structure utility](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) for representing relationships between questions"
-      - "Developed a Result type (similar to [Rust's enum](https://doc.rust-lang.org/std/result/enum.Result.html)) to encapsulate success & failure states"
+      - "Developed [a Result type](/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
       - "Planning on converting to a back-end API with a database populated from Trello using API hooks that parses recipes into more granular detail to allow for abstractions on ingredient types, time, yield, & other recipe characteristics"
 
   - title: "Personal Website & Blog"
@@ -45,7 +46,7 @@ experience:
       display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
     more-info:
       href: "/blog/posts/personal-website"
-      display: "/blog/posts/personal-website"
+      display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
     stack:
       - Typescript
       - Javascript
@@ -70,7 +71,7 @@ experience:
       display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
     more-info:
       href: "/blog/posts/rpi-gpio-sensors-mqtt"
-      display: "/blog/posts/rpi-gpio-sensors-mqtt"
+      display: "andrew-chang-dewitt.dev/blog/posts/rpi-gpio-sensors-mqtt"
     stack:
       - Python
       - MQTT
