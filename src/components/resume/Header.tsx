@@ -41,39 +41,44 @@ const formatPhoneNumber = (phone: string): string =>
 export const Header = ({ data }: Props) => (
   <section className={`avoidPageBreak ${styles.header}`}>
     <h1 className="title">{data.name}</h1>
-    <ul className={sharedStyles.infoList}>
-      <li className="stroke">
-        <svg className={sharedStyles.stroke}>
-          <title>Phone number:</title>
-          <use xlinkHref="/icons/ikonate.svg#phone"></use>
-        </svg>
 
-        <a href={`tel:+01-${data.phone}`}>{formatPhoneNumber(data.phone)}</a>
-      </li>
+    <div className={styles.info}>
+      <ul className={sharedStyles.infoList}>
+        <li className="stroke">
+          <svg className={sharedStyles.stroke}>
+            <title>Phone number:</title>
+            <use xlinkHref="/icons/ikonate.svg#phone"></use>
+          </svg>
 
-      <li className="stroke">
-        <svg className={sharedStyles.stroke}>
-          <title>Email address:</title>
-          <use xlinkHref="/icons/ikonate.svg#envelope"></use>
-        </svg>
+          <a href={`tel:+01-${data.phone}`}>{formatPhoneNumber(data.phone)}</a>
+        </li>
 
-        <a href={`mailto:${data.email}`}>{data.email}</a>
-      </li>
+        <li className="stroke">
+          <svg className={sharedStyles.stroke}>
+            <title>Email address:</title>
+            <use xlinkHref="/icons/ikonate.svg#envelope"></use>
+          </svg>
 
-      <li>
-        <WebAddressIcon />
-        <ExternalLink href={`https://${data.website}`}>
-          {data.website}
-        </ExternalLink>
-      </li>
+          <a href={`mailto:${data.email}`}>{data.email}</a>
+        </li>
+      </ul>
 
-      <li>
-        <GitHubIcon />
+      <ul className={sharedStyles.infoList}>
+        <li>
+          <WebAddressIcon />
+          <ExternalLink href={`https://${data.website}`}>
+            {data.website}
+          </ExternalLink>
+        </li>
 
-        <ExternalLink href={`https://${data.github}`}>
-          {data.github}
-        </ExternalLink>
-      </li>
-    </ul>
+        <li>
+          <GitHubIcon />
+
+          <ExternalLink href={`https://${data.github}`}>
+            {data.github}
+          </ExternalLink>
+        </li>
+      </ul>
+    </div>
   </section>
 )
