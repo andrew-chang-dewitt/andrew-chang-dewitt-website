@@ -33,7 +33,7 @@ Trello has a pretty good API for accessing data stored in boards & cards, so in 
 
 While Trello had all the data we needed for our recipes (title, tags, pictures/videos, & the recipe itself), there was no pre-existing source of questions that could be used to narrow down the list. I knew tags would be the best tool for filtering recipes, so I began by writing a list of questions, (defined [directly in the code](https://github.com/andrew-chang-dewitt/we-cook-sometimes/blob/d5cdc1dd867f4ffa0e0ebc28322967bdcbf279cc/src/lib/data/questions.ts) for simplicity's sake) that could be used to indicate a tag (or tags) should be included or excluded, as well as what questions could be good to ask next.
 
-Finally, while using Typescript for this project (as well as [the website you're reading this blog post on](/blog/posts/personal-website)) had made me actually truly enjoy writing Javascript again, I regularly found myself missing Rust's `Result` type. So much so, that I [wrote my own implementation](FIXME: post link here) of it that I then used to encapsulate the possible failures that could be encountered while fetching data.
+Finally, while using Typescript for this project (as well as [the website you're reading this blog post on](/blog/posts/personal-website)) had made me actually truly enjoy writing Javascript again, I regularly found myself missing Rust's `Result` type. So much so, that I [wrote my own implementation](/blog/posts/rust-result-typescript) of it that I then used to encapsulate the possible failures that could be encountered while fetching data.
 
 The core logic
 --
