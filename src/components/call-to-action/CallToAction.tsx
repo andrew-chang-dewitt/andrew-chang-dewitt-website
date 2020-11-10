@@ -45,7 +45,7 @@ export const CallToAction = ({ transition }: Props) => (
       </div>
       <div className={styles.icon}>
         <a
-          href="https://www.linkedin.com/in/adwtt90/"
+          href="https://www.linkedin.com/in/andrew-chang-dewitt/"
           target="_blank"
           rel="noopener noreferrer"
         >
