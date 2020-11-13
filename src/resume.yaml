@@ -89,6 +89,33 @@ experience:
       - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
       - "Planning to rewrite in Rust to be compiled for running on a microcontroller, such as Arduino or ESP32 board"
 
+employment:
+  - title: "Department of Family Resources"
+    positions:
+      - job-title: "State Eligibility Consultant"
+        employer: "State of Indiana"
+        start: "June 2019"
+        end: "August 2020"
+      - job-title: "Eligibility Specialist Working Lead"
+        employer: "Knowledge Services"
+        start: "May 2018"
+        end: "June 2019"
+      - job-title: "Eligibility Specialist, Local Office"
+        employer: "Knowledge Services"
+        start: "January 2018"
+        end: "May 2018"
+      - job-title: "Eligibility Specialist, Regional Change Center"
+        employer: "Conduent (formerly Xerox)"
+        start: "August 2016"
+        end: "December 2017"
+    summary:
+      - "Started as a contract employee & learned quickly, advancing to a lead position among a team of contractors"
+      - "Promoted to state employee in June of 2019 after 2+ years as a team lead"
+      - "Worked directly with clients to assist in understanding, obtaining, & changing benefits"
+      - "Trained new employees & worked with experienced employees to make improvements where necessary"
+      - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+
+
 education:
   - school: "Ball State University"
     start: 2009
