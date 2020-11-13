@@ -3,8 +3,19 @@
 @use '../../styles/fonts.sass'
 @use './Resume.variables.sass'
 
-.experience h3
+.employment h3
   margin-bottom: 0.5rem
+
+.positions
+  margin: 0
+  padding: 0
+.positions > li
+  margin: Resume.$space 0
+  list-style: none
+.positions > li > *
+  margin: 0
+.positions > li > h4
+  margin-bottom: #{Resume.$space / 2}
 
 @media print
   .twoColumnLayout
