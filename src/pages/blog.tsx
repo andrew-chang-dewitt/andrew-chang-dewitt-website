@@ -12,7 +12,7 @@ interface Props {
 const Blog = ({ data }: Props) => {
   const posts = data.posts.edges.map(
     ({ node }: any): Post => {
-      return {
+      const post: Post = {
         id: node.id,
         title: node.frontmatter.title,
         date: node.frontmatter.date,
@@ -20,6 +20,12 @@ const Blog = ({ data }: Props) => {
         excerpt: node.excerpt,
         tags: node.frontmatter.tags,
       }
+
+      if (node.frontmatter.description) {
+        post['description'] = node.frontmatter.description
+      }
+
+      return post
     }
   )
 
@@ -46,6 +52,7 @@ export const query = graphql`
             title
             date(formatString: "DD MMMM, YYYY")
             tags
+            description
           }
           fields {
             slug

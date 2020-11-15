@@ -9,6 +9,7 @@ export interface Post {
   date: string
   slug: string
   excerpt: string
+  description?: string
   tags: string[] | null
 }
 
@@ -41,7 +42,9 @@ export const PostSummary = ({ post }: Props) => (
           </ul>
         ) : null}
       </div>
-      <p className={styles.regularColor}>{post.excerpt}</p>
+      <p className={styles.regularColor}>
+        {post.description ? post.description : post.excerpt}
+      </p>
     </div>
   </Link>
 )

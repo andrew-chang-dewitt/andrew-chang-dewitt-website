@@ -21,6 +21,13 @@ export namespace Factories {
         tags: ['tag1', 'tag2'],
       }
     }
+
+    static createWithDescription(): ComponentPost {
+      return {
+        ...Factories.Post.create(),
+        description: 'a description',
+      }
+    }
   }
 }
 
@@ -41,6 +48,14 @@ describe('component/PostSummary', () => {
 
   it('renders an excerpt', () => {
     expect(postSummary.find('p').text()).to.equal('excerpt')
+  })
+
+  it('renders the description instead of an excerpt, if provided', () => {
+    expect(
+      shallow(<PostSummary post={Factories.Post.createWithDescription()} />)
+        .find('p')
+        .text()
+    ).to.equal('a description')
   })
 
   it("renders a post's tags", () => {

@@ -94,6 +94,7 @@ export const query = graphql`
   query {
     posts: allMarkdownRemark(
       filter: { frontmatter: { tags: { in: "featured-project" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
