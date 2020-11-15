@@ -1,6 +1,6 @@
 ---
 title: "Personal Website"
-date: "2020-11-04"
+date: "2020-11-15"
 tags: ["featured-project", "project: andrew-chang-dewitt.dev", "Typescript", "Javascript", "SASS", "Gatsby", "CSS-modules", "Node", "Express", "Mocha", "Enzyme", "React Testing Library", "NGINX"]
 description: "This professional website & blog, built as a static site with dynamically generated blog posts, resume, & portfolio. Self-hosted on a Ubuntu server with Nginx & a NodeJS/Express back-end for the contact form."
 info:
