@@ -69,7 +69,7 @@ In the end, built something that does the following:
    & installation
 
 Currently, I'm using HomeAssistant to monitor the sensors via MQTT, then handle
-any events via it's built-in automations tools. My next step is to create a
+any events via its built-in automations tools. My next step is to create a
 standalone service can be given arm status levels (i.e. disarmed, perimeter
 only armed, fully armed), then monitors the sensors and acts according to its
 armed status.
@@ -103,7 +103,7 @@ from PIR-GND to any one of the ground pins (#s 6, 9, 14, 20, 25, 30, 34, or 39),
 
 ![Form A reed switch wiring diagram](https://raw.githubusercontent.com/andrew-chang-dewitt/rpi-security-gpio2mqtt/master/documentation/ReedSwitch.png)
 
-A normally open single pole, single throw reed switch is a only a little more
+A normally open single pole, single throw reed switch is only a little more
 complex than wiring a PIR sensor. A resistor is needed to protect the Pi from
 any possible shorts (but wiring a hardware pull-down or pull-up circuit is not
 required as the Pi's software version on the Broadcom chip is used instead). To
@@ -246,7 +246,7 @@ def load_configs(config_file: str) -> Configs:
 
 Of course, building that `sensor_list` takes a `Sensor` class. For my purposes,
 a sensor needs to know information about itself to be published (such as a
-name, type, & group), in addition to it's GPIO pin number. Additionally, a
+name, type, & group), in addition to its GPIO pin number. Additionally, a
 sensor needs to be able to find its current state, and some sensors may need a
 pull-up or pull-down software circuit to work correctly (such as a reed
 switch).
