@@ -19,7 +19,7 @@ About one year ago, I began studying in earnest with the goal of making a career
 As a self-taught developer, I knew I would need a means of proving my skills, so I began to maintain a GitHub account & put together a portfolio with the plan of hosting it on a personal website I'd build myself.
 This summer, I spent some time building the website (if you're reading this, you're probably looking at it now).
 
-While I'm not going to go over how I built every part of the site (most of it's just not that interesting), I definitely benefited from this project & want to discuss what I wanted to achieve by building a website as well as review some of the lessons I learned while building it.
+While I'm not going to go over how I built every part of the site, I definitely benefited from this project & want to discuss what I wanted to achieve by building a website as well as review some of the lessons I learned while building it.
 Additional posts with more details about how I built different parts or specific lessons I learned can be found under the [project: andrew-chang-dewitt.dev](/blog/tags/project:-andrew-chang-dewitt.dev) tag.
 
 Goal setting
@@ -57,7 +57,8 @@ I knew I wanted to build this project as a static site (as much as possible at l
 First, I tried out [Zola](https://www.getzola.org/) because it was written in Rust & looked fairly simple.
 While it worked exactly as advertised, it fell to the same issues I'd had with web development in general back when I'd worked with Angular 1: difficulty writing HTML & CSS in the DRY, composable manner that I'd gotten used to in other areas of software programming.
 
-[Fairly quickly](https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website/tree/36ed4171044b990741b69fb0e3c55700101c40e5), I abandoned Zola after getting too frustrated with the previously-mentioned difficulty of writing modular markup & styles & a quick peek at Jekyll and similar classic Python SSG's indicated I'd run into the same problems.
+[Fairly quickly](https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website/tree/36ed4171044b990741b69fb0e3c55700101c40e5), I abandoned Zola after getting mired down in the weeds of nexted templates & css-scoping. 
+A quick peek at Jekyll and similar classic Python SSG's indicated I'd run into the same problems.
 At that point, I remembered having heard a lot about Web Components, modular CSS, & more with React and/or Vue, as well as a lot of hype around Gatsby back when I'd last followed web development.
 While I glanced at Vue, I found the documentation lacking at times & was discouraged despite really liking its OSS origins compared to React & Angular.
 Somewhat reluctantly, I tried out React with the intention to use it via Gatsby if I liked it.
@@ -101,7 +102,7 @@ In fact, I found a similar need later then when working with React Router, so I'
 Unresolved issues
 ---
 
-In what turned out to be the most frustrating (although largely workable) issue, I often felt like  Gatsby itself was doing too much.
+In what turned out to be the most troublesome (although largely workable) issue, I often felt like  Gatsby itself was doing too much.
 I'd originally chosen Gatsby for one main reason: I wanted an SSG to make creating a multi-page website with dynamic pages simple & performant, and at first, Gatsby seemed to be perfect for this.
 Yet the more I worked on the project, the more often I felt like Gatsby was getting in my way.
 
