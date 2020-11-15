@@ -1,6 +1,6 @@
 ---
 title: "We Cook Sometimes"
-date: "2020-11-10"
+date: "2020-11-15"
 tags: ["featured-project", "project: we-cook-sometimes", "Typescript", "SASS", "React", "React-Router", "CSS-modules", "Mocha", "Enzyme", "React Testing Library", "Webpack", "NGINX", "web development"]
 description: "A web-app to help my wife & I finally decide what to cook for dinner. Additionally, we use it to share our recipes with others. Pulls content from a Trello we already used to store & maintain recipes."
 info:
