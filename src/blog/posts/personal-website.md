@@ -102,10 +102,10 @@ Unresolved issues
 ---
 
 In what turned out to be the most frustrating (although largely workable) issue, I often felt like  Gatsby itself was doing too much.
-I'd originally chosen Gatsby one main reason: I wanted an SSG to make creating a multi-page website with dynamic pages simple & performant, and at first, Gatsby seemed to be perfect for this.
+I'd originally chosen Gatsby for one main reason: I wanted an SSG to make creating a multi-page website with dynamic pages simple & performant, and at first, Gatsby seemed to be perfect for this.
 Yet the more I worked on the project, the more often I felt like Gatsby was getting in my way.
 
-The most common issue was entirely the caused by one feature of Gatsby that's sold pretty strongly in the tutorial and in the API Reference docs (fittingly filed under ['Gatsby Magic'](https://www.gatsbyjs.com/docs/gatsby-magic/#routing)): it's `Link` component.
+The most common issue was entirely caused by one feature of Gatsby that's sold pretty strongly in the tutorial and in the API Reference docs (fittingly filed under ['Gatsby Magic'](https://www.gatsbyjs.com/docs/gatsby-magic/#routing)): it's `Link` component.
 The idea is that using their `Link` allows for the simplicity of static html routing via classic HTTP file server routing, while adding highly performant secondary features like page prefetching & nearly instant routing by using dynamic routing in a JS runtime loaded later via rehydration.
 And to be fair, these features work exactly as advertised & created a wonderfully fast & smooth experience when navigating my website.
 My real problems started to happen at the unit testing level.
