@@ -1,41 +1,60 @@
-import React from 'react'
 import 'mocha'
-import {
-  expect,
-  //use
-} from 'chai'
-import { shallow, configure, ShallowWrapper } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-
-//import { default as chaiDom } from 'chai-dom'
-// import {
-//   render,
-//   cleanup,
-//   screen,
-//   act,
-//   // fireEvent,
-//   // waitFor
-// } from '@testing-library/react'
+import { expect, use } from 'chai'
+import { default as chaiDom } from 'chai-dom'
+use(chaiDom)
+import { render, cleanup, screen } from '@testing-library/react'
 // import sinon, { SinonSpy, SinonStub } from 'sinon'
 
-// configure chai to use chai-dom plugin
-// use(chaiDom)
-
-configure({ adapter: new Adapter() })
+import React from 'react'
 
 import { Footer } from './Footer'
-import { AnchorLink } from '../navigation/AnchorLink'
+// import { AnchorLink } from '../navigation/AnchorLink'
 
 describe('component/Footer', () => {
-  let footer: ShallowWrapper
-
-  beforeEach(() => {
+  const setup = () => {
     let topRef = ('totally a ref' as any) as React.RefObject<HTMLDivElement>
 
-    footer = shallow(<Footer topRef={topRef} />)
+    render(<Footer topRef={topRef} />)
+  }
+
+  before(() => {
+    // mock out global properties that Gatsby's Link requires to not throw errors
+    Object.defineProperty(global, '__BASE_PATH__', {
+      value: '',
+      writable: true,
+    })
+    Object.defineProperty(global, '___loader', {
+      value: {
+        enqueue: () => {},
+      },
+      writable: true,
+    })
+  })
+  afterEach(() => {
+    cleanup()
   })
 
-  it('includes an AnchorLink that takes the user back to the top of the current page', () => {
-    expect(footer.find(AnchorLink)).to.have.lengthOf(1)
+  it("includes 'return to top' link", () => {
+    setup()
+
+    expect(screen.getByRole('link', { name: /return to top/i }))
+      .has.attr('href')
+      .satisfy((str: string): boolean => str.endsWith('#'))
+  })
+
+  it('includes a mailto link to my default contact email', () => {
+    setup()
+
+    expect(screen.getByRole('link', { name: /@/i }))
+      .has.attr('href')
+      .equal('mailto:hello@andrew-chang-dewitt.dev')
+  })
+
+  it('includes a link to my resume', () => {
+    setup()
+
+    expect(screen.getByRole('link', { name: /resume/i }))
+      .has.attr('href')
+      .equal('/resume')
   })
 })
