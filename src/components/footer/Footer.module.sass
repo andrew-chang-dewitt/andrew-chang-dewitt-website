@@ -2,6 +2,8 @@
 @use '../../styles/fonts'
 @use '../../styles/layout'
 
+$svg-size: 2rem
+
 .footer
   margin-top: 4rem
 
@@ -16,22 +18,43 @@
 .lists
   display: flex
   justify-content: space-between
+  font-size: fonts.$size-small
+@media all and (max-width: #{ layout.$screen-small })
+  .lists
+    flex-direction: column
+
+.lists > *
+  padding: 0
+  margin: 0 0 4rem 0
+.lists > ul
+  list-style: none
+.lists > *:first-child
+  max-width: 22rem
+
+.lists > ul > *
+  padding-bottom: 0.25rem
+.lists > ul > li
+  display: grid
+  grid-template-columns: $svg-size 1fr
+  grid-gap: 0.25rem
+  align-items: center
+.lists > ul > li > svg
+  height: $svg-size
+  width: $svg-size
+
+.name
+  margin: 0
+  font-size: fonts.$size-regular-medium
+
+.tagline
+  margin: #{$svg-size - 0.5rem}
+  padding: 0.5rem
+  border-left: solid colors.$accent1
+.tagline > h2
+  margin-top: 0
+  font-size: fonts.$size-regular
+  font-style: italic
 
 .bottom
   text-align: center
   font-size: fonts.$size-small
-
-.lists > ul
-  list-style: none
-  padding: 0
-  margin: 0 0 4rem 0
-
-.name
-  font-family: fonts.$family-mono
-  font-size: fonts.$size-regular-medium
-
-@media all and (max-width: #{ layout.$screen-small })
-  .lists
-    flex-direction: column
-    align-items: center
-    text-align: center
