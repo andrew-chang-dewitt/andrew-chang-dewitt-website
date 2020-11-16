@@ -66,6 +66,7 @@ export const Header = ({ data }: Props) => (
       <ul className={sharedStyles.infoList}>
         <li>
           <WebAddressIcon />
+
           <ExternalLink href={`https://${data.website}`}>
             {data.website}
           </ExternalLink>
