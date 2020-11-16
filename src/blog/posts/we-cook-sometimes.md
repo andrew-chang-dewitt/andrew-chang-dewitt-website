@@ -47,7 +47,7 @@ The core logic
 --
 
 Next, I built a [core library](https://github.com/andrew-chang-dewitt/we-cook-sometimes/tree/d5cdc1dd867f4ffa0e0ebc28322967bdcbf279cc/src/lib/core) to handle all of the logic related to answering questions, filtering recipes based on those answers, & represent the state of both parts.
-I'm a big fan of the functional core, imperative shell pattern Gary Bernhardt [describes as FauxO](https://www.destroyallsoftware.com/talks/boundaries), & implementing this core state using that pattern was incredibly useful later one when adding previous question & reset all questions features.
+I'm a big fan of the functional core, imperative shell pattern Gary Bernhardt [describes as FauxO](https://www.destroyallsoftware.com/talks/boundaries), & implementing this core state using that pattern was incredibly useful later on when adding previous question & reset all questions features.
 
 In order to easily navigate backwards through questions already answered, I wanted to think of it similarly to writing an 'undo' feature in a text editor.
 I didn't actually care what the previous question was or what recipes it had eliminated; all I needed to know was what the state was before the action I wanted to 'undo' & have some way of restoring it.
