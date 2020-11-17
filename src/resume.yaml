@@ -29,7 +29,7 @@ experience:
       - Webpack
       - NGINX
     summary:
-      - "A single-page web application to help my family & I to pick something cook"
+      - "A single-page web application to help my family & I pick something to cook"
       - "Hosts shared recipes for posts made to a cooking Instagram account my wife & I run"
       - "Utilized Trello's API to get content from the board we already used to store all of our recipes"
       - "Implemented [a custom graph data structure utility](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) for representing relationships between questions"
