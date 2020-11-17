@@ -29,7 +29,7 @@ experience:
       - Webpack
       - NGINX
     summary:
-      - "A single-page web application to help my family & I to pick something to cook"
+      - "A single-page web application to help my family & I pick something to cook"
       - "Hosts shared recipes for posts made to a cooking Instagram account my wife & I run"
       - "Utilized Trello's API to get content from the board we already used to store all of our recipes"
       - "Implemented [a custom graph data structure utility](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) for representing relationships between questions"
@@ -82,7 +82,7 @@ experience:
       - "An IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
       - "Intended to communicate with a custom home security alarm system, as well Home Assistant for home automations"
       # - "Publishes sensor events & system status via MQTT on a local network"
-      - "Uses Functional Core, Imperative Shell design pattern"
+      - "Uses [Functional Core, Imperative Shell](https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell) design pattern"
       - "Distributed as a Dockerfile to aid in installation & maintenance"
       - "Reads configuration from a user-maintained YAML file"
       - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
