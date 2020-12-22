@@ -37,19 +37,15 @@ interface ProjectAPI {
   }
 }
 
-const apiToProjectType = (api: ProjectAPI): ProjectType => {
-  console.dir(api)
-
-  return {
-    id: api.node.id,
-    title: api.node.frontmatter.title,
-    slug: api.node.fields.slug,
-    tags: api.node.frontmatter.tags,
-    description: api.node.frontmatter.description,
-    repo: api.node.frontmatter.info.repo as Array<LinkType>,
-    url: api.node.frontmatter.info.url as LinkType,
-  }
-}
+const apiToProjectType = (api: ProjectAPI): ProjectType => ({
+  id: api.node.id,
+  title: api.node.frontmatter.title,
+  slug: api.node.fields.slug,
+  tags: api.node.frontmatter.tags,
+  description: api.node.frontmatter.description,
+  repo: api.node.frontmatter.info.repo as Array<LinkType>,
+  url: api.node.frontmatter.info.url as LinkType,
+})
 
 export default ({ data }: Props) => {
   const storyRef = useRef<HTMLDivElement>(null)
