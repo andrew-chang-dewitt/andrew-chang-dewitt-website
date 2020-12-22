@@ -8,8 +8,10 @@ info:
     href: https://we-cook-sometimes.andrew-chang-dewitt.dev
     display: we-cook-sometimes.andrew-chang-dewitt.dev
   repo:
-    href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
-    display: andrew-chang-dewitt/we-cook-sometimes
+    - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
+      display: github.com/andrew-chang-dewitt/we-cook-sometimes
+    - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
+      display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
 ---
 
 An idea

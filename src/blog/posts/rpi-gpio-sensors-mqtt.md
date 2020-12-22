@@ -5,8 +5,8 @@ tags: ["featured-project", "project: rpi-gpio-sensors-mqtt", "python", "raspberr
 description: "A Docker-ized python microservice for reading a Raspberry Pi's GPIO input from a sensor & publishing a message via MQTT on detection."
 info:
   repo:
-    href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-    display: andrew-chang-dewitt/rpi-security-gpio2mqtt
+    - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+      display: andrew-chang-dewitt/rpi-security-gpio2mqtt
 ---
 
 What it is

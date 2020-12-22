@@ -5,8 +5,8 @@ tags: ["featured-project", "project: andrew-chang-dewitt.dev", "Typescript", "Ja
 description: "This professional website & blog, built as a static site with dynamically generated blog posts, resume, & portfolio. Self-hosted on a Ubuntu server with Nginx & a NodeJS/Express back-end for the contact form."
 info:
   repo:
-    href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-    display: andrew-chang-dewitt/andrew-chang-dewitt-website
+    - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+       display: andrew-chang-dewitt/andrew-chang-dewitt-website
   url:
     href: https://andrew-chang-dewitt.dev
     display: andrew-chang-dewitt.dev
@@ -57,7 +57,7 @@ I knew I wanted to build this project as a static site (as much as possible at l
 First, I tried out [Zola](https://www.getzola.org/) because it was written in Rust & looked fairly simple.
 While it worked exactly as advertised, it fell to the same issues I'd had with web development in general back when I'd worked with Angular 1: difficulty writing HTML & CSS in the DRY, composable manner that I'd gotten used to in other areas of software programming.
 
-[Fairly quickly](https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website/tree/36ed4171044b990741b69fb0e3c55700101c40e5), I abandoned Zola after getting mired down in the weeds of nested templates & css-scoping. 
+[Fairly quickly](https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website/tree/36ed4171044b990741b69fb0e3c55700101c40e5), I abandoned Zola after getting mired down in the weeds of nested templates & css-scoping.
 A quick peek at Jekyll and similar classic Python SSG's indicated I'd run into the same problems.
 At that point, I remembered having heard a lot about Web Components, modular CSS, & more with React and/or Vue, as well as a lot of hype around Gatsby back when I'd last followed web development.
 While I glanced at Vue, I found the documentation lacking at times & was discouraged despite really liking its OSS origins compared to React & Angular.
