@@ -13,11 +13,13 @@ experience:
       href: https://we-cook-sometimes.andrew-chang-dewitt.dev
       display: we-cook-sometimes.andrew-chang-dewitt.dev
     repo:
-      href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
-      display: github.com/andrew-chang-dewitt/we-cook-sometimes
+      - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
+        display: github.com/andrew-chang-dewitt/we-cook-sometimes
+      - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
+        display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
     more-info:
-      href: "/blog/posts/we-cook-sometimes"
-      display: "andrew-chang-dewitt.dev/blog/posts/we-cook-sometimes"
+      href: "/blog/tags/project:-we-cook-sometimes"
+      display: "andrew-chang-dewitt.dev/blog/tags/project:-we-cook-sometimes"
     stack:
       - Typescript
       - SASS
@@ -28,14 +30,17 @@ experience:
       - Enzyme
       - React Testing Library
       - Webpack
+      - Node
+      - Express
+      - RESTful API
       - NGINX
     summary:
       - "A single-page web application to help my family & I pick something to cook"
       - "Hosts shared recipes for posts made to a cooking Instagram account my wife & I run"
-      - "Utilized Trello's API to get content from the board we already used to store all of our recipes"
       - "Implemented [a custom graph data structure utility](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) for representing relationships between questions"
       - "Developed [a Result type](/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
-      - "Planning on converting to a back-end API with a database populated from Trello using API hooks that parses recipes into more granular detail to allow for abstractions on ingredient types, time, yield, & other recipe characteristics"
+      - "Stores data in MongoDB & serves it from a REST API built with Node & Express"
+      - "API sources data from Trello content, updates using webhooks from Trello, & checks for missed changes using a scheduled job"
 
   - title: "Personal Website & Blog"
     url:
