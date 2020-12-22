@@ -83,7 +83,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       info: FeaturedPostInfo
     }
     type FeaturedPostInfo {
-      repo: Link!
+      repo: [Link]!
       url: Link
     }
     type Link {
