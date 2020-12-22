@@ -5,8 +5,8 @@ tags: ["a tag", "something else", "featured-project"]
 description: 'Aliquet bibendum enim facilisis gravida neque convallis a cras semper. Turpis in eu mi bibendum neque egestas congue. Integer enim neque volutpat ac tincidunt vitae semper quis. Sodales ut etiam sit amet nisl purus in mollis.'
 info:
   repo:
-    href: 'a/link/to/somewhere'
-    display: 'a link to somewhere'
+    - href: 'a/link/to/somewhere'
+      display: 'a link to somewhere'
   url:
     href: 'a/link/to/somewhere'
     display: 'a link to somewhere'

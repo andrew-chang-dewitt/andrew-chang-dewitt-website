@@ -1,10 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import LinkList, { LinkType } from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
-import ExternalLink from '../ExternalLink'
-import WebAddressIcon from '../icons/WebAddressIcon'
-import GitHubIcon from '../icons/GitHubIcon'
 
 import styles from './FeaturedProjects.module.sass'
 
@@ -14,13 +12,8 @@ export interface ProjectType {
   slug: string
   tags: Array<string>
   description: string
-  repo: LinkType
+  repo: Array<LinkType>
   url?: LinkType
-}
-
-export interface LinkType {
-  href: string
-  display: string
 }
 
 interface ProjectProps {
@@ -51,23 +44,7 @@ const Project = ({ project }: ProjectProps) => (
     </Link>
 
     <ul className={styles.infoList} aria-label="links">
-      {project.url ? (
-        <li>
-          <WebAddressIcon />
-
-          <ExternalLink href={project.url.href}>
-            {project.url.display}
-          </ExternalLink>
-        </li>
-      ) : null}
-
-      <li>
-        <GitHubIcon />
-
-        <ExternalLink href={project.repo.href}>
-          {project.repo.display}
-        </ExternalLink>
-      </li>
+      <LinkList url={project.url} repo={project.repo} />
     </ul>
 
     <RoundedItemList items={filterTags(project.tags)} accessibleName="skills" />
