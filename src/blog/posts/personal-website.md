@@ -6,7 +6,7 @@ description: "This professional website & blog, built as a static site with dyna
 info:
   repo:
     - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-       display: andrew-chang-dewitt/andrew-chang-dewitt-website
+      display: andrew-chang-dewitt/andrew-chang-dewitt-website
   url:
     href: https://andrew-chang-dewitt.dev
     display: andrew-chang-dewitt.dev
