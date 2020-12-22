@@ -5,8 +5,8 @@ tags: ["a tag", "another tag", "featured-project"]
 description: 'A test description. This is a supes concise version of the What/Why/How/Lessons? that the post should answer. Ideally, should encourage a viewer to click to read more.'
 info:
   repo:
-    href: 'a/link/to/somewhere'
-    display: 'a link to somewhere'
+    - href: 'a/link/to/somewhere'
+      display: 'a link to somewhere'
   url:
     href: 'a/link/to/somewhere'
     display: 'a link to somewhere'
