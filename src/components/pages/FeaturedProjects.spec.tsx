@@ -7,7 +7,8 @@ import { render, cleanup, screen } from '@testing-library/react'
 import React from 'react'
 import { LocationProvider } from '@reach/router'
 
-import { FeaturedProjects, ProjectType, LinkType } from './FeaturedProjects'
+import { FeaturedProjects, ProjectType } from './FeaturedProjects'
+import { LinkType } from '../LinkList'
 
 const Factories = {
   ProjectType: {
@@ -19,10 +20,12 @@ const Factories = {
       slug: '/slug',
       tags: [],
       description: 'description',
-      repo: {
-        href: '/repo/link',
-        display: 'repo link',
-      },
+      repo: [
+        {
+          href: '/repo/link',
+          display: 'repo link',
+        },
+      ],
     }),
 
     createWithProperites: (properties: {
@@ -31,7 +34,7 @@ const Factories = {
       slug?: string
       tags?: Array<string>
       description?: string
-      repo?: LinkType
+      repo?: Array<LinkType>
       url?: LinkType
     }): ProjectType => ({
       ...Factories.ProjectType.create(),
@@ -119,10 +122,12 @@ describe('src/components/pages/FeaturedProjects', () => {
     it('includes a link to a GitHub repo', () => {
       const projects = [
         Factories.ProjectType.createWithProperites({
-          repo: {
-            href: '/some/repo',
-            display: 'Some repo',
-          },
+          repo: [
+            {
+              href: '/some/repo',
+              display: 'Some repo',
+            },
+          ],
         }),
       ]
 
