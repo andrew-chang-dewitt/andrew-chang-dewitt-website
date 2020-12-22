@@ -5,8 +5,8 @@ tags: ["featured-project", "project: rpi-gpio-sensors-mqtt", "python", "raspberr
 description: "A Docker-ized python microservice for reading a Raspberry Pi's GPIO input from a sensor & publishing a message via MQTT on detection."
 info:
   repo:
-    href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-    display: andrew-chang-dewitt/rpi-security-gpio2mqtt
+    - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+      display: andrew-chang-dewitt/rpi-security-gpio2mqtt
 ---
 
 What it is
@@ -93,7 +93,7 @@ requirements, so I'll break it into two parts.
 
 ![PIR motion sensor wiring diagram](https://raw.githubusercontent.com/andrew-chang-dewitt/rpi-security-gpio2mqtt/master/documentation/MotionSensor.png)
 
-The HC-SR501 PIR has 3 pins & is fairly simple to hook up. Simply put, you just
+The HC-SR501 PIR has 3 pins & is fairly simple to hook up. You just
 need to run a jumper from a +5V power pin (# 2 or 4) to the PIR-VCC pin, then
 from PIR-GND to any one of the ground pins (#s 6, 9, 14, 20, 25, 30, 34, or 39),
 & lastly one more from the PIR-OUT to any one of the non power or ground pins
