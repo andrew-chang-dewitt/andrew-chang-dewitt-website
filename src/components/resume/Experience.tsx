@@ -38,7 +38,9 @@ const parseSummaryItem = (item: string): Array<React.ReactNode> => {
 
 export const Experience = ({ data }: ExperienceProps) => (
   <section className={styles.experience}>
-    <h2 className="title">Experience</h2>
+    <h2 className="title" style={{ pageBreakAfter: 'avoid' }}>
+      Technical experience
+    </h2>
 
     {data.map((experienceItem) => (
       <div className="avoidPageBreak" key={experienceItem.title}>

@@ -13,8 +13,8 @@ import data from '../../resume.yaml'
 export const Resume = () => (
   <div className={styles.content}>
     <Header data={data.header} />
-    <Experience data={data.experience} />
     <Employment data={data.employment} />
+    <Experience data={data.experience} />
     <Education data={data.education} />
     {/* <Training /> */}
   </div>

@@ -21,7 +21,7 @@ interface Props {
 
 export const Employment = ({ data }: Props) => (
   <section className={styles.employment}>
-    <h2 className="title">Employment</h2>
+    <h2 className="title">Employment experience</h2>
 
     {data.map((employmentItem) => (
       <div className="avoidPageBreak" key={employmentItem.title}>

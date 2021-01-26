@@ -5,9 +5,62 @@ header:
   website: andrew-chang-dewitt.dev
   github: github.com/andrew-chang-dewitt
 
-about-me: "I'm a self-taught software developer seeking my first job in the industry."
+about-me: "I'm a self-taught web developer & IT professional seeking my first job in the industry."
 
 experience:
+  - title: "Pi GPIO Sensor to MQTT Module"
+    repo:
+      href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+      display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+    more-info:
+      href: "/blog/posts/rpi-gpio-sensors-mqtt"
+      display: "andrew-chang-dewitt.dev/blog/posts/rpi-gpio-sensors-mqtt"
+    stack:
+      - bash
+      - Alpine Linux
+      - Docker
+      - git
+      - MQTT
+      - Python
+      - pytest
+    summary:
+      - "An IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
+      - "Intended to communicate with a custom home security alarm system, as well Home Assistant for home automations"
+      # - "Publishes sensor events & system status via MQTT on a local network"
+      - "Uses [Functional Core, Imperative Shell](https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell) design pattern"
+      - "Distributed as a Dockerfile to aid in installation & maintenance"
+      - "Reads configuration from a user-maintained YAML file"
+      - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
+
+  - title: "Personal Website & Blog"
+    url:
+      href: https://andrew-chang-dewitt.dev
+      display: andrew-chang-dewitt.dev
+    repo:
+      href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+      display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+    more-info:
+      href: "/blog/posts/personal-website"
+      display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
+    stack:
+      - NGINX
+      - git
+      - PM2
+      - Typescript
+      - Javascript
+      - SASS
+      - Gatsby
+      - CSS-modules
+      - Node
+      - Express
+      - Mocha
+      - Enzyme
+      - React Testing Library
+    summary:
+      - "Utilizes custom implementation of hash routing & anchor links on top of Reach Router"
+      - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
+      - "Found Gatsby & Mocha difficult to get to play well together—in the future, would like to convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library"
+
   - title: 'We Cook Sometimes'
     url:
       href: https://we-cook-sometimes.andrew-chang-dewitt.dev
@@ -21,6 +74,9 @@ experience:
       href: "/blog/tags/project:-we-cook-sometimes"
       display: "andrew-chang-dewitt.dev/blog/tags/project:-we-cook-sometimes"
     stack:
+      - NGINX
+      - git
+      - PM2
       - Typescript
       - SASS
       - React
@@ -33,66 +89,12 @@ experience:
       - Node
       - Express
       - RESTful API
-      - NGINX
     summary:
-      - "A single-page web application to help my family & I pick something to cook"
-      - "Hosts shared recipes for posts made to a cooking Instagram account my wife & I run"
+      - "Built on previous experience configuring Linux web servers using NGINX, MongoDB, & PM2"
       - "Implemented [a custom graph data structure utility](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) for representing relationships between questions"
       - "Developed [a Result type](/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
       - "Stores data in MongoDB & serves it from a REST API built with Node & Express"
       - "API sources data from Trello content, updates using webhooks from Trello, & checks for missed changes using a scheduled job"
-
-  - title: "Personal Website & Blog"
-    url:
-      href: https://andrew-chang-dewitt.dev
-      display: andrew-chang-dewitt.dev
-    repo:
-      href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-      display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-    more-info:
-      href: "/blog/posts/personal-website"
-      display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
-    stack:
-      - Typescript
-      - Javascript
-      - SASS
-      - Gatsby
-      - CSS-modules
-      - Node
-      - Express
-      - Mocha
-      - Enzyme
-      - React Testing Library
-      - NGINX
-    summary:
-      - "A personal website to promote myself as a software developer"
-      - "Utilizes custom implementation of hash routing & anchor links on top of Reach Router"
-      - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
-      - "Found Gatsby & Mocha difficult to get to play well together—in the future, would like to convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library"
-
-  - title: "Pi GPIO Sensor to MQTT Module"
-    repo:
-      href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-      display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-    more-info:
-      href: "/blog/posts/rpi-gpio-sensors-mqtt"
-      display: "andrew-chang-dewitt.dev/blog/posts/rpi-gpio-sensors-mqtt"
-    stack:
-      - Python
-      - MQTT
-      - pytest
-      - Docker
-      - Alpine Linux
-      - bash
-    summary:
-      - "An IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
-      - "Intended to communicate with a custom home security alarm system, as well Home Assistant for home automations"
-      # - "Publishes sensor events & system status via MQTT on a local network"
-      - "Uses [Functional Core, Imperative Shell](https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell) design pattern"
-      - "Distributed as a Dockerfile to aid in installation & maintenance"
-      - "Reads configuration from a user-maintained YAML file"
-      - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
-      - "Planning to rewrite in Rust to be compiled for running on a microcontroller, such as Arduino or ESP32 board"
 
 employment:
   - title: "Department of Family Resources"
@@ -118,7 +120,23 @@ employment:
       - "Promoted again to state employee in June of 2019"
       - "Worked directly with clients to assist in understanding, obtaining, & changing benefits"
       - "Trained new employees & worked with experienced employees to make improvements where necessary"
+      - "Assisted co-workers with de-escalating difficult situations & took over where necessary"
       - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+  - title: "Alorica"
+    positions:
+      - job-title: "Team Lead"
+        employer: "Alorica"
+        start: "August 2015"
+        end: "August 2016"
+      - job-title: "Customer Service Representative"
+        employer: "Alorica"
+        start: "April 2015"
+        end: "August 2015"
+    summary:
+      - "Started as a customer service representative, answering calls at an inbound customer service call center for AT&T"
+      - "Quickly advanced to a team lead position"
+      - "Helped with training new team members in customer service & troubleshooting skills"
+      - "Assisted new & experienced employees with de-escalation & handled calls others were unable to de-escalate"
 
 education:
   - school: "Ball State University"
