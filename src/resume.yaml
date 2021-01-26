@@ -37,8 +37,8 @@ experience:
     summary:
       - "A single-page web application to help my family & I pick something to cook"
       - "Hosts shared recipes for posts made to a cooking Instagram account my wife & I run"
-      - "Implemented [a custom graph data structure utility](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) for representing relationships between questions"
-      - "Developed [a Result type](/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
+      - "Implemented a custom graph data structure utility for representing relationships between questions"
+      - "Developed a Result type, similar to Rust's Result enum, to encapsulate success & failure states"
       - "Stores data in MongoDB & serves it from a REST API built with Node & Express"
       - "API sources data from Trello content, updates using webhooks from Trello, & checks for missed changes using a scheduled job"
 

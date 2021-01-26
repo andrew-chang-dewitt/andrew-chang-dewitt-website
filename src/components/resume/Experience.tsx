@@ -1,11 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
-import LinkList, { LinkType } from '../LinkList'
+import { LinkType } from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
 
-import sharedStyles from './Shared.module.sass'
 import styles from './Experience.module.sass'
 
 interface Item {
@@ -46,10 +44,6 @@ export const Experience = ({ data }: ExperienceProps) => (
 
         <div className={styles.twoColumnLayout}>
           <div>
-            <ul className={sharedStyles.infoList}>
-              <LinkList url={experienceItem.url} repo={experienceItem.repo} />
-            </ul>
-
             <RoundedItemList
               items={experienceItem.stack}
               accessibleName="stack"
@@ -60,13 +54,6 @@ export const Experience = ({ data }: ExperienceProps) => (
             {experienceItem.summary.map((item) => (
               <li key={item}>{parseSummaryItem(item)}</li>
             ))}
-
-            <li>
-              More info:{' '}
-              <Link to={experienceItem['more-info'].href}>
-                {experienceItem['more-info'].display}
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
