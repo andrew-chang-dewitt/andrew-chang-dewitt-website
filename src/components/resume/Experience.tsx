@@ -27,7 +27,7 @@ interface Props {
   data: Array<Item>
 }
 
-const parseSummaryItem = (item: string): Array<React.ReactNode> => {
+const parseSummaryItem = (item: string): string => {
   const strings = item.split('[')
 
   if (strings.length > 1) {
@@ -38,8 +38,8 @@ const parseSummaryItem = (item: string): Array<React.ReactNode> => {
     const nodes = strings as Array<React.ReactNode>
     nodes.splice(1, 2, link)
 
-    return nodes
-  } else return strings
+    return nodes.join('')
+  } else return strings.join('')
 }
 
 export const Experience = ({ data }: Props) => (
@@ -83,12 +83,16 @@ export const Experience = ({ data }: Props) => (
               <li key={item}>{parseSummaryItem(item)}</li>
             ))}
 
-            <li>
-              More info:{' '}
-              <Link to={experienceItem['more-info'].href}>
-                {experienceItem['more-info'].display}
-              </Link>
-            </li>
+            {experienceItem.hasOwnProperty('more-info') ? (
+              <li>
+                More info:{' '}
+                <Link to={experienceItem['more-info'].href}>
+                  {experienceItem['more-info'].display}
+                </Link>
+              </li>
+            ) : (
+              ''
+            )}
           </ul>
         </div>
       </div>
