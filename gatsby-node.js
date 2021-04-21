@@ -13,7 +13,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const fileNode = getNode(node.parent)
     const slug = createFilePath({
       node,
       getNode,
@@ -96,9 +95,7 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
               degree
               minor
               location
-              date {
-                expectedGraduation
-              }
+              date
             }
 
             experience {
@@ -135,15 +132,20 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
     }
   `)
 
+  console.log(result)
+
   const resumeData = result.data.allSrcYaml.nodes[0].resume
   const resumeMd = generateResumeText(resumeData)
   const resumeFileName = './public/resume/resume_Andrew_Chang-DeWitt.md'
 
   writeFile(resumeFileName, resumeMd, (err) => {
-    reporter.err(`Error encountered while writing ${resumeFileName}`)
-    reporter.err(err)
+    if (err) {
+      reporter.err(`Error encountered while writing ${resumeFileName}`)
+      reporter.err(err)
+    }
+
+    reporter.info(`Resume written to ${resumeFileName}`)
   })
-  reporter.info(`Resume written to ${resumeFileName}`)
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
