@@ -15,9 +15,13 @@
     "build": "gatsby build",
     "postbuild": "./scripts/postbuild",
     "prestart": "npm run build",
-    "start": "gatsby serve -p 8000"
+    "start": "gatsby serve -p 8000",
+    "create-pdf-resume": "node ./scripts/generate-pdf.js"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 8
+    },
     "env": {
       "es6": true
     },
@@ -115,6 +119,7 @@
     "mocha": "^7.1.2",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
+    "puppeteer": "^8.0.0",
     "sinon": "^9.0.2",
     "text-composer": "https://github.com/andrew-chang-dewitt/text-composer/releases/download/0.2.0/text-composer-0.2.0.tgz",
     "ts-node": "^8.9.1"
