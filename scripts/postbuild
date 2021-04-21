@@ -8,5 +8,8 @@ current_dir=`dirname "$0"`
 cd $current_dir
 cd ..
 
+# create text
 cp ./public/resume/resume_Andrew_Chang-DeWitt.md ./public/resume/resume_Andrew_Chang-DeWitt.text
+# & docx resume formats from markdown file created 
+# during Gatsby's postBuild hook
 pandoc -s -o ./public/resume/resume_Andrew_Chang-DeWitt.docx ./public/resume/resume_Andrew_Chang-DeWitt.md
