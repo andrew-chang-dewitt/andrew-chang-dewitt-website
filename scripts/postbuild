@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# SET PWD TO DIRNAME OF THIS SCRIPT
+# this script should always be located next to
+# docker-compose.yml & the test_runner package
+# directory (containing python env & tests)
+current_dir=`dirname "$0"`
+cd $current_dir
+cd ..
+
+cp ./public/resume/resume_Andrew_Chang-DeWitt.md ./public/resume/resume_Andrew_Chang-DeWitt.text
+pandoc -s -o ./public/resume/resume_Andrew_Chang-DeWitt.docx ./public/resume/resume_Andrew_Chang-DeWitt.md
