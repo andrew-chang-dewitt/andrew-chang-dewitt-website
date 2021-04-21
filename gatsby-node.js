@@ -1,4 +1,6 @@
 require('ts-node').register({ files: true })
+const generateResumeText = require('./generate-resume-text').default
+const { writeFile } = require('fs')
 
 function kebabCase(input) {
   return input.split(' ').join('-')
@@ -70,6 +72,78 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+}
+
+exports.onPostBuild = async ({ graphql, reporter }) => {
+  const result = await graphql(`
+    query {
+      allSrcYaml {
+        nodes {
+          resume {
+            about_me
+
+            header {
+              name
+              email
+              phone
+              website
+              github
+              title
+            }
+
+            education {
+              school
+              degree
+              minor
+              location
+              date {
+                expectedGraduation
+              }
+            }
+
+            experience {
+              title
+              summary
+              stack
+              url {
+                display
+                href
+              }
+              repo {
+                href
+                display
+              }
+              more_info {
+                href
+                display
+              }
+            }
+
+            employment {
+              title
+              summary
+              positions {
+                employer
+                end
+                job_title
+                start
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const resumeData = result.data.allSrcYaml.nodes[0].resume
+  const resumeMd = generateResumeText(resumeData)
+  const resumeFileName = './public/resume/resume_Andrew_Chang-DeWitt.md'
+
+  writeFile(resumeFileName, resumeMd, (err) => {
+    reporter.err(`Error encountered while writing ${resumeFileName}`)
+    reporter.err(err)
+  })
+  reporter.info(`Resume written to ${resumeFileName}`)
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
