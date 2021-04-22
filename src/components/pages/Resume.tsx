@@ -10,12 +10,14 @@ import { Education } from '../resume/Education'
 
 import data from '../../resume.yaml'
 
+const resume = data.resume
+
 export const Resume = () => (
   <div className={styles.content}>
-    <Header data={data.header} />
-    <Experience data={data.experience} />
-    <Employment data={data.employment} />
-    <Education data={data.education} />
+    <Header data={resume.header} />
+    <Education data={resume.education} />
+    <Experience data={resume.experience} />
+    <Employment data={resume.employment} />
     {/* <Training /> */}
   </div>
 )

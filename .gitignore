@@ -12,3 +12,10 @@ coverage/
 # gatsby
 .cache/
 public/
+
+# typescript
+dist/
+*.tsbuildinfo
+
+# pandoc
+reference.docx:Zone.Identifier

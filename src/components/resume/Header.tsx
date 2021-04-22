@@ -7,14 +7,16 @@ import ExternalLink from '../ExternalLink'
 import styles from './Header.module.sass'
 import sharedStyles from './Shared.module.sass'
 
+export interface HeaderData {
+  name: string
+  phone: string
+  email: string
+  website: string
+  github: string
+}
+
 interface Props {
-  data: {
-    name: string
-    phone: string
-    email: string
-    website: string
-    github: string
-  }
+  data: HeaderData
 }
 
 const formatPhoneNumber = (phone: string): string =>
