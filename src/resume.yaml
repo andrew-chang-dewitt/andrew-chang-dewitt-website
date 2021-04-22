@@ -93,9 +93,8 @@ resume:
       summary:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
-        - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
-        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, all generated during build & deploy processes from YAML source using custom markdown composer, Pandoc, & Puppeteer."
-        - "Next steps: convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library, Gatsby & Mocha don't play well together"
+        - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
+        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, automatically generated during site build & deployment from YAML using custom markdown lib, Pandoc, & Puppeteer."
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
@@ -113,7 +112,6 @@ resume:
         - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
         - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
         - "Distributed as a Dockerfile to aid in installation & maintenance"
-        - "Reads configuration from a user-maintained YAML file"
         - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
         - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
 
