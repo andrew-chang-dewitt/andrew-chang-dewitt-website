@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import LinkList, { LinkType } from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
-import WebAddressIcon from '../icons/WebAddressIcon'
-import GitHubIcon from '../icons/GitHubIcon'
 
 import sharedStyles from './Shared.module.sass'
 import styles from './Experience.module.sass'
@@ -12,18 +11,13 @@ import styles from './Experience.module.sass'
 interface Item {
   title: string
   url?: LinkType
-  repo: LinkType
+  repo: LinkType | Array<LinkType>
   'more-info': LinkType
   stack: Array<string>
   summary: Array<string>
 }
 
-interface LinkType {
-  href: string
-  display: string
-}
-
-interface Props {
+interface ExperienceProps {
   data: Array<Item>
 }
 
@@ -42,7 +36,7 @@ const parseSummaryItem = (item: string): string => {
   } else return strings.join('')
 }
 
-export const Experience = ({ data }: Props) => (
+export const Experience = ({ data }: ExperienceProps) => (
   <section className={styles.experience}>
     <h2 className="title">Experience</h2>
 
@@ -53,23 +47,7 @@ export const Experience = ({ data }: Props) => (
         <div className={styles.twoColumnLayout}>
           <div>
             <ul className={sharedStyles.infoList}>
-              {experienceItem.url ? (
-                <li>
-                  <WebAddressIcon />
-
-                  <ExternalLink href={experienceItem.url.href}>
-                    {experienceItem.url.display}
-                  </ExternalLink>
-                </li>
-              ) : null}
-
-              <li>
-                <GitHubIcon />
-
-                <ExternalLink href={experienceItem.repo.href}>
-                  {experienceItem.repo.display}
-                </ExternalLink>
-              </li>
+              <LinkList url={experienceItem.url} repo={experienceItem.repo} />
             </ul>
 
             <RoundedItemList
