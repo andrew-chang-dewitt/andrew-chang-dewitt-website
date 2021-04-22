@@ -31,7 +31,7 @@ Make sure any changes have been pushed to live before generating the PDF.
     format: 'Letter',
     margin: {
       top: '0.3 in',
-      bottom: '0.25 in',
+      bottom: '0.2 in',
       right: '0.3 in',
       left: '0.3 in',
     },
