@@ -1,4 +1,6 @@
 require('ts-node').register({ files: true })
+const generateResumeText = require('./generate-resume-text').default
+const { writeFile } = require('fs')
 
 function kebabCase(input) {
   return input.split(' ').join('-')
@@ -9,14 +11,15 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+
   if (node.internal.type === 'MarkdownRemark') {
-    const fileNode = getNode(node.parent)
     const slug = createFilePath({
       node,
       getNode,
       basePath: 'src',
       trailingSlash: false,
     })
+
     createNodeField({
       node,
       name: 'slug',
@@ -27,6 +30,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+
   const result = await graphql(`
     query {
       posts: allMarkdownRemark(
@@ -66,6 +70,81 @@ exports.createPages = async ({ graphql, actions }) => {
         tag: fieldValue,
       },
     })
+  })
+}
+
+exports.onPostBuild = async ({ graphql, reporter }) => {
+  const result = await graphql(`
+    query {
+      allSrcYaml {
+        nodes {
+          resume {
+            about_me
+
+            header {
+              name
+              email
+              phone
+              website
+              github
+              title
+            }
+
+            education {
+              school
+              degree
+              minor
+              location
+              date
+            }
+
+            experience {
+              title
+              summary
+              stack
+              url {
+                display
+                href
+              }
+              repo {
+                href
+                display
+              }
+              more_info {
+                href
+                display
+              }
+            }
+
+            employment {
+              title
+              summary
+              positions {
+                employer
+                end
+                job_title
+                start
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  console.log(result)
+
+  const resumeData = result.data.allSrcYaml.nodes[0].resume
+  const resumeMd = generateResumeText(resumeData)
+  const resumeFileName = './public/resume/resume_Andrew_Chang-DeWitt.md'
+
+  writeFile(resumeFileName, resumeMd, (err) => {
+    if (err) {
+      reporter.err(`Error encountered while writing ${resumeFileName}`)
+      reporter.err(err)
+    }
+
+    reporter.info(`Resume written to ${resumeFileName}`)
   })
 }
 

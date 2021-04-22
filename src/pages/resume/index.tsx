@@ -11,7 +11,17 @@ export default () => (
       <Link to="/resume/printable">View printable version</Link>
     </p>
     <p>
-      <Link to="/resume_Andrew_Chang-DeWitt.pdf">Download as pdf</Link>
+      <Link to="/resume/resume_Andrew_Chang-DeWitt.pdf">Download as pdf</Link>
+    </p>
+    <p>
+      <Link to="/resume/resume_Andrew_Chang-DeWitt.docx">
+        Download as Word document
+      </Link>
+    </p>
+    <p>
+      <Link to="/resume/resume_Andrew_Chang-DeWitt.text">
+        Download as plain text
+      </Link>
     </p>
   </Layout>
 )

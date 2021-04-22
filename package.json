@@ -11,12 +11,17 @@
     "clean": "rm -rf .cache public",
     "hard-clean": "npm run clean && rm -rf node_modules && npm i",
     "dev": "gatsby develop",
-    "prebuild": "npm run format && npm run coverage",
+    "prebuild": "npm run clean && npm run format && npm run coverage",
     "build": "gatsby build",
+    "postbuild": "./scripts/postbuild",
     "prestart": "npm run build",
-    "start": "gatsby serve -p 8000"
+    "start": "gatsby serve -p 8000",
+    "deploy": "./scripts/deploy"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 8
+    },
     "env": {
       "es6": true
     },
@@ -70,14 +75,14 @@
   "license": "MIT",
   "dependencies": {
     "dart-sass": "^1.25.0",
-    "gatsby": "^2.21.9",
+    "gatsby": "^2.32.12",
     "gatsby-plugin-sass": "^2.3.1",
     "gatsby-plugin-typescript": "^2.4.0",
     "gatsby-remark-prismjs": "^3.5.1",
     "gatsby-source-filesystem": "^2.3.0",
     "gatsby-transformer-remark": "^2.8.7",
     "gatsby-transformer-typescript-css-modules": "^1.0.14",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.23.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -108,12 +113,15 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
     "gatsby-cli": "^2.12.7",
+    "gatsby-transformer-yaml": "^3.2.0",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.2.2",
     "mocha": "^7.1.2",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
+    "puppeteer": "^8.0.0",
     "sinon": "^9.0.2",
+    "text-composer": "https://github.com/andrew-chang-dewitt/text-composer/releases/download/0.2.0/text-composer-0.2.0.tgz",
     "ts-node": "^8.9.1"
   }
 }
