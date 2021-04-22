@@ -82,6 +82,8 @@ resume:
         - SASS
         - Gatsby
         - CSS-modules
+        - Pandoc
+        - Puppeteer
         - Node
         - Express
         - NGINX
@@ -92,6 +94,7 @@ resume:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
+        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, all generated from YAML source using custom markdown composer, Pandoc, & Puppeteer."
         - "Next steps: convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library, Gatsby & Mocha don't play well together"
   
     - title: "Pi GPIO Sensor to MQTT Module"
