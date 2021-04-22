@@ -7,8 +7,8 @@ resume:
     website: andrew-chang-dewitt.dev
     github: github.com/andrew-chang-dewitt
     title: Software Developer
-    
-  about-me: "I'm a self-taught software developer seeking my first job in the industry."
+
+  about-me: "I make web apps, API's, IoT programs, & cli utilities."
 
   experience:
     - title: 'Cheese Drawer (current project)'
@@ -45,8 +45,8 @@ resume:
         href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
         display: github.com/andrew-chang-dewitt/we-cook-sometimes
       more-info:
-        href: ""
-        display: "FIXME: no blog post yet, write & link to it here"
+        href: "/blog/tags/project:-we-cook-sometimes"
+        display: "/blog/tags/project:-we-cook-sometimes"
       stack:
         - Typescript
         - React
@@ -74,14 +74,16 @@ resume:
         href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
         display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
       more-info:
-        href: ""
-        display: "FIXME: no blog post yet, write & link to it here"
+        href: "/blog/posts/personal-website"
+        display: "/blog/posts/personal-website"
       stack:
         - Typescript
         - Javascript
         - SASS
         - Gatsby
         - CSS-modules
+        - Pandoc
+        - Puppeteer
         - Node
         - Express
         - NGINX
@@ -92,6 +94,7 @@ resume:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
+        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, all generated during build & deploy processes from YAML source using custom markdown composer, Pandoc, & Puppeteer."
         - "Next steps: convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library, Gatsby & Mocha don't play well together"
 
     - title: "Pi GPIO Sensor to MQTT Module"
@@ -99,8 +102,8 @@ resume:
         href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
         display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
       more-info:
-        href: ""
-        display: "FIXME: no blog post yet, write & link to it here"
+        href: "/blog/posts/rpi-gpio-sensors-mqtt"
+        display: "/blog/posts/rpi-gpio-sensors-mqtt"
       stack:
         - Python
         - MQTT
