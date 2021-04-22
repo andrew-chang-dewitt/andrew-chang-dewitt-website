@@ -31,7 +31,7 @@ export const Employment = ({ data }: Props) => (
           <ul className={styles.positions}>
             {employmentItem.positions.map((position) => (
               <li key={position.start} className="subtitle">
-                <h4 className="subtitle">{position['job-title']}</h4>
+                <h4>{position['job-title']}</h4>
                 <p>
                   {position.employer}, {position.start} - {position.end}
                 </p>

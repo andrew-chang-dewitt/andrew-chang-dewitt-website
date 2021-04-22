@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# SET PWD TO DIRNAME OF THIS SCRIPT
+# this script should always be located next to
+# docker-compose.yml & the test_runner package
+# directory (containing python env & tests)
+current_dir=`dirname "$0"`
+cd $current_dir
+cd ..
+
+site_dir = $HOME/www/andrew-chang-dewitt.dev/
+pdf_resume = resume_Andrew_Chang-DeWitt.pdf
+
+# remove old backup
+rm $site_dir/html.old
+# backup current site files
+mv $site_dir/html $site_dir/html.old
+# copy new build to site directory
+cp -R ./public $site_dir/html
+# create pdf from live site
+node ./scripts/generate-pdf.js
+# copy script to production files
+cp ./public/resume/$pdf_resume $site_dir/html/resume/$pdf_resume
