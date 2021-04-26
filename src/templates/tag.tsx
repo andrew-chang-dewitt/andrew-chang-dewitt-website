@@ -5,6 +5,9 @@ import { Layout, navItems } from '../components/Layout'
 import { BlogHome, Post } from '../components/pages/BlogHome'
 
 interface Props {
+  pageContext: {
+    tag: string
+  }
   // FIXME: find out type of graphql data response
   data: any
 }

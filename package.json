@@ -11,6 +11,7 @@
     "clean": "rm -rf .cache public",
     "hard-clean": "npm run clean && rm -rf node_modules && npm i",
     "dev": "gatsby develop",
+    "test-watch": "tsc-watch -p tsconfig.json --onSuccess \"npm test\"",
     "prebuild": "npm run clean && npm run format && npm run coverage",
     "build": "gatsby build",
     "postbuild": "./scripts/postbuild",
@@ -67,7 +68,9 @@
     ],
     "require": [
       "ts-node/register",
-      "ignore-styles",
+      "ignore-styles"
+    ],
+    "file": [
       "test-setup.js"
     ]
   },
@@ -117,11 +120,13 @@
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.2.2",
     "mocha": "^7.1.2",
+    "mocha-suppress-logs": "^0.2.0",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
     "puppeteer": "^8.0.0",
     "sinon": "^9.0.2",
     "text-composer": "https://github.com/andrew-chang-dewitt/text-composer/releases/download/0.2.0/text-composer-0.2.0.tgz",
-    "ts-node": "^8.9.1"
+    "ts-node": "^8.9.1",
+    "tsc-watch": "^4.2.9"
   }
 }
