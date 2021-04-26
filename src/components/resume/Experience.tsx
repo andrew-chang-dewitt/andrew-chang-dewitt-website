@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import LinkList, { LinkType } from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
 import LinkList from '../LinkList'
