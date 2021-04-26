@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import LinkList, { LinkType } from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
 import LinkList from '../LinkList'
@@ -12,13 +13,13 @@ import styles from './Experience.module.sass'
 export interface Item {
   title: string
   url?: LinkType
-  repo: LinkType
+  repo: LinkType | Array<LinkType>
   'more-info'?: LinkType
   stack: Array<string>
   summary: Array<string>
 }
 
-interface Props {
+interface ExperienceProps {
   data: Array<Item>
 }
 
@@ -40,7 +41,7 @@ const parseSummaryItem = (item: string): Array<React.ReactNode> => {
   } else return strings
 }
 
-export const Experience = ({ data }: Props) => (
+export const Experience = ({ data }: ExperienceProps) => (
   <section className={styles.experience}>
     <h2 className="title">Experience</h2>
 

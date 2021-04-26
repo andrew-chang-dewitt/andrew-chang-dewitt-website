@@ -7,9 +7,9 @@ resume:
     website: andrew-chang-dewitt.dev
     github: github.com/andrew-chang-dewitt
     title: Software Developer
-  
+
   about-me: "I make web apps, API's, IoT programs, & cli utilities."
-  
+
   experience:
     - title: 'Cheese Drawer (current project)'
       repo:
@@ -39,14 +39,14 @@ resume:
         - "Communication between services implemented with AMQP (using RabbitMQ), exposing endpoints to client applications over HTTP as a single RESTful Gateway API"
         - "Created AMQP worker library modeled after Flask's API"
         - "Writing in Python (Flask, Psycopg2, aio-pika) & Typescript (React) with data storage in PostgreSQL & MongoDB"
-  
+
     - title: 'We Cook Sometimes'
       repo:
         href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
         display: github.com/andrew-chang-dewitt/we-cook-sometimes
       more-info:
-        href: ""
-        display: "FIXME: no blog post yet, write & link to it here"
+        href: "/blog/tags/project:-we-cook-sometimes"
+        display: "/blog/tags/project:-we-cook-sometimes"
       stack:
         - Typescript
         - React
@@ -65,7 +65,7 @@ resume:
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
         - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
         - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
-  
+
     - title: "Personal Website & Blog"
       url:
         href: https://andrew-chang-dewitt.dev
@@ -74,14 +74,16 @@ resume:
         href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
         display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
       more-info:
-        href: ""
-        display: "FIXME: no blog post yet, write & link to it here"
+        href: "/blog/posts/personal-website"
+        display: "/blog/posts/personal-website"
       stack:
         - Typescript
         - Javascript
         - SASS
         - Gatsby
         - CSS-modules
+        - Pandoc
+        - Puppeteer
         - Node
         - Express
         - NGINX
@@ -92,15 +94,16 @@ resume:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
+        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, all generated during build & deploy processes from YAML source using custom markdown composer, Pandoc, & Puppeteer."
         - "Next steps: convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library, Gatsby & Mocha don't play well together"
-  
+
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
         href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
         display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
       more-info:
-        href: ""
-        display: "FIXME: no blog post yet, write & link to it here"
+        href: "/blog/posts/rpi-gpio-sensors-mqtt"
+        display: "/blog/posts/rpi-gpio-sensors-mqtt"
       stack:
         - Python
         - MQTT
@@ -113,7 +116,7 @@ resume:
         - "Reads configuration from a user-maintained YAML file"
         - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
         - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
-  
+
   employment:
     - title: "Department of Family Resources"
       positions:
@@ -139,7 +142,7 @@ resume:
         - "Communicated directly with clients to solve issues & share information"
         - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
         - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
-  
+
   education:
     - school: "Indiana University—Purdue University Indianapolis"
       degree: "BS in Informatics"
@@ -152,7 +155,7 @@ resume:
     #     end: 2013
     #   location: "Muncie, IN"
     #   description: "Completed 113 credits towards a Bachelor's of Landscape Architecture"
-  
+
   # don't list intro courses, stick to more advanced &
   # in-depth/detailed courses or series of courses
   # professional-development:
