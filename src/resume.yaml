@@ -63,7 +63,7 @@ resume:
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
-        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
+        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
         - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
 
     - title: "Personal Website & Blog"
