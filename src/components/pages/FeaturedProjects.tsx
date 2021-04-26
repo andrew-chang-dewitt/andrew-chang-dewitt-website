@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import LinkList, { LinkType } from '../LinkList'
+import LinkType from '../../LinkType'
+import LinkList from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
 
 import styles from './FeaturedProjects.module.sass'

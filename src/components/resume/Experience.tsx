@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import LinkList, { LinkType } from '../LinkList'
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
+import LinkList from '../LinkList'
+import LinkType from '../../LinkType'
 
 import sharedStyles from './Shared.module.sass'
 import styles from './Experience.module.sass'
 
-interface Item {
+export interface Item {
   title: string
   url?: LinkType
   repo: LinkType | Array<LinkType>
-  'more-info': LinkType
+  'more-info'?: LinkType
   stack: Array<string>
   summary: Array<string>
 }
@@ -21,10 +22,13 @@ interface ExperienceProps {
   data: Array<Item>
 }
 
-const parseSummaryItem = (item: string): string => {
+const parseSummaryItem = (item: string): Array<React.ReactNode> => {
   const strings = item.split('[')
 
-  if (strings.length > 1) {
+  if (strings.length > 2)
+    throw RangeError('There can only be one link in a Summary item.')
+
+  if (strings.length === 2) {
     strings.splice(1, 1, ...strings[1].split(')'))
     strings.splice(1, 1, ...strings[1].split(']('))
 
@@ -32,8 +36,8 @@ const parseSummaryItem = (item: string): string => {
     const nodes = strings as Array<React.ReactNode>
     nodes.splice(1, 2, link)
 
-    return nodes.join('')
-  } else return strings.join('')
+    return nodes
+  } else return strings
 }
 
 export const Experience = ({ data }: ExperienceProps) => (
@@ -46,8 +50,12 @@ export const Experience = ({ data }: ExperienceProps) => (
 
         <div className={styles.twoColumnLayout}>
           <div>
-            <ul className={sharedStyles.infoList}>
-              <LinkList url={experienceItem.url} repo={experienceItem.repo} />
+            <ul className={sharedStyles.infoList} aria-label="Links">
+              {experienceItem.url ? (
+                <LinkList url={experienceItem.url} repo={experienceItem.repo} />
+              ) : (
+                <LinkList repo={experienceItem.repo} />
+              )}
             </ul>
 
             <RoundedItemList
@@ -56,12 +64,12 @@ export const Experience = ({ data }: ExperienceProps) => (
             />
           </div>
 
-          <ul>
+          <ul title="Summary">
             {experienceItem.summary.map((item) => (
               <li key={item}>{parseSummaryItem(item)}</li>
             ))}
 
-            {experienceItem.hasOwnProperty('more-info') ? (
+            {experienceItem['more-info'] ? (
               <li>
                 More info:{' '}
                 <Link to={experienceItem['more-info'].href}>

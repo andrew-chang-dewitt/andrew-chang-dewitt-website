@@ -8,7 +8,7 @@ import React from 'react'
 import { LocationProvider } from '@reach/router'
 
 import { FeaturedProjects, ProjectType } from './FeaturedProjects'
-import { LinkType } from '../LinkList'
+import LinkType from '../../LinkType'
 
 const Factories = {
   ProjectType: {
@@ -51,19 +51,6 @@ describe('src/components/pages/FeaturedProjects', () => {
       </LocationProvider>
     )
 
-  before(() => {
-    // mock out global properties that Gatsby's Link requires to not throw errors
-    Object.defineProperty(global, '__BASE_PATH__', {
-      value: '',
-      writable: true,
-    })
-    Object.defineProperty(global, '___loader', {
-      value: {
-        enqueue: () => {},
-      },
-      writable: true,
-    })
-  })
   afterEach(() => {
     cleanup()
   })

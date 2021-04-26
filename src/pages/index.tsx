@@ -8,8 +8,8 @@ import { HireMe } from '../components/pages/HireMe'
 import {
   FeaturedProjects,
   ProjectType,
-  LinkType,
 } from '../components/pages/FeaturedProjects'
+import LinkType from '../LinkType'
 import { Contact } from '../components/pages/Contact'
 
 interface Props {

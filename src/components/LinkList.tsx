@@ -3,11 +3,7 @@ import React from 'react'
 import ExternalLink from './ExternalLink'
 import WebAddressIcon from './icons/WebAddressIcon'
 import GitHubIcon from './icons/GitHubIcon'
-
-export interface LinkType {
-  href: string
-  display: string
-}
+import LinkType from '../LinkType'
 
 interface LinkListProps {
   url?: LinkType
