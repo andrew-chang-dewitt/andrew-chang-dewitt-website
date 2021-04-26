@@ -3,8 +3,7 @@ import { Link } from 'gatsby'
 
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
-import WebAddressIcon from '../icons/WebAddressIcon'
-import GitHubIcon from '../icons/GitHubIcon'
+import LinkList from '../LinkList'
 import LinkType from '../../LinkType'
 
 import sharedStyles from './Shared.module.sass'
@@ -51,24 +50,12 @@ export const Experience = ({ data }: Props) => (
 
         <div className={styles.twoColumnLayout}>
           <div>
-            <ul className={sharedStyles.infoList}>
+            <ul className={sharedStyles.infoList} aria-label="Links">
               {experienceItem.url ? (
-                <li>
-                  <WebAddressIcon />
-
-                  <ExternalLink href={experienceItem.url.href}>
-                    {experienceItem.url.display}
-                  </ExternalLink>
-                </li>
-              ) : null}
-
-              <li>
-                <GitHubIcon />
-
-                <ExternalLink href={experienceItem.repo.href}>
-                  {experienceItem.repo.display}
-                </ExternalLink>
-              </li>
+                <LinkList url={experienceItem.url} repo={experienceItem.repo} />
+              ) : (
+                <LinkList repo={experienceItem.repo} />
+              )}
             </ul>
 
             <RoundedItemList

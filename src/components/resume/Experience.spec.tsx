@@ -22,8 +22,34 @@ describe('component/resume/Experience', () => {
     cleanup()
   })
 
-  describe('summary list', () => {
-    it('An single experience item contains a Summary list', () => {
+  describe('Links', () => {
+    it('All Experience items have a project repo', () => {
+      const { getByText } = setup({
+        ...anItem,
+        repo: {
+          display: 'repo',
+          href: '/repo/location',
+        },
+      })
+
+      expect(getByText('repo')).to.exist
+    })
+
+    it('Some Experience items also have a project url', () => {
+      const { getByText } = setup({
+        ...anItem,
+        url: {
+          display: 'url',
+          href: '/url/location',
+        },
+      })
+
+      expect(getByText('url')).to.exist
+    })
+  })
+
+  describe('Summary list', () => {
+    it('A single experience item contains a Summary list', () => {
       const { getByTitle } = setup(anItem)
 
       expect(getByTitle('Summary')).to.exist
@@ -73,5 +99,24 @@ describe('component/resume/Experience', () => {
         })
       ).to.throw('There can only be one link in a Summary item.')
     })
+  })
+
+  it('Can add a more-info link to the end of the summary list, if one exists', () => {
+    const { getByTitle } = setup({
+      ...anItem,
+      'more-info': {
+        display: 'a link',
+        href: '/to/more/info',
+      },
+    })
+
+    const summaryList = getByTitle('Summary')
+    const moreInfoItem = within(summaryList).getByText(/more info/i)
+
+    expect(
+      within(moreInfoItem)
+        .getByText(/a link/i)
+        .attributes.getNamedItem('href')?.value
+    ).to.equal('/to/more/info')
   })
 })
