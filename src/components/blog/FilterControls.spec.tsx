@@ -33,19 +33,6 @@ describe('component/FilterControls', function () {
     return { rendered, displayToggle: screen.getByTitle(/filter & sort/i) }
   }
 
-  before(() => {
-    // mock out global properties that Gatsby's Link requires to not throw errors
-    Object.defineProperty(global, '__BASE_PATH__', {
-      value: '',
-      writable: true,
-    })
-    Object.defineProperty(global, '___loader', {
-      value: {
-        enqueue: () => {},
-      },
-      writable: true,
-    })
-  })
   afterEach(() => {
     cleanup()
   })
