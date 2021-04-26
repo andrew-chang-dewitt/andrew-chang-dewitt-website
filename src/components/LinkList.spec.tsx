@@ -4,7 +4,8 @@ import { render, screen, cleanup } from '@testing-library/react'
 
 import React from 'react'
 
-import LinkList, { LinkType } from './LinkList'
+import LinkList from './LinkList'
+import LinkType from '../LinkType'
 
 describe('component/LinkList', () => {
   afterEach(() => {

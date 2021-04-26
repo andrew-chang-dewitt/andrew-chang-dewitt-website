@@ -8,7 +8,7 @@ import React from 'react'
 import { LocationProvider } from '@reach/router'
 
 import { FeaturedProjects, ProjectType } from './FeaturedProjects'
-import { LinkType } from '../LinkList'
+import LinkType from '../../LinkType'
 
 const Factories = {
   ProjectType: {
