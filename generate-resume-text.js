@@ -74,7 +74,7 @@ const TechnicalExperience = (data) =>
 
 const buildPosition = (position) =>
   Container([
-    TextHeader(3, position.job_title),
+    TextHeader(4, position.job_title),
     Line(position.employer),
     Line(`${position.start}—${position.end}`),
   ])
