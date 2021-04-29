@@ -30,7 +30,7 @@ export const HireMe = () => (
 
     <p>
       I'm looking for an employer with a commitment to mentorship & employee
-      development who's hiring entry-level programmers.
+      development who's hiring interns or part-time programmers.
     </p>
   </div>
 )

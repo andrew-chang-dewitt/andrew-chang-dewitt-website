@@ -30,9 +30,10 @@ resume:
           - Mocha
           - React Testing Library
           - unittest
-          - OOP
-          - FP
           - microservices
+          - Functional Programming
+          - unit testing 
+          - Test Driven Development
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Deploying back-end with Docker Swarm as a collection of microservices"
@@ -60,10 +61,15 @@ resume:
         - Mocha
         - Enzyme
         - React Testing Library
+        - Functional Programming
+        - Object Oriented Programming
+        - Functional Composition
+        - unit testing 
+        - Test Driven Development
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
-        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
+        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
         - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
 
     - title: "Personal Website & Blog"
@@ -90,12 +96,14 @@ resume:
         - Mocha
         - Enzyme
         - React Testing Library
+        - Functional Programming
+        - unit testing
+        - Responsive UI/UX design
       summary:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
-        - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
-        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, all generated during build & deploy processes from YAML source using custom markdown composer, Pandoc, & Puppeteer."
-        - "Next steps: convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library, Gatsby & Mocha don't play well together"
+        - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
+        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, automatically generated during site build & deployment from YAML using custom markdown lib, Pandoc, & Puppeteer."
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
@@ -109,11 +117,13 @@ resume:
         - MQTT
         - pytest
         - Docker
+        - Object Oriented Programming
+        - unit testing 
+        - Test Driven Development
       summary:
         - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
         - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
         - "Distributed as a Dockerfile to aid in installation & maintenance"
-        - "Reads configuration from a user-maintained YAML file"
         - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
         - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
 
