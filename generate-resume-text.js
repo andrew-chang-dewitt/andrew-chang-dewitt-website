@@ -1,11 +1,13 @@
 const {
   Link,
   Line,
+  Italic,
   List,
   TitleSection,
   Section,
   SubSection,
   Container,
+  Header: TextHeader,
 } = require('text-composer')
 
 const formatPhoneNumber = (phone) =>
@@ -73,13 +75,35 @@ const buildExperienceItem = (item) => {
 }
 
 const TechnicalExperience = (data) =>
-  Section('Technical Experience', data.map(buildExperienceItem))
+  Section('Experience', data.map(buildExperienceItem))
+
+const buildPosition = (position) =>
+  Container([
+    TextHeader(3, position.job_title),
+    Line(position.employer),
+    Line(`${position.start}—${position.end}`),
+  ])
+
+const buildEmploymentItem = (item) => {
+  const positions = item.positions.map(buildPosition)
+
+  return SubSection(item.title, [
+    ...positions,
+    Line(''),
+    Line('Summary:'),
+    List(item.summary),
+  ])
+}
+
+const WorkExperience = (data) =>
+  Section('Employment', data.map(buildEmploymentItem))
 
 const generateResumeText = (data) =>
   Container([
     Header(data.header),
     Education(data.education),
     TechnicalExperience(data.experience),
+    WorkExperience(data.employment),
   ]).compose()
 
 module.exports = {
