@@ -98,6 +98,7 @@ resume:
         - React Testing Library
         - Functional Programming
         - unit testing
+        - Responsive UI/UX design
       summary:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
