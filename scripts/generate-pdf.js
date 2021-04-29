@@ -24,7 +24,9 @@ Make sure any changes have been pushed to live before generating the PDF.
   console.debug('Page created.')
 
   console.debug(`Page navigating to: '${pagePath}' ...`)
-  await page.goto(pagePath)
+  await page.goto(pagePath, {
+    waitUntil: 'networkidle2',
+  })
   console.debug('Page navigated.')
   console.debug(`Printing page as pdf...`)
   const pdf = await page.pdf({
