@@ -30,9 +30,10 @@ resume:
           - Mocha
           - React Testing Library
           - unittest
-          - OOP
-          - FP
           - microservices
+          - Functional Programming
+          - unit testing 
+          - Test Driven Development
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Deploying back-end with Docker Swarm as a collection of microservices"
@@ -60,6 +61,11 @@ resume:
         - Mocha
         - Enzyme
         - React Testing Library
+        - Functional Programming
+        - Object Oriented Programming
+        - Functional Composition
+        - unit testing 
+        - Test Driven Development
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
@@ -90,6 +96,8 @@ resume:
         - Mocha
         - Enzyme
         - React Testing Library
+        - Functional Programming
+        - unit testing
       summary:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
@@ -108,6 +116,9 @@ resume:
         - MQTT
         - pytest
         - Docker
+        - Object Oriented Programming
+        - unit testing 
+        - Test Driven Development
       summary:
         - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
         - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
