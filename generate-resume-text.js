@@ -46,7 +46,7 @@ const buildEducationItem = (item) =>
   SubSection(`${item.degree}, *minor in ${item.minor}*`, [
     Line(`${item.school} \\`),
     Line(`${item.location} \\`),
-    Line(`Expected graduation: ${date.expectedGraduation}`),
+    Line(`Expected graduation: ${item.date}`),
   ])
 
 const Education = (data) => Section('Education', data.map(buildEducationItem))
