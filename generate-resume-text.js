@@ -1,11 +1,13 @@
 const {
   Link,
   Line,
+  Italic,
   List,
   TitleSection,
   Section,
   SubSection,
   Container,
+  Header: TextHeader,
 } = require('text-composer')
 
 const formatPhoneNumber = (phone) =>
@@ -40,16 +42,11 @@ const Header = (data) => {
   return TitleSection(data.name, [list])
 }
 
-const buildEducationDate = (date) =>
-  date.expectedGraduation
-    ? `Expected graduation: ${date.expectedGraduation}`
-    : `${date.start}—${date.end}`
-
 const buildEducationItem = (item) =>
   SubSection(`${item.degree}, *minor in ${item.minor}*`, [
     Line(`${item.school} \\`),
     Line(`${item.location} \\`),
-    Line(`${buildEducationDate(item.date)}`),
+    Line(`Expected graduation: ${item.date}`),
   ])
 
 const Education = (data) => Section('Education', data.map(buildEducationItem))
@@ -73,13 +70,35 @@ const buildExperienceItem = (item) => {
 }
 
 const TechnicalExperience = (data) =>
-  Section('Technical Experience', data.map(buildExperienceItem))
+  Section('Experience', data.map(buildExperienceItem))
+
+const buildPosition = (position) =>
+  Container([
+    TextHeader(4, position.job_title),
+    Line(position.employer),
+    Line(`${position.start}—${position.end}`),
+  ])
+
+const buildEmploymentItem = (item) => {
+  const positions = item.positions.map(buildPosition)
+
+  return SubSection(item.title, [
+    ...positions,
+    Line(''),
+    Line('Summary:'),
+    List(item.summary),
+  ])
+}
+
+const WorkExperience = (data) =>
+  Section('Employment', data.map(buildEmploymentItem))
 
 const generateResumeText = (data) =>
   Container([
     Header(data.header),
     Education(data.education),
     TechnicalExperience(data.experience),
+    WorkExperience(data.employment),
   ]).compose()
 
 module.exports = {

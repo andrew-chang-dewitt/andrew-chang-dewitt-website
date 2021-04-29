@@ -132,8 +132,6 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
     }
   `)
 
-  console.log(result)
-
   const resumeData = result.data.allSrcYaml.nodes[0].resume
   const resumeMd = generateResumeText(resumeData)
   const resumeFileName = './public/resume/resume_Andrew_Chang-DeWitt.md'
