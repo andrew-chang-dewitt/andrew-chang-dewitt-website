@@ -42,16 +42,11 @@ const Header = (data) => {
   return TitleSection(data.name, [list])
 }
 
-const buildEducationDate = (date) =>
-  date.expectedGraduation
-    ? `Expected graduation: ${date.expectedGraduation}`
-    : `${date.start}—${date.end}`
-
 const buildEducationItem = (item) =>
   SubSection(`${item.degree}, *minor in ${item.minor}*`, [
     Line(`${item.school} \\`),
     Line(`${item.location} \\`),
-    Line(`${buildEducationDate(item.date)}`),
+    Line(`Expected graduation: ${item.date}`),
   ])
 
 const Education = (data) => Section('Education', data.map(buildEducationItem))
