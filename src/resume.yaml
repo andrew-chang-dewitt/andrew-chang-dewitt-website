@@ -38,7 +38,7 @@ resume:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Deploying back-end with Docker Swarm as a collection of microservices"
         - "Communication between services implemented with AMQP (using RabbitMQ), exposing endpoints to client applications over HTTP as a single RESTful Gateway API"
-        - "Created AMQP worker library modeled after Flask's API"
+        - "Built and implemented an AMQP worker library w/ API modeled after Flask, decreased service development time by 50%"
         - "Writing in Python (Flask, Psycopg2, aio-pika) & Typescript (React) with data storage in PostgreSQL & MongoDB"
 
     - title: 'We Cook Sometimes'
@@ -69,7 +69,7 @@ resume:
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
-        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
+        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states, eliminating many runtime errors by forcing function callers to handle the possible error"
         - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
 
     - title: "Personal Website & Blog"
@@ -103,7 +103,7 @@ resume:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
-        - "Created resume as HTML/CSS (from JSX/SASS), markdown, docx, & PDF, automatically generated during site build & deployment from YAML using custom markdown lib, Pandoc, & Puppeteer."
+        - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during CI/CD, decreasing build & deploy time by at least 30 minutes"
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
@@ -149,9 +149,10 @@ resume:
       summary:
         - "Started as a contract employee & learned quickly, advancing to a lead position among a team of contractors"
         - "Promoted again to state employee in June of 2019"
-        - "Communicated directly with clients to solve issues & share information"
-        - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
-        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+        - "Communicated directly with clients to help them successfully apply for SNAP, TANF, & Medicaid"
+        - "Assisted clients in solving problems in the cases/applications, increasing their benefit eligibility & advised them on complicated policies & processes"
+        - "Trained 12 new employees & worked with a team of experienced employees to their improve customer service, communication, & problem-solving skills"
+        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
