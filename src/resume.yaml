@@ -38,7 +38,7 @@ resume:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Deploying back-end with Docker Swarm as a collection of microservices"
         - "Communication between services implemented with AMQP (using RabbitMQ), exposing endpoints to client applications over HTTP as a single RESTful Gateway API"
-        - "Decreased service development time by 50% by building an AMQP worker library w/ API modeled after Flask"
+        - "Built and implemented an AMQP worker library w/ API modeled after Flask, decreased service development time by 50%"
         - "Writing in Python (Flask, Psycopg2, aio-pika) & Typescript (React) with data storage in PostgreSQL & MongoDB"
 
     - title: 'We Cook Sometimes'
@@ -103,7 +103,7 @@ resume:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
-        - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during build and deploy steps CI/CD, decreasing build & deploy time by at least 30 minutes"
+        - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during CI/CD, decreasing build & deploy time by at least 30 minutes"
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
@@ -150,9 +150,9 @@ resume:
         - "Started as a contract employee & learned quickly, advancing to a lead position among a team of contractors"
         - "Promoted again to state employee in June of 2019"
         - "Communicated directly with clients to help them successfully apply for SNAP, TANF, & Medicaid"
-        - "Assisted clients in solving problems in the cases/applications, increasing their benefits Eligibility & educating them on complicated policies"
+        - "Assisted clients in solving problems in the cases/applications, increasing their benefit eligibility & advised them on complicated policies & processes"
         - "Trained 12 new employees & worked with a team of experienced employees to their improve customer service, communication, & problem-solving skills"
-        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
