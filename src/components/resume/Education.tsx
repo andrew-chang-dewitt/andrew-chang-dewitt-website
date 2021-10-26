@@ -7,7 +7,8 @@ export interface EducationItem {
   date: string
   location: string
   degree: string
-  minor: string
+  major: string
+  minor?: string
 }
 
 interface Props {
@@ -15,16 +16,19 @@ interface Props {
 }
 
 const buildEducationItem = (item: EducationItem) => (
-  <div className="avoidPageBreak" key={item.degree}>
+  <div className="avoidPageBreak" key={item.school}>
     <h3>
-      {item.degree}, <span className="italic">minor in {item.minor}</span>
+      {item.major}, <span className="italic">{item.degree}</span>
     </h3>
+    { item.minor 
+        ? <h4 className="subtitle">minor in {item.minor}</h4>
+        : "" }
     <div className={styles.twoColumnLayout}>
-      <div className={`subtitle ${styles.degree}`}>
-        <h4>{item.school}</h4>
+      <div className={styles.left}>
+        <h5>{item.school}</h5>
       </div>
 
-      <ul className={styles.info}>
+      <ul className={styles.right}>
         <li>{item.location}</li>
         <li>Expected graduation: {item.date}</li>
       </ul>
