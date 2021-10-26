@@ -18,14 +18,18 @@ interface Props {
 const buildEducationItem = (item: EducationItem) => (
   <div className="avoidPageBreak" key={item.school}>
     <h3>
-      {item.major}, <span className="italic">{item.degree}</span>
+      {item.degree} in {item.major}
+      {item.minor ? (
+        <>
+          , <span className="italic">{item.minor}</span>
+        </>
+      ) : (
+        ''
+      )}
     </h3>
-    { item.minor 
-        ? <h4 className="subtitle">minor in {item.minor}</h4>
-        : "" }
     <div className={styles.twoColumnLayout}>
       <div className={styles.left}>
-        <h5>{item.school}</h5>
+        <h4>{item.school}</h4>
       </div>
 
       <ul className={styles.right}>
