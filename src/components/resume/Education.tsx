@@ -21,7 +21,7 @@ const buildEducationItem = (item: EducationItem) => (
       {item.degree} in {item.major}
       {item.minor ? (
         <>
-          , <span className="italic">{item.minor}</span>
+          , <span className="italic">minor in {item.minor}</span>
         </>
       ) : (
         ''
