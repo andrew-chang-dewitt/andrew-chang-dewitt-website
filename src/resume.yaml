@@ -135,7 +135,9 @@ resume:
           start: "August 2021"
           end: "current"
       summary:
-        - ""
+        - "Assisted lead developer in managing websites for multiple departments."
+        - "Converted .NET 5 Razor views from Bootstrap/JQuery to IU's css framework, vanilla JS (& Vue, where applicable)."
+        - "Updated websites & created new pages."
 
     - title: "Department of Family Resources"
       positions:
