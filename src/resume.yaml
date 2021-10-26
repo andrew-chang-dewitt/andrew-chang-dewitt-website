@@ -11,35 +11,30 @@ resume:
   about-me: "I make web apps, API's, IoT programs, & cli utilities."
 
   experience:
-    - title: 'Cheese Drawer (current project)'
+    - title: 'Hoops (current project)'
       repo:
-        href: https://github.com/cheese-drawer
-        display: github.com/cheese-drawer
+        href: https://github.com/andrew-chang-dewitt/hoops
+        display: github.com/andrew-chang-dewitt/hoops
       stack:
           - Python
           - Typescript
           - Flask
           - Psycopg2
-          - SqlAlchemy
           - React
           - React Native
           - PostgreSQL
           - MongoDB
-          - AMQP 0-9-1
           - Docker
           - Mocha
           - React Testing Library
           - unittest
-          - microservices
-          - Functional Programming
           - unit testing 
           - Test Driven Development
+          - Functional Programming
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
-        - "Deploying back-end with Docker Swarm as a collection of microservices"
-        - "Communication between services implemented with AMQP (using RabbitMQ), exposing endpoints to client applications over HTTP as a single RESTful Gateway API"
-        - "Built and implemented an AMQP worker library w/ API modeled after Flask, decreased service development time by 50%"
-        - "Writing in Python (Flask, Psycopg2, aio-pika) & Typescript (React) with data storage in PostgreSQL & MongoDB"
+        - "Writing backend RESTful API in Python (Flask, Psycopg2)"
+        - "Writing front ends for web & mobile in Typescript (React/ReactNative) with data storage in PostgreSQL"
 
     - title: 'We Cook Sometimes'
       repo:
