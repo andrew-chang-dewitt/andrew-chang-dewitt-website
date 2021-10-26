@@ -150,9 +150,10 @@ resume:
   
   education:
     - school: "Indiana University—Purdue University Indianapolis"
-      degree: "BS in Informatics"
-      minor: "Computer & Information Science"
-      date: "Spring 2024"
+      degree: "Bachelor of Science"
+      major: "Computer Science"
+      minor: "Chinese Language"
+      date: "December 2023"
       location: "Indianapolis, Indiana"
     # - school: "Ball State University"
     #   date:
