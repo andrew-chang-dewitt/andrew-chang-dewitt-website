@@ -128,6 +128,15 @@ resume:
         - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
 
   employment:
+    - title: "Web Development Intern"
+      positions:
+        - job-title: "Assistant Web Master"
+          employer: "IUPUI Center for Teaching by and Learning"
+          start: "August 2021"
+          end: "current"
+      summary:
+        - ""
+
     - title: "Department of Family Resources"
       positions:
         - job-title: "State Eligibility Consultant"
