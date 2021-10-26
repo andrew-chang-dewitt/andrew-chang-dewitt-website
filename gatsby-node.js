@@ -93,6 +93,7 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
             education {
               school
               degree
+              major
               minor
               location
               date
