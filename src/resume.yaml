@@ -18,23 +18,27 @@ resume:
       stack:
           - Python
           - Typescript
-          - Flask
+          - FastAPI
           - Psycopg2
-          - React
-          - React Native
           - PostgreSQL
-          - MongoDB
-          - Docker
-          - Mocha
-          - React Testing Library
+          - Svelte
+          - SvelteKit
+          - Svelte Native
           - unittest
-          - unit testing 
+          - Mocha
+          - Svelte Testing Library
+          - Docker
+          - NGINX
+          - unit testing
           - Test Driven Development
           - Functional Programming
+          - Object Oriented Programming
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
-        - "Writing backend RESTful API in Python (Flask, Psycopg2)"
-        - "Writing front ends for web & mobile in Typescript (React/ReactNative) with data storage in PostgreSQL"
+        - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
+        - "Implemented secure user login as API generating OAuth2-compliant JWT Bearer tokens"
+        - "Built a custom OOP wrapper on psycopg2 & aiopg to extend with simple ORM & asynchronous connection management & query execution"
+        - "Writing front ends for web & mobile in Typescript (SvelteKit/Svelte Native)"
 
     - title: 'We Cook Sometimes'
       repo:
@@ -59,7 +63,7 @@ resume:
         - Functional Programming
         - Object Oriented Programming
         - Functional Composition
-        - unit testing 
+        - unit testing
         - Test Driven Development
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
@@ -113,7 +117,7 @@ resume:
         - pytest
         - Docker
         - Object Oriented Programming
-        - unit testing 
+        - unit testing
         - Test Driven Development
       summary:
         - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
