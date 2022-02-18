@@ -16,8 +16,8 @@ export const Resume = () => (
   <div className={styles.content}>
     <Header data={resume.header} />
     <Education data={resume.education} />
-    <Experience data={resume.experience} />
     <Employment data={resume.employment} />
+    <Experience data={resume.experience} />
     {/* <Training /> */}
   </div>
 )

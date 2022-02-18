@@ -7,9 +7,9 @@ resume:
     website: andrew-chang-dewitt.dev
     github: github.com/andrew-chang-dewitt
     title: Software Developer
-  
+
   about-me: "I make web apps, API's, IoT programs, & cli utilities."
-  
+
   experience:
     - title: 'Cheese Drawer (current project)'
       repo:
@@ -17,7 +17,7 @@ resume:
         display: github.com/cheese-drawer
       stack:
           - Python
-          - Typescript
+          - TypeScript
           - Flask
           - Psycopg2
           - SqlAlchemy
@@ -33,22 +33,25 @@ resume:
           - OOP
           - FP
           - microservices
+      description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application written in TypeScript/SvelteKit for the frontend."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Deploying back-end with Docker Swarm as a collection of microservices"
         - "Communication between services implemented with AMQP (using RabbitMQ), exposing endpoints to client applications over HTTP as a single RESTful Gateway API"
         - "Created AMQP worker library modeled after Flask's API"
-        - "Writing in Python (Flask, Psycopg2, aio-pika) & Typescript (React) with data storage in PostgreSQL & MongoDB"
-  
+        - "Writing in Python (Flask, Psycopg2, aio-pika) & TypeScript (React) with data storage in PostgreSQL & MongoDB"
+
     - title: 'We Cook Sometimes'
       repo:
-        href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
-        display: github.com/andrew-chang-dewitt/we-cook-sometimes
-      more-info:
+        - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
+          display: github.com/andrew-chang-dewitt/we-cook-sometimes
+        - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
+          display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
+      moreInfo:
         href: ""
         display: "FIXME: no blog post yet, write & link to it here"
       stack:
-        - Typescript
+        - TypeScript
         - React
         - React-Router
         - SASS
@@ -60,12 +63,13 @@ resume:
         - Mocha
         - Enzyme
         - React Testing Library
+      description: "An SPA written in TypeScript/React used to make sharing my wife & I's recipes stored in Trello easier & also help us finally just figure out what to cook for dinner tonight already using a series of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
       summary:
-        - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
+        - "Created a single-page web application with React & TypeScript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
-        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
+        - "Developed a [Result type for TypeScript](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript), similar to Rust's Result enum, to encapsulate success & failure states"
         - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
-  
+
     - title: "Personal Website & Blog"
       url:
         href: https://andrew-chang-dewitt.dev
@@ -73,11 +77,11 @@ resume:
       repo:
         href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
         display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-      more-info:
+      moreInfo:
         href: ""
         display: "FIXME: no blog post yet, write & link to it here"
       stack:
-        - Typescript
+        - TypeScript
         - Javascript
         - SASS
         - Gatsby
@@ -88,17 +92,18 @@ resume:
         - Mocha
         - Enzyme
         - React Testing Library
+      description: "A personal website & blog written in TypeScript/React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
       summary:
-        - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
+        - "Built a personal website using TypeScript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & a custom React hook for managing query parameters"
         - "Next steps: convert the all the tests to Jest & rewrite any Enzyme tests to React Testing Library, Gatsby & Mocha don't play well together"
-  
+
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
         href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
         display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-      more-info:
+      moreInfo:
         href: ""
         display: "FIXME: no blog post yet, write & link to it here"
       stack:
@@ -106,6 +111,7 @@ resume:
         - MQTT
         - pytest
         - Docker
+      description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
       summary:
         - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
         - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
@@ -113,8 +119,18 @@ resume:
         - "Reads configuration from a user-maintained YAML file"
         - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
         - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
-  
+
   employment:
+    - title: "Web Development Internship"
+      positions:
+        - job-title: "Assistant Web Master"
+          employer: "IUPUI Center for Teaching by & Learning"
+          start: "August 2021"
+          end: "current"
+      summary:
+        - "did some things"
+        - "did some things"
+        - "did some things"
     - title: "Department of Family Resources"
       positions:
         - job-title: "State Eligibility Consultant"
@@ -139,10 +155,10 @@ resume:
         - "Communicated directly with clients to solve issues & share information"
         - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
         - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
-  
+
   education:
     - school: "Indiana University—Purdue University Indianapolis"
-      degree: "Bachelor of Science"
+      degree: "B.S."
       major: "Computer Science"
       minor: "Chinese Language"
       date: "December 2023"
@@ -153,7 +169,7 @@ resume:
     #     end: 2013
     #   location: "Muncie, IN"
     #   description: "Completed 113 credits towards a Bachelor's of Landscape Architecture"
-  
+
   # don't list intro courses, stick to more advanced &
   # in-depth/detailed courses or series of courses
   # professional-development:

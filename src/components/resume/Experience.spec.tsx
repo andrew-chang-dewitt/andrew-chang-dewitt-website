@@ -14,7 +14,7 @@ const anItem: Item = {
     display: 'display',
   },
   stack: ['stack'],
-  summary: ['summary'],
+  description: 'description',
 }
 
 describe('component/resume/Experience', () => {
@@ -46,77 +46,63 @@ describe('component/resume/Experience', () => {
 
       expect(getByText('url')).to.exist
     })
-  })
 
-  describe('Summary list', () => {
-    it('A single experience item contains a Summary list', () => {
-      const { getByTitle } = setup(anItem)
-
-      expect(getByTitle('Summary')).to.exist
-    })
-
-    it('Displays a list containing each string given as Item.summary', () => {
-      const { getByTitle } = setup({
-        ...anItem,
-        summary: [
-          'first summary item',
-          'second summary item',
-          'third summary item',
-        ],
-      })
-
-      const summary = getByTitle('Summary')
-
-      expect(within(summary).getByText(/first summary item/i)) &&
-        expect(within(summary).getByText(/second summary item/i)) &&
-        expect(within(summary).getByText(/third summary item/i))
-    })
-
-    it('Can parse a summary item that contains a markdown-style link: [display](href)', () => {
+    it('Some Experience items also have a more-info url', () => {
       const { getByText } = setup({
         ...anItem,
-        summary: ['regular text & [a link](/to/some/location)'],
+        moreInfo: {
+          display: 'a link',
+          href: '/to/more/info',
+        },
       })
 
-      const summaryItem = getByText(/regular text/i)
+      expect(getByText('a link')).to.exist
+    })
+  })
+
+  describe('Description', () => {
+    it('A single experience item contains a Description', () => {
+      const { getByTitle } = setup(anItem)
+
+      expect(getByTitle('Description')).to.exist
+    })
+
+    it("Renders the Item's description", () => {
+      const { getByTitle } = setup({
+        ...anItem,
+        description: 'A description here.',
+      })
+
+      const description = getByTitle('Description')
+
+      expect(within(description).getByText(/a description here/i))
+    })
+
+    it('Can parse a description that contains a markdown-style link: [display](href)', () => {
+      const { getByText } = setup({
+        ...anItem,
+        description: 'regular text & [a link](/to/some/location)',
+      })
+
+      const descriptionItem = getByText(/regular text/i)
 
       expect(
-        within(summaryItem)
+        within(descriptionItem)
           .getByText(/a link/i)
           .attributes.getNamedItem('href')?.value
       ).to.equal('/to/some/location')
     })
 
-    it("Can't parse a summary item that contains multiple links", () => {
-      const summaryItems = [
-        'regular text & [a link](/to/some/location) & [another link](/to/some/location)',
-      ]
+    it("Can't parse a description item that contains multiple links", () => {
+      const descriptionItems =
+        'regular text & [a link](/to/some/location) & [another link](/to/some/location)'
 
       expect(() =>
         setup({
           ...anItem,
-          summary: summaryItems,
+          description: descriptionItems,
         })
-      ).to.throw('There can only be one link in a Summary item.')
+      ).to.throw('There can only be one link in a Description item.')
     })
-  })
-
-  it('Can add a more-info link to the end of the summary list, if one exists', () => {
-    const { getByTitle } = setup({
-      ...anItem,
-      'more-info': {
-        display: 'a link',
-        href: '/to/more/info',
-      },
-    })
-
-    const summaryList = getByTitle('Summary')
-    const moreInfoItem = within(summaryList).getByText(/more info/i)
-
-    expect(
-      within(moreInfoItem)
-        .getByText(/a link/i)
-        .attributes.getNamedItem('href')?.value
-    ).to.equal('/to/more/info')
   })
 })
