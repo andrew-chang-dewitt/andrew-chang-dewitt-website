@@ -1,5 +1,6 @@
 import React from 'react'
 
+import sharedStyles from './Shared.module.sass'
 import styles from './Education.module.sass'
 
 export interface EducationItem {
@@ -21,13 +22,13 @@ const buildEducationItem = (item: EducationItem) => (
       {item.degree} in {item.major}
       {item.minor ? (
         <>
-          , <span className="italic">{item.minor}</span>
+          , <span className="italic">minor in {item.minor}</span>
         </>
       ) : (
         ''
       )}
     </h3>
-    <div className={styles.twoColumnLayout}>
+    <div className={sharedStyles.twoColumnLayout}>
       <div className={styles.left}>
         <h4>{item.school}</h4>
       </div>
