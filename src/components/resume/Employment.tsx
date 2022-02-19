@@ -1,5 +1,7 @@
 import React from 'react'
 
+import RoundedItemList from '../RoundedItemList'
+
 import sharedStyles from './Shared.module.sass'
 import styles from './Employment.module.sass'
 
@@ -7,6 +9,7 @@ interface Item {
   title: string
   positions: Array<Position>
   summary: Array<string>
+  skills: Array<string>
 }
 
 interface Position {
@@ -40,11 +43,18 @@ export const Employment = ({ data }: Props) => (
             ))}
           </ul>
 
-          <ul>
-            {employmentItem.summary.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {employmentItem.summary.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <RoundedItemList
+              items={employmentItem.skills}
+              accessibleName="skills"
+            />
+          </div>
         </div>
       </div>
     ))}
