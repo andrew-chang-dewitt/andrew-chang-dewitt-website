@@ -5,14 +5,3 @@
 
 .experience h3
   margin-bottom: 0.5rem
-
-@media print
-  .twoColumnLayout
-    @include Resume.two-column-layout(1fr, 2fr)
-  .twoColumnLayout > ul
-    margin: 0
-@media all and (min-width: #{ layout.$screen-medium })
-  .twoColumnLayout
-    @include Resume.two-column-layout(1fr, 2fr)
-  .twoColumnLayout > ul
-    margin: 0

@@ -5,7 +5,7 @@
   margin-bottom: 0.25rem
 
 .education h4
-  margin-top: #{Resume.$space / 2} 
+  margin-top: #{Resume.$space / 2}
   margin-bottom: Resume.$space
 
 .left > h5
@@ -20,14 +20,4 @@
 .right > li
   margin: Resume.$space 0
   list-style: none
-
-@media print
-  .twoColumnLayout
-    @include Resume.two-column-layout(1fr, 2fr)
-  .twoColumnLayout > ul
-    margin: 0
-@media all and (min-width: #{ layout.$screen-medium })
-  .twoColumnLayout
-    @include Resume.two-column-layout(1fr, 2fr)
-  .twoColumnLayout > ul
-    margin: 0
+  padding-left: 1.375rem

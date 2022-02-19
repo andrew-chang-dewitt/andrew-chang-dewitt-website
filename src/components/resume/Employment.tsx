@@ -1,5 +1,6 @@
 import React from 'react'
 
+import sharedStyles from './Shared.module.sass'
 import styles from './Employment.module.sass'
 
 interface Item {
@@ -27,7 +28,7 @@ export const Employment = ({ data }: Props) => (
       <div className="avoidPageBreak" key={employmentItem.title}>
         <h3 className="title">{employmentItem.title}</h3>
 
-        <div className={styles.twoColumnLayout}>
+        <div className={sharedStyles.twoColumnLayout}>
           <ul className={styles.positions}>
             {employmentItem.positions.map((position) => (
               <li key={position.start} className="subtitle">
