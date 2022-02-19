@@ -47,7 +47,7 @@ resume:
           display: github.com/andrew-chang-dewitt/we-cook-sometimes
         - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
           display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
-      more-info:
+      moreInfo:
         href: "/blog/tags/project:-we-cook-sometimes"
         display: "/blog/tags/project:-we-cook-sometimes"
       stack:
@@ -82,7 +82,7 @@ resume:
       repo:
         href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
         display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-      more-info:
+      moreInfo:
         href: "/blog/posts/personal-website"
         display: "/blog/posts/personal-website"
       stack:
@@ -102,7 +102,7 @@ resume:
         - Functional Programming
         - unit testing
         - Responsive UI/UX design
-      description: "A personal website & blog written in TypeScript/React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
+      description: "A personal website & blog written in TypeScript w/ React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
       summary:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
@@ -113,7 +113,7 @@ resume:
       repo:
         href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
         display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-      more-info:
+      moreInfo:
         href: "/blog/posts/rpi-gpio-sensors-mqtt"
         display: "/blog/posts/rpi-gpio-sensors-mqtt"
       stack:
