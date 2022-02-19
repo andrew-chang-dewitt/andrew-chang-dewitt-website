@@ -131,6 +131,10 @@ resume:
         - "did some things"
         - "did some things"
         - "did some things"
+      skills:
+        - skill
+        - another
+        - good
     - title: "Department of Family Resources"
       positions:
         - job-title: "State Eligibility Consultant"
@@ -155,6 +159,9 @@ resume:
         - "Communicated directly with clients to solve issues & share information"
         - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
         - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+      skills:
+        - test
+        - none
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
