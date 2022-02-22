@@ -31,6 +31,11 @@ export const Employment = ({ data }: Props) => (
       <div className="avoidPageBreak" key={employmentItem.title}>
         <h3 className="title">{employmentItem.title}</h3>
 
+        <RoundedItemList
+          items={employmentItem.skills}
+          accessibleName="skills"
+        />
+
         <div className={sharedStyles.twoColumnLayout}>
           <ul className={styles.positions}>
             {employmentItem.positions.map((position) => (
@@ -43,18 +48,11 @@ export const Employment = ({ data }: Props) => (
             ))}
           </ul>
 
-          <div>
-            <ul>
-              {employmentItem.summary.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-
-            <RoundedItemList
-              items={employmentItem.skills}
-              accessibleName="skills"
-            />
-          </div>
+          <ul>
+            {employmentItem.summary.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
     ))}
