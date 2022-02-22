@@ -48,6 +48,8 @@ export const Experience = ({ data }: Props) => (
       <div className="avoidPageBreak" key={experienceItem.title}>
         <h3 className="title">{experienceItem.title}</h3>
 
+        <RoundedItemList items={experienceItem.stack} accessibleName="Skills" />
+
         <div className={sharedStyles.twoColumnLayout}>
           <ul className={sharedStyles.infoList} aria-label="Links">
             <LinkList
@@ -57,38 +59,12 @@ export const Experience = ({ data }: Props) => (
                 moreInfo: experienceItem.moreInfo,
               }}
             />
-
-            {/*
-              {experienceItem.url ? (
-                <LinkList url={experienceItem.url} repo={experienceItem.repo} />
-              ) : (
-                <LinkList repo={experienceItem.repo} />
-              )}
-            */}
-
-            {/*
-              {experienceItem['more-info'] ? (
-                <li>
-                More info:{' '}
-                <Link to={experienceItem['more-info'].href}>
-                {experienceItem['more-info'].display}
-                </Link>
-                </li>
-              ) : (
-                ''
-              )}
-            */}
           </ul>
 
           <div>
             <p title="Description">
               {parseDescription(experienceItem.description)}
             </p>
-
-            <RoundedItemList
-              items={experienceItem.stack}
-              accessibleName="stack"
-            />
           </div>
         </div>
       </div>
