@@ -51,23 +51,27 @@ const buildEducationItem = (item) =>
 
 const Education = (data) => Section('Education', data.map(buildEducationItem))
 
-const buildExperienceItem = (item) => {
-  const links = item.url
-    ? List([
-        Link(item.url.href, item.url.display),
-        Link(item.repo.href, item.repo.display),
-      ])
-    : List([Link(item.repo.href, item.repo.display)])
+const buildRepoLinks = (repos) =>
+  repos.map((repo) => Link(repo.href, repo.display))
 
-  return SubSection(item.title, [
-    Line('Links:'),
-    links,
-    Line(`Stack: ${item.stack.join(', ')}`),
-    Line(''),
-    Line('Summary:'),
-    List(item.summary),
-  ])
+const buildLinks = (url, repos, moreInfo) => {
+  const u = url ? Link(url.href, url.display) : null
+  const r = buildRepoLinks(repos)
+  const m = moreInfo ? Link(moreInfo.href, moreInfo.display) : null
+
+  const list = [u, ...r, m].filter((item) => item)
+
+  return List(list)
 }
+
+const buildExperienceItem = (item) =>
+  SubSection(item.title, [
+    Line('Links:'),
+    buildLinks(item.url, item.repo, item.moreInfo),
+    Line(`Skills: ${item.stack.join(', ')}`),
+    Line(''),
+    Line(item.description),
+  ])
 
 const TechnicalExperience = (data) =>
   Section('Experience', data.map(buildExperienceItem))
@@ -87,6 +91,9 @@ const buildEmploymentItem = (item) => {
     Line(''),
     Line('Summary:'),
     List(item.summary),
+    Line(''),
+    Line('Skills:'),
+    List(item.skills),
   ])
 }
 
@@ -97,8 +104,8 @@ const generateResumeText = (data) =>
   Container([
     Header(data.header),
     Education(data.education),
-    TechnicalExperience(data.experience),
     WorkExperience(data.employment),
+    TechnicalExperience(data.experience),
   ]).compose()
 
 module.exports = {
