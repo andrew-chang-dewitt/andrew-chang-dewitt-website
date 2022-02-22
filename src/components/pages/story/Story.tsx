@@ -16,7 +16,7 @@ export const Story = () => (
     <h2 className="subtitle">long version</h2>
 
     <p>
-      I'm a self-taught developer with a background in design & a passion for
+      I'm a self-motivated developer with a background in design & a passion for
       solving problems. Looking back,
       <Detail
         buttonText=" it should have been obvious "
@@ -158,8 +158,20 @@ export const Story = () => (
 
     <h2 className="subtitle">what's next</h2>
     <p>
-      I'm currently seeking employment as a Junior Developer while studying &
-      finishing building out the
+      I'm currently seeking a Software Engineering internship while studying
+      Informatics & Computer Science at Indiana University&mdash;Purdue
+      University Indianapolis. In my free time, I'm also finishing building out
+      a
+      <Detail
+        buttonText=" budgeting app "
+        additionalText="for my partner & I to use"
+      >
+        {' '}
+        (with integrations to our bank accounts & credit cards, web & native
+        mobile apps, push notifications, user authentication, & a RESTful API to
+        keep everything in sync)
+      </Detail>
+      . Next up is the
       <Detail buttonText=" home security system ">
         {' '}
         (custom built sensor modules with
@@ -177,34 +189,7 @@ export const Story = () => (
         </Detail>
         with a server built in Rust){' '}
       </Detail>
-      I've been designing for my family's home. Next up is a
-      <Detail
-        buttonText=" budgeting app "
-        additionalText="for my partner & I to use"
-      >
-        {' '}
-        (with integrations to our bank accounts & credit cards, web & native
-        mobile apps, push notifications, user authentication, & a RESTful API to
-        keep everything in sync)
-      </Detail>
-      .
-    </p>
-    <p>
-      Besides projects, I'm currently reading more on data structures &
-      algorithms with{' '}
-      <em>
-        Hands-On Data Structures & Algorithms with Python - Second Edition
-      </em>{' '}
-      by Dr. Basant Agarwal & Benjamin Baka as well as{' '}
-      <em>Hands-On Data Structures and Algorithms with Rust</em> by Claus
-      Matzinger{' '}
-      <a href="https://www.packtpub.com/application-development/hands-data-structures-and-algorithms-python-second-edition">
-        both
-      </a>{' '}
-      <a href="https://www.packtpub.com/application-development/hands-data-structures-and-algorithms-rust">
-        from
-      </a>{' '}
-      Packt Publishing. Next I plan on diving more into Design Patterns.
+      I've been designing for my family's home.
     </p>
   </div>
 )
