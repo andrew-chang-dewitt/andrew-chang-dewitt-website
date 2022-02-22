@@ -41,6 +41,39 @@ resume:
         - "Built a custom OOP wrapper on psycopg2 & aiopg to extend with simple ORM & asynchronous connection management & query execution"
         - "Writing front ends for web & mobile in Typescript (SvelteKit/Svelte Native)"
 
+    - title: 'DB Wrapper'
+      repo:
+        - href: https://github.com/cheese-drawer/lib-python-db-wrapper
+          display: github.com/cheese-drawer/lib-python-db-wrapper
+      stack:
+        - Python
+        - PostgreSQL
+        - unittest
+        - Docker
+        - Library design
+        - API design
+        - Asynchronous programming
+        - Test Driven Development
+        - Object Oriented Programming
+      description: "An async wrapper on Psycopg2 written in Python with a simple ORM library to handle runtime type validation & data modeling using Pydantic. Used in Hoops (above project) to handle all database interactions."
+
+    - title: 'AMPQ Worker'
+      repo:
+        - href: https://github.com/cheese-drawer/lib-python-amqp-worker
+          display: github.com/cheese-drawer/lib-python-amqp-worker
+      stack:
+        - Python
+        - RabbitMQ
+        - AMQP 0-9-1
+        - unittest
+        - Docker
+        - Library design
+        - API design
+        - Asynchronous programming
+        - Test Driven Development
+        - Object Oriented Programming
+      description: "An async wrapper on mosquito/aio-pika to allow communicating over an AMQP 0-9-1 system with a Flask-like, asynchronous API. Originally intended to be used with DB Wrapper (above project) in a since-abandoned microservices-based approach to writing the backend for Hoops (the project above DB Wrapper)."
+
     - title: 'We Cook Sometimes'
       repo:
         - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
@@ -109,28 +142,28 @@ resume:
         - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
         - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during CI/CD, decreasing build & deploy time by at least 30 minutes"
 
-    - title: "Pi GPIO Sensor to MQTT Module"
-      repo:
-        - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-          display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-      moreInfo:
-        href: "/blog/posts/rpi-gpio-sensors-mqtt"
-        display: "/blog/posts/rpi-gpio-sensors-mqtt"
-      stack:
-        - Python
-        - MQTT
-        - pytest
-        - Docker
-        - Object Oriented Programming
-        - unit testing
-        - Test Driven Development
-      description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
-      summary:
-        - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
-        - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
-        - "Distributed as a Dockerfile to aid in installation & maintenance"
-        - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
-        - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
+    # - title: "Pi GPIO Sensor to MQTT Module"
+    #  repo:
+    #    - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+    #      display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+    #  moreInfo:
+    #    href: "/blog/posts/rpi-gpio-sensors-mqtt"
+    #    display: "/blog/posts/rpi-gpio-sensors-mqtt"
+    #  stack:
+    #    - Python
+    #    - MQTT
+    #    - pytest
+    #    - Docker
+    #    - Object Oriented Programming
+    #    - unit testing
+    #    - Test Driven Development
+    #  description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
+    #  summary:
+    #    - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
+    #    - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
+    #    - "Distributed as a Dockerfile to aid in installation & maintenance"
+    #    - "Implemented sensors as an extensible library to allow users to easily add new sensor types"
+    #    - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
 
   employment:
     - title: "Web Development Intern"
@@ -154,38 +187,38 @@ resume:
         - "Rewrote .NET Razor views from Bootstrap/JQuery to IU's modern css framework, improving page load times & removing outdated dependencies"
         - "Implemented additional features in HTML, CSS, & vanilla JS (or Vue, where applicable)"
 
-    - title: "Department of Family Resources"
-      positions:
-        - job-title: "State Eligibility Consultant"
-          employer: "State of Indiana"
-          start: "June 2019"
-          end: "August 2020"
-        - job-title: "Eligibility Specialist Working Lead"
-          employer: "Knowledge Services"
-          start: "May 2018"
-          end: "June 2019"
-        - job-title: "Eligibility Specialist"
-          employer: "Knowledge Services"
-          start: "January 2018"
-          end: "May 2018"
-        - job-title: "Eligibility Specialist"
-          employer: "Conduent"
-          start: "August 2016"
-          end: "December 2017"
-      summary:
-        - "Started as a contract employee & learned quickly, advancing to a lead position among a team of contractors"
-        - "Promoted again to state employee in June of 2019"
-        - "Communicated directly with clients to help them successfully apply for SNAP, TANF, & Medicaid"
-        - "Assisted clients in solving problems in the cases/applications, increasing their benefit eligibility & advised them on complicated policies & processes"
-        - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills"
-        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
-        - "Communicated directly with clients to solve issues & share information"
-        - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
-        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
-      skills:
-        - Leadership
-        - Mentorship
-        - Communication
+    # - title: "Department of Family Resources"
+    #   positions:
+    #     - job-title: "State Eligibility Consultant"
+    #       employer: "State of Indiana"
+    #       start: "June 2019"
+    #       end: "August 2020"
+    #     - job-title: "Eligibility Specialist Working Lead"
+    #       employer: "Knowledge Services"
+    #       start: "May 2018"
+    #       end: "June 2019"
+    #     - job-title: "Eligibility Specialist"
+    #       employer: "Knowledge Services"
+    #       start: "January 2018"
+    #       end: "May 2018"
+    #     - job-title: "Eligibility Specialist"
+    #       employer: "Conduent"
+    #       start: "August 2016"
+    #       end: "December 2017"
+    #   summary:
+    #     - "Started as a contract employee & learned quickly, advancing to a lead position among a team of contractors"
+    #     - "Promoted again to state employee in June of 2019"
+    #     - "Communicated directly with clients to help them successfully apply for SNAP, TANF, & Medicaid"
+    #     - "Assisted clients in solving problems in the cases/applications, increasing their benefit eligibility & advised them on complicated policies & processes"
+    #     - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills"
+    #     - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
+    #     - "Communicated directly with clients to solve issues & share information"
+    #     - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
+    #     - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+    #   skills:
+    #     - Leadership
+    #     - Mentorship
+    #     - Communication
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
