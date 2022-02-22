@@ -13,8 +13,8 @@ resume:
   experience:
     - title: 'Cheese Drawer (current project)'
       repo:
-        href: https://github.com/cheese-drawer
-        display: github.com/cheese-drawer
+        - href: https://github.com/cheese-drawer
+          display: github.com/cheese-drawer
       stack:
           - Python
           - TypeScript
@@ -48,7 +48,7 @@ resume:
         - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
           display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
       moreInfo:
-        href: ""
+        href: "/bad/link"
         display: "FIXME: no blog post yet, write & link to it here"
       stack:
         - TypeScript
@@ -75,10 +75,10 @@ resume:
         href: https://andrew-chang-dewitt.dev
         display: andrew-chang-dewitt.dev
       repo:
-        href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-        display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+        - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+          display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
       moreInfo:
-        href: ""
+        href: "/bad/link"
         display: "FIXME: no blog post yet, write & link to it here"
       stack:
         - TypeScript
@@ -101,10 +101,10 @@ resume:
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
-        href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-        display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+        - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+          display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
       moreInfo:
-        href: ""
+        href: "/bad/link"
         display: "FIXME: no blog post yet, write & link to it here"
       stack:
         - Python
