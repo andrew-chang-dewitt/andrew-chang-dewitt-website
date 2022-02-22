@@ -13,8 +13,8 @@ resume:
   experience:
     - title: 'Hoops (current project)'
       repo:
-        href: https://github.com/andrew-chang-dewitt/hoops
-        display: github.com/andrew-chang-dewitt/hoops
+        - href: https://github.com/andrew-chang-dewitt/hoops
+          display: github.com/andrew-chang-dewitt/hoops
       stack:
           - Python
           - Typescript
@@ -33,6 +33,7 @@ resume:
           - Test Driven Development
           - Functional Programming
           - Object Oriented Programming
+      description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application written in TypeScript/SvelteKit for the frontend."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
@@ -42,9 +43,11 @@ resume:
 
     - title: 'We Cook Sometimes'
       repo:
-        href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
-        display: github.com/andrew-chang-dewitt/we-cook-sometimes
-      more-info:
+        - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
+          display: github.com/andrew-chang-dewitt/we-cook-sometimes
+        - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
+          display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
+      moreInfo:
         href: "/blog/tags/project:-we-cook-sometimes"
         display: "/blog/tags/project:-we-cook-sometimes"
       stack:
@@ -65,6 +68,7 @@ resume:
         - Functional Composition
         - unit testing
         - Test Driven Development
+      description: "An SPA written in TypeScript/React used to make sharing my wife & I's recipes stored in Trello easier & also help us finally just figure out what to cook for dinner tonight already using a series of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
@@ -76,9 +80,9 @@ resume:
         href: https://andrew-chang-dewitt.dev
         display: andrew-chang-dewitt.dev
       repo:
-        href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-        display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-      more-info:
+        - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+          display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+      moreInfo:
         href: "/blog/posts/personal-website"
         display: "/blog/posts/personal-website"
       stack:
@@ -98,6 +102,7 @@ resume:
         - Functional Programming
         - unit testing
         - Responsive UI/UX design
+      description: "A personal website & blog written in TypeScript w/ React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
       summary:
         - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
         - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
@@ -106,9 +111,9 @@ resume:
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
-        href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-        display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-      more-info:
+        - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+          display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+      moreInfo:
         href: "/blog/posts/rpi-gpio-sensors-mqtt"
         display: "/blog/posts/rpi-gpio-sensors-mqtt"
       stack:
@@ -119,6 +124,7 @@ resume:
         - Object Oriented Programming
         - unit testing
         - Test Driven Development
+      description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
       summary:
         - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
         - "Designed to communicate with a custom home security alarm system, as well Home Assistant for home automations"
@@ -133,6 +139,16 @@ resume:
           employer: "IUPUI Center for Teaching and Learning"
           start: "August 2021"
           end: "current"
+      skills:
+        - .NET MVC
+        - Razor
+        - C#
+        - Python
+        - JavaScript
+        - NodeJS
+        - Vue
+        - HTML
+        - CSS
       summary:
         - "Assisted lead developer in managing websites for multiple departments"
         - "Rewrote .NET Razor views from Bootstrap/JQuery to IU's modern css framework, improving page load times & removing outdated dependencies"
@@ -163,6 +179,13 @@ resume:
         - "Assisted clients in solving problems in the cases/applications, increasing their benefit eligibility & advised them on complicated policies & processes"
         - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills"
         - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
+        - "Communicated directly with clients to solve issues & share information"
+        - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
+        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
+      skills:
+        - Leadership
+        - Mentorship
+        - Communication
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"

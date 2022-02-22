@@ -3,11 +3,13 @@ import React from 'react'
 import ExternalLink from './ExternalLink'
 import WebAddressIcon from './icons/WebAddressIcon'
 import GitHubIcon from './icons/GitHubIcon'
+import MoreInfoIcon from './icons/MoreInfoIcon'
 import LinkType from '../LinkType'
 
 interface LinkListProps {
-  url?: LinkType
   repo: LinkType | Array<LinkType>
+  url?: LinkType
+  moreInfo?: LinkType
 }
 
 const isSingleRepo = (repo: LinkType | Array<LinkType>): repo is LinkType =>
@@ -21,7 +23,7 @@ const Repo = ({ data }: { data: LinkType }) => (
   </li>
 )
 
-export default ({ url, repo }: LinkListProps) => (
+export default ({ repo, url, moreInfo }: LinkListProps) => (
   <>
     {url ? (
       <li>
@@ -36,5 +38,13 @@ export default ({ url, repo }: LinkListProps) => (
     ) : (
       repo.map((repo, index) => <Repo data={repo} key={`${index}`} />)
     )}
+
+    {moreInfo ? (
+      <li>
+        <MoreInfoIcon />
+
+        <ExternalLink href={moreInfo.href}>{moreInfo.display}</ExternalLink>
+      </li>
+    ) : null}
   </>
 )

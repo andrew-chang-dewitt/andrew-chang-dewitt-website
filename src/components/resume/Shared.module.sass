@@ -1,3 +1,4 @@
+@use '../../styles/layout'
 @use '../../styles/fonts'
 @use '../../styles/colors'
 @use './Resume.variables.sass'
@@ -28,3 +29,18 @@ $print-svg-size: calc( #{$svg-size} * 0.75 )
   .infoList > li > svg
     height: $print-svg-size
     width: $print-svg-size
+
+@media print
+  .twoColumnLayout
+    @include Resume.two-column-layout(1fr, 2fr)
+  .twoColumnLayout > ul
+    margin: 0
+  .twoColumnLayout > div:last-child
+    padding-left: 1.375rem
+@media all and (min-width: #{ layout.$screen-medium })
+  .twoColumnLayout
+    @include Resume.two-column-layout(1fr, 2fr)
+  .twoColumnLayout > ul
+    margin: 0
+  .twoColumnLayout > div:last-child
+    padding-left: 1.375rem

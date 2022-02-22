@@ -76,56 +76,56 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onPostBuild = async ({ graphql, reporter }) => {
   const result = await graphql(`
     query {
-      allSrcYaml {
-        nodes {
-          resume {
-            about_me
+      srcYaml {
+        resume {
+          about_me
 
-            header {
-              name
-              email
-              phone
-              website
-              github
-              title
+          header {
+            name
+            email
+            phone
+            website
+            github
+            title
+          }
+
+          education {
+            school
+            degree
+            major
+            minor
+            location
+            date
+          }
+
+          experience {
+            title
+            description
+            summary
+            stack
+            url {
+              display
+              href
             }
-
-            education {
-              school
-              degree
-              major
-              minor
-              location
-              date
+            repo {
+              href
+              display
             }
-
-            experience {
-              title
-              summary
-              stack
-              url {
-                display
-                href
-              }
-              repo {
-                href
-                display
-              }
-              more_info {
-                href
-                display
-              }
+            moreInfo {
+              href
+              display
             }
+          }
 
-            employment {
-              title
-              summary
-              positions {
-                employer
-                end
-                job_title
-                start
-              }
+          employment {
+            title
+            summary
+            skills
+            positions {
+              employer
+              end
+              job_title
+              start
             }
           }
         }
@@ -133,7 +133,7 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
     }
   `)
 
-  const resumeData = result.data.allSrcYaml.nodes[0].resume
+  const resumeData = result.data.srcYaml.resume
   const resumeMd = generateResumeText(resumeData)
   const resumeFileName = './public/resume/resume_Andrew_Chang-DeWitt.md'
 

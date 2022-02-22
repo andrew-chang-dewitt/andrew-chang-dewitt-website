@@ -14,14 +14,3 @@
   margin: 0
 .positions > li > h4
   margin-bottom: #{Resume.$space / 2}
-
-@media print
-  .twoColumnLayout
-    @include Resume.two-column-layout(1fr, 2fr)
-  .twoColumnLayout > ul
-    margin: 0
-@media all and (min-width: #{ layout.$screen-medium })
-  .twoColumnLayout
-    @include Resume.two-column-layout(1fr, 2fr)
-  .twoColumnLayout > ul
-    margin: 0

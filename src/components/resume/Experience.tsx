@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 
 import RoundedItemList from '../RoundedItemList'
 import ExternalLink from '../ExternalLink'
@@ -13,20 +13,20 @@ export interface Item {
   title: string
   url?: LinkType
   repo: LinkType | Array<LinkType>
-  'more-info'?: LinkType
+  moreInfo?: LinkType
   stack: Array<string>
-  summary: Array<string>
+  description: string
 }
 
 interface ExperienceProps {
   data: Array<Item>
 }
 
-const parseSummaryItem = (item: string): Array<React.ReactNode> => {
+const parseDescription = (item: string): Array<React.ReactNode> => {
   const strings = item.split('[')
 
   if (strings.length > 2)
-    throw RangeError('There can only be one link in a Summary item.')
+    throw RangeError('There can only be one link in a Description item.')
 
   if (strings.length === 2) {
     strings.splice(1, 1, ...strings[1].split(')'))
@@ -42,44 +42,54 @@ const parseSummaryItem = (item: string): Array<React.ReactNode> => {
 
 export const Experience = ({ data }: ExperienceProps) => (
   <section className={styles.experience}>
-    <h2 className="title">Experience</h2>
+    <h2 className="title">Projects</h2>
 
     {data.map((experienceItem) => (
       <div className="avoidPageBreak" key={experienceItem.title}>
         <h3 className="title">{experienceItem.title}</h3>
 
-        <div className={styles.twoColumnLayout}>
-          <div>
-            <ul className={sharedStyles.infoList} aria-label="Links">
+        <div className={sharedStyles.twoColumnLayout}>
+          <ul className={sharedStyles.infoList} aria-label="Links">
+            <LinkList
+              {...{
+                repo: experienceItem.repo,
+                url: experienceItem.url,
+                moreInfo: experienceItem.moreInfo,
+              }}
+            />
+
+            {/*
               {experienceItem.url ? (
                 <LinkList url={experienceItem.url} repo={experienceItem.repo} />
               ) : (
                 <LinkList repo={experienceItem.repo} />
               )}
-            </ul>
+            */}
+
+            {/*
+              {experienceItem['more-info'] ? (
+                <li>
+                More info:{' '}
+                <Link to={experienceItem['more-info'].href}>
+                {experienceItem['more-info'].display}
+                </Link>
+                </li>
+              ) : (
+                ''
+              )}
+            */}
+          </ul>
+
+          <div>
+            <p title="Description">
+              {parseDescription(experienceItem.description)}
+            </p>
 
             <RoundedItemList
               items={experienceItem.stack}
               accessibleName="stack"
             />
           </div>
-
-          <ul title="Summary">
-            {experienceItem.summary.map((item) => (
-              <li key={item}>{parseSummaryItem(item)}</li>
-            ))}
-
-            {experienceItem['more-info'] ? (
-              <li>
-                More info:{' '}
-                <Link to={experienceItem['more-info'].href}>
-                  {experienceItem['more-info'].display}
-                </Link>
-              </li>
-            ) : (
-              ''
-            )}
-          </ul>
         </div>
       </div>
     ))}
