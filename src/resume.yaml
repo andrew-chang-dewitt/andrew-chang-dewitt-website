@@ -13,8 +13,8 @@ resume:
   experience:
     - title: 'Hoops (current project)'
       repo:
-        href: https://github.com/andrew-chang-dewitt/hoops
-        display: github.com/andrew-chang-dewitt/hoops
+        - href: https://github.com/andrew-chang-dewitt/hoops
+          display: github.com/andrew-chang-dewitt/hoops
       stack:
           - Python
           - Typescript
@@ -80,8 +80,8 @@ resume:
         href: https://andrew-chang-dewitt.dev
         display: andrew-chang-dewitt.dev
       repo:
-        href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-        display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+        - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+          display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
       moreInfo:
         href: "/blog/posts/personal-website"
         display: "/blog/posts/personal-website"
@@ -111,8 +111,8 @@ resume:
 
     - title: "Pi GPIO Sensor to MQTT Module"
       repo:
-        href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
-        display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+        - href: https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
+          display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
       moreInfo:
         href: "/blog/posts/rpi-gpio-sensors-mqtt"
         display: "/blog/posts/rpi-gpio-sensors-mqtt"
