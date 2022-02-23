@@ -28,7 +28,10 @@ export const Employment = ({ data }: Props) => (
     <h2 className="title">Employment</h2>
 
     {data.map((employmentItem) => (
-      <div className="avoidPageBreak" key={employmentItem.title}>
+      <div
+        className={`${styles.item} avoidPageBreak`}
+        key={employmentItem.title}
+      >
         <h3 className="title">{employmentItem.title}</h3>
 
         <RoundedItemList

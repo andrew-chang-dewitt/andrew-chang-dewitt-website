@@ -45,7 +45,10 @@ export const Experience = ({ data }: ExperienceProps) => (
     <h2 className="title">Projects</h2>
 
     {data.map((experienceItem) => (
-      <div className="avoidPageBreak" key={experienceItem.title}>
+      <div
+        className={`${styles.item} avoidPageBreak`}
+        key={experienceItem.title}
+      >
         <h3 className="title">{experienceItem.title}</h3>
 
         <RoundedItemList items={experienceItem.stack} accessibleName="Skills" />
@@ -62,7 +65,7 @@ export const Experience = ({ data }: ExperienceProps) => (
           </ul>
 
           <div>
-            <p title="Description">
+            <p title="Description" className={styles.description}>
               {parseDescription(experienceItem.description)}
             </p>
           </div>
