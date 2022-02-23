@@ -82,7 +82,7 @@ resume:
           display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
       moreInfo:
         href: "/blog/tags/project:-we-cook-sometimes"
-        display: "/blog/tags/project:-we-cook-sometimes"
+        display: "andrew-chang-dewitt.dev/blog/tags/project:-we-cook-sometimes"
       stack:
         - Typescript
         - React
@@ -117,7 +117,7 @@ resume:
           display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
       moreInfo:
         href: "/blog/posts/personal-website"
-        display: "/blog/posts/personal-website"
+        display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
       stack:
         - Typescript
         - Javascript
@@ -148,7 +148,7 @@ resume:
     #      display: github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt
     #  moreInfo:
     #    href: "/blog/posts/rpi-gpio-sensors-mqtt"
-    #    display: "/blog/posts/rpi-gpio-sensors-mqtt"
+    #    display: "andrew-chang-dewitt.dev/blog/posts/rpi-gpio-sensors-mqtt"
     #  stack:
     #    - Python
     #    - MQTT
