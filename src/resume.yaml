@@ -21,7 +21,6 @@ resume:
           - Python
           - Typescript
           - FastAPI
-          - Psycopg2
           - PostgreSQL
           - Svelte
           - TDD
@@ -41,9 +40,8 @@ resume:
           display: github.com/andrew-chang-dewitt/jspec
       stack:
         - Java
-        - Unit testing
-        - OOP
         - TDD
+        - OOP
         - Data structures & algorithms
       description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
@@ -161,8 +159,9 @@ resume:
         - NodeJS
         - git
         - GitHub
-        - Project planning
-        - Feature design
+        - Project Planning
+        - Feature Design
+        - Dynamic UI Development
       summary:
         - "Lead implementation planning for and implemented much of a new feature shipped on Tinder's web app in late Q3 2022"
         - "Assisted in migrating Javascript typed in Flow to TypeScript across the application"
@@ -224,9 +223,11 @@ resume:
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
+      degree: ""
       major: "Computer Science"
       minor: ""
       location: "Indianapolis, Indiana"
+      date: ""
     # - school: "Ball State University"
     #   date:
     #     start: 2009
