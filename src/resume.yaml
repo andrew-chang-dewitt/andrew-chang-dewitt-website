@@ -29,7 +29,7 @@ resume:
           - Svelte Testing Library
           - Docker
           - NGINX
-          - unit testing
+          - Unit testing
           - Test Driven Development
           - Functional Programming
           - Object Oriented Programming
@@ -40,6 +40,18 @@ resume:
         - "Implemented secure user login as API generating OAuth2-compliant JWT Bearer tokens"
         - "Built a custom OOP wrapper on psycopg2 & aiopg to extend with simple ORM & asynchronous connection management & query execution"
         - "Writing front ends for web & mobile in Typescript (SvelteKit/Svelte Native)"
+
+    - title: 'JSpec'
+      repo:
+        - href: https://github.com/andrew-chang-dewitt/jspec
+          display: github.com/andrew-chang-dewitt/jspec
+      stack:
+        - Java
+        - Unit testing
+        - Object Oriented Programming
+        - Test Driven Development
+        - Data structures & algorithms
+      description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
     - title: 'DB Wrapper'
       repo:
@@ -99,7 +111,7 @@ resume:
         - Functional Programming
         - Object Oriented Programming
         - Functional Composition
-        - unit testing
+        - Unit testing
         - Test Driven Development
       description: "An SPA written in TypeScript/React used to make sharing my wife & I's recipes stored in Trello easier & also help us finally just figure out what to cook for dinner tonight already using a series of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
       summary:
@@ -108,39 +120,39 @@ resume:
         - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states, eliminating many runtime errors by forcing function callers to handle the possible error"
         - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
 
-    - title: "Personal Website & Blog"
-      url:
-        href: https://andrew-chang-dewitt.dev
-        display: andrew-chang-dewitt.dev
-      repo:
-        - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-          display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
-      moreInfo:
-        href: "/blog/posts/personal-website"
-        display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
-      stack:
-        - Typescript
-        - Javascript
-        - SASS
-        - Gatsby
-        - CSS-modules
-        - Pandoc
-        - Puppeteer
-        - Node
-        - Express
-        - NGINX
-        - Mocha
-        - Enzyme
-        - React Testing Library
-        - Functional Programming
-        - unit testing
-        - Responsive UI/UX design
-      description: "A personal website & blog written in TypeScript w/ React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
-      summary:
-        - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
-        - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
-        - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
-        - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during CI/CD, decreasing build & deploy time by at least 30 minutes"
+    # - title: "Personal Website & Blog"
+    #   url:
+    #     href: https://andrew-chang-dewitt.dev
+    #     display: andrew-chang-dewitt.dev
+    #   repo:
+    #     - href: https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+    #       display: github.com/andrew-chang-dewitt/andrew-chang-dewitt-website
+    #   moreInfo:
+    #     href: "/blog/posts/personal-website"
+    #     display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
+    #   stack:
+    #     - Typescript
+    #     - Javascript
+    #     - SASS
+    #     - Gatsby
+    #     - CSS-modules
+    #     - Pandoc
+    #     - Puppeteer
+    #     - Node
+    #     - Express
+    #     - NGINX
+    #     - Mocha
+    #     - Enzyme
+    #     - React Testing Library
+    #     - Functional Programming
+    #     - Unit testing
+    #     - Responsive UI/UX design
+    #   description: "A personal website & blog written in TypeScript w/ React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
+    #   summary:
+    #     - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
+    #     - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
+    #     - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
+    #     - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during CI/CD, decreasing build & deploy time by at least 30 minutes"
 
     # - title: "Pi GPIO Sensor to MQTT Module"
     #  repo:
@@ -155,7 +167,7 @@ resume:
     #    - pytest
     #    - Docker
     #    - Object Oriented Programming
-    #    - unit testing
+    #    - Unit testing
     #    - Test Driven Development
     #  description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
     #  summary:
