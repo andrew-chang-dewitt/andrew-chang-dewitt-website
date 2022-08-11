@@ -11,10 +11,12 @@ resume:
   about-me: "I make web apps, API's, IoT programs, & cli utilities."
 
   experience:
-    - title: 'Hoops (current project)'
+    - title: 'Hoops'
       repo:
-        - href: https://github.com/andrew-chang-dewitt/hoops
-          display: github.com/andrew-chang-dewitt/hoops
+        - href: https://github.com/andrew-chang-dewitt/hoops-web
+          display: github.com/andrew-chang-dewitt/hoops-web
+        - href: https://github.com/andrew-chang-dewitt/hoops-api
+          display: github.com/andrew-chang-dewitt/hoops-api
       stack:
           - Python
           - Typescript
@@ -22,18 +24,13 @@ resume:
           - Psycopg2
           - PostgreSQL
           - Svelte
-          - SvelteKit
-          - Svelte Native
-          - unittest
-          - Mocha
-          - Svelte Testing Library
           - Docker
           - NGINX
-          - Unit testing
+          - Unit Testing
           - Test Driven Development
           - Functional Programming
           - Object Oriented Programming
-      description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application written in TypeScript/SvelteKit for the frontend."
+      description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
@@ -53,38 +50,25 @@ resume:
         - Data structures & algorithms
       description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
-    - title: 'DB Wrapper'
+    - title: 'DB Wrapper & AMQP Worker'
       repo:
         - href: https://github.com/cheese-drawer/lib-python-db-wrapper
           display: github.com/cheese-drawer/lib-python-db-wrapper
-      stack:
-        - Python
-        - PostgreSQL
-        - unittest
-        - Docker
-        - Library design
-        - API design
-        - Asynchronous programming
-        - Test Driven Development
-        - Object Oriented Programming
-      description: "An async wrapper on Psycopg2 written in Python with a simple ORM library to handle runtime type validation & data modeling using Pydantic. Used in Hoops (above project) to handle all database interactions."
-
-    - title: 'AMPQ Worker'
-      repo:
         - href: https://github.com/cheese-drawer/lib-python-amqp-worker
           display: github.com/cheese-drawer/lib-python-amqp-worker
       stack:
         - Python
-        - RabbitMQ
+        - PostgreSQL
         - AMQP 0-9-1
-        - unittest
         - Docker
         - Library design
         - API design
+        - Microservices
+        - Type systems & static typing
         - Asynchronous programming
         - Test Driven Development
         - Object Oriented Programming
-      description: "An async wrapper on mosquito/aio-pika to allow communicating over an AMQP 0-9-1 system with a Flask-like, asynchronous API. Originally intended to be used with DB Wrapper (above project) in a since-abandoned microservices-based approach to writing the backend for Hoops (the project above DB Wrapper)."
+      description: "A pair of async, typesafe libraries intended to be used in a microservice-based implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
     - title: 'We Cook Sometimes'
       repo:
@@ -99,21 +83,18 @@ resume:
         - Typescript
         - React
         - React-Router
-        - SASS
         - CSS-modules
         - Webpack
         - Node
         - Express
+        - MongoDB
+        - RESTful API
         - NGINX
-        - Mocha
-        - Enzyme
-        - React Testing Library
-        - Functional Programming
-        - Object Oriented Programming
-        - Functional Composition
         - Unit testing
         - Test Driven Development
-      description: "An SPA written in TypeScript/React used to make sharing my wife & I's recipes stored in Trello easier & also help us finally just figure out what to cook for dinner tonight already using a series of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
+        - Object Oriented Programming
+        - Functional Composition
+      description: "A TypeScript & React SPA with a MongoDB & Node/Express backend for sharing recipes. Uses Trello as a CMS & keeps the backend up to date with webhooks & serves data to frontend via RESTful API. Includes feature to help us finally figure out what to cook for dinner by traversing set of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
       summary:
         - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
         - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
@@ -133,7 +114,6 @@ resume:
     #   stack:
     #     - Typescript
     #     - Javascript
-    #     - SASS
     #     - Gatsby
     #     - CSS-modules
     #     - Pandoc
@@ -164,7 +144,6 @@ resume:
     #  stack:
     #    - Python
     #    - MQTT
-    #    - pytest
     #    - Docker
     #    - Object Oriented Programming
     #    - Unit testing
@@ -217,8 +196,7 @@ resume:
         - HTML
         - CSS
       summary:
-        - "Assisted lead developer in managing websites for multiple departments"
-        - "Rewrote .NET Razor views from Bootstrap/JQuery to IU's modern css framework, improving page load times & removing outdated dependencies"
+        - "Updated outdated .NET Razor views from Bootstrap/JQuery to IU's modern css framework, improving page load times"
         - "Implemented additional features in HTML, CSS, & vanilla JS (or Vue, where applicable)"
 
     # - title: "Department of Family Resources"
