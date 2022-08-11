@@ -24,9 +24,6 @@ resume:
           - Psycopg2
           - PostgreSQL
           - Svelte
-          - Docker
-          - NGINX
-          - Unit Testing
           - Test Driven Development
           - Functional Programming
           - Object Oriented Programming
@@ -60,9 +57,7 @@ resume:
         - Python
         - PostgreSQL
         - AMQP 0-9-1
-        - Docker
-        - Library design
-        - API design
+        - Library API design
         - Microservices
         - Type systems & static typing
         - Asynchronous programming
@@ -82,15 +77,10 @@ resume:
       stack:
         - Typescript
         - React
-        - React-Router
-        - CSS-modules
-        - Webpack
         - Node
         - Express
         - MongoDB
         - RESTful API
-        - NGINX
-        - Unit testing
         - Test Driven Development
         - Object Oriented Programming
         - Functional Composition
