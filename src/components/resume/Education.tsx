@@ -5,9 +5,9 @@ import styles from './Education.module.sass'
 
 export interface EducationItem {
   school: string
-  date: string
+  date?: string
   location: string
-  degree: string
+  degree?: string
   major: string
   minor?: string
 }
@@ -19,7 +19,13 @@ interface Props {
 const buildEducationItem = (item: EducationItem) => (
   <div className="avoidPageBreak" key={item.school}>
     <h3>
-      {item.degree} in {item.major}
+      {item.degree ? (
+        <>
+          {item.degree} in {item.major}
+        </>
+      ) : (
+        <>{item.major}</>
+      )}
       {item.minor ? (
         <>
           , <span className="italic">minor in {item.minor}</span>
@@ -35,7 +41,7 @@ const buildEducationItem = (item: EducationItem) => (
 
       <ul className={styles.right}>
         <li>{item.location}</li>
-        <li>Expected graduation: {item.date}</li>
+        {item.date ? <li>Expected graduation: {item.date}</li> : null}
       </ul>
     </div>
   </div>
