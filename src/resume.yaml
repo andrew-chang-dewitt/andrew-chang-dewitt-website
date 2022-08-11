@@ -178,12 +178,34 @@ resume:
     #    - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
 
   employment:
+    - title: "Software Engineering Internship"
+      positions:
+        - job-title: "Web Engineering Intern"
+          employer: "Tinder (Match Group)"
+          start: "June 2022"
+          end: "current"
+      skills:
+        - React
+        - Redux
+        - Redux-saga
+        - TypeScript
+        - NodeJS
+        - git
+        - GitHub
+        - Project planning
+        - Feature design
+      summary:
+        - "Lead implementation planning for and implemented much of a new feature shipped on Tinder's web app in late Q3 2022"
+        - "Assisted in migrating Javascript typed in Flow to TypeScript across the application"
+        - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
+        - "Fixed many a11y & i18n bugs throughout the Tinder application"
+
     - title: "Web Development Intern"
       positions:
         - job-title: "Assistant Web Master"
           employer: "IUPUI Center for Teaching and Learning"
           start: "August 2021"
-          end: "current"
+          end: "May 2022"
       skills:
         - .NET MVC
         - Razor
