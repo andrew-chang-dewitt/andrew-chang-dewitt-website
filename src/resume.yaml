@@ -24,9 +24,9 @@ resume:
           - Psycopg2
           - PostgreSQL
           - Svelte
-          - Test Driven Development
-          - Functional Programming
-          - Object Oriented Programming
+          - TDD
+          - FP
+          - OOP
       description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
@@ -42,8 +42,8 @@ resume:
       stack:
         - Java
         - Unit testing
-        - Object Oriented Programming
-        - Test Driven Development
+        - OOP
+        - TDD
         - Data structures & algorithms
       description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
@@ -61,8 +61,8 @@ resume:
         - Microservices
         - Type systems & static typing
         - Asynchronous programming
-        - Test Driven Development
-        - Object Oriented Programming
+        - TDD
+        - OOP
       description: "A pair of async, typesafe libraries intended to be used in a microservice-based implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
     - title: 'We Cook Sometimes'
@@ -81,8 +81,8 @@ resume:
         - Express
         - MongoDB
         - RESTful API
-        - Test Driven Development
-        - Object Oriented Programming
+        - TDD
+        - OOP
         - Functional Composition
       description: "A TypeScript & React SPA with a MongoDB & Node/Express backend for sharing recipes. Uses Trello as a CMS & keeps the backend up to date with webhooks & serves data to frontend via RESTful API. Includes feature to help us finally figure out what to cook for dinner by traversing set of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
       summary:
@@ -114,7 +114,7 @@ resume:
     #     - Mocha
     #     - Enzyme
     #     - React Testing Library
-    #     - Functional Programming
+    #     - FP
     #     - Unit testing
     #     - Responsive UI/UX design
     #   description: "A personal website & blog written in TypeScript w/ React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
@@ -135,9 +135,9 @@ resume:
     #    - Python
     #    - MQTT
     #    - Docker
-    #    - Object Oriented Programming
+    #    - OOP
     #    - Unit testing
-    #    - Test Driven Development
+    #    - TDD
     #  description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
     #  summary:
     #    - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
@@ -169,7 +169,7 @@ resume:
         - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
         - "Fixed many a11y & i18n bugs throughout the Tinder application"
 
-    - title: "Web Development Intern"
+    - title: "Web Development Internship"
       positions:
         - job-title: "Assistant Web Master"
           employer: "IUPUI Center for Teaching and Learning"
@@ -224,10 +224,8 @@ resume:
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
-      degree: "B.S."
       major: "Computer Science"
       minor: ""
-      date: "Spring 2024"
       location: "Indianapolis, Indiana"
     # - school: "Ball State University"
     #   date:
