@@ -1,7 +1,6 @@
 const {
   Link,
   Line,
-  Italic,
   List,
   TitleSection,
   Section,
