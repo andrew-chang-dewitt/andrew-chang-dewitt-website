@@ -223,11 +223,11 @@ resume:
 
   education:
     - school: "Indiana University—Purdue University Indianapolis"
-      degree: ""
+      degree: "B.S."
       major: "Computer Science"
       minor: ""
       location: "Indianapolis, Indiana"
-      date: ""
+      date: "In progress"
     # - school: "Ball State University"
     #   date:
     #     start: 2009
