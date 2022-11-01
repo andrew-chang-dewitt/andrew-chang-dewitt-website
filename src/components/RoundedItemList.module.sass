@@ -9,21 +9,18 @@
 
 .list > li
   padding: Resume.$space Resume.$double-space
-  border: 1px solid colors.$dark
+  border: 1px solid colors.$dark-light-alternate
   border-radius: Resume.$quadruple-space
   list-style: none
   margin: 0 Resume.$double-space Resume.$space 0
   color: colors.$dark
   font-size: fonts.$size-small
+  font-weight: fonts.$weight-sans-normal-bold
 @media print
   .list > li
     padding: Resume.$print-space Resume.$print-double-space
-    border: 1px solid colors.$dark
     border-radius: Resume.$print-quadruple-space
-    list-style: none
     margin: 0 Resume.$print-double-space Resume.$print-space 0
-    color: colors.$dark
-    font-size: fonts.$size-tiny
 
 .list > li:last-child
   margin-right: 0
