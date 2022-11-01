@@ -41,13 +41,13 @@ const buildEducationItem = (item: EducationItem) => (
 
       <ul className={styles.right}>
         <li>{item.location}</li>
-        {item.date ? <li>Expected graduation: {item.date}</li> : null}
+        {item.date ? <li className="italic">{item.date}</li> : null}
       </ul>
     </div>
   </div>
 )
 
-export const Education = ({ data }: Props) => (
+export const Education = ({data}: Props) => (
   <section className={`avoidPageBreak ${styles.education}`}>
     <h2 className="title">Education</h2>
     {data.map(buildEducationItem)}

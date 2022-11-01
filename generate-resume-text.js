@@ -44,20 +44,29 @@ const Header = (data) => {
 
 const buildEducationItem = (item) =>
   SubSection(
-    `${item.degree} in ${item.major}${
-      item.minor ? ', *minor in ' + item.minor : ''
+    `${item.degree} in ${item.major}${item.minor ? ', *minor in ' + item.minor + '*' : ''
     }`,
     [
       Line(`${item.school} \\`),
       Line(`${item.location} \\`),
-      Line(`Expected graduation: ${item.date}`),
+      Line(`${item.date}`),
     ]
   )
 
 const Education = (data) => Section('Education', data.map(buildEducationItem))
 
+// <<<<<<< HEAD
 const buildRepoLinks = (repos) =>
   repos.map((repo) => Link(repo.href, repo.display))
+// =======
+// const buildExperienceItem = (item) => {
+//   const links = item.url
+//     ? List([
+//       Link(item.url.href, item.url.display),
+//       Link(item.repo.href, item.repo.display),
+//     ])
+//     : List([Link(item.repo.href, item.repo.display)])
+// >>>>>>> development
 
 const buildLinks = (url, repos, moreInfo) => {
   const u = url ? Link(url.href, url.display) : null
