@@ -41,7 +41,7 @@ const buildEducationItem = (item: EducationItem) => (
 
       <ul className={styles.right}>
         <li>{item.location}</li>
-        {item.date ? <li>Expected graduation: {item.date}</li> : null}
+        {item.date ? <li className="italic">{item.date}</li> : null}
       </ul>
     </div>
   </div>
