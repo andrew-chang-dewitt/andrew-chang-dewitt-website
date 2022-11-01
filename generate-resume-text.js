@@ -43,20 +43,24 @@ const Header = (data) => {
 }
 
 const buildEducationItem = (item) =>
-  SubSection(`${item.degree}, *minor in ${item.minor}*`, [
-    Line(`${item.school} \\`),
-    Line(`${item.location} \\`),
-    Line(`Expected graduation: ${item.date}`),
-  ])
+  SubSection(
+    `${item.degree} in ${item.major}${item.minor ? ', *minor in ' + item.minor + '*' : ''
+    }`,
+    [
+      Line(`${item.school} \\`),
+      Line(`${item.location} \\`),
+      Line(`${item.date}`),
+    ]
+  )
 
 const Education = (data) => Section('Education', data.map(buildEducationItem))
 
 const buildExperienceItem = (item) => {
   const links = item.url
     ? List([
-        Link(item.url.href, item.url.display),
-        Link(item.repo.href, item.repo.display),
-      ])
+      Link(item.url.href, item.url.display),
+      Link(item.repo.href, item.repo.display),
+    ])
     : List([Link(item.repo.href, item.repo.display)])
 
   return SubSection(item.title, [
