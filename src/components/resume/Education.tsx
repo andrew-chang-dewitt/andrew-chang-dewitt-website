@@ -47,7 +47,7 @@ const buildEducationItem = (item: EducationItem) => (
   </div>
 )
 
-export const Education = ({data}: Props) => (
+export const Education = ({ data }: Props) => (
   <section className={`avoidPageBreak ${styles.education}`}>
     <h2 className="title">Education</h2>
     {data.map(buildEducationItem)}
