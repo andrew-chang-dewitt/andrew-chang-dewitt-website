@@ -23,7 +23,7 @@ resume:
           - FastAPI
           - PostgreSQL
           - Svelte
-          - TDD
+          - Unit testing
           - FP
           - OOP
       description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
@@ -40,7 +40,7 @@ resume:
           display: github.com/andrew-chang-dewitt/jspec
       stack:
         - Java
-        - TDD
+        - Unit testing
         - OOP
         - Data structures & algorithms
       description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
@@ -59,7 +59,7 @@ resume:
         - Microservices
         - Type systems & static typing
         - Asynchronous programming
-        - TDD
+        - Unit testing
         - OOP
       description: "A pair of async, typesafe libraries intended to be used in a microservice-based implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
@@ -79,7 +79,7 @@ resume:
         - Express
         - MongoDB
         - RESTful API
-        - TDD
+        - Unit testing
         - OOP
         - Functional Composition
       description: "A TypeScript & React SPA with a MongoDB & Node/Express backend for sharing recipes. Uses Trello as a CMS & keeps the backend up to date with webhooks & serves data to frontend via RESTful API. Includes feature to help us finally figure out what to cook for dinner by traversing set of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
@@ -135,7 +135,7 @@ resume:
     #    - Docker
     #    - OOP
     #    - Unit testing
-    #    - TDD
+    #    - Unit testing
     #  description: "A small IOT service written in Python to read sensors attached to a Raspberry Pi's GPIO pins & broadcast status changes over MQTT; intended for use as part of a home automation & security system."
     #  summary:
     #    - "Created an IOT microservice to monitor sensors attached to a Raspberry Pi's GPIO pins"
