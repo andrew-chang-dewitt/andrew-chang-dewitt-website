@@ -43,6 +43,8 @@ resume:
         - Unit testing
         - OOP
         - Data structures & algorithms
+        - Library API design
+        - CLI tooling
       description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
     - title: 'DB Wrapper & AMQP Worker'
@@ -55,12 +57,13 @@ resume:
         - Python
         - PostgreSQL
         - AMQP 0-9-1
-        - Library API design
-        - Microservices
-        - Type systems & static typing
-        - Asynchronous programming
         - Unit testing
         - OOP
+        - Type systems & static typing
+        - Asynchronous programming
+        - Library API design
+        - Microservices
+        - Data modeling and validation
       description: "A pair of async, typesafe libraries intended to be used in a microservice-based implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
     - title: 'We Cook Sometimes'
@@ -163,10 +166,10 @@ resume:
         - Feature Design
         - Dynamic UI Development
       summary:
-        - "Lead implementation planning for and worked with a team to develop a new feature shipped on Tinder's web app in late Q3 2022"
+        - "Lead implementation planning for and worked with a team to develop a new feature shipped on Tinder's web app for tens of millions of users in late Q3 2022"
         - "Assisted in migrating Javascript typed in Flow to TypeScript across the application"
         - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
-        - "Fixed a11y & i18n bugs throughout the Tinder application"
+        - "Improved the Web experience for tens of millions of users by identifying and shipping fixes for a11y & i18n bugs throughout the Tinder application"
 
     - title: "Web Development Internship"
       positions:
