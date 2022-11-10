@@ -107,10 +107,6 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
               href
               display
             }
-            moreInfo {
-              href
-              display
-            }
           }
 
           employment {
