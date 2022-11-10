@@ -10,7 +10,8 @@ export const Story = () => (
     <h2 className={`${styles.firstSubtitle} subtitle`}>short version</h2>
 
     <p>
-      Landscape Architecture -&gt; public service -&gt; software development
+      Architecture school dropout & social services worker before discovering a
+      love for coding & changing careers.
     </p>
 
     <h2 className="subtitle">long version</h2>
