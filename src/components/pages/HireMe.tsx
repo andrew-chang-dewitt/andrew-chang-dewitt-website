@@ -19,10 +19,8 @@ export const HireMe = () => (
     </p>
 
     <p>
-      Some <Link to="/#featured-projects">examples of my work</Link> can be
-      found above. Additionally, <Link to="/resume">my resume</Link> is
-      available on this website, along with <Link to="/blog">my blog</Link>,
-      containing posts on{' '}
+      You can find <Link to="/resume">my resume on this website</Link>, along
+      with <Link to="/blog">my blog</Link>, containing posts on{' '}
       <Link to="/blog/tags/problem-solution">problem solving</Link>,{' '}
       <Link to="/blog/tags/react">React</Link>,{' '}
       <Link to="/blog/tags/typescript">TypeScript</Link>, and more.
