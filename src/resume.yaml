@@ -26,7 +26,7 @@ resume:
           - Unit testing
           - FP
           - OOP
-      description: "A budgeting application inspired by favorite (now defunct) fintech product, built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
+      description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product; & built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
@@ -174,8 +174,10 @@ resume:
         - GitHub
         - Project Planning
         - Feature Design
+        - Agile development methodology
       summary:
-        - "Led implementation planning for and worked with a team to develop a new feature shipped on Tinder's web app for tens of millions of users in late Q3 2022"
+        - "Led implementation planning for and worked with a cross-disciplinary team including engineering, product, & design to develop a new feature shipped on Tinder's web app in late Q3 of 2022, impacting tens of millions of users"
+        - "Participated in regular Scrum ceremonies, including stand-ups, iteration planning, & retrospectives"
         - "Assisted in migrating JavaScript typed in Flow to TypeScript across the application"
         - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
         - "Improved the Web experience for tens of millions of users by identifying and shipping fixes for a11y & i18n bugs throughout the Tinder application"
