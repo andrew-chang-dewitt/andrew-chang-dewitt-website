@@ -103,10 +103,6 @@ exports.onPostBuild = async ({ graphql, reporter }) => {
             description
             summary
             stack
-            url {
-              display
-              href
-            }
             repo {
               href
               display

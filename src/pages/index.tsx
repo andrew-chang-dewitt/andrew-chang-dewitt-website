@@ -49,13 +49,13 @@ const apiToProjectType = (api: ProjectAPI): ProjectType => ({
 
 export default ({ data }: Props) => {
   const storyRef = useRef<HTMLDivElement>(null)
-  const projectRef = useRef<HTMLDivElement>(null)
+  // const projectRef = useRef<HTMLDivElement>(null)
   const hireRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
 
   const navigationRefs = {
     story: storyRef,
-    'featured-projects': projectRef,
+    // 'featured-projects': projectRef,
     'hire-me': hireRef,
     contact: contactRef,
   }
@@ -68,6 +68,7 @@ export default ({ data }: Props) => {
         <Story />
       </Section>
 
+      {/*
       <Section
         id="featured-projects"
         title="Projects"
@@ -78,6 +79,7 @@ export default ({ data }: Props) => {
           projects={data.posts.edges.map((api) => apiToProjectType(api))}
         />
       </Section>
+      */}
 
       <Section id="hire-me" title="Hire Me" ref={hireRef} next={merged[3]}>
         <HireMe />

@@ -12,13 +12,13 @@ import styles from './Experience.module.sass'
 export interface Item {
   title: string
   url?: LinkType
-  repo: LinkType
+  repo: LinkType | Array<LinkType>
   moreInfo?: LinkType
   stack: Array<string>
   description: string
 }
 
-interface Props {
+interface ExperienceProps {
   data: Array<Item>
 }
 
@@ -40,7 +40,7 @@ const parseDescription = (item: string): Array<React.ReactNode> => {
   } else return strings
 }
 
-export const Experience = ({ data }: Props) => (
+export const Experience = ({ data }: ExperienceProps) => (
   <section className={styles.experience}>
     <h2 className="title">Projects</h2>
 
