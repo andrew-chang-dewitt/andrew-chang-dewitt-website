@@ -1,7 +1,6 @@
 const {
   Link,
   Line,
-  Italic,
   List,
   TitleSection,
   Section,
@@ -45,12 +44,12 @@ const Header = (data) => {
 const buildEducationItem = (item) =>
   SubSection(
     `${item.degree} in ${item.major}${
-      item.minor ? ', *minor in ' + item.minor : ''
+      item.minor ? ', *minor in ' + item.minor + '*' : ''
     }`,
     [
       Line(`${item.school} \\`),
       Line(`${item.location} \\`),
-      Line(`Expected graduation: ${item.date}`),
+      Line(`${item.date}`),
     ]
   )
 
