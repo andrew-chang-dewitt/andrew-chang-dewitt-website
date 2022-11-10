@@ -7,13 +7,18 @@
 :root
   scroll-behavior: smooth
 
-body
-  margin: 0 layout.$side-margin
+html
   font-family: fonts.$family-sans
-  font-size: fonts.$size-regular
+  font-size: fonts.$size-base-desktop
   text-rendering: optimizeLegibility
   color: colors.$dark
   background-color: colors.$light
+@media all and (max-width: #{layout.$screen-small})
+  html
+    font-size: fonts.$size-base-mobile
+body
+  margin: 0 layout.$side-margin
+  font-size: fonts.$size-regular
 
 section
   padding-top: 4rem
@@ -167,4 +172,4 @@ svg.fill.action,
   html
     font-size: 12px
   .avoidPageBreak
-    page-break-inside: avoid
+    break-inside: avoid
