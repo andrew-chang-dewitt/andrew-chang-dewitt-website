@@ -125,51 +125,47 @@ export const Story = () => (
         {' '}
         (e.g. OOP, some FP, DRY, TDD/BDD, & a little Agile/Scrum)
       </Detail>
-      ; & recently released a <Link to="/#featured-projects">few projects</Link>
-      , including a new{' '}
-      <Detail buttonText="web app in React ">
-        (something to improve sharing & browsing all of my recipes I have stored{' '}
-        <a
-          href="https://trello.com/b/QZWokYmb/cooking"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          on Trello
-        </a>
-        )
-      </Detail>
-      as well as{' '}
-      <Detail
-        buttonText="adding a portfolio & resume"
-        additionalText=" to this site"
-      >
-        . &mdash;see the
-        <a
-          href="https://github.com/andrew-chang-dewitt/andrew-chang-dewitt-website/tree/development"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {' '}
-          development branch on GitHub
-        </a>
-      </Detail>
-      .
+      ; & released a <Link to="/resume">few projects</Link> over the last few
+      years of studying.
+    </p>
+    <p>
+      Eventually, I made the choice to go back to school to study Computer
+      Science so I could dive deeper in a University environment. Since starting
+      school, I've studied additional languages (including C, C++, & Java),
+      learned more about CS fundamentals, & fallen back in love with Math
+      (especially Discrete Math & Calculus). In my first year, I completed an
+      internship with Indiana University&mdashPurdue University, Indianapolis'
+      Center for Teaching and Learning, then started a summer internship with
+      Tinder (from Match Group) that's been extended into the current school
+      year.
     </p>
 
     <h2 className="subtitle">what's next</h2>
     <p>
-      I'm currently seeking a Software Engineering internship while studying
-      Informatics & Computer Science at Indiana University&mdash;Purdue
-      University Indianapolis. In my free time, I'm also finishing building out
-      a
+      I'm currently looking for my next role as I near the end of my internship
+      with Tinder and contine my studies. In my free time, I'm also
+      <Detail buttonText=" continuing to learn Rust ">
+        {' '}
+        by building a
+        <a
+          href="https://github.com/andrew-chang-dewitt/learning-rust-guessing-game"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {' '}
+          guessing game{' '}
+        </a>
+        with simple 'AI' players implemented with a few different search
+        algorithms{' '}
+      </Detail>
+      and finishing building out a
       <Detail
         buttonText=" budgeting app "
         additionalText="for my partner & I to use"
       >
         {' '}
-        (with integrations to our bank accounts & credit cards, web & native
-        mobile apps, push notifications, user authentication, & a RESTful API to
-        keep everything in sync)
+        (with integrations to our bank accounts & credit cards, a web app, user
+        authentication, & a RESTful API to keep everything in sync)
       </Detail>
       . Next up is the
       <Detail buttonText=" home security system ">

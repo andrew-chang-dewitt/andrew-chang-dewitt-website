@@ -9,12 +9,6 @@
 @media print
   html
     font-size: 12px
-  .content > section:first-child
-    padding-top: 0
-  .content > section > h1:first-child
-    margin-top: 0
-  .content > section > *:first-child
-    margin-bottom: Resume.$print-space
   body
     font-size: fonts.$size-small
   h1, h2, h3, h4, h5, h6, blockquote
@@ -32,3 +26,12 @@
     font-size: fonts.$size-tiny
   h6
     font-size: fonts.$size-tiny
+  .content > section
+    break-inside: avoid
+  .content > section:first-child
+    padding-top: 0
+  .content > section > h1:first-child
+    margin-top: 0
+    break-after: avoid
+  .content > section > *:first-child
+    margin-bottom: Resume.$print-space

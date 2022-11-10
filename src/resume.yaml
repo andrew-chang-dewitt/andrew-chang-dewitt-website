@@ -19,7 +19,7 @@ resume:
           display: github.com/andrew-chang-dewitt/hoops-api
       stack:
           - Python
-          - Typescript
+          - TypeScript
           - FastAPI
           - PostgreSQL
           - Svelte
@@ -32,7 +32,7 @@ resume:
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
         - "Implemented secure user login as API generating OAuth2-compliant JWT Bearer tokens"
         - "Built a custom OOP wrapper on psycopg2 & aiopg to extend with simple ORM & asynchronous connection management & query execution"
-        - "Writing front ends for web & mobile in Typescript (SvelteKit/Svelte Native)"
+        - "Writing front ends for web & mobile in TypeScript (SvelteKit/Svelte Native)"
 
     - title: 'JSpec'
       repo:
@@ -60,37 +60,47 @@ resume:
         - Unit testing
         - OOP
         - Type systems & static typing
-        - Asynchronous programming
         - Library API design
         - Microservices
         - Data modeling and validation
       description: "A pair of async, typesafe libraries intended to be used in a microservice-based implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
-    - title: 'We Cook Sometimes'
+    - title: 'Guessing game'
       repo:
-        - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
-          display: github.com/andrew-chang-dewitt/we-cook-sometimes
-        - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
-          display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
-      moreInfo:
-        href: "/blog/tags/project:-we-cook-sometimes"
-        display: "andrew-chang-dewitt.dev/blog/tags/project:-we-cook-sometimes"
+        - href: https://github.com/andrew-chang-dewitt/learning-rust-guessing-game
+          display: github.com/andrew-chang-dewitt/learning-rust-guessing-game
       stack:
-        - Typescript
-        - React
-        - Node
-        - Express
-        - MongoDB
-        - RESTful API
-        - Unit testing
-        - OOP
-        - Functional Composition
-      description: "A TypeScript & React SPA with a MongoDB & Node/Express backend for sharing recipes. Uses Trello as a CMS & keeps the backend up to date with webhooks & serves data to frontend via RESTful API. Includes feature to help us finally figure out what to cook for dinner by traversing set of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
-      summary:
-        - "Created a single-page web application with React & Typescript to help my family & I pick something to cook & share our recipes"
-        - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
-        - "Developed a [Result type for Typescript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states, eliminating many runtime errors by forcing function callers to handle the possible error"
-        - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
+          - Rust
+          - Unit testing
+          - Data structures & algorithms
+          - CLI tooling
+      description: "A simple guessing game being built as a hobby project while learning Rust & practicing algorithms & data structures. Will be creating a series simple of 'AI' players to make guesses using different algorithms, including linear, jump, binary & other searches all to be compared to random guessing."
+
+    # - title: 'We Cook Sometimes'
+    # - repo:
+    # -   - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes
+    # -     display: github.com/andrew-chang-dewitt/we-cook-sometimes
+    # -   - href: https://github.com/andrew-chang-dewitt/we-cook-sometimes-server
+    # -     display: github.com/andrew-chang-dewitt/we-cook-sometimes-server
+    # - moreInfo:
+    # -   href: "/blog/tags/project:-we-cook-sometimes"
+    # -   display: "andrew-chang-dewitt.dev/blog/tags/project:-we-cook-sometimes"
+    # - stack:
+    # -   - TypeScript
+    # -   - React
+    # -   - Node
+    # -   - Express
+    # -   - MongoDB
+    # -   - RESTful API
+    # -   - Unit testing
+    # -   - OOP
+    # -   - Functional Composition
+    # - description: "A TypeScript & React SPA with a MongoDB & Node/Express backend for sharing recipes. Uses Trello as a CMS & keeps the backend up to date with webhooks & serves data to frontend via RESTful API. Includes feature to help us finally figure out what to cook for dinner by traversing set of questions modeled as a graph using a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript)."
+    # - summary:
+    # -   - "Created a single-page web application with React & TypeScript to help my family & I pick something to cook & share our recipes"
+    # -   - "Implemented a [custom graph data structure object](https://andrew-chang-dewitt.dev/blog/posts/implementing-graphs-in-typescript) with iteration methods using depth-first search algorithm"
+    # -   - "Developed a [Result type for TypeScript](https://andrew-chang-dewitt.dev/blog/posts/rust-result-typescript), similar to Rust's Result enum, to encapsulate success & failure states, eliminating many runtime errors by forcing function callers to handle the possible error"
+    # -   - "Built RESTful API to synchronize data Trello content (using Trello's API & webhooks) with NodeJS & MongoDB"
 
     # - title: "Personal Website & Blog"
     #   url:
@@ -103,8 +113,8 @@ resume:
     #     href: "/blog/posts/personal-website"
     #     display: "andrew-chang-dewitt.dev/blog/posts/personal-website"
     #   stack:
-    #     - Typescript
-    #     - Javascript
+    #     - TypeScript
+    #     - JavaScript
     #     - Gatsby
     #     - CSS-modules
     #     - Pandoc
@@ -120,7 +130,7 @@ resume:
     #     - Responsive UI/UX design
     #   description: "A personal website & blog written in TypeScript w/ React & Gatsby with a single endpoint in NodeJS/Express for the contact form & using GraphQL to dynamically source markdown files for blog content."
     #   summary:
-    #     - "Built a personal website using Typescript, React, & Gatsby to promote myself as a software developer"
+    #     - "Built a personal website using TypeScript, React, & Gatsby to promote myself as a software developer"
     #     - "Improved Gatsby's Reach Router dependency with a custom implementation of hash routing & anchor links"
     #     - "Implemented blog with dynamically generated post pages, post list page, & filtering/sorting using GraphQL & custom query parameter React hook"
     #     - "Reduced complexity to edit, build, & deploy resume content from 12 steps to 3 by creating script to generate HTML/CSS (via JSX/SASS), markdown, docs, and PDF versions during CI/CD, decreasing build & deploy time by at least 30 minutes"
@@ -164,12 +174,12 @@ resume:
         - GitHub
         - Project Planning
         - Feature Design
-        - Dynamic UI Development
       summary:
-        - "Lead implementation planning for and worked with a team to develop a new feature shipped on Tinder's web app for tens of millions of users in late Q3 2022"
-        - "Assisted in migrating Javascript typed in Flow to TypeScript across the application"
+        - "Led implementation planning for and worked with a team to develop a new feature shipped on Tinder's web app for tens of millions of users in late Q3 2022"
+        - "Assisted in migrating JavaScript typed in Flow to TypeScript across the application"
         - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
         - "Improved the Web experience for tens of millions of users by identifying and shipping fixes for a11y & i18n bugs throughout the Tinder application"
+        - "Fixed security bugs in web application & backend services"
 
     - title: "Web Development Internship"
       positions:
@@ -183,6 +193,7 @@ resume:
         - C#
         - Python
         - JavaScript
+        - TypeScript
         - NodeJS
         - Vue
         - HTML
@@ -190,42 +201,34 @@ resume:
       summary:
         - "Updated outdated .NET Razor views from Bootstrap/JQuery to IU's modern css framework, improving page load times"
         - "Implemented additional features in HTML, CSS, & vanilla JS (or Vue, where applicable)"
+        - "Built dev tools in Python & TypeScript to automate data & file collection & formatting"
 
-    # - title: "Department of Family Resources"
-    #   positions:
-    #     - job-title: "State Eligibility Consultant"
-    #       employer: "State of Indiana"
-    #       start: "June 2019"
-    #       end: "August 2020"
-    #     - job-title: "Eligibility Specialist Working Lead"
-    #       employer: "Knowledge Services"
-    #       start: "May 2018"
-    #       end: "June 2019"
-    #     - job-title: "Eligibility Specialist"
-    #       employer: "Knowledge Services"
-    #       start: "January 2018"
-    #       end: "May 2018"
-    #     - job-title: "Eligibility Specialist"
-    #       employer: "Conduent"
-    #       start: "August 2016"
-    #       end: "December 2017"
-    #   summary:
-    #     - "Started as a contract employee & learned quickly, advancing to a lead position among a team of contractors"
-    #     - "Promoted again to state employee in June of 2019"
-    #     - "Communicated directly with clients to help them successfully apply for SNAP, TANF, & Medicaid"
-    #     - "Assisted clients in solving problems in the cases/applications, increasing their benefit eligibility & advised them on complicated policies & processes"
-    #     - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills"
-    #     - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
-    #     - "Communicated directly with clients to solve issues & share information"
-    #     - "Trained new employees & worked with experienced employees improve customer service, communication, & problem-solving skills"
-    #     - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy"
-    #   skills:
-    #     - Leadership
-    #     - Mentorship
-    #     - Communication
+    - title: "Department of Family Resources"
+      positions:
+        - job-title: "State Eligibility Consultant"
+          employer: "State of Indiana"
+          start: "June 2019"
+          end: "August 2020"
+        - job-title: "Team Lead"
+          employer: "Knowledge Services"
+          start: "May 2018"
+          end: "June 2019"
+        - job-title: "Eligibility Specialist"
+          employer: "Conduent, Knowledge Services"
+          start: "August 2016"
+          end: "May 2018"
+      summary:
+        - "Assisted clients in solving problems in the cases/applications, correcting their benefit eligibility & advised them on complicated policies & processes"
+        - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills"
+        - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
+      skills:
+        - Leadership
+        - Coaching & mentorship
+        - Communication
+        - Project planning
 
   education:
-    - school: "Indiana University—Purdue University Indianapolis"
+    - school: "Indiana University—Purdue University, Indianapolis"
       degree: "B.S."
       major: "Computer Science"
       minor: ""
