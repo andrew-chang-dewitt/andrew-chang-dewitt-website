@@ -10,7 +10,7 @@ export const Landing = () => (
       <h1 className="title">Andrew Chang-DeWitt</h1>
       <div className={styles.tagline}>
         <h2 className={`${styles.subtitle} subtitle`}>software developer</h2>
-        <p>I make web apps, API servers, dev tools/libraries, & IoT toys</p>
+        <p>I make web apps, API servers, dev tools/libraries, & IoT projects</p>
       </div>
     </section>
   </Hero>
