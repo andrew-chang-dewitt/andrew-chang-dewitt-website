@@ -26,7 +26,7 @@ resume:
           - Unit testing
           - FP
           - OOP
-      description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product; & built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
+      description: " The origin of my interest in fintech: a budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product; & built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
@@ -45,7 +45,7 @@ resume:
         - Data structures & algorithms
         - Library API design
         - CLI tooling
-      description: "A Java testing library, test runner, & cli built as a university course's final project. Includes a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
+      description: "A Java testing library, test runner, & cli built as a university course's final project. Building this was a powerful and fun way to dive deeper into Java after only a few weeks of learning the basics by utilizing Java's powerful introspection and reflection capabilities to traverse objects and customize compilation. JSpec was also a great excuse to practice days and algorithms by building a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
     - title: 'DB Wrapper & AMQP Worker'
       repo:
@@ -63,7 +63,7 @@ resume:
         - Library API design
         - Microservices
         - Data modeling and validation
-      description: "A pair of async, typesafe libraries intended to be used in a microservice-based implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
+      description: "A pair of async, typesafe libraries intended to be used in a microservice-based and Docker-orchestrated implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
     - title: 'Guessing game'
       repo:
@@ -174,9 +174,10 @@ resume:
         - GitHub
         - Project Planning
         - Feature Design
+        - Agile Software Development
       summary:
         - "Led implementation planning for and worked with a cross-disciplinary team including engineering, product, & design to develop a new feature shipped on Tinder's web app in late Q3 of 2022, impacting tens of millions of users"
-        - "Participated in regular Scrum ceremonies, including stand-ups, iteration planning, & retrospectives"
+        - "Participated in regular, informal Scrum ceremonies with my small team, including stand-ups, iteration planning, & retrospectives, often including outside stakeholders"
         - "Assisted in migrating JavaScript typed in Flow to TypeScript across the application"
         - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
         - "Improved the Web experience for tens of millions of users by identifying and shipping fixes for a11y & i18n bugs throughout the Tinder application"
