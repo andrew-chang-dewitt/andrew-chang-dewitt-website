@@ -131,20 +131,20 @@ export const Story = () => (
     </p>
     <p>
       Eventually, I made the choice to go back to school to study Computer
-      Science so I could dive deeper in a University environment. Since starting
-      school, I've studied additional languages (including C, C++, & Java),
-      learned more about CS fundamentals, & fallen back in love with Math
-      (especially Discrete Math & Calculus). In my first year, I completed an
-      internship with Indiana University&mdashPurdue University, Indianapolis'
-      Center for Teaching and Learning, then started a summer internship with
-      Tinder (from Match Group) that's been extended into the current school
-      year.
+      Science so I could dive deeper into CS fundamentals with the guidance of a
+      University environment. Since starting school, I've studied additional
+      languages (including C, C++, & Java), learned more about CS fundamentals,
+      & fallen back in love with Math (especially Discrete Math & Calculus). In
+      my first year, I completed an internship with Indiana
+      University&mdashPurdue University, Indianapolis' Center for Teaching and
+      Learning, then started a summer internship with Tinder (from Match Group)
+      that's been extended into the current school year.
     </p>
 
     <h2 className="subtitle">what's next</h2>
     <p>
       I'm currently looking for my next role as I near the end of my internship
-      with Tinder and contine my studies. In my free time, I'm also
+      with Tinder and continue my studies. In my free time, I'm also
       <Detail buttonText=" continuing to learn Rust ">
         {' '}
         by building a
