@@ -176,7 +176,7 @@ resume:
         - Feature Design
       summary:
         - "Led implementation planning for and worked with a cross-disciplinary team including engineering, product, & design to develop a new feature shipped on Tinder's web app in late Q3 of 2022, impacting tens of millions of users"
-        - "Participated in regular, informal Scrum ceremonies with my small engineering team, including stand-ups, iteration planning, & retrospectives, often including outside stakeholders"
+        - "Participated in the code-review & release process as well as regular, informal Scrum ceremonies with my small engineering team, including stand-ups, iteration planning, & retrospectives, often including outside stakeholders"
         - "Assisted in migrating JavaScript typed in Flow to TypeScript across the application"
         - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
         - "Improved the Web experience for tens of millions of users by identifying and shipping fixes for a11y & i18n bugs throughout the Tinder application"
