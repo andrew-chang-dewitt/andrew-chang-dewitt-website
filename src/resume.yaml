@@ -11,22 +11,36 @@ resume:
   about-me: "I make web apps, API's, IoT programs, & cli utilities."
 
   experience:
+    - title: 'Smoke'
+      repo:
+        - href: https://github.com/andrew-chang-dewitt/smoke
+          display: github.com/andrew-chang-dewitt/smoke
+      stack:
+          - Python
+          - FastAPI
+          - IOT devices
+          - Analog input processing
+          - Asynchronous programming
+          - OOP
+      description: "An IOT fan controller & thermometer using a Raspberry Pi Zero, an MCP3008 for reading thermistors as analog inputs, and a level-shifter for controlling a 12V PWM fan form the RPi's 3.3V GPIO pins. Reads temperatures & responds accordingly to maintain a target temperature in a charcoal smoker. Shares status/temps/history & allows controlling the device via a local WiFi web server."
+
     - title: 'Hoops'
       repo:
-        - href: https://github.com/andrew-chang-dewitt/hoops-web
-          display: github.com/andrew-chang-dewitt/hoops-web
         - href: https://github.com/andrew-chang-dewitt/hoops-api
           display: github.com/andrew-chang-dewitt/hoops-api
+        - href: https://github.com/andrew-chang-dewitt/hoops-client
+          display: github.com/andrew-chang-dewitt/hoops-client
       stack:
           - Python
           - TypeScript
           - FastAPI
           - PostgreSQL
-          - Svelte
+          - Rust
+          - WASM
+          - Leptos
           - Unit testing
-          - FP
           - OOP
-      description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product; & built with a RESTful API written in Python/FastAPI with PostgreSQL on the backend & an isomorphic web application in progress being written in TypeScript/SvelteKit for the frontend."
+      description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product. Backend built with a RESTful API written in Python/FastAPI with PostgreSQL. Intended to be consumed with frontend currently being written as an isomorphic web application using SSR & hydrating on the client with WASM using Rust & Leptos."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
@@ -64,17 +78,6 @@ resume:
         - Microservices
         - Data modeling and validation
       description: "A pair of async, typesafe libraries intended to be used in a microservice-based and Docker-orchestrated implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
-
-    - title: 'Guessing game'
-      repo:
-        - href: https://github.com/andrew-chang-dewitt/learning-rust-guessing-game
-          display: github.com/andrew-chang-dewitt/learning-rust-guessing-game
-      stack:
-          - Rust
-          - Unit testing
-          - Data structures & algorithms
-          - CLI tooling
-      description: "A simple guessing game being built as a hobby project while learning Rust & practicing algorithms & data structures. Will be creating a series simple of 'AI' players to make guesses using different algorithms, including linear, jump, binary & other searches all to be compared to random guessing."
 
     # - title: 'We Cook Sometimes'
     # - repo:
@@ -229,12 +232,12 @@ resume:
         - Project planning
 
   education:
-    - school: "Indiana University—Purdue University, Indianapolis"
-      degree: "B.S."
+    - school: "Wilbur Wright College, City Colleges of Chicago"
+      degree: "A.S."
       major: "Computer Science"
       minor: ""
-      location: "Indianapolis, Indiana"
-      date: "In progress"
+      location: "Chicago, IL"
+      date: "Aug 2022—May 2024"
     # - school: "Ball State University"
     #   date:
     #     start: 2009
