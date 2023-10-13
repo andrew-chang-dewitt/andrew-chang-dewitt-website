@@ -166,7 +166,7 @@ resume:
         - job-title: "Web Engineering Intern"
           employer: "Tinder (Match Group)"
           start: "June 2022"
-          end: "current"
+          end: "January 2023"
       skills:
         - React
         - Redux
@@ -237,7 +237,7 @@ resume:
       major: "Computer Science"
       minor: ""
       location: "Chicago, IL"
-      date: "Aug 2022—May 2024"
+      date: "August 2022 - May 2024"
     # - school: "Ball State University"
     #   date:
     #     start: 2009
