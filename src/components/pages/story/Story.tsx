@@ -69,39 +69,36 @@ export const Story = () => (
         I was enjoying programming in a way I hadn't enjoyed anything since I
         first studied calculus in high school
       </Detail>
-      . Quickly, software development took up more & more of my free time until,
-      about one year ago, I decided to begin studying in earnest with the goal
-      of making a career change to software development. In this time, I've
-      studied
+      . Quickly, software development took up more & more of my free time until
+      I decided to go back to school for Computer Science with the intention of
+      becomming a software engineer. In this time, I've studied
       <Detail buttonText=" computer science fundamentals">
         {' '}
-        such as data structures, algorithms, computation, & a little abstract
-        formal logic
+        such as data structures, algorithms, computation, & discrete math (in
+        addition to the
+        <Detail
+          buttonText=" the usual suspects"
+          additionalText=" of CS curricula"
+        >
+          &mdash;Calculus I, II, & III & Physics
+        </Detail>
+        )
       </Detail>
       ;
       <Detail buttonText=" languages">
         {' '}
-        including
-        <Detail buttonText=" javascript">
-          {' '}
-          (first vanilla, then predominantly Typescript)
-        </Detail>
-        , python, &
+        including Javascript/Typescript, python,
         <Detail buttonText=" Rust">
           {' '}
           (a recent addition & quickly becoming my new favorite!)
         </Detail>
-        , & a little bit of
-        <Detail buttonText=" a few others"> (R, Ruby, Racket, & PHP)</Detail>
+        , C/C++, & Java
       </Detail>
       ;
-      <Detail
-        buttonText=" tools &
-  frameworks"
-      >
+      <Detail buttonText=" tools & frameworks">
         {' '}
-        such as git, bash, nginx, npm, cargo, pip, pyTest, Mocha, Node, Express,
-        MongoDB, SQL, React, &
+        such as git, linux, bash, nginx, Node, Express, NoSQL, SQL, React,
+        FastAPI, Svelte, Leptos, &
         <Detail buttonText=" Gatsby">
           {' '}
           (which this site is
@@ -124,40 +121,29 @@ export const Story = () => (
         additionalText="programming styles, design patterns, & principles"
       >
         {' '}
-        (e.g. OOP, some FP, DRY, TDD/BDD, & a little Agile/Scrum)
+        (e.g. OOP, some FP, DRY, SOLID, TDD/BDD, & a little Agile/Scrum)
       </Detail>
-      ; & released a <Link to="/resume">few projects</Link> over the last few
-      years of studying.
+      ; & released a <Link to="/resume">few projects</Link>.
     </p>
     <p>
-      Eventually, I made the choice to go back to school to study Computer
-      Science so I could dive deeper into CS fundamentals with the guidance of a
-      University environment. Since starting school, I've studied additional
-      languages (including C, C++, & Java), learned more about CS fundamentals,
-      & fallen back in love with Math (especially Discrete Math & Calculus). In
-      my first year, I completed an internship with Indiana
-      University&mdashPurdue University, Indianapolis' Center for Teaching and
-      Learning, then started a summer internship with Tinder (from Match Group)
-      that's been extended into the current school year.
+      Since starting school, I've completed two internships&mdash;one with
+      Indiana University&mdash;Purdue University, Indianapolis' Center for
+      Teaching and another with Tinder (from Match Group)&mdash;totalling one
+      year of professional experience so far.
     </p>
 
     <h2 className="subtitle">what's next</h2>
     <p>
-      I'm currently looking for my next role as I near the end of my internship
-      with Tinder and continue my studies. In my free time, I'm also
-      <Detail buttonText=" continuing to learn Rust ">
-        {' '}
-        by building a
-        <a
-          href="https://github.com/andrew-chang-dewitt/learning-rust-guessing-game"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {' '}
-          guessing game{' '}
-        </a>
-        with simple 'AI' players implemented with a few different search
-        algorithms{' '}
+      I'm currently looking for my next role as I near the end of my second year
+      of studying. In my free time, I'm also working on a few new projects,
+      including
+      <Detail
+        buttonText=" a prototype fan controller & thermometor"
+        additionalText=" for my barbecue smoker"
+      >
+        built in Python & FastAPI with a Raspberry Pi, MCP3008 for reading
+        Thermoworks 100k Ohm thermistors, & a level shifter for PWM control of a
+        12V fan
       </Detail>
       and finishing building out a
       <Detail
@@ -168,25 +154,7 @@ export const Story = () => (
         (with integrations to our bank accounts & credit cards, a web app, user
         authentication, & a RESTful API to keep everything in sync)
       </Detail>
-      . Next up is the
-      <Detail buttonText=" home security system ">
-        {' '}
-        (custom built sensor modules with
-        <Detail buttonText=" Raspberry Pi Zeros ">
-          &mdash;although I've been considering switching to Arduino&mdash;{' '}
-        </Detail>
-        & off-the-shelf PIR motion sensors, reed sensors, & IP cameras all
-        <Detail buttonText=" communicating via MQTT ">
-          &mdash;you can find a prototype of the sensor modules written in
-          Python{' '}
-          <a href="https://github.com/andrew-chang-dewitt/rpi-security-gpio2mqtt">
-            on GitHub
-          </a>
-          &mdash;{' '}
-        </Detail>
-        with a server built in Rust){' '}
-      </Detail>
-      I've been designing for my family's home.
+      .
     </p>
   </div>
 )
