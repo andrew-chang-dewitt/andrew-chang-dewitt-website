@@ -32,13 +32,13 @@ resume:
           display: github.com/andrew-chang-dewitt/hoops-client
       stack:
           - Python
-          - TypeScript
           - FastAPI
           - PostgreSQL
           - Rust
           - WASM
           - Leptos
           - Unit testing
+          - FP
           - OOP
       description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product. Backend built with a RESTful API written in Python/FastAPI with PostgreSQL. Intended to be consumed with frontend currently being written as an isomorphic web application using SSR & hydrating on the client with WASM using Rust & Leptos."
       summary:
@@ -188,7 +188,7 @@ resume:
     - title: "Web Development Internship"
       positions:
         - job-title: "Assistant Web Master"
-          employer: "IUPUI Center for Teaching and Learning"
+          employer: "Indiana University—Purdue University at Indianapolis (CTL)"
           start: "August 2021"
           end: "May 2022"
       skills:
@@ -203,7 +203,7 @@ resume:
         - HTML
         - CSS
       summary:
-        - "Updated outdated .NET Razor views from Bootstrap/JQuery to IU's modern css framework, improving page load times"
+        - "Updated outdated .NET Razor views from Bootstrap/JQuery to Indiana University's modern css framework, improving page load times"
         - "Implemented additional features in HTML, CSS, & vanilla JS (or Vue, where applicable)"
         - "Built dev tools in Python & TypeScript to automate data & file collection & formatting"
 
