@@ -8,6 +8,16 @@
   margin-top: #{Resume.$space / 2}
   margin-bottom: Resume.$space
 
+.education ul
+  margin: Resume.$space 0
+  padding: 0
+.education li > *
+  margin: 0
+.education li
+  margin: 0
+  padding: 0
+  list-style: none
+
 .left > h5
   margin: #{Resume.$space / 2} 0
 .left > p
@@ -15,9 +25,5 @@
 .right, .left
   margin: 0
   padding: 0
-.right > li > *
-  margin: 0
-.right > li
-  margin: 0
-  list-style: none
-  padding-left: 1.375rem
+.right
+  padding: Resume.$space 0

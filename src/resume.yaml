@@ -238,6 +238,7 @@ resume:
       minor: ""
       location: "Chicago, IL"
       date: "August 2022 - May 2024"
+      description: "Completed 2 years coursework in Computer Science, including classes on: OOP C++, C, Java; introductory Data Structures & Algorithms with Python; Networking w/ OSI model, TCP/IP, & UDP; Discrete Math; Calculus I, II, & III"
     # - school: "Ball State University"
     #   date:
     #     start: 2009

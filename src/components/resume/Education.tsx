@@ -10,6 +10,7 @@ export interface EducationItem {
   degree?: string
   major: string
   minor?: string
+  description: string
 }
 
 interface Props {
@@ -37,12 +38,13 @@ const buildEducationItem = (item: EducationItem) => (
     <div className={sharedStyles.twoColumnLayout}>
       <div className={styles.left}>
         <h4>{item.school}</h4>
+        <ul>
+          <li>{item.location}</li>
+          {item.date ? <li className="italic">{item.date}</li> : null}
+        </ul>
       </div>
 
-      <ul className={styles.right}>
-        <li>{item.location}</li>
-        {item.date ? <li className="italic">{item.date}</li> : null}
-      </ul>
+      <div className={styles.right}>{item.description}</div>
     </div>
   </div>
 )
