@@ -20,13 +20,8 @@ interface Props {
 const buildEducationItem = (item: EducationItem) => (
   <div className="avoidPageBreak" key={item.school}>
     <h3>
-      {item.degree ? (
-        <>
-          {item.degree} in {item.major}
-        </>
-      ) : (
-        <>{item.major}</>
-      )}
+      {item.major}
+      {item.degree ? <>, {item.degree}</> : <>''</>}
       {item.minor ? (
         <>
           , <span className="italic">minor in {item.minor}</span>
