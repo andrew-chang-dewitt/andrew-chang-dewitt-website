@@ -33,7 +33,7 @@ export const Story = () => (
         , in the time since writing that first <code>helloWorld()</code> with my
         dad
       </Detail>
-      , I've spent 6 years of childhood dreaming of being an Architect, 5 years
+      , I've spent 8 years of childhood dreaming of being an Architect, 5 years
       of university studying to be a Landscape Architect, & 5 years of working
       in government social services; all only to return to coding nearly 20
       years later.
@@ -71,11 +71,11 @@ export const Story = () => (
       </Detail>
       . Quickly, software development took up more & more of my free time until
       I decided to go back to school for Computer Science with the intention of
-      becomming a software engineer. In this time, I've studied
+      becoming a software engineer. In this time, I've studied
       <Detail buttonText=" computer science fundamentals">
         {' '}
         such as data structures, algorithms, computation, & discrete math (in
-        addition to the
+        addition to
         <Detail
           buttonText=" the usual suspects"
           additionalText=" of CS curricula"
@@ -138,12 +138,12 @@ export const Story = () => (
       of studying. In my free time, I'm also working on a few new projects,
       including
       <Detail
-        buttonText=" a prototype fan controller & thermometor"
-        additionalText=" for my barbecue smoker"
+        buttonText=" a prototype fan controller &  thermometer "
+        additionalText=" for my barbecue smoker "
       >
         built in Python & FastAPI with a Raspberry Pi, MCP3008 for reading
         Thermoworks 100k Ohm thermistors, & a level shifter for PWM control of a
-        12V fan
+        12V fan{' '}
       </Detail>
       and finishing building out a
       <Detail
