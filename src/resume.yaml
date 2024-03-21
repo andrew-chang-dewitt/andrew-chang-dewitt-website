@@ -22,25 +22,25 @@ resume:
           - Analog input processing
           - Asynchronous programming
           - OOP
-      description: "An IOT fan controller & thermometer using a Raspberry Pi Zero, an MCP3008 for reading thermistors as analog inputs, and a level-shifter for controlling a 12V PWM fan form the RPi's 3.3V GPIO pins. Reads temperatures & responds accordingly to maintain a target temperature in a charcoal smoker. Shares status/temps/history & allows controlling the device via a local WiFi web server."
+      description: "An IOT fan controller & thermometer using a Raspberry Pi Zero, an MCP3008 for reading thermistors as analog inputs, & a level-shifter for controlling a 12V PWM fan form the RPi's 3.3V GPIO pins. Reads temperatures & responds accordingly to maintain a target temperature in a charcoal smoker. Currently implementing features to share status/temps/history & allow controlling the device via a local WiFi web server."
 
     - title: 'Hoops'
       repo:
+        - href: https://github.com/andrew-chang-dewitt/hoops-app
+          display: github.com/andrew-chang-dewitt/hoops-app
         - href: https://github.com/andrew-chang-dewitt/hoops-api
           display: github.com/andrew-chang-dewitt/hoops-api
-        - href: https://github.com/andrew-chang-dewitt/hoops-client
-          display: github.com/andrew-chang-dewitt/hoops-client
       stack:
-          - Python
-          - FastAPI
-          - PostgreSQL
           - Rust
           - WASM
           - Leptos
+          - Python
+          - FastAPI
+          - PostgreSQL
           - Unit testing
           - FP
           - OOP
-      description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by favorite (now defunct) fintech product. Backend built with a RESTful API written in Python/FastAPI with PostgreSQL. Intended to be consumed with frontend currently being written as an isomorphic web application using SSR & hydrating on the client with WASM using Rust & Leptos."
+      description: "A budgeting application to empower my wife & I to better organize our financial future; inspired by a favorite (now defunct) fintech product. Backend built with a RESTful API written in Python with FastAPI & PostgreSQL, with parts as needed in Rust with Axum. Intended to be consumed with frontend currently being written as an isomorphic web application using SSR & hydrating on the client with WASM using Rust & Leptos."
       summary:
         - "Building a budgeting application, inspired by my favorite (now defunct) fintech product, currently a work in progress"
         - "Backend REST API built with Python (FastAPI) & PostgreSQL (psycopg2)"
@@ -59,7 +59,7 @@ resume:
         - Data structures & algorithms
         - Library API design
         - CLI tooling
-      description: "A Java testing library, test runner, & cli built as a university course's final project. Building this was a powerful and fun way to dive deeper into Java after only a few weeks of learning the basics by utilizing Java's powerful introspection and reflection capabilities to traverse objects and customize compilation. JSpec was also a great excuse to practice days and algorithms by building a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
+      description: "A Java testing library, test runner, & cli built as a class final project. Building this was a fun way to dive deeper into Java by utilizing Java's powerful introspection & reflection capabilities to traverse objects & customize compilation output. JSpec was also a great excuse to practice data structures & algorithms by building a custom implementation of doubly linked lists & n-ary trees, complete with traversal algorithms & collection manipulation methods such as `reduce()`, `map()`, & `forEach()`; used for storing test result state before rendering."
 
     - title: 'DB Wrapper & AMQP Worker'
       repo:
@@ -76,8 +76,8 @@ resume:
         - Type systems & static typing
         - Library API design
         - Microservices
-        - Data modeling and validation
-      description: "A pair of async, typesafe libraries intended to be used in a microservice-based and Docker-orchestrated implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
+        - Data modeling & validation
+      description: "A pair of async, typesafe libraries intended to be used in a microservice-based & Docker-orchestrated implementation of Hoops (which has since pivoted to a monolithic backend). First is an ORM & db connection/query library driven by Psycopg2 with runtime type validation in an intuitive API. Second is a library for building services that communicate over AMQP with a simple, Flask-like API."
 
     # - title: 'We Cook Sometimes'
     # - repo:
@@ -161,6 +161,19 @@ resume:
     #    - "Next steps: rewrite in Rust with compilation target being a microcontroller, such as Arduino or ESP32 board"
 
   employment:
+    - title: "Undergraduate Research Assistantship"
+      positions:
+        - job-title: "Research Assistant"
+          employer: "exploreCSR @ Northwestern University"
+          start: "March 2024"
+          end: "ongoing"
+      skills:
+        - Research
+        - Problem Solving
+      summary:
+        - "Worked with a Northwestern faculty member to assist with programming language research"
+        - "Attended seminars on various CS research topics"
+
     - title: "Software Engineering Internship"
       positions:
         - job-title: "Web Engineering Intern"
@@ -178,17 +191,15 @@ resume:
         - Project Planning
         - Feature Design
       summary:
-        - "Led implementation planning for and worked with a cross-disciplinary team including engineering, product, & design to develop a new feature shipped on Tinder's web app in late Q3 of 2022, impacting tens of millions of users"
-        - "Participated in the code-review & release process as well as regular, informal Scrum ceremonies with my small engineering team, including stand-ups, iteration planning, & retrospectives, often including outside stakeholders"
+        - "Led implementation planning for & worked with a cross-disciplinary team including engineering, product, & design to develop a new feature shipped on Tinder's web app in late Q3 of 2022, impacting tens of millions of users"
+        - "Participated in the code-review & release process as well as regular, informal Scrum ceremonies"
         - "Assisted in migrating JavaScript typed in Flow to TypeScript across the application"
-        - "Worked with a team of interns from ideation through design & rough implementation of a proposed new feature for a company-wide hackathon"
-        - "Improved the Web experience for tens of millions of users by identifying and shipping fixes for a11y & i18n bugs throughout the Tinder application"
-        - "Fixed security bugs in web application & backend services"
+        - "Improved the Web experience for tens of millions of users by identifying & shipping fixes for a11y & i18n bugs"
 
     - title: "Web Development Internship"
       positions:
         - job-title: "Assistant Web Master"
-          employer: "Indiana University—Purdue University at Indianapolis (CTL)"
+          employer: "Indiana University—Purdue University at Indianapolis"
           start: "August 2021"
           end: "May 2022"
       skills:
@@ -210,7 +221,7 @@ resume:
     - title: "Department of Family Resources"
       positions:
         - job-title: "State Eligibility Consultant"
-          employer: "State of Indiana"
+          employer: "State of Indiana, Department of Family Resources"
           start: "June 2019"
           end: "August 2020"
         - job-title: "Team Lead"
@@ -223,7 +234,7 @@ resume:
           end: "May 2018"
       summary:
         - "Assisted clients in solving problems in the cases/applications, correcting their benefit eligibility & advised them on complicated policies & processes"
-        - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills"
+        - "Trained 12 new employees & worked with a team of experienced employees to improve their customer service, communication, & problem-solving skills by designing & hosting group training sessions in coordination with 1:1 mentoring"
         - "Collaborated with local office & regional management to improve business processes for efficiency & accuracy, saving 90+ minutes/day when generating reports & assigning case loads"
       skills:
         - Leadership
@@ -232,13 +243,22 @@ resume:
         - Project planning
 
   education:
-    - school: "Wilbur Wright College, City Colleges of Chicago"
+    # - school: "Illinois Institute of Technology"
+    #   degree: "Bachelor of Science"
+    #   major: "Computer Science"
+    #   minor: "Circuits & Systems"
+    #   location: "Chicago, IL"
+    #   date: "August 2024 - December 2025"
+    #   description: "Completing coursework on CS & SWE fundamentals, including systems programming, programming language theory, compiler construction, & database organization w/ special interests in embedded systems as well as parallel & distributed systems & objects."
+
+    - school: "Wilbur Wright College"
       degree: "Associate in Engineering Science"
       major: "Computer Science"
       minor: ""
       location: "Chicago, IL"
       date: "August 2022 - May 2024"
-      description: "Completed 2 years coursework in Computer Science, including classes on: OOP C++, C, Java; introductory Data Structures & Algorithms with Python; Networking w/ OSI model, TCP/IP, & UDP; Discrete Math; Calculus I, II, & III"
+      gpa: "3.8/4.0"
+      description: "Studied Python, C, OOP w/ C++ & Java; Networking (OSI, TCP/IP, UDP); Discrete  Computational Structures; Calculus; Diff. Eq.; & Linear Algebra. Participated in dual enrollment program with Illinois Institute of Technology, meeting high academic standards to maintain eligibility with the intention of transferring there in Fall 2024."
     # - school: "Ball State University"
     #   date:
     #     start: 2009

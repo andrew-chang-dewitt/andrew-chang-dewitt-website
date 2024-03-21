@@ -25,14 +25,14 @@ interface Props {
 
 export const Employment = ({ data }: Props) => (
   <section className={styles.employment}>
-    <h2 className="title">Employment</h2>
+    <h2 className="title">Experience</h2>
 
     {data.map((employmentItem) => (
       <div
         className={`${styles.item} avoidPageBreak`}
         key={employmentItem.title}
       >
-        <h3 className="title">{employmentItem.title}</h3>
+        <h3 className="title">{employmentItem.positions[0].employer}</h3>
 
         <RoundedItemList
           items={employmentItem.skills}
@@ -45,7 +45,10 @@ export const Employment = ({ data }: Props) => (
               <li key={position.start} className="subtitle">
                 <h4>{position['job-title']}</h4>
                 <p>
-                  {position.employer}, {position.start} - {position.end}
+                  {employmentItem.positions.length > 1
+                    ? position.employer + ', '
+                    : ''}
+                  {position.start} - {position.end}
                 </p>
               </li>
             ))}

@@ -10,6 +10,7 @@ export interface EducationItem {
   degree?: string
   major: string
   minor?: string
+  gpa?: string
   description: string
 }
 
@@ -20,22 +21,24 @@ interface Props {
 const buildEducationItem = (item: EducationItem) => (
   <div className="avoidPageBreak" key={item.school}>
     <h3>
-      {item.major}
-      {item.degree ? <>, {item.degree}</> : <>''</>}
-      {item.minor ? (
-        <>
-          , <span className="italic">minor in {item.minor}</span>
-        </>
-      ) : (
-        ''
-      )}
+      {item.school}, {item.location}
     </h3>
     <div className={sharedStyles.twoColumnLayout}>
       <div className={styles.left}>
-        <h4>{item.school}</h4>
+        <h4>
+          {item.degree ? <>{item.degree}, </> : <>''</>}
+          {item.major}
+          {item.minor ? (
+            <>
+              , <span className="italic">minor in {item.minor}</span>
+            </>
+          ) : (
+            ''
+          )}
+        </h4>
         <ul>
-          <li>{item.location}</li>
           {item.date ? <li className="italic">{item.date}</li> : null}
+          {item.gpa ? <li className="italic">GPA: {item.gpa}</li> : null}
         </ul>
       </div>
 
