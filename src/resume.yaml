@@ -168,10 +168,15 @@ resume:
           start: "March 2024"
           end: "ongoing"
       skills:
+        - Racket
+        - AI
+        - LLM
+        - Software Testing
         - Research
         - Problem Solving
       summary:
-        - "Worked with a Northwestern faculty member to assist with programming language research"
+        - "Worked with Dr. Christos Dimoulas @ Northwestern & his team to assist with programming language research"
+        - "Assisted in the beginning stages of creating an LLM-based tool capable of generating test suites capable of capturing a high degree of possible bugs for a given software source"
         - "Attended seminars on various CS research topics"
 
     - title: "Software Engineering Internship"
